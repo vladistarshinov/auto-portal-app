@@ -1,0 +1,46 @@
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    transform: translateX(-30rem);
+    transition: all .5s;
+    width: 30rem;
+    background-color:#203040;
+    color: #fff;
+    height: 100%;
+
+    &.open {
+        transform: translateX(0);
+    }
+
+    &__btn-close {
+        border-radius: 50%;
+        border: .1rem #000000 solid;
+        width: 3rem;
+        height: 3rem;
+        padding: 0.5rem;
+        font-size: 2rem;
+        padding-top: 0.1rem;
+        cursor: pointer;
+        position: absolute;
+        right: 0.5rem;
+        top: 1.5rem;
+    }
+
+    h3 {
+        margin-left: 1rem;
+    }
+
+    li {
+        list-style: none;
+        margin-bottom: 1rem;
+
+        a {
+            color: #fff;
+            text-decoration: none;
+
+            &:hover {
+                color: #ff8000;
+            }
+        }
+    }
+  }
