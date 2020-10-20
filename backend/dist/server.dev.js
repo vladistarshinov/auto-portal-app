@@ -2,11 +2,19 @@
 
 var _express = _interopRequireDefault(require("express"));
 
+var _dotenv = _interopRequireDefault(require("dotenv"));
+
+var _db = _interopRequireDefault(require("./config/db"));
+
 var _products = _interopRequireDefault(require("./data/products"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+_dotenv["default"].config();
+
+(0, _db["default"])();
 var app = (0, _express["default"])();
+var PORT = process.env.PORT || 5000;
 app.get("/", function (req, res) {
   res.send("API запущен...");
 });
@@ -24,6 +32,4 @@ app.get("/api/products/:id", function (req, res) {
     msg: "Товар не найден"
   });
 });
-app.listen(5000, function () {
-  console.log("Server running on port 5000");
-});
+app.listen(PORT, console.log("Server running in ".concat(process.env.NODE_ENV, " mode on port ").concat(PORT)));

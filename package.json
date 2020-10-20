@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "Интернет-магазин гаджетов (MERN)",
   "main": "server.js",
+  "type": "module",
   "scripts": {
+    "start": "nodemon --watch backend --exec babel-node backend/server.js",
     "server": "nodemon --watch backend --exec babel-node backend/server.js",
-    "client": "npm run start --prefix frontend",
+    "client": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
@@ -19,7 +21,9 @@
   },
   "homepage": "https://github.com/vladistarshinov/mern-shop-app#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.9"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
