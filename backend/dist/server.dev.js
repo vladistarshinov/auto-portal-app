@@ -4,6 +4,8 @@ var _express = _interopRequireDefault(require("express"));
 
 var _dotenv = _interopRequireDefault(require("dotenv"));
 
+var _colors = _interopRequireDefault(require("colors"));
+
 var _db = _interopRequireDefault(require("./config/db"));
 
 var _products = _interopRequireDefault(require("./data/products"));
@@ -32,4 +34,4 @@ app.get("/api/products/:id", function (req, res) {
     msg: "Товар не найден"
   });
 });
-app.listen(PORT, console.log("Server running in ".concat(process.env.NODE_ENV, " mode on port ").concat(PORT)));
+app.listen(PORT, console.log("Server running in ".concat(process.env.NODE_ENV, " mode on port ").concat(PORT).yellow.bold));

@@ -25,14 +25,14 @@ var connectDB = function connectDB() {
 
         case 3:
           connection = _context.sent;
-          console.log("MongoDB Connect: ".concat(connection.connection.host));
+          console.log("MongoDB Connect: ".concat(connection.connection.host).cyan.underline);
           _context.next = 11;
           break;
 
         case 7:
           _context.prev = 7;
           _context.t0 = _context["catch"](0);
-          console.error("Error: ".concat(_context.t0.message));
+          console.error("Error: ".concat(_context.t0.message).red.underline.bold);
           process.exit(1);
 
         case 11:
