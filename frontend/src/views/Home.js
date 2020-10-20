@@ -1,9 +1,21 @@
-import React from "react";
-import products from "../data/products";
+import React, { useState, useEffect } from "react";
 import ProductList from "../components/ProductList";
 import { Row, Col } from 'bootstrap-4-react';
+import axios from "axios";
 
 const Home = () => {
+
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        const getProducts = async () => {
+            const { data } = await axios.get("/api/products");
+
+            setProducts(data);
+        }
+        getProducts()
+    }, [])
+
     return (
         <>
             <h3>Добро пожаловать в магазин IGadgetShop</h3>

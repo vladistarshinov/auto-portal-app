@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { Row, Col, ListGroup, Figure, Button } from "bootstrap-4-react";
-import products from "../data/products";
 import Rating from "../components/Rating";
+import axios from "axios";
 
 const ProductDetail = (props) => {
 
-    const product = products.find(p => p._id === props.match.params.id);
+    const [product, setProduct] = useState({});
+    const productId = props.match.params.id;
+
+    useEffect(() => {
+        const getProduct = async () => {
+            const { data } = await axios.get(`/api/products/${productId}`);
+
+            setProduct(data);
+        }
+        getProduct()
+    }, [])
 
     return (
         <>
