@@ -1,23 +1,29 @@
 "use strict";
 
-var express = require("express");
+var _express = _interopRequireDefault(require("express"));
 
-var products = require("./data/products");
+var _products = _interopRequireDefault(require("./data/products"));
 
-var app = express();
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+var app = (0, _express["default"])();
 app.get("/", function (req, res) {
   res.send("API запущен...");
 });
 app.get("/api/products", function (req, res) {
-  res.json(products);
+  res.json(_products["default"]);
 });
 app.get("/api/products/:id", function (req, res) {
   var productId = req.params.id;
-  var product = products.find(function (p) {
+
+  var product = _products["default"].find(function (p) {
     return p._id === productId;
   });
+
   if (product) res.json(product);else res.status(404).json({
     msg: "Товар не найден"
   });
 });
-app.listen(5000, console.log("Server running on port 5000"));
+app.listen(5000, function () {
+  console.log("Server running on port 5000");
+});
