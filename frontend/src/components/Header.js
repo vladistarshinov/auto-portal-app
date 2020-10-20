@@ -7,12 +7,18 @@ const Header = () => {
         <header>
           <Navbar expand="lg" light bg="light" mb="3">
             <Container>
-              <Navbar.Brand text="black-50" href="/">IGadgetShop</Navbar.Brand>
+              <Navbar.Brand text="black-50" href="/">
+                <i 
+                  className="fa fa-american-sign-language-interpreting mr-2" 
+                  aria-hidden="true"
+                ></i>
+                IGadgetShop
+              </Navbar.Brand>
               <Navbar.Toggler target="#navbarColor1" />
               <Collapse navbar id="navbarColor1">
                 <Form inline m="auto" my="2 lg-0">
                   <Form.Input type="search" placeholder="Поиск..." mr="sm-2" />
-                  <Button outline info my="2 sm-0">Поиск</Button>
+                  <Button outline dark my="2 sm-0">Поиск</Button>
                 </Form>
                 <Navbar.Nav ml="auto">
                   <Nav.Item dropdown>
