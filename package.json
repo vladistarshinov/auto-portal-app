@@ -1,0 +1,22 @@
+{
+  "name": "mern-shop-app",
+  "version": "1.0.0",
+  "description": "Интернет-магазин гаджетов (MERN)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vladistarshinov/mern-shop-app.git"
+  },
+  "author": "Vlad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vladistarshinov/mern-shop-app/issues"
+  },
+  "homepage": "https://github.com/vladistarshinov/mern-shop-app#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

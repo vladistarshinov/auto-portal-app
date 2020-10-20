@@ -10,9 +10,9 @@ const ProductDetail = (props) => {
 
     return (
         <>
-            <Link className="btn btn-light my-3" to="/">
+            <Link className="btn btn-light my-3 text-capitalize" to="/">
                 <i className="fa fa-arrow-left mr-2" aria-hidden="true"></i>
-                На главную
+                Назад
             </Link>
             <Row>
                 <Col md={5}>
