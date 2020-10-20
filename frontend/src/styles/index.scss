@@ -11,17 +11,12 @@ body {
   margin: 0;
 }
 
-#root {
-  height: 100%;
-}
-
 a {
   text-decoration: none;
-  color: #000;
 }
 
-a:hover {
-  color: #ff8000;
+#root {
+  height: 100%;
 }
 
 .grid-container {
@@ -51,6 +46,10 @@ a:hover {
   border: none;
   cursor: pointer;
   color: #fff;
+  
+  &:focus {
+    outline: none;
+  }
 }
 
 .header__brand a {
@@ -58,16 +57,22 @@ a:hover {
   padding-left: 1rem;
   font-size: 2.5rem;
   font-weight: bold;
-  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+    color: #fff;
+  }
 }
 
 .header__links a {
   color: #fff;
   padding-right: 1rem;
+  font-size: 1.5rem;
   text-decoration: none;
 }
 
 .header__links a:hover {
+  text-decoration: none;
   color: #ff8000;
 }
 

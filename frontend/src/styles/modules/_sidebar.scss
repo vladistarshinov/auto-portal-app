@@ -14,20 +14,27 @@
 
     &__btn-close {
         border-radius: 50%;
-        border: .1rem #000000 solid;
+        border: .1rem #203040 solid;
         width: 3rem;
         height: 3rem;
         padding: 0.5rem;
-        font-size: 2rem;
-        padding-top: 0.1rem;
+        font-size: 1.8rem;
+        padding-top: 0;
         cursor: pointer;
         position: absolute;
         right: 0.5rem;
         top: 1.5rem;
+
+        &:focus {
+            outline: none;
+        }
     }
 
     h3 {
         margin-left: 1rem;
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+        color: #fff;
     }
 
     li {
@@ -36,6 +43,7 @@
 
         a {
             color: #fff;
+            font-size: 1.5rem;
             text-decoration: none;
 
             &:hover {
