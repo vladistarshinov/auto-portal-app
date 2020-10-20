@@ -1,4 +1,5 @@
 import React from "react";
+import { LinkContainer } from "react-router-bootstrap";
 import { Navbar, Nav, Button, Form, Collapse, Container, Dropdown } from 'bootstrap-4-react';
 
 const Header = () => {
@@ -7,13 +8,15 @@ const Header = () => {
         <header>
           <Navbar expand="lg" light bg="light" mb="3">
             <Container>
-              <Navbar.Brand text="black-50" href="/">
-                <i 
-                  className="fa fa-american-sign-language-interpreting mr-2" 
-                  aria-hidden="true"
-                ></i>
-                IGadgetShop
-              </Navbar.Brand>
+              <LinkContainer to="/">
+                <Navbar.Brand text="black-50" href="/">
+                  <i 
+                    className="fa fa-american-sign-language-interpreting mr-2" 
+                    aria-hidden="true"
+                  ></i>
+                  IGadgetShop
+                </Navbar.Brand>
+              </LinkContainer>
               <Navbar.Toggler target="#navbarColor1" />
               <Collapse navbar id="navbarColor1">
                 <Form inline m="auto" my="2 lg-0">
@@ -30,14 +33,18 @@ const Header = () => {
                       <Dropdown.Item>Разное</Dropdown.Item>
                     </Dropdown.Menu>
                   </Nav.Item>
-                  <Nav.ItemLink href="#">
-                    <i className="fas fa-shopping-cart mr-2"></i>
-                    Корзина
-                  </Nav.ItemLink>
-                  <Nav.ItemLink href="#">
-                    <i className="fas fa-user mr-2"></i>
-                    Авторизация
-                  </Nav.ItemLink>
+                  <LinkContainer to="/cart">
+                    <Nav.ItemLink>
+                      <i className="fas fa-shopping-cart mr-2"></i>
+                      Корзина
+                    </Nav.ItemLink>
+                  </LinkContainer>
+                  <LinkContainer to="/login">
+                    <Nav.ItemLink>
+                      <i className="fas fa-user mr-2"></i>
+                      Авторизация
+                    </Nav.ItemLink>
+                  </LinkContainer>
                 </Navbar.Nav>
               </Collapse>
             </Container>

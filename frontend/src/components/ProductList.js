@@ -1,36 +1,33 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Card } from "react-bootstrap";
 import Rating from "./Rating";
 
-const Product = ({ product }) => {
+const ProductList = ({ product }) => {
 
     const productNameLink = {
         color: '#203040', 
         textDecoration: 'none'
     };
 
-    const reviews = {
-        marginLeft: '.25rem'
-    };
-
     return (
         <Card className="my-3 p-3 rounded">
-            <a href={`/product/${product._id}`}>
+            <Link to={`/product/${product._id}`}>
                 <Card.Img src={product.image} variant="top" />
-            </a>
+            </Link>
 
             <Card.Body>
-                <a style={productNameLink} href={`/product/${product._id}`} className="text-center">
+                <Link className="text-center" style={productNameLink} to={`/product/${product._id}`}>
                     <Card.Title as="div">
                         <strong>{product.name}</strong>
                     </Card.Title>
-                </a>
+                </Link>
 
                 <Card.Text as="div" className="d-inline-flex">
                     <Rating 
                         value={product.rating}
                     />
-                    <span style={reviews}>{product.numReviews} отзывов</span>
+                    <span className="reviews">{product.numReviews} отзывов</span>
                 </Card.Text>
 
                 <Card.Text as="h4" className="text-center">
@@ -41,4 +38,4 @@ const Product = ({ product }) => {
     )
 }
 
-export default Product;
+export default ProductList;
