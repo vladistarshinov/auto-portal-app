@@ -16,7 +16,7 @@ const ProductDetail = (props) => {
             setProduct(data);
         }
         getProduct()
-    }, [props])
+    }, [productId])
 
     return (
         <>

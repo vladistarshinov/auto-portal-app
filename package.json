@@ -8,7 +8,9 @@
     "start": "nodemon --watch backend --exec babel-node backend/server.js",
     "server": "nodemon backend/server.js --exec babel-node",
     "client": "cd frontend/ && npm run start",
-    "dev": "npm-run-all --parallel server client"
+    "dev": "npm-run-all --parallel server client",
+    "data:import": "nodemon backend/seeder.js --exec babel-node",
+    "data:destroy": "nodemon backend/seeder.js -d"
   },
   "repository": {
     "type": "git",
@@ -25,7 +27,7 @@
     "colors": "^1.4.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mongoose": "^5.10.9"
+    "mongoose": "^5.10.6"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
