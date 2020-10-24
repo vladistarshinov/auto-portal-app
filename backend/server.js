@@ -19,6 +19,17 @@ app.get("/", (req, res) => {
 
 app.use("/api/products", productRoutes)
 
+app.use((req, res, next) => {
+  console.log(req.originalUrl)
+  next()
+})
+
+app.use((req, res, next) => {
+  const error = new Error(`Not Found - ${req.originalUrl}`)
+  res.status(404)
+  next(error)
+})
+
 app.listen(PORT, 
   console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold) 
 )
