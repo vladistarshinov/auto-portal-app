@@ -13,19 +13,19 @@ const addProductToCart = (productId, quantity) => async (dispatch, getState) => 
             countInStock: data.countInStock,
             quantity
         }} );
-        const { cart:{ cartItems } } = getState();
-        //getState().cart.cartItems
-        // cookie.set("Корзина", JSON.stringify(cartItems));
-        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        const { cart:{ cartProductItems } } = getState();
+        //getState().cart.cartProductItems
+        // cookie.set("Корзина", JSON.stringify(cartProductItems));
+        localStorage.setItem('Корзина', JSON.stringify(cartProductItems));
 
     } catch (error) {}
 }
 
 const removeProductFromCart = (productId) => (dispatch, getState) => {
     dispatch({ type: CART_REMOVE_PRODUCT, payload: productId });
-    const { cart:{ cartItems } } = getState();
-    // cookie.set("Корзина", JSON.stringify(cartItems));
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    const { cart:{ cartProductItems } } = getState();
+    // cookie.set("Корзина", JSON.stringify(cartProductItems));
+    localStorage.setItem('Корзина', JSON.stringify(cartProductItems));
 }
 
 export { addProductToCart, removeProductFromCart };

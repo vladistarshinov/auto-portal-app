@@ -27,7 +27,9 @@ const Header = () => {
                   <Nav.Item dropdown>
                     <Nav.Link className="header__category" dropdownToggle>Категории</Nav.Link>
                     <Dropdown.Menu>
-                      <Dropdown.Item>Ноутбуки</Dropdown.Item>
+                      <LinkContainer bg="light" text="dark" to="/pc">
+                        <Dropdown.Item>Ноутбуки</Dropdown.Item>
+                      </LinkContainer>
                       <Dropdown.Item>Телефоны</Dropdown.Item>
                       <Dropdown.Divider />
                       <Dropdown.Item>Разное</Dropdown.Item>

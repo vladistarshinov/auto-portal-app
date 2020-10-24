@@ -16,7 +16,7 @@ const Home = () => {
 
     return (
         <>
-            <h3 style={{ color: '#070049' }}>Добро пожаловать в магазин IGadgetShop</h3>
+            <h2 style={{ color: '#070049' }}>Добро пожаловать в магазин IGadgetShop</h2>
             {loading ? (
                 <Loader />
             ) : error ? (
