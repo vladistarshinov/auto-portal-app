@@ -1,31 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
 import ProductList from "../components/ProductList";
+import { listOfProduct } from '../redux/actions/product.actions';
 import { Row, Col } from 'bootstrap-4-react';
-import axios from "axios";
 
 const Home = () => {
-
-    const [products, setProducts] = useState([]);
-
+    const dispatch = useDispatch();
+    const productList = useSelector(state => state.productList);
+    const { loading, products, error } = productList;
     useEffect(() => {
-        const getProducts = async () => {
-            const { data } = await axios.get("/api/products");
-
-            setProducts(data);
-        }
-        getProducts()
-    }, [])
+        dispatch(listOfProduct());
+    }, [dispatch])
 
     return (
         <>
             <h3>Добро пожаловать в магазин IGadgetShop</h3>
-            <Row>
-                {products.map((product) => 
-                    <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-                       <ProductList product={product} />
-                    </Col>
-                )}
-            </Row>
+            {loading ? (
+                <h2>Загрузка...</h2>
+            ) : error ? (
+                // alert(`${error}`)
+                <h3>{error}</h3>
+            ) : (
+                <Row>
+                    {products.map((product) => 
+                        <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+                        <ProductList product={product} />
+                        </Col>
+                    )}
+                </Row>
+            )}
         </>
     )
 }
