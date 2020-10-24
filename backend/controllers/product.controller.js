@@ -1,3 +1,4 @@
+import asyncHandler from 'express-async-handler';
 import Product from '../models/productModel';
 
 const productController = {};
@@ -5,7 +6,7 @@ const productController = {};
 // @desc     Get all products
 // @route    GET /api/products
 // @access   Public
-productController.getAllProducts = async (req, res) => {
+productController.getAllProducts = asyncHandler(async (req, res) => {
     try {
       const products = await Product.find({});
       res.json(products);
@@ -13,12 +14,12 @@ productController.getAllProducts = async (req, res) => {
       res.status(500);
       throw new Error('Ошибка при загрузке товаров');
     }
-};
+});
 
 // @desc     Get product by Id
 // @route    GET /api/products/:id
 // @access   Public
-productController.getProductById = async (req, res) => {
+productController.getProductById = asyncHandler(async (req, res) => {
     const productId = req.params.id;
     const product = await Product.findById(productId);
     if (product) {
@@ -28,6 +29,6 @@ productController.getProductById = async (req, res) => {
       res.status(404);
       throw new Error('Товар не найден');
     }
-}
+});
 
 export default productController;
