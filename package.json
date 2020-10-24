@@ -9,8 +9,8 @@
     "server": "nodemon backend/server.js --exec babel-node",
     "client": "cd frontend/ && npm run start",
     "dev": "npm-run-all --parallel server client",
-    "data:import": "nodemon backend/seeder.js --exec babel-node",
-    "data:destroy": "nodemon backend/seeder.js -d"
+    "data:import": "nodemon backend/seeder/seeder.js --exec babel-node",
+    "data:destroy": "nodemon backend/seeder/seeder.js -d"
   },
   "repository": {
     "type": "git",

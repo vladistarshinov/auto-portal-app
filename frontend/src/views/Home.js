@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ProductList from "../components/ProductList";
 import { listOfProduct } from '../redux/actions/product.actions';
 import Loader from '../components/Loader';
+import Message from '../components/Message';
 import { Row, Col } from 'bootstrap-4-react';
 
 const Home = () => {
@@ -20,8 +21,8 @@ const Home = () => {
                 <Loader />
             ) : error ? (
                 // alert(`${error}`)
-                <h3>{error}</h3>
-            ) : (
+                <Message variant="danger">{error}</Message>
+            ): (
                 <Row>
                     {products.map((product) => 
                         <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
