@@ -10,7 +10,7 @@ import { Form } from 'react-bootstrap';
 
 const ProductDetail = ({ history, match }) => {
 
-    const [quantity, setQuantity] = useState(0);
+    const [quantity, setQuantity] = useState(1);
     const dispatch = useDispatch();
 
     const productId = match.params.id;
