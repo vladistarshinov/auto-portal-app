@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import ProductList from "../components/ProductList";
 import { listOfProduct } from '../redux/actions/product.actions';
+import Loader from '../components/Loader';
 import { Row, Col } from 'bootstrap-4-react';
 
 const Home = () => {
@@ -14,9 +15,9 @@ const Home = () => {
 
     return (
         <>
-            <h3>Добро пожаловать в магазин IGadgetShop</h3>
+            <h3 style={{ color: '#070049' }}>Добро пожаловать в магазин IGadgetShop</h3>
             {loading ? (
-                <h2>Загрузка...</h2>
+                <Loader />
             ) : error ? (
                 // alert(`${error}`)
                 <h3>{error}</h3>
