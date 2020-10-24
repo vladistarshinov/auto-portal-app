@@ -3,6 +3,7 @@ import dotenv from "dotenv"
 import colors from "colors"
 import connectDB from "./config/db"
 
+import { notFound, errorHandler } from './middleware/errorMiddleware'
 import productRoutes from './routes/product.routes'
 
 dotenv.config()
@@ -24,11 +25,8 @@ app.use((req, res, next) => {
   next()
 })
 
-app.use((req, res, next) => {
-  const error = new Error(`Not Found - ${req.originalUrl}`)
-  res.status(404)
-  next(error)
-})
+app.use(notFound)
+app.use(errorHandler)
 
 app.listen(PORT, 
   console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold) 
