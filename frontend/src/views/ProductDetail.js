@@ -1,22 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
 import { Row, Col, ListGroup, Figure, Button } from "bootstrap-4-react";
+import { detailsOfProduct } from '../redux/actions/product.actions';
+import Loader from '../components/Loader';
+import Message from '../components/Message';
 import Rating from "../components/Rating";
-import axios from "axios";
 
 const ProductDetail = (props) => {
 
-    const [product, setProduct] = useState({});
+    const dispatch = useDispatch();
+
     const productId = props.match.params.id;
+    const productDetails = useSelector(state => state.productDetails);
+
+    const { loading, product, error } = productDetails;
 
     useEffect(() => {
-        const getProduct = async () => {
-            const { data } = await axios.get(`/api/products/${productId}`);
-
-            setProduct(data);
-        }
-        getProduct()
-    }, [productId])
+        dispatch(detailsOfProduct(productId));
+    }, [dispatch, productId]);
 
     return (
         <>
@@ -24,7 +26,12 @@ const ProductDetail = (props) => {
                 <i className="fa fa-arrow-left mr-2" aria-hidden="true"></i>
                 Назад
             </Link>
-            <Row>
+            {loading ? (
+                <Loader /> 
+            ) : error ? (
+                <Message variant="danger">{error}</Message>
+            ) : (
+                <Row>
                 <Col md={5}>
                     <Figure.Image src={product.image} alt={product.name} fluid />
                 </Col>
@@ -68,6 +75,7 @@ const ProductDetail = (props) => {
                     </ListGroup>
                 </Col>
             </Row>
+            )}
 
         </>
     )
