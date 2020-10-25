@@ -22,12 +22,17 @@ productController.getAllProducts = asyncHandler(async (req, res) => {
 productController.getProductById = asyncHandler(async (req, res) => {
     const productId = req.params.id;
     const product = await Product.findById(productId);
-    if (product) {
-      res.json(product);
-    } else {
-      //res.status(404).json({msg: "Товар не найден"})
-      res.status(404);
-      throw new Error('Товар не найден');
+    try {
+      if (product) {
+        res.json(product);
+      } else {
+        //res.status(404).json({msg: "Товар не найден"})
+        res.status(404);
+        throw new Error('Товар не найден');
+      }
+    } catch (error) {
+      res.status(500);
+      throw new Error(`Товар с идентификатором ${productId} не найден`);
     }
 });
 

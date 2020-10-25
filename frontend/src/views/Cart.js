@@ -53,7 +53,7 @@ const Cart = ({ match, location, history }) => {
                     justifyContent="center"
                     alignItems="center"
                   >
-                    <Col md={2}>
+                    <Col md={3}>
                       <Figure.Image
                         src={item.image}
                         alt={item.name}
@@ -61,8 +61,8 @@ const Cart = ({ match, location, history }) => {
                         rounded
                       />
                     </Col>
-                    <Col md={4}>
-                      <Link to={`/product/${item.product}`}>{item.name}</Link>
+                    <Col md={3}>
+                      <Link style={{ color: 'navy', textDecoration: 'none' }} to={`/product/${item.product}`}>{item.name}</Link>
                     </Col>
                     <Col md={2}>${item.price}</Col>
                     <Col md={2}>
@@ -86,6 +86,7 @@ const Cart = ({ match, location, history }) => {
                       <Button
                         type="button"
                         variant="light"
+                        style={{ color: '#800000' }}
                         onClick={() => removeFromCartHandler(item.product)}
                       >
                         <i className="fa fa-trash"></i>
@@ -121,18 +122,29 @@ const Cart = ({ match, location, history }) => {
                       .toFixed(2)}
                   </strong>
                 </h4>
-                <Button
-                  type="button"
-                  className="btn-block"
-                  dark
-                  disabled={cartProductItems.length === 0}
-                  style={{
-                    cursor: "inherit",
-                  }}
-                  onClick={checkoutHandler}
+                {cartProductItems.length === 0 
+                ? (
+                  <Button
+                    type="button"
+                    className="btn-block"
+                    dark
+                    disabled
+                    style={{
+                      cursor: "inherit",
+                    }}
                 >
                   Рассчитать
                 </Button>
+                ) : (
+                  <Button
+                    type="button"
+                    className="btn-block"
+                    dark
+                    onClick={checkoutHandler}
+                >
+                  Рассчитать
+                </Button>
+                )} 
               </ListGroup.Item>
             </ListGroup>
           </Card>

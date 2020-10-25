@@ -35,7 +35,7 @@ const ProductDetail = ({ history, match }) => {
         <Loader />
       ) : error ? (
         <Message variant="danger">{error}</Message>
-      ) : (
+      ): (
         <Row>
           <Col md={5}>
             <Figure.Image src={product.image} alt={product.name} fluid />
