@@ -12,7 +12,7 @@ const addProductToCart = (productId, quantity) => async (dispatch, getState) => 
             price: data.price,
             countInStock: data.countInStock,
             quantity
-        }} );
+        } });
         const { cart:{ cartProductItems } } = getState();
         //getState().cart.cartProductItems
         // cookie.set("Корзина", JSON.stringify(cartProductItems));

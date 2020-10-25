@@ -1,5 +1,5 @@
 import asyncHandler from 'express-async-handler';
-import Product from '../models/productModel';
+import Product from '../models/product.model';
 
 const productController = {};
 
