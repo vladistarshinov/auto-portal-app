@@ -1,5 +1,6 @@
 import asyncHandler from 'express-async-handler';
 import User from '../models/user.model';
+import generateToken from '../utils/jwt-gen';
 
 const userController = {};
 
@@ -17,7 +18,7 @@ userController.authUser = asyncHandler(async (req, res) => {
                 name: user.name,
                 email: user.name,
                 isAdmin: user.isAdmin,
-                token: null
+                token: generateToken(user._id)
             });
         } else {
             res.status(401);
