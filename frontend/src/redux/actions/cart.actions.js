@@ -16,7 +16,7 @@ const addProductToCart = (productId, quantity) => async (dispatch, getState) => 
         const { cart:{ cartProductItems } } = getState();
         //getState().cart.cartProductItems
         // cookie.set("Корзина", JSON.stringify(cartProductItems));
-        localStorage.setItem('Корзина', JSON.stringify(cartProductItems));
+        localStorage.setItem('cart', JSON.stringify(cartProductItems));
 
     } catch (error) {}
 }
@@ -25,7 +25,7 @@ const removeProductFromCart = (productId) => (dispatch, getState) => {
     dispatch({ type: CART_REMOVE_PRODUCT, payload: productId });
     const { cart:{ cartProductItems } } = getState();
     // cookie.set("Корзина", JSON.stringify(cartProductItems));
-    localStorage.setItem('Корзина', JSON.stringify(cartProductItems));
+    localStorage.setItem('cart', JSON.stringify(cartProductItems));
 }
 
 export { addProductToCart, removeProductFromCart };
