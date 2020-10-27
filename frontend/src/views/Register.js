@@ -2,24 +2,31 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col, Form, Button } from "bootstrap-4-react";
-import { login } from "../redux/actions/user.actions";
+import { register } from "../redux/actions/user.actions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import AuthForm from "../components/AuthForm";
 
-const Login = ({ history, location }) => {
+const Register = ({ history, location }) => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [message, setMessage] = useState(null);
 
   const dispatch = useDispatch();
 
-  const userLogin = useSelector(state => state.userLogin);
+  const userRegister = useSelector(state => state.userRegister);
 
-  const { loading, error, userInfo } = userLogin;
+  const { loading, error, userInfo } = userRegister;
 
   const submitHandler = (e) => {
       e.preventDefault();
-      dispatch(login(email, password));
+      if (password !== confirmPassword) {
+        setMessage("Пароли не совпадают");
+      } else {
+        dispatch(register(name, email, password));
+      }
   };
 
   const redirect = location.search ? location.search.split('=')[1] : '/';
@@ -32,10 +39,21 @@ const Login = ({ history, location }) => {
 
   return (
     <AuthForm>
-      <h2>Авторизация</h2>
+      <h2>Регистрация</h2>
+      {message && <Message variant="danger">{message}</Message>}
       {error && <Message variant="danger">{error}</Message>}
       {loading && <Loader />}
       <Form onSubmit={submitHandler}>
+        <Form.Group>
+          <label htmlFor="nameForm">Имя</label>
+          <Form.Input 
+            type="name" 
+            id="nameForm" 
+            placeholder="Введите имя и фамилию"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </Form.Group>
         <Form.Group>
           <label htmlFor="emailForm">E-mail</label>
           <Form.Input 
@@ -56,19 +74,29 @@ const Login = ({ history, location }) => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
+        <Form.Group>
+          <label htmlFor="confirmPasswordForm">Подтверждение пароля</label>
+          <Form.Input 
+            type="password" 
+            id="confirmPasswordForm" 
+            placeholder="Подтвердите пароль"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+        </Form.Group>
         <Button dark>Войти</Button>
       </Form>
       <Row className="py-3">
         <Col>
-          Новый пользователь?{' '} 
+          Есть аккаунт?{' '} 
           <Link style={{ color: 'navy', textDecoration: 'none' }} to={redirect 
-            ? `/register?redirect=${redirect}` 
-            : '/register'}
-          >Зарегистрироваться</Link>
+            ? `/login?redirect=${redirect}` 
+            : '/login'}
+          >Войти</Link>
         </Col>
       </Row>
     </AuthForm>
   );
 };
 
-export default Login;
+export default Register;
