@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { LinkContainer } from "react-router-bootstrap";
 import { Navbar, Nav, Button, Form, Collapse, Container, Dropdown } from 'bootstrap-4-react';
-import { logout } from '../redux/actions/user.actions';
+import { logout } from '../redux/actions/auth.actions';
 
 const Header = () => {
   
@@ -59,7 +59,9 @@ const Header = () => {
                       <LinkContainer bg="light" text="dark" to="/profile">
                         <Dropdown.Item>Профиль</Dropdown.Item>
                       </LinkContainer>
-                      <Dropdown.Item onClick={logoutHandler}>Выйти</Dropdown.Item>
+                      <LinkContainer bg="light" text="dark" to="/">
+                        <Dropdown.Item onClick={logoutHandler}>Выйти</Dropdown.Item>
+                      </LinkContainer>
                     </Dropdown.Menu>
                   </Nav.Item>
                   ) : (
