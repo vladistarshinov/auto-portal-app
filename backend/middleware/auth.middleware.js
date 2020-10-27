@@ -17,7 +17,7 @@ const protect = asyncHandler(async (req, res, next) => {
         } catch (error) {
             console.log(error);
             res.status(401);
-            throw new Error('Не авторизован, токен не выдан');
+            throw new Error('Не авторизован, токен просрочен');
         }
     }
 

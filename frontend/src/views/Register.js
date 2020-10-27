@@ -84,7 +84,7 @@ const Register = ({ history, location }) => {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </Form.Group>
-        <Button dark>Войти</Button>
+        <Button dark>Зарегистрироваться</Button>
       </Form>
       <Row className="py-3">
         <Col>
