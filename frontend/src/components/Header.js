@@ -1,8 +1,19 @@
 import React from "react";
+import { useDispatch, useSelector } from 'react-redux';
 import { LinkContainer } from "react-router-bootstrap";
 import { Navbar, Nav, Button, Form, Collapse, Container, Dropdown } from 'bootstrap-4-react';
+import { logout } from '../redux/actions/user.actions';
 
 const Header = () => {
+  
+  const dispatch = useDispatch();
+  
+  const userLogin = useSelector(state => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const logoutHandler = () => {
+    dispatch(logout());
+  };
 
     return (
         <header>
@@ -41,12 +52,24 @@ const Header = () => {
                       Корзина
                     </Nav.ItemLink>
                   </LinkContainer>
-                  <LinkContainer to="/login" className="header__login">
-                    <Nav.ItemLink>
-                      <i className="fas fa-user mr-2"></i>
-                      Авторизация
-                    </Nav.ItemLink>
-                  </LinkContainer>
+                  {userInfo ? (
+                    <Nav.Item dropdown>
+                    <Nav.Link className="header__category" dropdownToggle>{userInfo.name}</Nav.Link>
+                    <Dropdown.Menu>
+                      <LinkContainer bg="light" text="dark" to="/profile">
+                        <Dropdown.Item>Профиль</Dropdown.Item>
+                      </LinkContainer>
+                      <Dropdown.Item onClick={logoutHandler}>Выйти</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Nav.Item>
+                  ) : (
+                    <LinkContainer to="/login" className="header__login">
+                      <Nav.ItemLink>
+                        <i className="fas fa-user mr-2"></i>
+                        Авторизация
+                      </Nav.ItemLink>
+                    </LinkContainer>
+                  )}
                 </Navbar.Nav>
               </Collapse>
             </Container>

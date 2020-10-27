@@ -1,3 +1,4 @@
+import axios from "axios";
 import { USER_LOGIN_REQUEST, 
     USER_LOGIN_SUCCESS, 
     USER_LOGIN_FAIL, 
@@ -30,6 +31,11 @@ const login = (email, password) => async (dispatch) => {
                 : error.message
         }); 
     }
-}
+};
 
-export { login };
+const logout = () => (dispatch) => {
+    localStorage.removeItem('userInfo');
+    dispatch({ type: USER_LOGOUT });
+};
+
+export { login, logout };
