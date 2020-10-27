@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col, Form, Button, Card, Collapse } from "bootstrap-4-react";
-import { getUserProfile } from "../redux/actions/user.actions";
+import { getUserProfile, updateUserProfile } from "../redux/actions/user.actions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 
@@ -21,11 +21,14 @@ const Profile = ({ history, location }) => {
   const userLogin = useSelector(state => state.userLogin);
   const { userInfo } = userLogin;
 
+  const updatingUserProfile = useSelector(state => state.updatingUserProfile);
+  const { success } = updatingUserProfile;
+
   useEffect(() => {
     if (!userInfo) {
       history.push("/login");
     } else {
-        if (!userDetails.name) {
+        if (userDetails.name == undefined || !userDetails.name) {
             dispatch(getUserProfile('profile'));
         } else {
             setName(userDetails.name);
@@ -39,7 +42,9 @@ const Profile = ({ history, location }) => {
       if (password !== confirmPassword) {
         setMessage("Пароли не совпадают");
       } else {
-        // DISPATCH UPDATE
+        dispatch(updateUserProfile({ id: userDetails._id, name, email, password }));
+        setName(name);
+        setEmail(email);
       }
   };
 
@@ -56,6 +61,7 @@ const Profile = ({ history, location }) => {
                 <Collapse id="collapseOne" show aria-labelledby="headingOne" data-parent="#accordionExample">
                     <Card.Body>
                         {message && <Message variant="danger">{message}</Message>}
+                        {success && <Message variant="success">Профиль изменен</Message>}
                         {loading ? (
                             <Loader />
                         ) : error ? (
@@ -63,44 +69,44 @@ const Profile = ({ history, location }) => {
                         ) : (
                             <Form onSubmit={submitHandler}>
                                 <Form.Group>
-                                <label htmlFor="nameForm">Имя</label>
-                                <Form.Input 
-                                    type="name" 
-                                    id="nameForm" 
-                                    placeholder="Введите имя и фамилию"
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
-                                />
+                                    <label htmlFor="nameForm">Имя</label>
+                                    <Form.Input 
+                                        type="name" 
+                                        id="nameForm" 
+                                        placeholder="Введите имя и фамилию"
+                                        value={name}
+                                        onChange={(e) => setName(e.target.value)}
+                                    />
                                 </Form.Group>
                                 <Form.Group>
-                                <label htmlFor="emailForm">E-mail</label>
-                                <Form.Input 
-                                    type="email" 
-                                    id="emailForm" 
-                                    placeholder="Введите email"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                />
+                                    <label htmlFor="emailForm">E-mail</label>
+                                    <Form.Input 
+                                        type="email" 
+                                        id="emailForm" 
+                                        placeholder="Введите email"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                    />
                                 </Form.Group>
                                 <Form.Group>
-                                <label htmlFor="passwordForm">Пароль</label>
-                                <Form.Input 
-                                    type="password" 
-                                    id="passwordForm" 
-                                    placeholder="Введите пароль"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                />
+                                    <label htmlFor="passwordForm">Пароль</label>
+                                    <Form.Input 
+                                        type="password" 
+                                        id="passwordForm" 
+                                        placeholder="Введите пароль"
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                    />
                                 </Form.Group>
                                 <Form.Group>
-                                <label htmlFor="confirmPasswordForm">Подтверждение пароля</label>
-                                <Form.Input 
-                                    type="password" 
-                                    id="confirmPasswordForm" 
-                                    placeholder="Подтвердите пароль"
-                                    value={confirmPassword}
-                                    onChange={(e) => setConfirmPassword(e.target.value)}
-                                />
+                                    <label htmlFor="confirmPasswordForm">Подтверждение пароля</label>
+                                    <Form.Input 
+                                        type="password" 
+                                        id="confirmPasswordForm" 
+                                        placeholder="Подтвердите пароль"
+                                        value={confirmPassword}
+                                        onChange={(e) => setConfirmPassword(e.target.value)}
+                                    />
                                 </Form.Group>
                                 <Button dark>Обновить</Button>
                             </Form>

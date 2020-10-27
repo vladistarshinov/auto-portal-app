@@ -68,6 +68,7 @@ const login = (email, password) => async (dispatch) => {
 
 const logout = () => (dispatch) => {
     localStorage.removeItem('userInfo');
+    localStorage.removeItem('updatedUserInfo');
     dispatch({ type: USER_LOGOUT });
 };
 
