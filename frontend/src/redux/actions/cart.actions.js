@@ -2,7 +2,8 @@ import axios from "axios";
 // import cookie from "js-cookie";
 import { CART_ADD_PRODUCT, 
         CART_REMOVE_PRODUCT, 
-        CART_SAVE_SPIPPING_ADDRESS } from "../constants/cart.constants";
+        CART_SAVE_PAYMENT_METHOD, 
+        CART_SAVE_SHIPPING_ADDRESS } from "../constants/cart.constants";
 
 const addProductToCart = (productId, quantity) => async (dispatch, getState) => {
     try {
@@ -21,18 +22,26 @@ const addProductToCart = (productId, quantity) => async (dispatch, getState) => 
         localStorage.setItem('cart', JSON.stringify(cartProductItems));
 
     } catch (error) {}
-}
+};
 
 const removeProductFromCart = (productId) => (dispatch, getState) => {
     dispatch({ type: CART_REMOVE_PRODUCT, payload: productId });
     const { cart:{ cartProductItems } } = getState();
     // cookie.set("Корзина", JSON.stringify(cartProductItems));
     localStorage.setItem('cart', JSON.stringify(cartProductItems));
-}
+};
 
 const saveShippingAddress = (data) => (dispatch) => {
-    dispatch({ type: CART_SAVE_SPIPPING_ADDRESS, payload: data });
+    dispatch({ type: CART_SAVE_SHIPPING_ADDRESS, payload: data });
     localStorage.setItem('shippingAddress', JSON.stringify(data));
-}
+};
 
-export { addProductToCart, removeProductFromCart, saveShippingAddress };
+const savePaymentMethod = (data) => (dispatch) => {
+    dispatch({ type: CART_SAVE_PAYMENT_METHOD, payload: data });
+    localStorage.setItem('paymentMethod', JSON.stringify(data));
+};
+
+export { addProductToCart, 
+        removeProductFromCart, 
+        saveShippingAddress, 
+        savePaymentMethod };

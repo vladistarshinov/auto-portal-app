@@ -1,6 +1,7 @@
 import { CART_ADD_PRODUCT, 
         CART_REMOVE_PRODUCT, 
-        CART_SAVE_SPIPPING_ADDRESS } from "../constants/cart.constants";
+        CART_SAVE_PAYMENT_METHOD, 
+        CART_SAVE_SHIPPING_ADDRESS } from "../constants/cart.constants";
 
 const cartReducer = (state={ cartProductItems: [], shippingAddress: {} }, action) => {
     switch(action.type) {
@@ -25,10 +26,15 @@ const cartReducer = (state={ cartProductItems: [], shippingAddress: {} }, action
                 cartProductItems: state.cartProductItems
                     .filter(x => x.product !== action.payload) 
             };
-        case CART_SAVE_SPIPPING_ADDRESS:
+        case CART_SAVE_SHIPPING_ADDRESS:
             return { 
                 ...state,
                 shippingAddress: action.payload
+            };
+        case CART_SAVE_PAYMENT_METHOD:
+            return { 
+                ...state,
+                paymentMethod: action.payload
             };
         default:
             return state;
