@@ -104,7 +104,7 @@ const ProductDetail = ({ history, match }) => {
                     className="btn-block"
                     dark
                     type="button" /* 
-                                disabled = {product.countInStock === 0} */
+                    disabled = {product.countInStock === 0} */
                   >
                     Добавить в корзину
                   </Button>

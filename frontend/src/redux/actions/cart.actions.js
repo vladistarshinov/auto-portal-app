@@ -1,6 +1,8 @@
 import axios from "axios";
 // import cookie from "js-cookie";
-import { CART_ADD_PRODUCT, CART_REMOVE_PRODUCT } from "../constants/cart.constants";
+import { CART_ADD_PRODUCT, 
+        CART_REMOVE_PRODUCT, 
+        CART_SAVE_SPIPPING_ADDRESS } from "../constants/cart.constants";
 
 const addProductToCart = (productId, quantity) => async (dispatch, getState) => {
     try {
@@ -28,4 +30,9 @@ const removeProductFromCart = (productId) => (dispatch, getState) => {
     localStorage.setItem('cart', JSON.stringify(cartProductItems));
 }
 
-export { addProductToCart, removeProductFromCart };
+const saveShippingAddress = (data) => (dispatch) => {
+    dispatch({ type: CART_SAVE_SPIPPING_ADDRESS, payload: data });
+    localStorage.setItem('shippingAddress', JSON.stringify(data));
+}
+
+export { addProductToCart, removeProductFromCart, saveShippingAddress };

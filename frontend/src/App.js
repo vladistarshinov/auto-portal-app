@@ -9,6 +9,7 @@ import Cart from "./views/Cart";
 import Register from "./views/Register";
 import Login from "./views/Login";
 import Profile from "./views/Profile";
+import Shipping from './views/Shipping';
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
             <Route path="/product/:id" component={ProductDetail} />
             <Route path="/cart/:id?" component={Cart} />
             <Route path="/profile" component={Profile} />
+            <Route path="/shipping" component={Shipping} />
             <Route path="/" component={Home} exact />
           </Container>
         </main>

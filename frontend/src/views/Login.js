@@ -5,7 +5,7 @@ import { Row, Col, Form, Button } from "bootstrap-4-react";
 import { login } from "../redux/actions/auth.actions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
-import AuthForm from "../components/AuthForm";
+import FormContainer from "../components/FormContainer";
 
 const Login = ({ history, location }) => {
   const [email, setEmail] = useState("");
@@ -31,7 +31,7 @@ const Login = ({ history, location }) => {
   }, [history, redirect, userInfo]);
 
   return (
-    <AuthForm>
+    <FormContainer>
       <h2>Авторизация</h2>
       {error && <Message variant="danger">{error}</Message>}
       {loading && <Loader />}
@@ -56,7 +56,7 @@ const Login = ({ history, location }) => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-        <Button dark>Войти</Button>
+        <Button type="submit" dark>Войти</Button>
       </Form>
       <Row className="py-3">
         <Col>
@@ -67,7 +67,7 @@ const Login = ({ history, location }) => {
           >Зарегистрироваться</Link>
         </Col>
       </Row>
-    </AuthForm>
+    </FormContainer>
   );
 };
 

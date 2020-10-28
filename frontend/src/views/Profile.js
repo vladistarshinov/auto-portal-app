@@ -107,7 +107,7 @@ const Profile = ({ history, location }) => {
                                         onChange={(e) => setConfirmPassword(e.target.value)}
                                     />
                                 </Form.Group>
-                                <Button dark>Обновить</Button>
+                                <Button type="submit" dark>Обновить</Button>
                             </Form>
                         )}
                     </Card.Body>

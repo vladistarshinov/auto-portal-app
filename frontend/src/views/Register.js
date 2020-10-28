@@ -5,7 +5,7 @@ import { Row, Col, Form, Button } from "bootstrap-4-react";
 import { register } from "../redux/actions/auth.actions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
-import AuthForm from "../components/AuthForm";
+import FormContainer from "../components/FormContainer";
 
 const Register = ({ history, location }) => {
   const [name, setName] = useState("");
@@ -38,7 +38,7 @@ const Register = ({ history, location }) => {
   }, [history, redirect, userInfo]);
 
   return (
-    <AuthForm>
+    <FormContainer>
       <h2>Регистрация</h2>
       {message && <Message variant="danger">{message}</Message>}
       {error && <Message variant="danger">{error}</Message>}
@@ -84,7 +84,7 @@ const Register = ({ history, location }) => {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </Form.Group>
-        <Button dark>Зарегистрироваться</Button>
+        <Button type="submit" dark>Зарегистрироваться</Button>
       </Form>
       <Row className="py-3">
         <Col>
@@ -95,7 +95,7 @@ const Register = ({ history, location }) => {
           >Войти</Link>
         </Col>
       </Row>
-    </AuthForm>
+    </FormContainer>
   );
 };
 
