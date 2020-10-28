@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Button } from 'bootstrap-4-react';
 import { Form } from 'react-bootstrap';
-import Loader from '../components/Loader';
-import Message from '../components/Message';
 import FormContainer from '../components/FormContainer';
 import CheckoutSteps from '../components/CheckoutSteps';
 import { savePaymentMethod } from '../redux/actions/cart.actions';
@@ -37,6 +35,7 @@ const Payment = ({ history }) => {
                     <Row>
                         <Col>
                             <Form.Check 
+                                style={{ paddingTop: '10px' }}
                                 type="radio" 
                                 label="PayPal или Кредитная карта" 
                                 id="PayPal"
@@ -46,19 +45,21 @@ const Payment = ({ history }) => {
                                 onChange={(e) => setPaymentMethod(e.target.value)}
                             ></Form.Check>
                             <Form.Check 
+                                style={{ paddingTop: '10px' }}
                                 type="radio" 
                                 label="Яндекс.Деньги" 
                                 id="YandexMoney"
                                 name="paymentMethod"
-                                value="YandexMoney"
+                                value="Яндекс.Деньги"
                                 onChange={(e) => setPaymentMethod(e.target.value)}
                             ></Form.Check>
                             <Form.Check 
+                                style={{ paddingTop: '10px' }}
                                 type="radio" 
                                 label="QIWI кошелек" 
                                 id="Qiwi"
                                 name="paymentMethod"
-                                value="Qiwi"
+                                value="QIWI"
                                 onChange={(e) => setPaymentMethod(e.target.value)}
                             ></Form.Check>
                         </Col>

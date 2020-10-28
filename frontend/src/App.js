@@ -11,6 +11,7 @@ import Login from "./views/Login";
 import Profile from "./views/Profile";
 import Shipping from './views/Shipping';
 import Payment from './views/Payment';
+import PlaceOrder from './views/PlaceOrder'
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
             <Route path="/profile" component={Profile} />
             <Route path="/shipping" component={Shipping} />
             <Route path="/payment" component={Payment} />
+            <Route path="/placeorder" component={PlaceOrder} />
             <Route path="/" component={Home} exact />
           </Container>
         </main>

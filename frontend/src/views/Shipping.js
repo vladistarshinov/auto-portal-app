@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Form, Button } from 'bootstrap-4-react';
-import Loader from '../components/Loader';
-import Message from '../components/Message';
 import FormContainer from '../components/FormContainer';
 import CheckoutSteps from '../components/CheckoutSteps';
 import { saveShippingAddress } from '../redux/actions/cart.actions';
