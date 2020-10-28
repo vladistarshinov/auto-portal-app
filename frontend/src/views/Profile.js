@@ -43,8 +43,7 @@ const Profile = ({ history, location }) => {
         setMessage("Пароли не совпадают");
       } else {
         dispatch(updateUserProfile({ id: userDetails._id, name, email, password }));
-        setName(name);
-        setEmail(email);
+        dispatch(getUserProfile('profile'));
       }
   };
 

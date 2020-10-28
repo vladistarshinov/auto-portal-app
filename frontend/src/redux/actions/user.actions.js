@@ -55,7 +55,9 @@ const updateUserProfile = (userDetails) => async (dispatch, getState) => {
         const { data } = await axios.put('/api/users/profile', userDetails, config);
 
         dispatch({ type: USER_UPDATE_PROFILE_SUCCESS, payload: data }); 
-        localStorage.setItem('updatedUserInfo', JSON.stringify(userDetails));
+        dispatch({ type: USER_LOGIN_SUCCESS, payload: data }); 
+        localStorage.setItem('userInfo', JSON.stringify(data));
+        //localStorage.setItem('updatedUserInfo', JSON.stringify(userDetails));
     } catch (error) {
         const message = error.response && error.response.data.message 
             ? error.response.data.message

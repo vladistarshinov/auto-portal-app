@@ -12,10 +12,10 @@ const Header = () => {
   const { userInfo } = userLogin;
 
   
-  const updatedUserName = 
+/*   const updatedUserName = 
     JSON.parse(localStorage.getItem('updatedUserInfo')) !== null 
       ? JSON.parse(localStorage.getItem('updatedUserInfo')).name
-      : null;
+      : null; */
 
   const logoutHandler = () => {
     dispatch(logout());
@@ -60,7 +60,7 @@ const Header = () => {
                   </LinkContainer>
                   {userInfo ? (
                     <Nav.Item dropdown>
-                    <Nav.Link className="header__category" dropdownToggle>{updatedUserName !== null ? updatedUserName : userInfo.name}</Nav.Link>
+                    <Nav.Link className="header__category" dropdownToggle>{/* updatedUserName !== null ? updatedUserName : */ userInfo.name}</Nav.Link>
                     <Dropdown.Menu>
                       <LinkContainer bg="light" text="dark" to="/profile">
                         <Dropdown.Item>Личный кабинет</Dropdown.Item>
