@@ -7,6 +7,7 @@ import { Card } from "react-bootstrap";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import { getOrderDetails } from "../redux/actions/order.actions";
+import DateTimeFilter from "../filters/DateTimeFilter.js";
 
 const Order = (props) => {
   const dispatch = useDispatch();
@@ -60,7 +61,7 @@ const Order = (props) => {
                         }}
                     >{order.user.email}</a>
                     <br />
-                    <strong style={{ color: "grey" }}>Дата создания заказа:{" "}</strong>{order.createdAt}
+                    <strong style={{ color: "grey" }}>Дата создания заказа:{" "}</strong>{DateTimeFilter(order.createdAt)}
                     <br />
                     <strong style={{ color: "grey" }}>Адрес доставки: </strong>
                     {order.shippingAddress.country},{" "}
@@ -167,7 +168,7 @@ const Order = (props) => {
                           
                           <div className="text-center" style={{ display: 'flex', justifyContent: 'center', maxWidth: '250px', paddingTop: '0.9rem' }}>
                             {order.isPaid ? (
-                              <Message variant="success">Оплачено<br />{order.paidAt}</Message>
+                              <Message variant="success">Оплачено<br />{DateTimeFilter(order.paidAt)}</Message>
                             ) : (
                               <Message variant="danger">Не оплачено</Message> 
                             )} 
@@ -175,7 +176,7 @@ const Order = (props) => {
                           <div className="text-center" style={{ display: 'flex', justifyContent: 'center', maxWidth: '250px' }}>
                             {order.isPaid && (
                               order.isDelivered ? (
-                                <Message variant="success">Доставлено<br />{order.deliveredAt}</Message>
+                                <Message variant="success">Доставлено<br />{DateTimeFilter(order.deliveredAt)}</Message>
                               ) : (
                                 <Message variant="danger">Не доставлено</Message> 
                               )
