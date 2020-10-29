@@ -4,9 +4,11 @@ import { protect } from '../middleware/auth.middleware';
 
 const router = express.Router();
 
-const { createOrder } = orderController;
+const { createOrder, getOrderById } = orderController;
 
 router.route("/")
     .post(protect, createOrder);
+router.route("/:id")
+    .get(protect, getOrderById);
 
 export default router;
