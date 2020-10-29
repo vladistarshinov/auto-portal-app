@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col, ListGroup, Figure, Button } from "bootstrap-4-react";
 import { MDBTable, MDBTableBody, MDBTableHead } from "mdbreact";
@@ -42,7 +42,7 @@ const Order = (props) => {
               <p>IGadgetShop</p>
             </div>
             <h4 className="text-center" style={{ color: "grey" }}>
-              Заказ {order._id}
+              Заказ № {order._id}
             </h4>
             <Row>
               <Col md={12}>
@@ -50,6 +50,17 @@ const Order = (props) => {
                   <ListGroup.Item>
                     <strong style={{ color: "grey" }}>Клиент: </strong>{" "}
                     {order.user.name}
+                    <br />
+                    <strong style={{ color: "grey" }}>Email:</strong>{" "}
+                    <a 
+                        href={`mailto:${order.user.email}`}  
+                        style={{
+                            color: "navy",
+                            textDecoration: "none",
+                        }}
+                    >{order.user.email}</a>
+                    <br />
+                    <strong style={{ color: "grey" }}>Дата создания заказа:{" "}</strong>{order.createdAt}
                     <br />
                     <strong style={{ color: "grey" }}>Адрес доставки: </strong>
                     {order.shippingAddress.country},{" "}
@@ -153,6 +164,24 @@ const Order = (props) => {
                               </ListGroup.Item>
                             </ListGroup>
                           </Card>
+                          
+                          <div className="text-center" style={{ display: 'flex', justifyContent: 'center', maxWidth: '250px', paddingTop: '0.9rem' }}>
+                            {order.isPaid ? (
+                              <Message variant="success">Оплачено<br />{order.paidAt}</Message>
+                            ) : (
+                              <Message variant="danger">Не оплачено</Message> 
+                            )} 
+                          </div>
+                          <div className="text-center" style={{ display: 'flex', justifyContent: 'center', maxWidth: '250px' }}>
+                            {order.isPaid && (
+                              order.isDelivered ? (
+                                <Message variant="success">Доставлено<br />{order.deliveredAt}</Message>
+                              ) : (
+                                <Message variant="danger">Не доставлено</Message> 
+                              )
+                            )} 
+                          </div>
+                    
                         </Col>
                       </Row>
                     )}
