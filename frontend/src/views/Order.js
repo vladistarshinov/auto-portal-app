@@ -9,6 +9,9 @@ import Loader from "../components/Loader";
 import { getOrderDetails } from "../redux/actions/order.actions";
 import DateTimeFilter from "../filters/DateTimeFilter.js";
 
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
+
 const Order = (props) => {
   const dispatch = useDispatch();
 
@@ -22,7 +25,25 @@ const Order = (props) => {
   }, [dispatch, orderId]);
 
   const generateOrderPdfHandler = () => {
-    console.log('print');
+    const printOrder = document.getElementById("printOrder");
+    const pdf = new jsPDF("p", "mm", "a4"),
+    pdfInternals = pdf.internal,
+    pdfPageSize = pdfInternals.pageSize,
+    pdfPageWidth = pdfPageSize.width * 0.8;
+    pdf.setFontSize(8);
+
+    html2canvas(printOrder).then(canvas => {
+      const image = canvas.toDataURL("image/png");
+      pdf.addImage(
+        image,
+        "PNG",
+        20,
+        30,
+        pdfPageWidth,
+        0
+      );
+      pdf.save(`${order.user.name}_${order._id}`);
+    });
   };
 
   return (
@@ -33,7 +54,7 @@ const Order = (props) => {
         <Message variant="danger">{error}</Message>
       ) : (
         <>
-          <div>
+          <div id="printOrder">
             <div className="text-center" style={{ color: "grey" }}>
               <i
                 className="fa fa-american-sign-language-interpreting mr-2"
@@ -42,43 +63,40 @@ const Order = (props) => {
               ></i>
               <p>IGadgetShop</p>
             </div>
-            <h4 className="text-center" style={{ color: "grey" }}>
+            <h5 className="text-center" style={{ color: "grey" }}>
               Заказ № {order._id}
-            </h4>
+            </h5>
             <Row>
-              <Col md={12}>
-                <ListGroup flush>
-                  <ListGroup.Item>
-                    <strong style={{ color: "grey" }}>Клиент: </strong>{" "}
-                    {order.user.name}
-                    <br />
-                    <strong style={{ color: "grey" }}>Email:</strong>{" "}
-                    <a 
-                        href={`mailto:${order.user.email}`}  
-                        style={{
-                            color: "navy",
-                            textDecoration: "none",
-                        }}
-                    >{order.user.email}</a>
-                    <br />
-                    <strong style={{ color: "grey" }}>Дата создания заказа:{" "}</strong>{DateTimeFilter(order.createdAt)}
-                    <br />
-                    <strong style={{ color: "grey" }}>Адрес доставки: </strong>
-                    {order.shippingAddress.country},{" "}
-                    {order.shippingAddress.city},{" "}
-                    {order.shippingAddress.postalCode},{" "}
-                    {order.shippingAddress.address}
-                    <br />
-                    <strong style={{ color: "grey" }}>Способ оплаты: </strong>
-                    {order.paymentMethod}
-                  </ListGroup.Item>
-
-                  <ListGroup.Item>
-                    {order.orderItems.length === 0 ? (
-                      <Message>Заказ пуст</Message>
-                    ) : (
-                      <Row>
-                        <Col md={9}>
+              <Col>
+                <Row>
+                  <Col md={9}>
+                    <ListGroup flush>   
+                      <ListGroup.Item>
+                        <strong style={{ color: "grey" }}>Клиент: </strong>{" "}
+                        {order.user.name}{" "}
+                        <a 
+                            href={`mailto:${order.user.email}`}  
+                            style={{
+                                color: "navy",
+                                textDecoration: "none",
+                            }}
+                        >({order.user.email})</a>
+                        <br />
+                        <strong style={{ color: "grey" }}>Дата создания заказа:{" "}</strong>{DateTimeFilter(order.createdAt)}
+                        <br />
+                        <strong style={{ color: "grey" }}>Адрес доставки: </strong>
+                        {order.shippingAddress.country},{" "}
+                        {order.shippingAddress.city},{" "}
+                        {order.shippingAddress.postalCode},{" "}
+                        {order.shippingAddress.address}
+                        <br />
+                        <strong style={{ color: "grey" }}>Способ оплаты: </strong>
+                        {order.paymentMethod}
+                      </ListGroup.Item>
+                      <ListGroup.Item>
+                        {order.orderItems.length === 0 ? (
+                          <Message>Заказ пуст</Message>
+                        ) : (
                           <ListGroup flush>
                             <MDBTable className="text-center" hover>
                               <MDBTableHead>
@@ -98,8 +116,8 @@ const Order = (props) => {
                                     <td>
                                       <Figure.Image
                                         style={{
-                                          width: "5rem",
-                                          height: "4rem",
+                                          width: "4.5rem",
+                                          height: "3rem",
                                         }}
                                         src={item.image}
                                         alt={item.name}
@@ -126,68 +144,66 @@ const Order = (props) => {
                               </MDBTableBody>
                             </MDBTable>
                           </ListGroup>
-                        </Col>
-                        <Col md={3}>
-                          <Card>
-                            <ListGroup className="text-center" flush>
-                              <ListGroup.Item>
-                                <h6 style={{ color: "grey" }}>
-                                  Расчетная сумма
-                                </h6>
-                              </ListGroup.Item>
-                              <ListGroup.Item>
-                                <Row>
-                                  <Col>Товары</Col>
-                                  <Col>${order.productsPrice}</Col>
-                                </Row>
-                              </ListGroup.Item>
-                              <ListGroup.Item>
-                                <Row>
-                                  <Col>Доставка</Col>
-                                  <Col>${order.shippingPrice}</Col>
-                                </Row>
-                              </ListGroup.Item>
-                              <ListGroup.Item>
-                                <Row>
-                                  <Col>Налог</Col>
-                                  <Col>${order.taxPrice}</Col>
-                                </Row>
-                              </ListGroup.Item>
-                              <ListGroup.Item>
-                                <Row>
-                                  <Col>
-                                    <strong>Итого</strong>
-                                  </Col>
-                                  <Col>
-                                    <strong>${order.totalPrice}</strong>
-                                  </Col>
-                                </Row>
-                              </ListGroup.Item>
-                            </ListGroup>
-                          </Card>
-                          
-                          <div className="text-center" style={{ display: 'flex', justifyContent: 'center', maxWidth: '250px', paddingTop: '0.9rem' }}>
-                            {order.isPaid ? (
-                              <Message variant="success">Оплачено<br />{DateTimeFilter(order.paidAt)}</Message>
-                            ) : (
-                              <Message variant="danger">Не оплачено</Message> 
-                            )} 
-                          </div>
-                          <div className="text-center" style={{ display: 'flex', justifyContent: 'center', maxWidth: '250px' }}>
-                            {order.isPaid && (
-                              order.isDelivered ? (
-                                <Message variant="success">Доставлено<br />{DateTimeFilter(order.deliveredAt)}</Message>
-                              ) : (
-                                <Message variant="danger">Не доставлено</Message> 
-                              )
-                            )} 
-                          </div>
-                    
-                        </Col>
-                      </Row>
-                    )}
-                  </ListGroup.Item>
-                </ListGroup>
+                        )}
+                      </ListGroup.Item>
+                    </ListGroup>
+                  </Col>
+                  <Col md={3}>
+                    <Card>
+                      <ListGroup flush>
+                        <ListGroup.Item className="text-center">
+                          <h6 style={{ color: "grey" }}>
+                            Расчетная сумма
+                          </h6>
+                        </ListGroup.Item>
+                        <ListGroup.Item>
+                          <Row>
+                            <Col>Товары</Col>
+                            <Col>${order.productsPrice}</Col>
+                          </Row>
+                        </ListGroup.Item>
+                        <ListGroup.Item>
+                          <Row>
+                            <Col>Доставка</Col>
+                            <Col>${order.shippingPrice}</Col>
+                          </Row>
+                        </ListGroup.Item>
+                        <ListGroup.Item>
+                          <Row>
+                            <Col>Налог</Col>
+                            <Col>${order.taxPrice}</Col>
+                          </Row>
+                        </ListGroup.Item>
+                        <ListGroup.Item>
+                          <Row>
+                            <Col>
+                              <strong>Итого</strong>
+                            </Col>
+                            <Col>
+                              <strong>${order.totalPrice}</strong>
+                            </Col>
+                          </Row>
+                        </ListGroup.Item>
+                      </ListGroup>
+                    </Card>
+                    <div className="text-center" style={{ display: 'flex', justifyContent: 'center', maxWidth: '250px', paddingTop: '0.9rem' }}>
+                          {order.isPaid ? (
+                            <Message variant="success">Оплачено<br />{DateTimeFilter(order.paidAt)}</Message>
+                          ) : (
+                            <Message variant="danger">Не оплачено</Message> 
+                          )} 
+                        </div>
+                    <div className="text-center" style={{ display: 'flex', justifyContent: 'center', maxWidth: '250px' }}>
+                      {order.isPaid && (
+                        order.isDelivered ? (
+                          <Message variant="success">Доставлено<br />{DateTimeFilter(order.deliveredAt)}</Message>
+                        ) : (
+                          <Message variant="danger">Не доставлено</Message> 
+                        )
+                      )} 
+                    </div>
+                  </Col>
+                </Row>
               </Col>
             </Row>
           </div>
