@@ -14,14 +14,14 @@ const PlaceOrder = ({ history }) => {
         return (Math.round(num * 100) / 100).toFixed(2)
     };
 
-    cart.priceItems = addDecimal(cart.cartProductItems
+    cart.productsPrice = addDecimal(cart.cartProductItems
         .reduce((acc, item) => acc + item.price * item.quantity,
         0)
     );
 
-    cart.shippingPrice = addDecimal(cart.priceItems > 300 ? 0 : 100);
-    cart.taxPrice = addDecimal(Number((0.13 * cart.priceItems)));
-    cart.totalPrice = addDecimal(Number(cart.priceItems) 
+    cart.shippingPrice = addDecimal(cart.productsPrice > 300 ? 0 : 100);
+    cart.taxPrice = addDecimal(Number((0.13 * cart.productsPrice)));
+    cart.totalPrice = addDecimal(Number(cart.productsPrice) 
         + Number(cart.shippingPrice) 
         + Number(cart.taxPrice)
     );
@@ -42,7 +42,7 @@ const PlaceOrder = ({ history }) => {
             orderItems: cart.cartProductItems,
             shippingAddress: cart.shippingAddress,
             paymentMethod: cart.paymentMethod,
-            priceItems: cart.priceItems,
+            productsPrice: cart.productsPrice,
             shippingPrice: cart.shippingPrice,
             taxPrice: cart.taxPrice,
             totalPrice: cart.totalPrice
@@ -113,7 +113,7 @@ const PlaceOrder = ({ history }) => {
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Товары</Col>
-                                    <Col>${cart.priceItems}</Col>            
+                                    <Col>${cart.productsPrice}</Col>            
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>

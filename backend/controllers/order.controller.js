@@ -10,7 +10,7 @@ orderController.createOrder = asyncHandler(async (req, res) => {
     const { orderItems,
         shippingAddress,
         paymentMethod,
-        priceItems,
+        productsPrice,
         shipingPrice,
         taxPrice,
         totalPrice } = req.body;
@@ -25,7 +25,7 @@ orderController.createOrder = asyncHandler(async (req, res) => {
                 orderItems,
                 shippingAddress,
                 paymentMethod,
-                priceItems,
+                productsPrice,
                 shipingPrice,
                 taxPrice,
                 totalPrice
