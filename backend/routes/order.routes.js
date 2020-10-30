@@ -4,11 +4,13 @@ import { protect } from '../middleware/auth.middleware';
 
 const router = express.Router();
 
-const { createOrder, getOrderById } = orderController;
+const { createOrder, getOrderById, updateStatusOrderForPaying } = orderController;
 
 router.route("/")
     .post(protect, createOrder);
 router.route("/:id")
     .get(protect, getOrderById);
+router.route("/:id/pay")
+    .put(protect, updateStatusOrderForPaying);
 
 export default router;

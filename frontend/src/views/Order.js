@@ -27,21 +27,14 @@ const Order = (props) => {
   const generateOrderPdfHandler = () => {
     const printOrder = document.getElementById("printOrder");
     const pdf = new jsPDF("p", "mm", "a4"),
-    pdfInternals = pdf.internal,
-    pdfPageSize = pdfInternals.pageSize,
-    pdfPageWidth = pdfPageSize.width * 0.8;
+      pdfInternals = pdf.internal,
+      pdfPageSize = pdfInternals.pageSize,
+      pdfPageWidth = pdfPageSize.width * 0.8;
     pdf.setFontSize(8);
 
-    html2canvas(printOrder).then(canvas => {
+    html2canvas(printOrder).then((canvas) => {
       const image = canvas.toDataURL("image/png");
-      pdf.addImage(
-        image,
-        "PNG",
-        20,
-        30,
-        pdfPageWidth,
-        0
-      );
+      pdf.addImage(image, "PNG", 20, 30, pdfPageWidth, 0);
       pdf.save(`${order.user.name}_${order._id}`);
     });
   };
@@ -70,27 +63,36 @@ const Order = (props) => {
               <Col>
                 <Row>
                   <Col md={9}>
-                    <ListGroup flush>   
+                    <ListGroup flush>
                       <ListGroup.Item>
                         <strong style={{ color: "grey" }}>Клиент: </strong>{" "}
                         {order.user.name}{" "}
-                        <a 
-                            href={`mailto:${order.user.email}`}  
-                            style={{
-                                color: "navy",
-                                textDecoration: "none",
-                            }}
-                        >({order.user.email})</a>
+                        <a
+                          href={`mailto:${order.user.email}`}
+                          style={{
+                            color: "navy",
+                            textDecoration: "none",
+                          }}
+                        >
+                          ({order.user.email})
+                        </a>
                         <br />
-                        <strong style={{ color: "grey" }}>Дата создания заказа:{" "}</strong>{DateTimeFilter(order.createdAt)}
+                        <strong style={{ color: "grey" }}>
+                          Дата создания заказа:{" "}
+                        </strong>
+                        {DateTimeFilter(order.createdAt)}
                         <br />
-                        <strong style={{ color: "grey" }}>Адрес доставки: </strong>
+                        <strong style={{ color: "grey" }}>
+                          Адрес доставки:{" "}
+                        </strong>
                         {order.shippingAddress.country},{" "}
                         {order.shippingAddress.city},{" "}
                         {order.shippingAddress.postalCode},{" "}
                         {order.shippingAddress.address}
                         <br />
-                        <strong style={{ color: "grey" }}>Способ оплаты: </strong>
+                        <strong style={{ color: "grey" }}>
+                          Способ оплаты:{" "}
+                        </strong>
                         {order.paymentMethod}
                       </ListGroup.Item>
                       <ListGroup.Item>
@@ -152,9 +154,7 @@ const Order = (props) => {
                     <Card>
                       <ListGroup flush>
                         <ListGroup.Item className="text-center">
-                          <h6 style={{ color: "grey" }}>
-                            Расчетная сумма
-                          </h6>
+                          <h6 style={{ color: "grey" }}>Расчетная сумма</h6>
                         </ListGroup.Item>
                         <ListGroup.Item>
                           <Row>
@@ -186,21 +186,43 @@ const Order = (props) => {
                         </ListGroup.Item>
                       </ListGroup>
                     </Card>
-                    <div className="text-center" style={{ display: 'flex', justifyContent: 'center', maxWidth: '250px', paddingTop: '0.9rem' }}>
-                          {order.isPaid ? (
-                            <Message variant="success">Оплачено<br />{DateTimeFilter(order.paidAt)}</Message>
-                          ) : (
-                            <Message variant="danger">Не оплачено</Message> 
-                          )} 
-                        </div>
-                    <div className="text-center" style={{ display: 'flex', justifyContent: 'center', maxWidth: '250px' }}>
-                      {order.isPaid && (
-                        order.isDelivered ? (
-                          <Message variant="success">Доставлено<br />{DateTimeFilter(order.deliveredAt)}</Message>
+                    <div
+                      className="text-center"
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        maxWidth: "250px",
+                        paddingTop: "0.9rem",
+                      }}
+                    >
+                      {order.isPaid ? (
+                        <Message variant="success">
+                          Оплачено
+                          <br />
+                          {DateTimeFilter(order.paidAt)}
+                        </Message>
+                      ) : (
+                        <Message variant="danger">Не оплачено</Message>
+                      )}
+                    </div>
+                    <div
+                      className="text-center"
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        maxWidth: "250px",
+                      }}
+                    >
+                      {order.isPaid &&
+                        (order.isDelivered ? (
+                          <Message variant="success">
+                            Доставлено
+                            <br />
+                            {DateTimeFilter(order.deliveredAt)}
+                          </Message>
                         ) : (
-                          <Message variant="danger">Не доставлено</Message> 
-                        )
-                      )} 
+                          <Message variant="danger">Не доставлено</Message>
+                        ))}
                     </div>
                   </Col>
                 </Row>
@@ -208,13 +230,10 @@ const Order = (props) => {
             </Row>
           </div>
           <div className="text-center">
-            <Button 
-                type="button"
-                dark
-                onClick={generateOrderPdfHandler}
-            >Распечатать чек
+            <Button type="button" dark onClick={generateOrderPdfHandler}>
+              Распечатать чек
             </Button>
-          </div> 
+          </div>
         </>
       )}
     </>
