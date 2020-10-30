@@ -7,7 +7,10 @@ import { CRDER_CREATE_REQUEST,
     CRDER_DETAILS_FAIL,
     CRDER_UPDATE_STATUS_FOR_PAYING_REQUEST,
     CRDER_UPDATE_STATUS_FOR_PAYING_SUCCESS,
-    CRDER_UPDATE_STATUS_FOR_PAYING_FAIL} from "../constants/order.constants";
+    CRDER_UPDATE_STATUS_FOR_PAYING_FAIL,
+    MY_CRDERS_LIST_REQUEST,
+    MY_CRDERS_LIST_SUCCESS,
+    MY_CRDERS_LIST_FAIL} from "../constants/order.constants";
 
     const createOrder = (order) => async (dispatch, getState) => {
         try {
@@ -88,5 +91,34 @@ import { CRDER_CREATE_REQUEST,
             }); 
         }
     };
+
+    const listOfMyOrders = () => async (dispatch, getState) => {
+        try {
+            dispatch({ type: MY_CRDERS_LIST_REQUEST });
     
-    export { createOrder, getOrderDetails, updateStatusPayingOrder };
+            const { userLogin: { userInfo } } = getState();
+    
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${userInfo.token}`
+                }
+            };
+    
+            const { data } = await axios.get('/api/orders/my-orders', config);
+    
+            dispatch({ type: MY_CRDERS_LIST_SUCCESS, payload: data }); 
+        } catch (error) {
+            const message = error.response && error.response.data.message 
+                ? error.response.data.message
+                : error.message;
+            dispatch({ 
+                type: MY_CRDERS_LIST_FAIL, 
+                payload: message
+            }); 
+        }
+    };
+    
+    export { createOrder, 
+            getOrderDetails, 
+            updateStatusPayingOrder, 
+            listOfMyOrders };

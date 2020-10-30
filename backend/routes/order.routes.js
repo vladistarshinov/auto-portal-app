@@ -4,10 +4,12 @@ import { protect } from '../middleware/auth.middleware';
 
 const router = express.Router();
 
-const { createOrder, getOrderById, updateStatusOrderForPaying, payingOrder } = orderController;
+const { createOrder, getOrderById, updateStatusOrderForPaying, getMyOrders } = orderController;
 
 router.route("/")
     .post(protect, createOrder);
+router.route("/my-orders")
+    .get(protect, getMyOrders);
 router.route("/:id")
     .get(protect, getOrderById);
 router.route("/:id/pay")

@@ -79,11 +79,20 @@ orderController.updateStatusOrderForPaying = asyncHandler(async (req, res) => {
     }
 });
 
+// @desc     Get user's orders
+// @route    GET /api/orders/myorders
+// @access   Private
+orderController.getMyOrders = asyncHandler(async (req, res) => {
+    const orders = await Order.find({ user: req.user._id });
+    res.json(orders);
+});
+
 // @desc     Paying Order through PayPal
 // @route    GET /api/config/paypal
 // @access   Public
 orderController.payingOrder = (req, res) => {
     res.send(process.env.PAYPAL_CLIENT_ID);
 };
+
 
 export default orderController;

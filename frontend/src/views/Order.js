@@ -13,7 +13,7 @@ import {
   getOrderDetails,
   updateStatusPayingOrder,
 } from "../redux/actions/order.actions";
-import DateTimeFilter from "../filters/DateTimeFilter.js";
+import { DateTimeFilter } from "../filters/DateTimeFilter.js";
 
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";

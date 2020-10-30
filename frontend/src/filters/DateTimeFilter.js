@@ -4,4 +4,8 @@ const DateTimeFilter = (date) => {
   return moment(date).format("DD.MM.YYYY HH:MM");
 };
 
-export default DateTimeFilter;
+const DateFilter = (date) => {
+  return moment(date).format("DD.MM.YY");
+};
+
+export { DateTimeFilter, DateFilter };

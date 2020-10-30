@@ -8,7 +8,7 @@ import ProductDetail from "./views/ProductDetail";
 import Cart from "./views/Cart";
 import Register from "./views/Register";
 import Login from "./views/Login";
-import Profile from "./views/Profile";
+import PersonalAccount from "./views/PersonalAccount";
 import Shipping from './views/Shipping';
 import Payment from './views/Payment';
 import PlaceOrder from './views/PlaceOrder';
@@ -25,7 +25,7 @@ const App = () => {
             <Route path="/login" component={Login} />
             <Route path="/product/:id" component={ProductDetail} />
             <Route path="/cart/:id?" component={Cart} />
-            <Route path="/profile" component={Profile} />
+            <Route path="/profile" component={PersonalAccount} />
             <Route path="/shipping" component={Shipping} />
             <Route path="/payment" component={Payment} />
             <Route path="/placeorder" component={PlaceOrder} />

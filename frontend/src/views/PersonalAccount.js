@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Row, Col, Form, Button, Card, Collapse } from "bootstrap-4-react";
+import { Row, Col, Form, Button, Card, Collapse, Table } from "bootstrap-4-react";
+import { LinkContainer } from "react-router-bootstrap";
 import { getUserProfile, updateUserProfile } from "../redux/actions/user.actions";
+import { listOfMyOrders } from "../redux/actions/order.actions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
+import { DateFilter } from "../filters/DateTimeFilter.js";
 
 const Profile = ({ history, location }) => {
   const [name, setName] = useState("");
@@ -24,12 +27,16 @@ const Profile = ({ history, location }) => {
   const updatingUserProfile = useSelector(state => state.updatingUserProfile);
   const { success } = updatingUserProfile;
 
+  const myOrderList = useSelector(state => state.myOrderList);
+  const { loading: loadingOrders, orders, error: errorOrders } = myOrderList;
+
   useEffect(() => {
     if (!userInfo) {
       history.push("/login");
     } else {
         if (userDetails.name == undefined || !userDetails.name) {
             dispatch(getUserProfile('profile'));
+            dispatch(listOfMyOrders());
         } else {
             setName(userDetails.name);
             setEmail(userDetails.email);
@@ -117,6 +124,57 @@ const Profile = ({ history, location }) => {
         </Col>
         <Col md={9}>
             <h2>Мои заказы</h2>
+            {loadingOrders ? <Loader /> : errorOrders ? (
+                <Message variant="danger">{errorOrders}</Message>
+            ) : (
+                <Table className="table-sm" striped bordered hover responsive>
+                    <thead>
+                        <tr className="text-center">
+                            <th>#</th>
+                            <th>Дата</th>
+                            <th>Сумма</th>
+                            <th>Статус оплаты</th>
+                            <th>Статус доставки</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {orders.map(order => (
+                            <tr className="text-center" key={order._id}>
+                                <td>{order._id}</td>
+                                <td>{DateFilter(order.createdAt)}</td>
+                                <td>${order.totalPrice}</td>
+                                <td>
+                                    {order.isPaid ? (
+                                        <>
+                                            <i className="fas fa-check" style={{ color: 'green' }}></i><br />
+                                            {/* <span>{order.paidAt.substring(0, 10)}</span> */}
+                                            <span>{DateFilter(order.paidAt)}</span>
+                                        </>
+                                    ) : (
+                                        <i className="fas fa-times" style={{ color: 'red' }}></i>
+                                    )}
+                                </td>
+                                <td>
+                                    {order.isDelivered ? (
+                                        <>
+                                            <i className="fas fa-check" style={{ color: 'green' }}></i>
+                                            <span>{DateFilter(order.deliveredAt)}</span>
+                                        </>
+                                    ) : (
+                                        <i className="fas fa-times" style={{ color: 'red' }}></i>
+                                    )}
+                                </td>
+                                <td>
+                                    <LinkContainer to={`/order/${order._id}`}>
+                                        <Button className="btn-sm" variant="light">Подробнее</Button>
+                                    </LinkContainer>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </Table>
+            )}
         </Col>
     </Row>
   );

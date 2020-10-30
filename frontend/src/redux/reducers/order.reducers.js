@@ -7,7 +7,10 @@ import { CRDER_CREATE_REQUEST,
     CRDER_UPDATE_STATUS_FOR_PAYING_REQUEST,
     CRDER_UPDATE_STATUS_FOR_PAYING_SUCCESS,
     CRDER_UPDATE_STATUS_FOR_PAYING_FAIL,
-    CRDER_UPDATE_STATUS_FOR_PAYING_RESET} from "../constants/order.constants";
+    CRDER_UPDATE_STATUS_FOR_PAYING_RESET,
+    MY_CRDERS_LIST_REQUEST,
+    MY_CRDERS_LIST_SUCCESS,
+    MY_CRDERS_LIST_FAIL} from "../constants/order.constants";
 
 const orderCreateReducer = (state = {}, action) => {
     switch(action.type) {
@@ -76,4 +79,28 @@ const orderPayReducer = (state = {}, action) => {
     }
 };
 
-export { orderCreateReducer, orderDetailsReducer, orderPayReducer };
+const myOrderListReducer = (state = { orders: [] }, action) => {
+    switch(action.type) {
+        case MY_CRDERS_LIST_REQUEST:
+            return {
+                loading: true
+            };
+        case MY_CRDERS_LIST_SUCCESS:
+            return {
+                loading: false,
+                orders: action.payload
+            };
+        case MY_CRDERS_LIST_FAIL:
+            return {
+                loading: false,
+                error: action.payload
+            };
+        default: 
+            return state;
+    }
+};
+
+export { orderCreateReducer, 
+        orderDetailsReducer, 
+        orderPayReducer, 
+        myOrderListReducer };
