@@ -3,7 +3,8 @@ import { USER_PROFILE_REQUEST,
         USER_PROFILE_FAIL,
         USER_UPDATE_PROFILE_REQUEST,
         USER_UPDATE_PROFILE_SUCCESS,
-        USER_UPDATE_PROFILE_FAIL } from "../constants/user.constants";
+        USER_UPDATE_PROFILE_FAIL, 
+        USER_PROFILE_RESET} from "../constants/user.constants";
 
 const userProfileReducer = (state = { userDetails: {} }, action) => {
     switch(action.type) {
@@ -13,6 +14,8 @@ const userProfileReducer = (state = { userDetails: {} }, action) => {
             return { loading: false, userDetails: action.payload };
         case USER_PROFILE_FAIL:
             return { loading: false, error: action.payload };
+        case USER_PROFILE_RESET:
+            return { userDetails: {} };
         default:
             return state;
     }

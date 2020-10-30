@@ -10,7 +10,7 @@ import { CRDER_CREATE_REQUEST,
     CRDER_UPDATE_STATUS_FOR_PAYING_FAIL,
     MY_CRDERS_LIST_REQUEST,
     MY_CRDERS_LIST_SUCCESS,
-    MY_CRDERS_LIST_FAIL} from "../constants/order.constants";
+    MY_CRDERS_LIST_FAIL } from "../constants/order.constants";
 
     const createOrder = (order) => async (dispatch, getState) => {
         try {

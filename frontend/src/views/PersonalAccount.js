@@ -167,7 +167,7 @@ const Profile = ({ history, location }) => {
                                 </td>
                                 <td>
                                     <LinkContainer to={`/order/${order._id}`}>
-                                        <Button className="btn-sm" variant="light">Подробнее</Button>
+                                        <Button type="button" className="btn-sm" variant="light">Подробнее</Button>
                                     </LinkContainer>
                                 </td>
                             </tr>
