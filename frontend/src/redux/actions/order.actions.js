@@ -4,7 +4,10 @@ import { CRDER_CREATE_REQUEST,
     CRDER_CREATE_FAIL, 
     CRDER_DETAILS_REQUEST,
     CRDER_DETAILS_SUCCESS,
-    CRDER_DETAILS_FAIL} from "../constants/order.constants";
+    CRDER_DETAILS_FAIL,
+    CRDER_UPDATE_STATUS_FOR_PAYING_REQUEST,
+    CRDER_UPDATE_STATUS_FOR_PAYING_SUCCESS,
+    CRDER_UPDATE_STATUS_FOR_PAYING_FAIL} from "../constants/order.constants";
 
     const createOrder = (order) => async (dispatch, getState) => {
         try {
@@ -33,7 +36,7 @@ import { CRDER_CREATE_REQUEST,
         }
     };
 
-    const getOrderDetails = (id) => async (dispatch, getState) => {
+    const getOrderDetails = (orderId) => async (dispatch, getState) => {
         try {
             dispatch({ type: CRDER_DETAILS_REQUEST });
     
@@ -45,7 +48,7 @@ import { CRDER_CREATE_REQUEST,
                 }
             };
     
-            const { data } = await axios.get(`/api/orders/${id}`, config);
+            const { data } = await axios.get(`/api/orders/${orderId}`, config);
     
             dispatch({ type: CRDER_DETAILS_SUCCESS, payload: data }); 
         } catch (error) {
@@ -58,5 +61,32 @@ import { CRDER_CREATE_REQUEST,
             }); 
         }
     };
+
+    const updateStatusPayingOrder = (orderId, paymentResult) => async (dispatch, getState) => {
+        try {
+            dispatch({ type: CRDER_UPDATE_STATUS_FOR_PAYING_REQUEST });
     
-    export { createOrder, getOrderDetails };
+            const { userLogin: { userInfo } } = getState();
+    
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${userInfo.token}`
+                }
+            };
+    
+            const { data } = await axios.put(`/api/orders/${orderId}/pay`, paymentResult, config);
+    
+            dispatch({ type: CRDER_UPDATE_STATUS_FOR_PAYING_SUCCESS, payload: data }); 
+        } catch (error) {
+            const message = error.response && error.response.data.message 
+                ? error.response.data.message
+                : error.message;
+            dispatch({ 
+                type: CRDER_UPDATE_STATUS_FOR_PAYING_FAIL, 
+                payload: message
+            }); 
+        }
+    };
+    
+    export { createOrder, getOrderDetails, updateStatusPayingOrder };

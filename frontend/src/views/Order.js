@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Row, Col, ListGroup, Figure, Button } from "bootstrap-4-react";
+import { Row, Col, ListGroup, Figure, Collapse, Button } from "bootstrap-4-react";
 import { MDBTable, MDBTableBody, MDBTableHead } from "mdbreact";
 import { Link } from "react-router-dom";
 import { Card } from "react-bootstrap";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import { getOrderDetails } from "../redux/actions/order.actions";
+import { getOrderDetails, updateStatusPayingOrder } from "../redux/actions/order.actions";
 import DateTimeFilter from "../filters/DateTimeFilter.js";
 
 import jsPDF from "jspdf";
@@ -232,6 +232,9 @@ const Order = (props) => {
           <div className="text-center">
             <Button type="button" dark onClick={generateOrderPdfHandler}>
               Распечатать чек
+            </Button>
+            <Button type="button" dark style={{ marginLeft: '1rem' }}>
+              Оплатить
             </Button>
           </div>
         </>

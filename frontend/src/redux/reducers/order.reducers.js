@@ -3,7 +3,11 @@ import { CRDER_CREATE_REQUEST,
     CRDER_CREATE_FAIL, 
     CRDER_DETAILS_REQUEST,
     CRDER_DETAILS_SUCCESS,
-    CRDER_DETAILS_FAIL } from "../constants/order.constants";
+    CRDER_DETAILS_FAIL, 
+    CRDER_UPDATE_STATUS_FOR_PAYING_REQUEST,
+    CRDER_UPDATE_STATUS_FOR_PAYING_SUCCESS,
+    CRDER_UPDATE_STATUS_FOR_PAYING_FAIL,
+    CRDER_UPDATE_STATUS_FOR_PAYING_RESET} from "../constants/order.constants";
 
 const orderCreateReducer = (state = {}, action) => {
     switch(action.type) {
@@ -49,4 +53,27 @@ const orderDetailsReducer = (state = { loading: true, orderItems: [], shippingAd
     }
 };
 
-export { orderCreateReducer, orderDetailsReducer };
+const orderPayReducer = (state = {}, action) => {
+    switch(action.type) {
+        case CRDER_UPDATE_STATUS_FOR_PAYING_REQUEST:
+            return {
+                loading: true
+            };
+        case CRDER_UPDATE_STATUS_FOR_PAYING_SUCCESS:
+            return {
+                loading: false,
+                success: true
+            };
+        case CRDER_UPDATE_STATUS_FOR_PAYING_FAIL:
+            return {
+                loading: false,
+                error: action.payload
+            };
+        case CRDER_UPDATE_STATUS_FOR_PAYING_RESET:
+            return {};
+        default: 
+            return state;
+    }
+};
+
+export { orderCreateReducer, orderDetailsReducer, orderPayReducer };
