@@ -4,7 +4,7 @@ import { protect } from '../middleware/auth.middleware';
 
 const router = express.Router();
 
-const { createOrder, getOrderById, updateStatusOrderForPaying } = orderController;
+const { createOrder, getOrderById, updateStatusOrderForPaying, payingOrder } = orderController;
 
 router.route("/")
     .post(protect, createOrder);

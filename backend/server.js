@@ -4,6 +4,7 @@ import colors from "colors";
 import connectDB from "./config/db";
 
 import { notFound, errorHandler } from './middleware/error.middleware';
+import orderController from './controllers/order.controller';
 import authRoutes from './routes/auth.routes';
 import productRoutes from './routes/product.routes';
 import userRoutes from './routes/user.routes';
@@ -27,6 +28,7 @@ app.use("/api/users", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/orders", orderRoutes);
+app.get("/api/config/paypal", orderController.payingOrder);
 
 app.use((req, res, next) => {
   console.log(req.originalUrl);

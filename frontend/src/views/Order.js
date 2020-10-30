@@ -1,12 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col, ListGroup, Figure, Collapse, Button } from "bootstrap-4-react";
 import { MDBTable, MDBTableBody, MDBTableHead } from "mdbreact";
+import axios from "axios";
+import { PayPalButton } from "react-paypal-button-v2";
 import { Link } from "react-router-dom";
 import { Card } from "react-bootstrap";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import { getOrderDetails, updateStatusPayingOrder } from "../redux/actions/order.actions";
+import { CRDER_UPDATE_STATUS_FOR_PAYING_RESET } from '../redux/constants/order.constants'
+import {
+  getOrderDetails,
+  updateStatusPayingOrder,
+} from "../redux/actions/order.actions";
 import DateTimeFilter from "../filters/DateTimeFilter.js";
 
 import jsPDF from "jspdf";
@@ -20,9 +26,37 @@ const Order = (props) => {
   const orderDetails = useSelector((state) => state.orderDetails);
   const { order, loading, error } = orderDetails;
 
+  const orderPayingStatus = useSelector((state) => state.orderPayingStatus);
+  const {
+    loading: loadingPayingProcess,
+    success: successPayingProcess,
+  } = orderPayingStatus;
+
+  const [sdkPayPalReady, setSdkPayPalReady] = useState(false);
+
   useEffect(() => {
-    dispatch(getOrderDetails(orderId));
-  }, [dispatch, orderId]);
+    const addPayPalScript = async () => {
+      const { data: clientId } = await axios.get("/api/config/paypal");
+      const script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
+      script.async = true;
+      script.onload = () => {
+        setSdkPayPalReady(true);
+      };
+      document.body.appendChild(script);
+    };
+    if (!order || successPayingProcess) {
+      dispatch({ type: CRDER_UPDATE_STATUS_FOR_PAYING_RESET });
+      dispatch(getOrderDetails(orderId));
+    } else if (!order.isPaid) {
+      if (!window.paypal) {
+        addPayPalScript();
+      } else {
+        setSdkPayPalReady(true);
+      }
+    }
+  }, [dispatch, orderId, successPayingProcess, order]);
 
   const generateOrderPdfHandler = () => {
     const printOrder = document.getElementById("printOrder");
@@ -37,6 +71,18 @@ const Order = (props) => {
       pdf.addImage(image, "PNG", 20, 30, pdfPageWidth, 0);
       pdf.save(`${order.user.name}_${order._id}`);
     });
+  };
+
+  const payingActionHandler = () => {
+    const payingButtons = document.getElementById("payingButtonElements");
+    payingButtons.style.display === 'block' 
+      ? payingButtons.style.display = 'none' 
+      : payingButtons.style.display = 'block';
+  }
+
+  const successPaymentHandler = (paymentResult) => {
+    console.log(paymentResult);
+    dispatch(updateStatusPayingOrder(orderId, paymentResult))
   };
 
   return (
@@ -184,6 +230,23 @@ const Order = (props) => {
                             </Col>
                           </Row>
                         </ListGroup.Item>
+                        {!order.isPaid && (
+                          <ListGroup.Item id="payingButtonElements" style={{ display: 'none' }}>
+                            <Row>
+                              <Col>
+                                {loadingPayingProcess && <Loader />}
+                                {!sdkPayPalReady ? (
+                                  <Loader />
+                                ) : (
+                                  <PayPalButton
+                                    amount={order.totalPrice}
+                                    onSuccess={successPaymentHandler}
+                                  />
+                                )}
+                              </Col>
+                            </Row>
+                          </ListGroup.Item>
+                        )}
                       </ListGroup>
                     </Card>
                     <div
@@ -224,6 +287,13 @@ const Order = (props) => {
                           <Message variant="danger">Не доставлено</Message>
                         ))}
                     </div>
+                    {!order.isPaid &&
+                      <div className="text-center">
+                        <Button type="button" dark onClick={payingActionHandler}>
+                          Оплатить
+                        </Button>
+                      </div>
+                    }
                   </Col>
                 </Row>
               </Col>
@@ -232,9 +302,6 @@ const Order = (props) => {
           <div className="text-center">
             <Button type="button" dark onClick={generateOrderPdfHandler}>
               Распечатать чек
-            </Button>
-            <Button type="button" dark style={{ marginLeft: '1rem' }}>
-              Оплатить
             </Button>
           </div>
         </>

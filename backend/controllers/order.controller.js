@@ -1,7 +1,10 @@
 import asyncHandler from 'express-async-handler';
 import Order from '../models/order.model';
+import dotenv from "dotenv";
 
 const orderController = {};
+
+dotenv.config();
 
 // @desc     Create new order
 // @route    POST /api/orders
@@ -75,5 +78,12 @@ orderController.updateStatusOrderForPaying = asyncHandler(async (req, res) => {
         throw new Error(`Заказ ${req.params.id} не найден`);
     }
 });
+
+// @desc     Paying Order through PayPal
+// @route    GET /api/config/paypal
+// @access   Public
+orderController.payingOrder = (req, res) => {
+    res.send(process.env.PAYPAL_CLIENT_ID);
+};
 
 export default orderController;
