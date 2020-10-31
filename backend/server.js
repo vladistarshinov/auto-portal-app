@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
 app.use("/api/users", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
-app.use("/api/users", adminRoutes);
+app.use("/api/admin/users", adminRoutes);
 app.use("/api/orders", orderRoutes);
 app.get("/api/config/paypal", orderController.payingOrder);
 

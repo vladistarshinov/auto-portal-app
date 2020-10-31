@@ -4,7 +4,10 @@ import { USER_LIST_REQUEST,
     USER_LIST_RESET,
     USER_REMOVE_REQUEST,
     USER_REMOVE_SUCCESS,
-    USER_REMOVE_FAIL} from "../constants/admin.constants";
+    USER_REMOVE_FAIL,
+    USER_ADMIN_DETAILS_REQUEST,
+    USER_ADMIN_DETAILS_SUCCESS,
+    USER_ADMIN_DETAILS_FAIL} from "../constants/admin.constants";
 
 const userListReducer = (state = { userList: [] }, action) => {
     switch(action.type) {
@@ -16,6 +19,19 @@ const userListReducer = (state = { userList: [] }, action) => {
             return { loading: false, error: action.payload };
         case USER_LIST_RESET:
             return { userList: [] };
+        default:
+            return state;
+    }
+};
+
+const userDetailsForAdminReducer = (state = { userAdminDetails: {} }, action) => {
+    switch(action.type) {
+        case USER_ADMIN_DETAILS_REQUEST:
+            return { ...state, loading: true };
+        case USER_ADMIN_DETAILS_SUCCESS:
+            return { loading: false, userAdminDetails: action.payload };
+        case USER_ADMIN_DETAILS_FAIL:
+            return { loading: false, error: action.payload };
         default:
             return state;
     }
@@ -34,4 +50,4 @@ const userRemoveReducer = (state = { }, action) => {
     }
 };
     
-export { userListReducer, userRemoveReducer };
+export { userListReducer, userDetailsForAdminReducer, userRemoveReducer };
