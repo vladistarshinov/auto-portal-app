@@ -95,11 +95,11 @@ const Profile = ({ history, location }) => {
                                     />
                                 </Form.Group>
                                 <Form.Group>
-                                    <label htmlFor="passwordForm">Пароль</label>
+                                    <label htmlFor="passwordForm">Новый пароль</label>
                                     <Form.Input 
                                         type="password" 
                                         id="passwordForm" 
-                                        placeholder="Введите пароль"
+                                        placeholder="Введите новый пароль"
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
                                     />
@@ -130,7 +130,7 @@ const Profile = ({ history, location }) => {
                 <Table className="table-sm" striped bordered hover responsive>
                     <thead>
                         <tr className="text-center">
-                            <th>#</th>
+                            <th>Номер заказа</th>
                             <th>Дата</th>
                             <th>Сумма</th>
                             <th>Статус оплаты</th>
