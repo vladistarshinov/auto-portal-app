@@ -5,9 +5,11 @@ import { adminProtect } from '../middleware/admin.middleware';
 
 const router = express.Router();
 
-const { getUsers } = adminController;
+const { getUsers, deleteUser } = adminController;
 
 router.route("/")
     .get(protect, adminProtect, getUsers);
+router.route("/:id")
+    .delete(protect, adminProtect, deleteUser);
 
 export default router;

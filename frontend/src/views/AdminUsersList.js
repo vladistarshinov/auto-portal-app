@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { LinkContainer } from "react-router-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Row, Col, Table, Button } from "bootstrap-4-react";
-import { listOfUsers } from "../redux/actions/admin.actions";
+import { Table, Button } from "bootstrap-4-react";
+import { listOfUsers, removeUser } from "../redux/actions/admin.actions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 
@@ -11,6 +11,9 @@ const AdminUsersList = ({ history }) => {
 
     const usersList = useSelector(state => state.usersList);
     const { loading, error, userList } = usersList;
+
+    const userRemove = useSelector(state => state.userRemove);
+    const { success } = userRemove;
 
     const userLogin = useSelector(state => state.userLogin);
     const { userInfo } = userLogin;
@@ -21,10 +24,12 @@ const AdminUsersList = ({ history }) => {
         } else {
             history.push("/login");
         }
-    }, [dispatch, history]);
+    }, [dispatch, history, success]);
 
     const deleteHandler = (id) => {
-        console.log(id);
+        if (window.confirm("Вы действительно хотите удалить пользователя?")) {
+            dispatch(removeUser(id));
+        }
     };
 
     return (
