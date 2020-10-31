@@ -14,7 +14,6 @@ const Login = ({ history, location }) => {
   const dispatch = useDispatch();
 
   const userLogin = useSelector(state => state.userLogin);
-
   const { loading, error, userInfo } = userLogin;
 
   const submitHandler = (e) => {

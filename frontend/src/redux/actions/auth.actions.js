@@ -8,6 +8,7 @@ import { USER_LOGIN_REQUEST,
     USER_REGISTER_FAIL} from "../constants/auth.constants";
 import { USER_PROFILE_RESET } from "../constants/user.constants";
 import { MY_CRDERS_LIST_RESET } from "../constants/order.constants";
+import { USER_LIST_RESET } from "../constants/admin.constants";
 
 const register = (name, email, password) => async (dispatch) => {
     try {
@@ -73,7 +74,8 @@ const logout = () => (dispatch) => {
     localStorage.removeItem('updatedUserInfo');
     dispatch({ type: USER_LOGOUT });
     dispatch({ type: USER_PROFILE_RESET });
-    dispatch({ type: MY_CRDERS_LIST_RESET })
+    dispatch({ type: MY_CRDERS_LIST_RESET });
+    dispatch({ type: USER_LIST_RESET });
 };
 
 export { register, login, logout };

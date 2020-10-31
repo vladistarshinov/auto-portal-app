@@ -6,15 +6,22 @@ import { listOfUsers } from "../redux/actions/admin.actions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 
-const AdminUsersList = () => {
+const AdminUsersList = ({ history }) => {
     const dispatch = useDispatch();
 
     const usersList = useSelector(state => state.usersList);
     const { loading, error, userList } = usersList;
 
+    const userLogin = useSelector(state => state.userLogin);
+    const { userInfo } = userLogin;
+
     useEffect(() => {
-        dispatch(listOfUsers());
-    }, [dispatch]);
+        if (userInfo && userInfo.isAdmin) {
+            dispatch(listOfUsers());
+        } else {
+            history.push("/login");
+        }
+    }, [dispatch, history]);
 
     const deleteHandler = (id) => {
         console.log(id);
@@ -42,7 +49,7 @@ const AdminUsersList = () => {
                                 <td>{user._id}</td>
                                 <td>{user.name}</td>
                                 <td>
-                                    <a href={`mailto:${user.email}`}>
+                                    <a href={`mailto:${user.email}`} style={{ color: 'navy', textDecoration: 'none' }}>
                                         {user.email}
                                     </a>
                                 </td>
@@ -54,12 +61,12 @@ const AdminUsersList = () => {
                                     )}
                                 </td>
                                 <td>
-                                    <LinkContainer to={`/user/${user._id}/edit`}>
+                                    <LinkContainer to={`/user/${user._id}/edit`} style={{ color: 'orange' }}>
                                         <Button className="btn-sm">
                                             <i className="fas fa-edit"></i>
                                         </Button>
                                     </LinkContainer>
-                                    <Button className="btn-sm" variant="danger" onClick={() => deleteHandler(user._id)}>
+                                    <Button className="btn-sm" style={{ color: 'tomato' }} onClick={() => deleteHandler(user._id)}>
                                         <i className="fas fa-trash"></i>
                                     </Button>
                                 </td>
