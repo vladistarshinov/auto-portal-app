@@ -60,7 +60,7 @@ const Header = () => {
                   </LinkContainer>
                   {userInfo ? (
                     <Nav.Item dropdown>
-                    <Nav.Link className="header__category" dropdownToggle>{/* updatedUserName !== null ? updatedUserName : */ userInfo.name}</Nav.Link>
+                    <Nav.Link className="header__category" dropdownToggle>{userInfo.name}</Nav.Link>
                     <Dropdown.Menu>
                       <LinkContainer bg="light" text="dark" to="/profile">
                         <Dropdown.Item>Личный кабинет</Dropdown.Item>
@@ -77,6 +77,22 @@ const Header = () => {
                         Авторизация
                       </Nav.ItemLink>
                     </LinkContainer>
+                  )}
+                  {userInfo && userInfo.isAdmin && (
+                     <Nav.Item dropdown>
+                     <Nav.Link className="header__category" dropdownToggle>Admin</Nav.Link>
+                     <Dropdown.Menu>
+                       <LinkContainer bg="light" text="dark" to="/admin/users">
+                         <Dropdown.Item>Пользователи</Dropdown.Item>
+                       </LinkContainer>
+                       <LinkContainer bg="light" text="dark" to="/admin/product-list">
+                         <Dropdown.Item>Товары</Dropdown.Item>
+                       </LinkContainer>
+                       <LinkContainer bg="light" text="dark" to="/admin/order-list">
+                         <Dropdown.Item>Заказы</Dropdown.Item>
+                       </LinkContainer>
+                     </Dropdown.Menu>
+                   </Nav.Item>
                   )}
                 </Navbar.Nav>
               </Collapse>

@@ -13,6 +13,7 @@ import Shipping from './views/Shipping';
 import Payment from './views/Payment';
 import PlaceOrder from './views/PlaceOrder';
 import Order from './views/Order';
+import AdminUsersList from './views/AdminUsersList'
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
             <Route path="/payment" component={Payment} />
             <Route path="/placeorder" component={PlaceOrder} />
             <Route path="/order/:id" component={Order} />
+            <Route path="/admin/users" component={AdminUsersList} />
             <Route path="/" component={Home} exact />
           </Container>
         </main>
