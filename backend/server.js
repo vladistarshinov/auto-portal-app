@@ -8,6 +8,7 @@ import orderController from './controllers/order.controller';
 import authRoutes from './routes/auth.routes';
 import productRoutes from './routes/product.routes';
 import userRoutes from './routes/user.routes';
+import adminRoutes from './routes/admin.routes';
 import orderRoutes from './routes/order.routes';
 
 dotenv.config();
@@ -27,6 +28,7 @@ app.get("/", (req, res) => {
 app.use("/api/users", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/users", adminRoutes);
 app.use("/api/orders", orderRoutes);
 app.get("/api/config/paypal", orderController.payingOrder);
 
