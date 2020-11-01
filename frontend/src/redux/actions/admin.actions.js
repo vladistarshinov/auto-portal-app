@@ -7,7 +7,11 @@ import { USER_LIST_REQUEST,
     USER_REMOVE_SUCCESS,
     USER_ADMIN_DETAILS_REQUEST,
     USER_ADMIN_DETAILS_SUCCESS,
-    USER_ADMIN_DETAILS_FAIL} from "../constants/admin.constants";
+    USER_ADMIN_DETAILS_FAIL,
+    USER_UPDATE_REQUEST,
+    USER_UPDATE_SUCCESS,
+    USER_UPDATE_FAIL} from "../constants/admin.constants";
+import { USER_PROFILE_SUCCESS } from "../constants/user.constants";
 
 const listOfUsers = () => async (dispatch, getState) => {
     try {
@@ -63,6 +67,36 @@ const getUserDetailsForAdmin = (id) => async (dispatch, getState) => {
     }
 };
 
+const updateUser = (user) => async (dispatch, getState) => {
+    try {
+        dispatch({ type: USER_UPDATE_REQUEST });
+
+        const { userLogin: { userInfo } } = getState();
+
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        };
+
+        const { data } = await axios.put(`/api/admin/users/${user._id}`, user, config);
+
+        dispatch({ type: USER_UPDATE_SUCCESS }); 
+        dispatch({ type: USER_ADMIN_DETAILS_SUCCESS, payload: data }); 
+        dispatch({ type: USER_PROFILE_SUCCESS, payload: data })
+        
+    } catch (error) {
+        const message = error.response && error.response.data.message 
+            ? error.response.data.message
+            : error.message;
+        dispatch({ 
+            type: USER_UPDATE_FAIL, 
+            payload: message
+        }); 
+    }
+};
+
 const removeUser = (id) => async (dispatch, getState) => {
     try {
         dispatch({ type: USER_REMOVE_REQUEST });
@@ -90,4 +124,4 @@ const removeUser = (id) => async (dispatch, getState) => {
     }
 };
 
-export { listOfUsers, getUserDetailsForAdmin, removeUser };
+export { listOfUsers, getUserDetailsForAdmin, updateUser, removeUser };

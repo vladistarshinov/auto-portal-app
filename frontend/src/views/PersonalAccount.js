@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Row, Col, Form, Button, Card, Collapse, Table } from "bootstrap-4-react";
+import { Row, Col, Button, Card, Collapse, Table } from "bootstrap-4-react";
+import { Form } from 'react-bootstrap';
 import { LinkContainer } from "react-router-bootstrap";
 import { getUserProfile, updateUserProfile } from "../redux/actions/user.actions";
 import { listOfMyOrders } from "../redux/actions/order.actions";
