@@ -1,5 +1,6 @@
 import asyncHandler from 'express-async-handler';
 import User from '../models/user.model';
+import Product from '../models/product.model';
 
 const adminController = {};
 
@@ -62,6 +63,42 @@ adminController.deleteUser = asyncHandler(async (req, res) => {
         res.status(404);
         throw new Error("Пользователь не найден");
     }
+});
+
+// @desc     Create a product
+// @route    POST /api/admin/products
+// @access   Private/Admin
+adminController.createProduct = asyncHandler(async (req, res) => {
+    const { name, 
+            description, 
+            image, 
+            price, 
+            countInStock, 
+            brand, 
+            category } = req.body;
+
+    const existProduct = await User.findOne({ name });
+
+    if (existProduct) {
+        res.status(400);
+        throw new Error("Товар с таким названием уже существует");
+    } 
+
+    const product = new Product({
+        user: req.user._id,
+        name, 
+        description, 
+        image, 
+        price, 
+        countInStock, 
+        brand, 
+        category,
+        numReviews: 0
+    });
+
+    const createdProduct = await product.save();
+    res.status(201).json(createdProduct);
+    
 });
 
 export default adminController;

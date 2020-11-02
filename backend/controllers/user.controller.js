@@ -5,7 +5,7 @@ import generateToken from '../utils/jwt-gen';
 const userController = {};
 
 // @desc     Get user profile
-// @route    GET /api/users/profile
+// @route    GET /api/users/profile/:id
 // @access   Private
 userController.getUserProfile = asyncHandler(async (req, res) => {
     const user = await User.findById(req.user._id);

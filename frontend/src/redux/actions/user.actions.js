@@ -8,7 +8,7 @@ import { USER_PROFILE_REQUEST,
     USER_UPDATE_PROFILE_FAIL } from "../constants/user.constants";
 import { logout } from "./auth.actions"
 
-const getUserProfile = (id) => async (dispatch, getState) => {
+const getUserProfile = () => async (dispatch, getState) => {
     try {
         dispatch({ type: USER_PROFILE_REQUEST });
 
@@ -20,7 +20,7 @@ const getUserProfile = (id) => async (dispatch, getState) => {
             }
         };
 
-        const { data } = await axios.get(`/api/users/${id}`, config);
+        const { data } = await axios.get(`/api/users/profile`, config);
 
         dispatch({ type: USER_PROFILE_SUCCESS, payload: data }); 
         

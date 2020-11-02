@@ -62,6 +62,24 @@ const Header = () => {
                     <Nav.Item dropdown>
                     <Nav.Link className="header__category" dropdownToggle>{userInfo.name}</Nav.Link>
                     <Dropdown.Menu>
+                      {userInfo && userInfo.isAdmin && (
+                        <>
+                          <Dropdown.Item>Админ</Dropdown.Item>
+                          <Dropdown.Divider />
+                          <LinkContainer bg="light" text="dark" to="/admin/users">
+                            <Dropdown.Item>Пользователи</Dropdown.Item>
+                          </LinkContainer>
+                          <LinkContainer bg="light" text="dark" to="/admin/products-list">
+                            <Dropdown.Item>Товары</Dropdown.Item>
+                          </LinkContainer>
+                          <LinkContainer bg="light" text="dark" to="/admin/order-list">
+                            <Dropdown.Item>Заказы</Dropdown.Item>
+                          </LinkContainer>
+                          <Dropdown.Divider />
+                          <Dropdown.Item>Пользователь</Dropdown.Item>
+                          <Dropdown.Divider />
+                        </>
+                      )}
                       <LinkContainer bg="light" text="dark" to="/profile">
                         <Dropdown.Item>Личный кабинет</Dropdown.Item>
                       </LinkContainer>
@@ -78,14 +96,14 @@ const Header = () => {
                       </Nav.ItemLink>
                     </LinkContainer>
                   )}
-                  {userInfo && userInfo.isAdmin && (
+                  {/* {userInfo && userInfo.isAdmin && (
                      <Nav.Item dropdown>
                      <Nav.Link className="header__category" dropdownToggle>Admin</Nav.Link>
                      <Dropdown.Menu>
                        <LinkContainer bg="light" text="dark" to="/admin/users">
                          <Dropdown.Item>Пользователи</Dropdown.Item>
                        </LinkContainer>
-                       <LinkContainer bg="light" text="dark" to="/admin/product-list">
+                       <LinkContainer bg="light" text="dark" to="/admin/products-list">
                          <Dropdown.Item>Товары</Dropdown.Item>
                        </LinkContainer>
                        <LinkContainer bg="light" text="dark" to="/admin/order-list">
@@ -93,7 +111,7 @@ const Header = () => {
                        </LinkContainer>
                      </Dropdown.Menu>
                    </Nav.Item>
-                  )}
+                  )} */}
                 </Navbar.Nav>
               </Collapse>
             </Container>

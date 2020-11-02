@@ -10,7 +10,11 @@ import { USER_LIST_REQUEST,
     USER_ADMIN_DETAILS_FAIL,
     USER_UPDATE_REQUEST,
     USER_UPDATE_SUCCESS,
-    USER_UPDATE_FAIL} from "../constants/admin.constants";
+    USER_UPDATE_FAIL,
+    PRODUCT_CREATE_REQUEST,
+    PRODUCT_CREATE_SUCCESS,
+    PRODUCT_CREATE_FAIL,
+    PRODUCT_CREATE_RESET } from "../constants/admin.constants";
 import { USER_PROFILE_SUCCESS } from "../constants/user.constants";
 
 const listOfUsers = () => async (dispatch, getState) => {
@@ -124,4 +128,36 @@ const removeUser = (id) => async (dispatch, getState) => {
     }
 };
 
-export { listOfUsers, getUserDetailsForAdmin, updateUser, removeUser };
+const createProduct = (product) => async (dispatch, getState) => {
+    try {
+        dispatch({ type: PRODUCT_CREATE_REQUEST });
+
+        const { userLogin: { userInfo } } = getState();
+
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        };
+
+        const { data } = await axios.post(`/api/admin/products`, product, config);
+
+        dispatch({ type: PRODUCT_CREATE_SUCCESS, payload: data }); 
+        
+    } catch (error) {
+        const message = error.response && error.response.data.message 
+            ? error.response.data.message
+            : error.message;
+        dispatch({ 
+            type: PRODUCT_CREATE_FAIL, 
+            payload: message
+        }); 
+    }
+};
+
+export { listOfUsers, 
+        getUserDetailsForAdmin, 
+        updateUser, 
+        removeUser, 
+        createProduct };

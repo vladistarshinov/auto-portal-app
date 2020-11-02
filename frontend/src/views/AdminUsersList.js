@@ -48,7 +48,7 @@ const AdminUsersList = ({ history }) => {
     }
   }, [dispatch, history, successUpdateUser, userInfo]);
 
-  const editHandler = (userId) => {
+  const editUserHandler = (userId) => {
     const user = userList.find((user) => user._id == userId);
     setName(user.name);
     setEmail(user.email);
@@ -56,22 +56,11 @@ const AdminUsersList = ({ history }) => {
     setId(user._id);
   };
 
-  // Решение для изменения чекбокса (не работает как у input через e.target.value)
-  const soldCheckbox = (e) => {
-    let { checked } = e.target;
-    if (checked == true) {
-      checked = true;
-    } else {
-      checked = false;
-    }
-    setIsAdmin(checked);
-  };
-
   const submitUserUpdateHandler = () => {
     dispatch(updateUser({ _id: id, name, email, isAdmin }));
   };
 
-  const deleteHandler = (id) => {
+  const deleteUserHandler = (id) => {
     if (window.confirm("Вы действительно хотите удалить пользователя?")) {
       dispatch(removeUser(id));
     }
@@ -122,7 +111,7 @@ const AdminUsersList = ({ history }) => {
                   <td>
                     <Button
                       className="btn-sm"
-                      onClick={() => editHandler(user._id)}
+                      onClick={() => editUserHandler(user._id)}
                       warning
                       data-toggle="modal"
                       data-target="#editModal"
@@ -133,7 +122,7 @@ const AdminUsersList = ({ history }) => {
                     <Button
                       className="btn-sm"
                       danger
-                      onClick={() => deleteHandler(user._id)}
+                      onClick={() => deleteUserHandler(user._id)}
                     >
                       <i className="fas fa-trash"></i>
                     </Button>
