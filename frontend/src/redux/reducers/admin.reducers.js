@@ -15,7 +15,10 @@ import { USER_LIST_REQUEST,
     PRODUCT_CREATE_REQUEST,
     PRODUCT_CREATE_SUCCESS,
     PRODUCT_CREATE_FAIL,
-    PRODUCT_CREATE_RESET } from "../constants/admin.constants";
+    PRODUCT_CREATE_RESET,
+    PRODUCT_REMOVE_REQUEST,
+    PRODUCT_REMOVE_SUCCESS,
+    PRODUCT_REMOVE_FAIL } from "../constants/admin.constants";
 
 const userListReducer = (state = { userList: [] }, action) => {
     switch(action.type) {
@@ -87,9 +90,23 @@ const productCreateReducer = (state = { }, action) => {
             return state;
     }
 };
+
+const productRemoveReducer = (state = { }, action) => {
+    switch(action.type) {
+        case PRODUCT_REMOVE_REQUEST:
+            return { loading: true };
+        case PRODUCT_REMOVE_SUCCESS:
+            return { loading: false, success: true };
+        case PRODUCT_REMOVE_FAIL:
+            return { loading: false, error: action.payload };
+        default:
+            return state;
+    }
+};
     
 export { userListReducer, 
         userDetailsForAdminReducer, 
         userUpdateReducer, 
         userRemoveReducer, 
-        productCreateReducer };
+        productCreateReducer,
+        productRemoveReducer };

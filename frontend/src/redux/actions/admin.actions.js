@@ -14,7 +14,10 @@ import { USER_LIST_REQUEST,
     PRODUCT_CREATE_REQUEST,
     PRODUCT_CREATE_SUCCESS,
     PRODUCT_CREATE_FAIL,
-    PRODUCT_CREATE_RESET } from "../constants/admin.constants";
+    PRODUCT_CREATE_RESET,
+    PRODUCT_REMOVE_REQUEST,
+    PRODUCT_REMOVE_SUCCESS,
+    PRODUCT_REMOVE_FAIL } from "../constants/admin.constants";
 import { USER_PROFILE_SUCCESS } from "../constants/user.constants";
 
 const listOfUsers = () => async (dispatch, getState) => {
@@ -156,8 +159,36 @@ const createProduct = (product) => async (dispatch, getState) => {
     }
 };
 
+const removeProduct = (id) => async (dispatch, getState) => {
+    try {
+        dispatch({ type: PRODUCT_REMOVE_REQUEST });
+
+        const { userLogin: { userInfo } } = getState();
+
+        const config = {
+            headers: {
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        };
+
+        await axios.delete(`/api/admin/products/${id}`, config);
+
+        dispatch({ type: PRODUCT_REMOVE_SUCCESS }); 
+        
+    } catch (error) {
+        const message = error.response && error.response.data.message 
+            ? error.response.data.message
+            : error.message;
+        dispatch({ 
+            type: PRODUCT_REMOVE_FAIL, 
+            payload: message
+        }); 
+    }
+};
+
 export { listOfUsers, 
         getUserDetailsForAdmin, 
         updateUser, 
         removeUser, 
-        createProduct };
+        createProduct,
+        removeProduct };

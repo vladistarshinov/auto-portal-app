@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Row, Col, Table, Modal, Figure, Button } from "bootstrap-4-react";
 import { Form } from 'react-bootstrap';
 import { listOfProduct } from "../redux/actions/product.actions";
-import { createProduct } from "../redux/actions/admin.actions";
+import { createProduct, removeProduct } from "../redux/actions/admin.actions";
 import { PRODUCT_CREATE_RESET } from "../redux/constants/admin.constants";
 import FormContainer from "../components/FormContainer";
 import Loader from "../components/Loader";
@@ -31,6 +31,11 @@ const AdminProductList = ({ history, match }) => {
           product: createdProduct, 
           error: errorCreateProduct } = productCreate;
 
+  const productRemove = useSelector(state => state.productRemove);
+  const { loading: loadingDeleteProduct, 
+          success: successDeleteProduct,
+          error: errorDeleteProduct } = productRemove;
+          
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
@@ -43,7 +48,7 @@ const AdminProductList = ({ history, match }) => {
     } else {
       history.push("/login");
     }
-  }, [dispatch, history, userInfo]);
+  }, [dispatch, history, userInfo, successCreateProduct, successDeleteProduct]);
 
   const editProductHandler = () => {
 
@@ -65,12 +70,15 @@ const AdminProductList = ({ history, match }) => {
 
   const deleteProductHandler = (id) => {
     if (window.confirm("Вы действительно хотите удалить пользователя?")) {
-      // DELETE PRODUCTS
+      dispatch(removeProduct(id));
     }
   };
 
   return (
     <>
+      {loadingDeleteProduct && <Loader />}
+      {successDeleteProduct && <Message variant="danger">Товар удален</Message>}
+      {successCreateProduct && <Message variant="success">Товар создан</Message>}
       <Row className="align-items-center">
         <Col>
           <h2>Список товаров</h2>
@@ -93,7 +101,6 @@ const AdminProductList = ({ history, match }) => {
         <Message variant="danger">{error}</Message>
       ) : (
         <>
-          {successCreateProduct && <Message variant="success">Товар создан</Message>}
           <Table className="table-sm" striped bordered hover responsive>
             <thead>
               <tr className="text-center">

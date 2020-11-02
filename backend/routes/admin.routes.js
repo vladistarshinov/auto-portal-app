@@ -5,7 +5,12 @@ import { adminProtect } from '../middleware/admin.middleware';
 
 const router = express.Router();
 
-const { getUsers, getUserById, updateUser, deleteUser, createProduct } = adminController;
+const { getUsers, 
+        getUserById, 
+        updateUser, 
+        deleteUser, 
+        createProduct, 
+        deleteProduct } = adminController;
 
 router.route("/users")
     .get(protect, adminProtect, getUsers);
@@ -15,5 +20,7 @@ router.route("/users/:id")
     .delete(protect, adminProtect, deleteUser);
 router.route("/products")
     .post(protect, adminProtect, createProduct);
+router.route("/products/:id")
+    .delete(protect, adminProtect, deleteProduct);
 
 export default router;
