@@ -29,7 +29,6 @@ const AdminProductList = ({ history, match }) => {
   const productCreate = useSelector(state => state.productCreate);
   const { loading: loadingCreateProduct, 
           success: successCreateProduct,
-          product: createdProduct, 
           error: errorCreateProduct } = productCreate;
   
   const productUpdate = useSelector(state => state.productUpdate);
@@ -96,8 +95,7 @@ const AdminProductList = ({ history, match }) => {
       brand, 
       category
     }));
-    
-  };
+  }; 
 
   const deleteProductHandler = (id) => {
     if (window.confirm("Вы действительно хотите удалить пользователя?")) {
@@ -109,6 +107,7 @@ const AdminProductList = ({ history, match }) => {
     <>
       {successDeleteProduct && <Message variant="danger">Товар удален</Message>}
       {successCreateProduct && <Message variant="success">Товар создан</Message>}
+      {successUpdateProduct && <Message variant="success">Товар обновлен</Message>}
       <Row className="align-items-center">
         <Col>
           <h2>Список товаров</h2>

@@ -13,8 +13,8 @@ const ProductDetail = ({ history, match }) => {
   const dispatch = useDispatch();
 
   const productId = match.params.id;
+  
   const productDetails = useSelector((state) => state.productDetails);
-
   const { loading, product, error } = productDetails;
 
   useEffect(() => {

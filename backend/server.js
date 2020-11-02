@@ -1,5 +1,6 @@
 import express from 'express'
 import dotenv from "dotenv";
+import path from 'path';
 import colors from "colors";
 import connectDB from "./config/db";
 
@@ -10,6 +11,7 @@ import productRoutes from './routes/product.routes';
 import userRoutes from './routes/user.routes';
 import adminRoutes from './routes/admin.routes';
 import orderRoutes from './routes/order.routes';
+import uploadRoutes from './routes/upload.routes';
 
 dotenv.config();
 
@@ -30,7 +32,11 @@ app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/orders", orderRoutes);
+app.use("/api/upload", uploadRoutes);
 app.get("/api/config/paypal", orderController.payingOrder);
+
+const __dirname = path.resolve();
+app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 app.use((req, res, next) => {
   console.log(req.originalUrl);
