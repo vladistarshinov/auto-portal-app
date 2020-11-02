@@ -5,8 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Row, Col, Table, Modal, Figure, Button } from "bootstrap-4-react";
 import { Form } from 'react-bootstrap';
 import { listOfProduct } from "../redux/actions/product.actions";
-import { createProduct, removeProduct } from "../redux/actions/admin.actions";
-import { PRODUCT_CREATE_RESET } from "../redux/constants/admin.constants";
+import { createProduct, updateProduct, removeProduct } from "../redux/actions/admin.actions";
+import { PRODUCT_CREATE_RESET, PRODUCT_UPDATE_RESET } from "../redux/constants/admin.constants";
 import FormContainer from "../components/FormContainer";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
@@ -14,6 +14,7 @@ import Message from "../components/Message";
 const AdminProductList = ({ history, match }) => {
   const dispatch = useDispatch();
 
+  const [id, setId] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
@@ -30,6 +31,11 @@ const AdminProductList = ({ history, match }) => {
           success: successCreateProduct,
           product: createdProduct, 
           error: errorCreateProduct } = productCreate;
+  
+  const productUpdate = useSelector(state => state.productUpdate);
+  const { loading: loadingUpdateProduct, 
+          success: successUpdateProduct,
+          error: errorUpdateProduct } = productUpdate;
 
   const productRemove = useSelector(state => state.productRemove);
   const { loading: loadingDeleteProduct, 
@@ -40,32 +46,57 @@ const AdminProductList = ({ history, match }) => {
   const { userInfo } = userLogin;
 
   useEffect(() => {
+    if (!userInfo.isAdmin) {
+      history.push("/login");
+    } else {
+      dispatch(listOfProduct());
+    }
+    
     if (successCreateProduct) {
       dispatch({ type: PRODUCT_CREATE_RESET });
     }
-    if (userInfo && userInfo.isAdmin) {
-      dispatch(listOfProduct());
-    } else {
-      history.push("/login");
+
+    if (successUpdateProduct) {
+      dispatch({ type: PRODUCT_UPDATE_RESET });
     }
-  }, [dispatch, history, userInfo, successCreateProduct, successDeleteProduct]);
-
-  const editProductHandler = () => {
-
-  };
+  }, [dispatch, history, userInfo, successCreateProduct, successUpdateProduct, successDeleteProduct]);
 
   const submitProductAddHandler = () => {
     dispatch(createProduct({
-      user: userInfo._id,
       name, 
       description, 
       image, 
       price, 
       countInStock, 
       brand, 
-      category,
-      numReviews: 0
+      category
     }));
+  };
+
+  const editProductHandler = (productId) => {
+    const product = products.find((product) => product._id == productId);
+    setName(product.name);
+    setDescription(product.description);
+    setImage(product.image);
+    setPrice(product.price);
+    setCountInStock(product.countInStock);
+    setBrand(product.brand);
+    setCategory(product.category);
+    setId(product._id);
+  };
+
+  const submitProductEditHandler = () => {
+    dispatch(updateProduct({
+      _id: id,
+      name, 
+      description, 
+      image, 
+      price, 
+      countInStock, 
+      brand, 
+      category
+    }));
+    
   };
 
   const deleteProductHandler = (id) => {
@@ -76,7 +107,6 @@ const AdminProductList = ({ history, match }) => {
 
   return (
     <>
-      {loadingDeleteProduct && <Loader />}
       {successDeleteProduct && <Message variant="danger">Товар удален</Message>}
       {successCreateProduct && <Message variant="success">Товар создан</Message>}
       <Row className="align-items-center">
@@ -163,111 +193,233 @@ const AdminProductList = ({ history, match }) => {
                     <span aria-hidden="true">&times;</span>
                   </Modal.Close>
                 </Modal.Header>
-                <Modal.Body> 
-                  {loadingCreateProduct ? (
+                  {loadingCreateProduct || loadingDeleteProduct && <Loader />}
+                  {errorCreateProduct && <Message variant="danger">{errorCreateProduct}</Message>}
+                  {loading ? (
                     <Loader />
-                  ) : errorCreateProduct ? (
-                    <Message variant="danger">{errorCreateProduct}</Message>
+                  ) : error ? (
+                    <Message variant="danger">{error}</Message>
                   ) : (
                     <FormContainer>
                       <Form onSubmit={submitProductAddHandler}>      
-                        <Form.Group>
-                          <label>Название товара</label>
-                          <Form.Control
-                            type="name"
-                            id="nameForm"
-                            placeholder="Введите название товара"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                          />
-                        </Form.Group>
-                        <Form.Group>
-                          <label>Описание</label>
-                          <Form.Control
-                            type="text"
-                            id="descriptionForm"
-                            placeholder="Введите описание товара"
-                            value={description}
-                            onChange={(e) => setDescription(e.target.value)}
-                          />
-                        </Form.Group>
-                        <Form.Group>
-                            <label>Фото товара</label>
+                        <Modal.Body>
+                          <Form.Group>
+                            <label>Название товара</label>
                             <Form.Control
-                                type="text"
-                                id="photoForm"
-                                placeholder="Введите ссылку на фото"
-                                value={image}
-                                onChange={(e) => setImage(e.target.value)}
+                              type="name"
+                              id="nameForm"
+                              placeholder="Введите название товара"
+                              value={name}
+                              onChange={(e) => setName(e.target.value)}
                             />
-                        </Form.Group>
-                        <Row>
-                          <Col>
-                            <Form.Group>
-                              <label>Цена</label>
-                              <Form.Control
-                                  type="number"
-                                  id="priceForm"
-                                  placeholder="Введите цену"
-                                  value={price}
-                                  onChange={(e) => setPrice(e.target.value)}
-                              />
-                            </Form.Group>
-                          </Col>
-                          <Col>
-                            <Form.Group>
-                              <label>Количество</label>
-                              <Form.Control
-                                  type="number"
-                                  id="countInStockForm"
-                                  placeholder="Введите кол-во"
-                                  value={countInStock}
-                                  onChange={(e) => setCountInStock(e.target.value)}
-                              />
-                            </Form.Group>
-                          </Col>
-                        </Row>
-                        <Row>
-                          <Col>
-                            <Form.Group>
-                              <label>Категория</label>
+                          </Form.Group>
+                          <Form.Group>
+                            <label>Описание</label>
+                            <Form.Control
+                              type="text"
+                              id="descriptionForm"
+                              placeholder="Введите описание товара"
+                              value={description}
+                              onChange={(e) => setDescription(e.target.value)}
+                            />
+                          </Form.Group>
+                          <Form.Group>
+                              <label>Фото товара</label>
                               <Form.Control
                                   type="text"
-                                  id="categoryForm"
-                                  placeholder="Введите категорию"
-                                  value={category}
-                                  onChange={(e) => setCategory(e.target.value)}
+                                  id="photoForm"
+                                  placeholder="Введите ссылку на фото"
+                                  value={image}
+                                  onChange={(e) => setImage(e.target.value)}
                               />
-                            </Form.Group>
-                          </Col>
-                          <Col>
-                            <Form.Group>
-                              <label>Бренд</label>
-                              <Form.Control
-                                  type="text"
-                                  id="brandForm"
-                                  placeholder="Введите бренд"
-                                  value={brand}
-                                  onChange={(e) => setBrand(e.target.value)}
-                              />
-                            </Form.Group>
-                          </Col>
-                        </Row>
-                        <Row 
-                          style={{
-                          display: "flex",
-                          justifyContent: "center"
-                          }}
-                        >
-                          <Button secondary data-dismiss="modal" style={{ marginRight: '0.3rem' }}>
-                            Закрыть
-                          </Button>
-                          <Button type="submit" dark>Сохранить</Button>
-                        </Row>
+                          </Form.Group>
+                          <Row>
+                            <Col>
+                              <Form.Group>
+                                <label>Цена</label>
+                                <Form.Control
+                                    type="number"
+                                    id="priceForm"
+                                    placeholder="Введите цену"
+                                    value={price}
+                                    onChange={(e) => setPrice(e.target.value)}
+                                />
+                              </Form.Group>
+                            </Col>
+                            <Col>
+                              <Form.Group>
+                                <label>Количество</label>
+                                <Form.Control
+                                    type="number"
+                                    id="countInStockForm"
+                                    placeholder="Введите кол-во"
+                                    value={countInStock}
+                                    onChange={(e) => setCountInStock(e.target.value)}
+                                />
+                              </Form.Group>
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col>
+                              <Form.Group>
+                                <label>Категория</label>
+                                <Form.Control
+                                    type="text"
+                                    id="categoryForm"
+                                    placeholder="Введите категорию"
+                                    value={category}
+                                    onChange={(e) => setCategory(e.target.value)}
+                                />
+                              </Form.Group>
+                            </Col>
+                            <Col>
+                              <Form.Group>
+                                <label>Бренд</label>
+                                <Form.Control
+                                    type="text"
+                                    id="brandForm"
+                                    placeholder="Введите бренд"
+                                    value={brand}
+                                    onChange={(e) => setBrand(e.target.value)}
+                                />
+                              </Form.Group>
+                            </Col>
+                          </Row>
+                          <Row 
+                            style={{
+                            display: "flex",
+                            justifyContent: "center"
+                            }}
+                          >
+                            <Button secondary data-dismiss="modal" style={{ marginRight: '0.3rem' }}>
+                              Закрыть
+                            </Button>
+                            <Button type="submit" dark>Сохранить</Button>
+                          </Row>
+                        </Modal.Body>
                       </Form>
                     </FormContainer>
                   )}
-                </Modal.Body>
+              </Modal.Content>
+            </Modal.Dialog>
+          </Modal>
+          {/* Modal */}
+          <Modal id="editModal" fade>
+            <Modal.Dialog style={{ maxWidth: '70vw' }}>
+              <Modal.Content>
+                <Modal.Header>
+                  <Modal.Title>Изменение данных о товаре</Modal.Title>
+                  <Modal.Close>
+                    <span aria-hidden="true">&times;</span>
+                  </Modal.Close>
+                </Modal.Header> 
+                  {loadingUpdateProduct && <Loader />}
+                  {errorUpdateProduct && <Message variant="danger">{errorUpdateProduct}</Message>}
+                  {loading ? (
+                    <Loader />
+                  ) : error ? (
+                    <Message variant="danger">{error}</Message>
+                  ) : (
+                    <FormContainer>
+                      <Form onSubmit={submitProductEditHandler}>
+                        <Modal.Body>      
+                          <Form.Group>
+                            <label>Название товара</label>
+                            <Form.Control
+                              type="name"
+                              id="nameForm"
+                              placeholder="Введите название товара"
+                              value={name}
+                              onChange={(e) => setName(e.target.value)}
+                            />
+                          </Form.Group>
+                          <Form.Group>
+                            <label>Описание</label>
+                            <Form.Control
+                              type="text"
+                              id="descriptionForm"
+                              placeholder="Введите описание товара"
+                              value={description}
+                              onChange={(e) => setDescription(e.target.value)}
+                            />
+                          </Form.Group>
+                          <Form.Group>
+                              <label>Фото товара</label>
+                              <Form.Control
+                                  type="text"
+                                  id="photoForm"
+                                  placeholder="Введите ссылку на фото"
+                                  value={image}
+                                  onChange={(e) => setImage(e.target.value)}
+                              />
+                          </Form.Group>
+                          <Row>
+                            <Col>
+                              <Form.Group>
+                                <label>Цена</label>
+                                <Form.Control
+                                    type="number"
+                                    id="priceForm"
+                                    placeholder="Введите цену"
+                                    value={price}
+                                    onChange={(e) => setPrice(e.target.value)}
+                                />
+                              </Form.Group>
+                            </Col>
+                            <Col>
+                              <Form.Group>
+                                <label>Количество</label>
+                                <Form.Control
+                                    type="number"
+                                    id="countInStockForm"
+                                    placeholder="Введите кол-во"
+                                    value={countInStock}
+                                    onChange={(e) => setCountInStock(e.target.value)}
+                                />
+                              </Form.Group>
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col>
+                              <Form.Group>
+                                <label>Категория</label>
+                                <Form.Control
+                                    type="text"
+                                    id="categoryForm"
+                                    placeholder="Введите категорию"
+                                    value={category}
+                                    onChange={(e) => setCategory(e.target.value)}
+                                />
+                              </Form.Group>
+                            </Col>
+                            <Col>
+                              <Form.Group>
+                                <label>Бренд</label>
+                                <Form.Control
+                                    type="text"
+                                    id="brandForm"
+                                    placeholder="Введите бренд"
+                                    value={brand}
+                                    onChange={(e) => setBrand(e.target.value)}
+                                />
+                              </Form.Group>
+                            </Col>
+                          </Row>
+                          <Row 
+                            style={{
+                            display: "flex",
+                            justifyContent: "center"
+                            }}
+                          >
+                            <Button secondary data-dismiss="modal" style={{ marginRight: '0.3rem' }}>
+                              Закрыть
+                            </Button>
+                            <Button type="submit" dark>Обновить</Button>
+                          </Row>
+                        </Modal.Body>
+                      </Form>
+                    </FormContainer>
+                  )}
               </Modal.Content>
             </Modal.Dialog>
           </Modal>

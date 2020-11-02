@@ -77,7 +77,7 @@ adminController.createProduct = asyncHandler(async (req, res) => {
             brand, 
             category } = req.body;
 
-    const existProduct = await User.findOne({ name });
+    const existProduct = await Product.findOne({ name });
 
     if (existProduct) {
         res.status(400);
@@ -98,6 +98,45 @@ adminController.createProduct = asyncHandler(async (req, res) => {
 
     const createdProduct = await product.save();
     res.status(201).json(createdProduct);
+    
+});
+
+// @desc     Update product
+// @route    PUT /api/admin/products/:id
+// @access   Private/Admin
+adminController.updateProduct = asyncHandler(async (req, res) => {
+    const { name, 
+            description, 
+            image, 
+            price, 
+            countInStock, 
+            brand, 
+            category } = req.body;
+
+    const existProduct = await Product.findOne({ name });
+
+    if (existProduct) {
+        res.status(400);
+        throw new Error("Товар с таким названием уже существует");
+    } 
+
+    const product = await Product.findById(req.params.id);
+
+    if (product) {
+        product.name = name;
+        product.description = description;
+        product.image = image;
+        product.price = price;
+        product.countInStock = countInStock;
+        product.brand = brand;
+        product.category = category;
+
+        const updatedProduct = await product.save();
+        res.json(updatedProduct);
+    } else {
+        res.status(404);
+        throw new Error("Товар не найден");
+    }
     
 });
 

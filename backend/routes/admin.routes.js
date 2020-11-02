@@ -9,7 +9,8 @@ const { getUsers,
         getUserById, 
         updateUser, 
         deleteUser, 
-        createProduct, 
+        createProduct,
+        updateProduct, 
         deleteProduct } = adminController;
 
 router.route("/users")
@@ -21,6 +22,7 @@ router.route("/users/:id")
 router.route("/products")
     .post(protect, adminProtect, createProduct);
 router.route("/products/:id")
+    .put(protect, adminProtect, updateProduct)
     .delete(protect, adminProtect, deleteProduct);
 
 export default router;

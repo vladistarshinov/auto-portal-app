@@ -15,6 +15,10 @@ import { USER_LIST_REQUEST,
     PRODUCT_CREATE_SUCCESS,
     PRODUCT_CREATE_FAIL,
     PRODUCT_CREATE_RESET,
+    PRODUCT_UPDATE_REQUEST,
+    PRODUCT_UPDATE_SUCCESS,
+    PRODUCT_UPDATE_FAIL,
+    PRODUCT_UPDATE_RESET,
     PRODUCT_REMOVE_REQUEST,
     PRODUCT_REMOVE_SUCCESS,
     PRODUCT_REMOVE_FAIL } from "../constants/admin.constants";
@@ -159,6 +163,34 @@ const createProduct = (product) => async (dispatch, getState) => {
     }
 };
 
+const updateProduct = (product) => async (dispatch, getState) => {
+    try {
+        dispatch({ type: PRODUCT_UPDATE_REQUEST });
+
+        const { userLogin: { userInfo } } = getState();
+
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        };
+
+        const { data } = await axios.put(`/api/admin/products/${product._id}`, product, config);
+
+        dispatch({ type: PRODUCT_UPDATE_SUCCESS }); 
+        
+    } catch (error) {
+        const message = error.response && error.response.data.message 
+            ? error.response.data.message
+            : error.message;
+        dispatch({ 
+            type: PRODUCT_UPDATE_FAIL, 
+            payload: message
+        }); 
+    }
+};
+
 const removeProduct = (id) => async (dispatch, getState) => {
     try {
         dispatch({ type: PRODUCT_REMOVE_REQUEST });
@@ -191,4 +223,5 @@ export { listOfUsers,
         updateUser, 
         removeUser, 
         createProduct,
+        updateProduct,
         removeProduct };

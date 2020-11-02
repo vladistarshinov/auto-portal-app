@@ -10,6 +10,7 @@ import { userDetailsForAdminReducer,
         userRemoveReducer, 
         userUpdateReducer,
         productCreateReducer,
+        productUpdateReducer,
         productRemoveReducer } from './reducers/admin.reducers';
 import { orderCreateReducer, 
         orderDetailsReducer, 
@@ -33,6 +34,7 @@ const reducer = combineReducers({
     userUpdate: userUpdateReducer,
     userDetailsForAdmin: userDetailsForAdminReducer,
     productCreate: productCreateReducer,
+    productUpdate: productUpdateReducer,
     productRemove: productRemoveReducer
 });
 
