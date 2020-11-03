@@ -79,6 +79,25 @@ orderController.updateStatusOrderForPaying = asyncHandler(async (req, res) => {
     }
 });
 
+// @desc     Update status of order for delivering
+// @route    PUT /api/orders/:id/deliver
+// @access   Private/Admin
+orderController.updateStatusOrderForDelivering = asyncHandler(async (req, res) => {
+    const order = await Order.findById(req.params.id);
+
+    if (order) {
+        order.isDelivered = true;
+        order.deliveredAt = Date.now();
+
+        const updatedOrder = await order.save();
+
+        res.json(updatedOrder);
+    } else {
+        res.status(404);
+        throw new Error(`Заказ ${req.params.id} не найден`);
+    }
+});
+
 // @desc     Get user's orders
 // @route    GET /api/orders/myorders
 // @access   Private

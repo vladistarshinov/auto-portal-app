@@ -8,11 +8,11 @@ import { Link } from "react-router-dom";
 import { Card } from "react-bootstrap";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import { ORDER_UPDATE_STATUS_FOR_PAYING_RESET } from '../redux/constants/order.constants'
-import {
-  getOrderDetails,
-  updateStatusPayingOrder,
-} from "../redux/actions/order.actions";
+import { ORDER_UPDATE_STATUS_FOR_PAYING_RESET,
+        ORDER_DELIVER_RESET } from '../redux/constants/order.constants'
+import { getOrderDetails,
+        updateStatusPayingOrder,
+        updateStatusDeliveringOrder } from "../redux/actions/order.actions";
 import { DateTimeFilter } from "../filters/DateTimeFilter.js";
 
 import jsPDF from "jspdf";
@@ -23,6 +23,9 @@ const Order = (props) => {
 
   const orderId = props.match.params.id;
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
   const orderDetails = useSelector((state) => state.orderDetails);
   const { order, loading, error } = orderDetails;
 
@@ -31,6 +34,12 @@ const Order = (props) => {
     loading: loadingPayingProcess,
     success: successPayingProcess,
   } = orderPayingStatus;
+
+  const orderDeliveringStatus = useSelector((state) => state.orderDeliveringStatus);
+  const {
+    loading: loadingDeliveringProcess,
+    success: successDeliveringProcess,
+  } = orderDeliveringStatus;
 
   const [sdkPayPalReady, setSdkPayPalReady] = useState(false);
 
@@ -46,8 +55,9 @@ const Order = (props) => {
       };
       document.body.appendChild(script);
     };
-    if (!order || successPayingProcess) {
+    if (!order || successPayingProcess || successDeliveringProcess ) {
       dispatch({ type: ORDER_UPDATE_STATUS_FOR_PAYING_RESET });
+      dispatch({ type: ORDER_DELIVER_RESET });
       dispatch(getOrderDetails(orderId));
     } else if (!order.isPaid) {
       if (!window.paypal) {
@@ -56,7 +66,7 @@ const Order = (props) => {
         setSdkPayPalReady(true);
       }
     }
-  }, [dispatch, orderId, successPayingProcess, order]);
+  }, [dispatch, orderId, successPayingProcess, successDeliveringProcess, order]);
 
   const generateOrderPdfHandler = () => {
     const printOrder = document.getElementById("printOrder");
@@ -83,6 +93,10 @@ const Order = (props) => {
   const successPaymentHandler = (paymentResult) => {
     console.log(paymentResult);
     dispatch(updateStatusPayingOrder(orderId, paymentResult))
+  };
+
+  const deliverHandler = () => {
+    dispatch(updateStatusDeliveringOrder(order));
   };
 
   return (
@@ -278,13 +292,13 @@ const Order = (props) => {
                     >
                       {order.isPaid &&
                         (order.isDelivered ? (
-                          <Message variant="success">
-                            Доставлено
+                          <Message variant="info">
+                            Отправлено
                             <br />
                             {DateTimeFilter(order.deliveredAt)}
                           </Message>
                         ) : (
-                          <Message variant="danger">Не доставлено</Message>
+                          <Message variant="danger">Не отправлено</Message>
                         ))}
                     </div>
                     {!order.isPaid &&
@@ -294,6 +308,14 @@ const Order = (props) => {
                         </Button>
                       </div>
                     }
+                    {loadingDeliveringProcess && <Loader />}
+                    {userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered && (
+                      <div className="text-center">
+                        <Button type="button" dark onClick={deliverHandler}>
+                          Отправить
+                        </Button>
+                      </div>
+                    )}
                   </Col>
                 </Row>
               </Col>

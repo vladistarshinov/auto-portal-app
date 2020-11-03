@@ -33,17 +33,6 @@ const AdminOrderList = ({ history }) => {
         <Col>
           <h2>Список заказов</h2>
         </Col>
-        <Col className="text-right">
-          <Button 
-            className="my-3" 
-            data-toggle="modal" 
-            data-target="#createModal" 
-            light
-          >
-            <i className="fas fa-plus" style={{ paddingRight: '0.5rem' }}></i>
-            <span>Добавить</span>
-          </Button>
-        </Col>
       </Row>
       {loading ? (
         <Loader />
