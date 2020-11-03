@@ -48,7 +48,7 @@ const AdminOrderList = ({ history }) => {
                 <th>Дата</th>
                 <th>К оплате</th>
                 <th>Статус оплаты</th>
-                <th>Статус доставки</th>
+                <th>Статус отправки</th>
                 <th></th>
               </tr>
             </thead>
