@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import { Link } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,6 +15,7 @@ import Message from "../components/Message";
 const AdminProductList = ({ history, match }) => {
   const dispatch = useDispatch();
 
+  const imgSrc = localStorage.getItem("productImage");
   const [id, setId] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -22,6 +24,7 @@ const AdminProductList = ({ history, match }) => {
   const [countInStock, setCountInStock] = useState(0);
   const [brand, setBrand] = useState("");
   const [category, setCategory] = useState("");
+  const [uploading, setUploading] = useState(false);
 
   const productList = useSelector(state => state.productList);
   const { loading, products, error } = productList;
@@ -59,6 +62,32 @@ const AdminProductList = ({ history, match }) => {
       dispatch({ type: PRODUCT_UPDATE_RESET });
     }
   }, [dispatch, history, userInfo, successCreateProduct, successUpdateProduct, successDeleteProduct]);
+
+  const uploadFileHandler = async (e) => {
+    const file = e.target.files[0];
+    console.log(file);
+    const formData = new FormData();
+    formData.append("image", file);
+    console.log(formData);
+    setUploading(true);
+
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }
+
+      let { data } = await axios.post("/api/upload", formData, config);
+
+      setImage(data);
+      localStorage.setItem("productImage", data);
+      setUploading(false);
+    } catch(error) {
+      console.error(error);
+      setUploading(false);
+    }
+  };
 
   const submitProductAddHandler = () => {
     dispatch(createProduct({
@@ -231,6 +260,13 @@ const AdminProductList = ({ history, match }) => {
                                   value={image}
                                   onChange={(e) => setImage(e.target.value)}
                               />
+                              <Form.File 
+                                id="image-file"
+                                label="Выберите файл"
+                                custom
+                                onChange={uploadFileHandler}
+                              />
+                              {uploading && <Loader />}
                           </Form.Group>
                           <Row>
                             <Col>
@@ -351,6 +387,13 @@ const AdminProductList = ({ history, match }) => {
                                   value={image}
                                   onChange={(e) => setImage(e.target.value)}
                               />
+                              <Form.File 
+                                id="image-file"
+                                label="Выберите файл"
+                                custom
+                                onChange={uploadFileHandler}
+                              />
+                              {uploading && <Loader />}
                           </Form.Group>
                           <Row>
                             <Col>

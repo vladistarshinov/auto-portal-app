@@ -21,7 +21,7 @@ function checkFileType(file, cb) {
     if (extname && mimetype) {
         return cb(null, true);
     } else {
-        cb("Можно загружать только фотографии");
+        cb('Можно загружать только фотографии');
     }
 }
 
@@ -32,7 +32,7 @@ const upload = multer({
     }
 });
 
-router.post("/", upload.single("image"), (req, res) => {
+router.post('/', upload.single("image"), (req, res) => {
     res.send(`/${req.file.path}`);
 })
 
