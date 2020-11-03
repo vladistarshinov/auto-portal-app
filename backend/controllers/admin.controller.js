@@ -1,6 +1,7 @@
 import asyncHandler from 'express-async-handler';
 import User from '../models/user.model';
 import Product from '../models/product.model';
+import Order from '../models/order.model';
 
 const adminController = {};
 
@@ -153,6 +154,14 @@ adminController.deleteProduct = asyncHandler(async (req, res) => {
         res.status(404);
         throw new Error("Товар не найден");
     }
+});
+
+// @desc     Get all orders
+// @route    GET /api/admin/orders
+// @access   Private/Admin
+adminController.getOrders = asyncHandler(async (req, res) => {
+    const orders = await Order.find({}).populate('user', 'id name');
+    res.json(orders);
 });
 
 export default adminController;

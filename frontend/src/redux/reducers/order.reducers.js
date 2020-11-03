@@ -1,32 +1,32 @@
-import { CRDER_CREATE_REQUEST, 
-    CRDER_CREATE_SUCCESS, 
-    CRDER_CREATE_FAIL, 
-    CRDER_DETAILS_REQUEST,
-    CRDER_DETAILS_SUCCESS,
-    CRDER_DETAILS_FAIL, 
-    CRDER_UPDATE_STATUS_FOR_PAYING_REQUEST,
-    CRDER_UPDATE_STATUS_FOR_PAYING_SUCCESS,
-    CRDER_UPDATE_STATUS_FOR_PAYING_FAIL,
-    CRDER_UPDATE_STATUS_FOR_PAYING_RESET,
-    MY_CRDERS_LIST_REQUEST,
-    MY_CRDERS_LIST_SUCCESS,
-    MY_CRDERS_LIST_FAIL,
-    MY_CRDERS_LIST_RESET,
+import { ORDER_CREATE_REQUEST, 
+    ORDER_CREATE_SUCCESS, 
+    ORDER_CREATE_FAIL, 
+    ORDER_DETAILS_REQUEST,
+    ORDER_DETAILS_SUCCESS,
+    ORDER_DETAILS_FAIL, 
+    ORDER_UPDATE_STATUS_FOR_PAYING_REQUEST,
+    ORDER_UPDATE_STATUS_FOR_PAYING_SUCCESS,
+    ORDER_UPDATE_STATUS_FOR_PAYING_FAIL,
+    ORDER_UPDATE_STATUS_FOR_PAYING_RESET,
+    MY_ORDERS_LIST_REQUEST,
+    MY_ORDERS_LIST_SUCCESS,
+    MY_ORDERS_LIST_FAIL,
+    MY_ORDERS_LIST_RESET,
     ORDER_DETAILS_RESET } from "../constants/order.constants";
 
 const orderCreateReducer = (state = {}, action) => {
     switch(action.type) {
-        case CRDER_CREATE_REQUEST:
+        case ORDER_CREATE_REQUEST:
             return {
                 loading: true
             };
-        case CRDER_CREATE_SUCCESS:
+        case ORDER_CREATE_SUCCESS:
             return {
                 loading: false,
                 success: true,
                 order: action.payload
             };
-        case CRDER_CREATE_FAIL:
+        case ORDER_CREATE_FAIL:
             return {
                 loading: false,
                 error: action.payload
@@ -38,17 +38,17 @@ const orderCreateReducer = (state = {}, action) => {
 
 const orderDetailsReducer = (state = { loading: true, orderItems: [], shippingAddress: {} }, action) => {
     switch(action.type) {
-        case CRDER_DETAILS_REQUEST:
+        case ORDER_DETAILS_REQUEST:
             return {
                 ...state,
                 loading: true
             };
-        case CRDER_DETAILS_SUCCESS:
+        case ORDER_DETAILS_SUCCESS:
             return {
                 loading: false,
                 order: action.payload
             };
-        case CRDER_DETAILS_FAIL:
+        case ORDER_DETAILS_FAIL:
             return {
                 loading: false,
                 error: action.payload
@@ -60,21 +60,21 @@ const orderDetailsReducer = (state = { loading: true, orderItems: [], shippingAd
 
 const orderPayReducer = (state = {}, action) => {
     switch(action.type) {
-        case CRDER_UPDATE_STATUS_FOR_PAYING_REQUEST:
+        case ORDER_UPDATE_STATUS_FOR_PAYING_REQUEST:
             return {
                 loading: true
             };
-        case CRDER_UPDATE_STATUS_FOR_PAYING_SUCCESS:
+        case ORDER_UPDATE_STATUS_FOR_PAYING_SUCCESS:
             return {
                 loading: false,
                 success: true
             };
-        case CRDER_UPDATE_STATUS_FOR_PAYING_FAIL:
+        case ORDER_UPDATE_STATUS_FOR_PAYING_FAIL:
             return {
                 loading: false,
                 error: action.payload
             };
-        case CRDER_UPDATE_STATUS_FOR_PAYING_RESET:
+        case ORDER_UPDATE_STATUS_FOR_PAYING_RESET:
             return {};
         default: 
             return state;
@@ -83,21 +83,21 @@ const orderPayReducer = (state = {}, action) => {
 
 const myOrderListReducer = (state = { orders: [] }, action) => {
     switch(action.type) {
-        case MY_CRDERS_LIST_REQUEST:
+        case MY_ORDERS_LIST_REQUEST:
             return {
                 loading: true
             };
-        case MY_CRDERS_LIST_SUCCESS:
+        case MY_ORDERS_LIST_SUCCESS:
             return {
                 loading: false,
                 orders: action.payload
             };
-        case MY_CRDERS_LIST_FAIL:
+        case MY_ORDERS_LIST_FAIL:
             return {
                 loading: false,
                 error: action.payload
             };
-        case MY_CRDERS_LIST_RESET:
+        case MY_ORDERS_LIST_RESET:
             return { orders: [] };
         default: 
             return state;

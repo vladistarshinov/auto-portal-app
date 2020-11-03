@@ -21,7 +21,10 @@ import { USER_LIST_REQUEST,
     PRODUCT_UPDATE_RESET,
     PRODUCT_REMOVE_REQUEST,
     PRODUCT_REMOVE_SUCCESS,
-    PRODUCT_REMOVE_FAIL } from "../constants/admin.constants";
+    PRODUCT_REMOVE_FAIL,
+    ORDER_LIST_REQUEST,
+    ORDER_LIST_SUCCESS,
+    ORDER_LIST_FAIL } from "../constants/admin.constants";
 import { USER_PROFILE_SUCCESS } from "../constants/user.constants";
 
 const listOfUsers = () => async (dispatch, getState) => {
@@ -218,10 +221,37 @@ const removeProduct = (id) => async (dispatch, getState) => {
     }
 };
 
+const listOfOrders = () => async (dispatch, getState) => {
+    try {
+        dispatch({ type: ORDER_LIST_REQUEST });
+
+        const { userLogin: { userInfo } } = getState();
+
+        const config = {
+            headers: {
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        };
+
+        const { data } = await axios.get('/api/admin/orders', config);
+
+        dispatch({ type: ORDER_LIST_SUCCESS, payload: data }); 
+    } catch (error) {
+        const message = error.response && error.response.data.message 
+            ? error.response.data.message
+            : error.message;
+        dispatch({ 
+            type: ORDER_LIST_FAIL, 
+            payload: message
+        }); 
+    }
+};
+
 export { listOfUsers, 
         getUserDetailsForAdmin, 
         updateUser, 
         removeUser, 
         createProduct,
         updateProduct,
-        removeProduct };
+        removeProduct,
+        listOfOrders };

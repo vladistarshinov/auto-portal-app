@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { Card } from "react-bootstrap";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import { CRDER_UPDATE_STATUS_FOR_PAYING_RESET } from '../redux/constants/order.constants'
+import { ORDER_UPDATE_STATUS_FOR_PAYING_RESET } from '../redux/constants/order.constants'
 import {
   getOrderDetails,
   updateStatusPayingOrder,
@@ -47,7 +47,7 @@ const Order = (props) => {
       document.body.appendChild(script);
     };
     if (!order || successPayingProcess) {
-      dispatch({ type: CRDER_UPDATE_STATUS_FOR_PAYING_RESET });
+      dispatch({ type: ORDER_UPDATE_STATUS_FOR_PAYING_RESET });
       dispatch(getOrderDetails(orderId));
     } else if (!order.isPaid) {
       if (!window.paypal) {

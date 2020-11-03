@@ -11,7 +11,8 @@ import { userDetailsForAdminReducer,
         userUpdateReducer,
         productCreateReducer,
         productUpdateReducer,
-        productRemoveReducer } from './reducers/admin.reducers';
+        productRemoveReducer,
+        orderListReducer } from './reducers/admin.reducers';
 import { orderCreateReducer, 
         orderDetailsReducer, 
         orderPayReducer, 
@@ -35,7 +36,8 @@ const reducer = combineReducers({
     userDetailsForAdmin: userDetailsForAdminReducer,
     productCreate: productCreateReducer,
     productUpdate: productUpdateReducer,
-    productRemove: productRemoveReducer
+    productRemove: productRemoveReducer,
+    orderList: orderListReducer
 });
 
 const cartProductItemsFromStorage = localStorage.getItem('cart') 

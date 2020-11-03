@@ -15,6 +15,7 @@ import PlaceOrder from './views/PlaceOrder';
 import Order from './views/Order';
 import AdminUsersList from './views/AdminUsersList';
 import AdminProductsList from './views/AdminProductsList';
+import AdminOrderList from './views/AdminOrderList';
 
 const App = () => {
   return (
@@ -33,7 +34,8 @@ const App = () => {
             <Route path="/placeorder" component={PlaceOrder} />
             <Route path="/order/:id" component={Order} />
             <Route path="/admin/users" component={AdminUsersList} />
-            <Route path="/admin/products-list" component={AdminProductsList} />
+            <Route path="/admin/products" component={AdminProductsList} />
+            <Route path="/admin/orders" component={AdminOrderList} />
             <Route path="/" component={Home} exact />
           </Container>
         </main>

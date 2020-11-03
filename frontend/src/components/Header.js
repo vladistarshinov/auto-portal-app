@@ -69,10 +69,10 @@ const Header = () => {
                           <LinkContainer bg="light" text="dark" to="/admin/users">
                             <Dropdown.Item>Пользователи</Dropdown.Item>
                           </LinkContainer>
-                          <LinkContainer bg="light" text="dark" to="/admin/products-list">
+                          <LinkContainer bg="light" text="dark" to="/admin/products">
                             <Dropdown.Item>Товары</Dropdown.Item>
                           </LinkContainer>
-                          <LinkContainer bg="light" text="dark" to="/admin/order-list">
+                          <LinkContainer bg="light" text="dark" to="/admin/orders">
                             <Dropdown.Item>Заказы</Dropdown.Item>
                           </LinkContainer>
                           <Dropdown.Divider />

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { Link } from "react-router-dom";
-import { LinkContainer } from "react-router-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col, Table, Modal, Figure, Button } from "bootstrap-4-react";
 import { Form } from 'react-bootstrap';
@@ -12,7 +11,7 @@ import FormContainer from "../components/FormContainer";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 
-const AdminProductList = ({ history, match }) => {
+const AdminProductList = ({ history }) => {
   const dispatch = useDispatch();
 
   const imgSrc = localStorage.getItem("productImage");
