@@ -34,6 +34,6 @@ const detailsOfProduct = (productId) => async (dispatch) => {
                 : error.message
         }); 
     }
-}
+};
 
-export { listOfProduct, detailsOfProduct }
+export { listOfProduct, detailsOfProduct };
