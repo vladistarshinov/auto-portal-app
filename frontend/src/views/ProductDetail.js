@@ -8,6 +8,7 @@ import Message from "../components/Message";
 import Rating from "../components/Rating";
 import Reviews from "../components/Reviews";
 import { Form } from "react-bootstrap";
+import { genEndOfNoun } from "../filters/GenEndOfNoun";
 
 const ProductDetail = ({ history, match }) => {
   const [quantity, setQuantity] = useState(1);
@@ -50,7 +51,7 @@ const ProductDetail = ({ history, match }) => {
                 </ListGroup.Item>
                 <ListGroup.Item className="d-inline-flex">
                   <Rating value={product.rating} />
-                  <span className="reviews">{product.numReviews} отзывов</span>
+                  <span className="reviews">{product.numReviews} {genEndOfNoun(product.numReviews, "отзыв", "отзыва", "отзывов")}</span>
                 </ListGroup.Item>
                 <ListGroup.Item>Цена: ${product.price}</ListGroup.Item>
                 <ListGroup.Item>Описание: {product.description}</ListGroup.Item>

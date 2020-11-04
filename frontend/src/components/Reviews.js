@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Row, Col, ListGroup, Button } from "bootstrap-4-react";
 
-import { createReview } from "../redux/actions/review.actions";
+import { createReview, removeReview } from "../redux/actions/review.actions";
 import { REVIEW_CREATE_RESET } from "../redux/constants/review.constants";
 import { DateTimeFilter } from "../filters/DateTimeFilter.js";
 import { detailsOfProduct } from "../redux/actions/product.actions";
@@ -24,6 +24,9 @@ const Reviews = ({ productId }) => {
 
     const reviewCreate = useSelector((state) => state.reviewCreate);
     const { error: errorCreatingReview, success: successCreatingReview } = reviewCreate;
+
+    const reviewRemove = useSelector((state) => state.reviewRemove);
+    const { error: errorRemovingReview, success: successRemovingReview } = reviewRemove;
   
     const userLogin = useSelector((state) => state.userLogin);
     const { userInfo } = userLogin;
@@ -35,7 +38,7 @@ const Reviews = ({ productId }) => {
             dispatch({ type: REVIEW_CREATE_RESET });
         }
         dispatch(detailsOfProduct(productId));
-    }, [dispatch, successCreatingReview, successCreatingReview, productId])
+    }, [dispatch, successCreatingReview, successRemovingReview, productId])
 
     const submitReviewCreateHandler = (e) => {
         e.preventDefault();
@@ -43,6 +46,11 @@ const Reviews = ({ productId }) => {
             rating,
             comment
         }));
+    };
+
+    const submitReviewDeleteHandler = (productId, reviewId) => {
+        console.log(productId, reviewId);
+        dispatch(removeReview(productId, reviewId));
     };
 
     return (
@@ -53,7 +61,14 @@ const Reviews = ({ productId }) => {
               <ListGroup flush>
                 {product.reviews.map(review => (
                   <ListGroup.Item key={review._id} style={{ backgroundColor: '#fafafa' }}>
-                    <strong>{review.name}</strong>
+                    <strong>{review.name}{'     '}</strong>
+                    {userInfo && userInfo.isAdmin && (
+                        <i 
+                          className="fas fa-times" 
+                          onClick={() => submitReviewDeleteHandler(productId, review._id)}
+                          style={{ cursor: 'pointer', color: 'red' }}
+                        ></i>
+                    )}
                     <Rating value={review.rating} />
                     <small>{DateTimeFilter(review.createdAt)}</small>
                     <p style={{ marginTop: '1rem' }}>{review.comment}</p>
@@ -66,6 +81,9 @@ const Reviews = ({ productId }) => {
                   )}
                   {errorCreatingReview && (
                     <Message variant="danger">{errorCreatingReview}</Message>
+                  )}
+                   {errorRemovingReview && (
+                    <Message variant="danger">{errorRemovingReview}</Message>
                   )}
                   {userInfo ? ( 
                     <Form onSubmit={submitReviewCreateHandler}>

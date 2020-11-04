@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Card } from "react-bootstrap";
 import Rating from "./Rating";
+import { genEndOfNoun } from "../filters/GenEndOfNoun";
 
 const ProductList = ({ product }) => {
 
@@ -27,7 +28,7 @@ const ProductList = ({ product }) => {
                     <Rating 
                         value={product.rating}
                     />
-                    <span className="reviews">{product.numReviews} отзывов</span>
+                    <span className="reviews">{product.numReviews} {genEndOfNoun(product.numReviews, "отзыв", "отзыва", "отзывов")}</span>
                 </Card.Text>
 
                 <Card.Text as="h4" className="text-center">
