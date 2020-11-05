@@ -9,6 +9,7 @@ import FormContainer from "../components/FormContainer";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { DateFilter } from "../filters/DateTimeFilter.js";
+import styled from 'styled-components';
 
 const AdminOrderList = ({ history }) => {
   const dispatch = useDispatch();
@@ -27,11 +28,28 @@ const AdminOrderList = ({ history }) => {
     }
   }, [dispatch, history, userInfo]);
 
+  const Title = styled.h2`
+    padding: 1rem 0;
+  `;
+
+  const TickIcon = styled.i`
+    color: green;
+  `;
+
+  const DaggerIcon = styled.i`
+    color: red;
+  `;
+
+  const LinkToOrderDetails = {
+    color: "navy",
+    textDecoration: "none"
+  };
+
   return (
     <>
       <Row className="align-items-center">
         <Col>
-          <h2>Список заказов</h2>
+          <Title>Список заказов</Title>
         </Col>
       </Row>
       {loading ? (
@@ -62,37 +80,32 @@ const AdminOrderList = ({ history }) => {
                   <td>
                     {order.isPaid ? (
                       <>
-                        <i
+                        <TickIcon
                           className="fas fa-check"
-                          style={{ color: "green" }}
-                        ></i>
+                        ></TickIcon>
                         <br />
                         {DateFilter(order.paidAt)}
                       </>
                     ) : (
-                      <i className="fas fa-times" style={{ color: "red" }}></i>
+                      <DaggerIcon className="fas fa-times"></DaggerIcon>
                     )}
                   </td>
                   <td>
                     {order.isDelivered ? (
                       <>
-                        <i
+                        <TickIcon
                           className="fas fa-check"
-                          style={{ color: "green" }}
-                        ></i>
+                        ></TickIcon>
                         <br />
                         {DateFilter(order.deliveredAt)}
                       </>
                     ) : (
-                      <i className="fas fa-times" style={{ color: "red" }}></i>
+                      <DaggerIcon className="fas fa-times"></DaggerIcon>
                     )}
                   </td>
                   <td>
                     <LinkContainer
-                      style={{
-                          color: "navy",
-                          textDecoration: "none",
-                      }}
+                      style={LinkToOrderDetails}
                       to={`/order/${order._id}`}
                       >
                         <Button

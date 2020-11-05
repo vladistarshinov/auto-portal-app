@@ -10,6 +10,7 @@ import { PRODUCT_CREATE_RESET, PRODUCT_UPDATE_RESET } from "../redux/constants/a
 import FormContainer from "../components/FormContainer";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
+import styled from 'styled-components';
 
 const AdminProductList = ({ history }) => {
   const dispatch = useDispatch();
@@ -131,6 +132,28 @@ const AdminProductList = ({ history }) => {
     }
   };
 
+  const Title = styled.h2`
+    padding: 1rem 0;
+  `;
+
+  const PlusIcon = styled.i`
+    padding-right: 0.5rem
+  `;
+
+  const LinkToProductDetails = {
+    color: 'navy',
+    textDecoration: 'none'
+  };
+
+  const ModalDialog = { 
+    maxWidth: '70vw' 
+  };
+
+  const CenterLayout = {
+    display: 'flex',
+    justifyContent: 'center'
+  };
+
   return (
     <>
       {successDeleteProduct && <Message variant="danger">Товар удален</Message>}
@@ -138,7 +161,7 @@ const AdminProductList = ({ history }) => {
       {successUpdateProduct && <Message variant="success">Товар обновлен</Message>}
       <Row className="align-items-center">
         <Col>
-          <h2>Список товаров</h2>
+          <Title>Список товаров</Title>
         </Col>
         <Col className="text-right">
           <Button 
@@ -147,7 +170,7 @@ const AdminProductList = ({ history }) => {
             data-target="#createModal" 
             light
           >
-            <i className="fas fa-plus" style={{ paddingRight: '0.5rem' }}></i>
+            <PlusIcon className="fas fa-plus"></PlusIcon>
             <span>Добавить</span>
           </Button>
         </Col>
@@ -175,10 +198,7 @@ const AdminProductList = ({ history }) => {
                   <td>{product._id}</td>
                   <td>
                     <Link
-                      style={{
-                        color: "navy",
-                        textDecoration: "none",
-                      }}
+                      style={LinkToProductDetails}
                       to={`/product/${product._id}`}
                     >
                       {product.name}
@@ -194,7 +214,6 @@ const AdminProductList = ({ history }) => {
                       warning
                       data-toggle="modal"
                       data-target="#editModal"
-                      style={{ marginRight: "0.5rem" }}
                     >
                       <i className="fas fa-edit"></i>
                     </Button>
@@ -212,7 +231,7 @@ const AdminProductList = ({ history }) => {
           </Table>
           {/* Modal */}
           <Modal id="createModal" fade>
-            <Modal.Dialog style={{ maxWidth: '70vw' }}>
+            <Modal.Dialog style={ModalDialog}>
               <Modal.Content>
                 <Modal.Header>
                   <Modal.Title>Создание нового товара</Modal.Title>
@@ -320,12 +339,9 @@ const AdminProductList = ({ history }) => {
                             </Col>
                           </Row>
                           <Row 
-                            style={{
-                            display: "flex",
-                            justifyContent: "center"
-                            }}
+                            style={CenterLayout}
                           >
-                            <Button secondary data-dismiss="modal" style={{ marginRight: '0.3rem' }}>
+                            <Button secondary data-dismiss="modal" style={{ marginRight: '0.4rem'}}>
                               Закрыть
                             </Button>
                             <Button type="submit" dark>Сохранить</Button>
@@ -339,7 +355,7 @@ const AdminProductList = ({ history }) => {
           </Modal>
           {/* Modal */}
           <Modal id="editModal" fade>
-            <Modal.Dialog style={{ maxWidth: '70vw' }}>
+            <Modal.Dialog style={ModalDialog}>
               <Modal.Content>
                 <Modal.Header>
                   <Modal.Title>Изменение данных о товаре</Modal.Title>
@@ -447,12 +463,9 @@ const AdminProductList = ({ history }) => {
                             </Col>
                           </Row>
                           <Row 
-                            style={{
-                            display: "flex",
-                            justifyContent: "center"
-                            }}
+                            style={CenterLayout}
                           >
-                            <Button secondary data-dismiss="modal" style={{ marginRight: '0.3rem' }}>
+                            <Button secondary data-dismiss="modal" style={{ marginRight: '0.4rem'}}>
                               Закрыть
                             </Button>
                             <Button type="submit" dark>Обновить</Button>

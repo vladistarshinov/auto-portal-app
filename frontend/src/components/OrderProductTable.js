@@ -4,40 +4,51 @@ import { MDBTable, MDBTableBody, MDBTableHead } from "mdbreact";
 import { Link } from "react-router-dom";
 import Message from "../components/Message";
 import { DateTimeFilter } from "../filters/DateTimeFilter.js";
+import styled from 'styled-components';
 
 const OrderProductTable = ({ order }) => {
+
+    const TitleData = styled.strong`
+        color: grey;
+    `;
+
+    const EmailAddress = styled.a`
+        color: navy;
+        text-decoration: none;
+    `;
+
+    const FigureImage = {
+        width: '4.5rem',
+        height: '3rem'
+    };
+
+    const ProductName = {
+        color: 'navy',
+        textDecoration: 'none'
+    };
+
     return (
         <Col md={9}>
             <ListGroup flush>
                 <ListGroup.Item>
-                <strong style={{ color: "grey" }}>Клиент: </strong>{" "}
+                <TitleData>Клиент: </TitleData>{" "}
                 {order.user.name}{" "}
-                <a
+                <EmailAddress
                     href={`mailto:${order.user.email}`}
-                    style={{
-                    color: "navy",
-                    textDecoration: "none",
-                    }}
                 >
                     ({order.user.email})
-                </a>
+                </EmailAddress>
                 <br />
-                <strong style={{ color: "grey" }}>
-                    Дата создания заказа:{" "}
-                </strong>
+                <TitleData>Дата создания заказа:{" "}</TitleData>
                 {DateTimeFilter(order.createdAt)}
                 <br />
-                <strong style={{ color: "grey" }}>
-                    Адрес доставки:{" "}
-                </strong>
+                <TitleData>Адрес доставки:{" "}</TitleData>
                 {order.shippingAddress.country},{" "}
                 {order.shippingAddress.city},{" "}
                 {order.shippingAddress.postalCode},{" "}
                 {order.shippingAddress.address}
                 <br />
-                <strong style={{ color: "grey" }}>
-                    Способ оплаты:{" "}
-                </strong>
+                <TitleData>Способ оплаты:{" "}</TitleData>
                 {order.paymentMethod}
                 </ListGroup.Item>
                 <ListGroup.Item>
@@ -62,26 +73,18 @@ const OrderProductTable = ({ order }) => {
                                 <td>{index + 1}</td>
                                 <td>
                                     <Figure.Image
-                                    style={{
-                                        width: "4.5rem",
-                                        height: "3rem",
-                                    }}
-                                    src={item.image}
-                                    alt={item.name}
-                                    fluid
-                                    rounded
+                                        style={FigureImage}
+                                        src={item.image}
+                                        alt={item.name}
+                                        fluid
+                                        rounded
                                     />
                                 </td>
                                 <td>
                                     <Link
-                                    style={{
-                                        color: "navy",
-                                        textDecoration: "none",
-                                    }}
-                                    to={`/product/${item.product}`}
-                                    >
-                                    {item.name}
-                                    </Link>
+                                        style={ProductName}
+                                        to={`/product/${item.product}`}
+                                    >{item.name}</Link>
                                 </td>
                                 <td>{item.quantity}</td>
                                 <td>${item.price}</td>

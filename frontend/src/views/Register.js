@@ -40,7 +40,7 @@ const Register = ({ history, location }) => {
 
   return (
     <FormContainer>
-      <h2>Регистрация</h2>
+      <h2 style={{ padding: '1rem 0' }}>Регистрация</h2>
       {message && <Message variant="danger">{message}</Message>}
       {error && <Message variant="danger">{error}</Message>}
       {loading && <Loader />}

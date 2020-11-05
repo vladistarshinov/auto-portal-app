@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { LinkContainer } from "react-router-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Table, Modal, Button } from "bootstrap-4-react";
+import { Row, Table, Modal, Button } from "bootstrap-4-react";
 import { Form } from 'react-bootstrap';
 import {
   listOfUsers,
@@ -12,6 +12,7 @@ import { USER_UPDATE_RESET } from "../redux/constants/admin.constants";
 import FormContainer from "../components/FormContainer";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
+import styled from 'styled-components';
 
 const AdminUsersList = ({ history }) => {
   const dispatch = useDispatch();
@@ -66,9 +67,35 @@ const AdminUsersList = ({ history }) => {
     }
   };
 
+  const Title = styled.h2`
+    padding: 1rem 0;
+  `;
+
+  const TickIcon = styled.i`
+    color: green;
+  `;
+
+  const DaggerIcon = styled.i`
+    color: red;
+  `;
+
+  const EmailLink = styled.a`
+    color: navy,
+    text-decoration: none
+  `;
+
+  const ModalDialog = { 
+    maxWidth: '50vw' 
+  };
+
+  const CenterLayout = {
+    display: 'flex',
+    justifyContent: 'center'
+  };
+
   return (
     <>
-      <h2>Список пользователей</h2>
+      <Title>Список пользователей</Title>
       {loading ? (
         <Loader />
       ) : error ? (
@@ -91,21 +118,20 @@ const AdminUsersList = ({ history }) => {
                   <td>{user._id}</td>
                   <td>{user.name}</td>
                   <td>
-                    <a
+                    <EmailLink
                       href={`mailto:${user.email}`}
                       style={{ color: "navy", textDecoration: "none" }}
                     >
                       {user.email}
-                    </a>
+                    </EmailLink>
                   </td>
                   <td>
                     {user.isAdmin ? (
-                      <i
+                      <TickIcon
                         className="fas fa-check"
-                        style={{ color: "green" }}
-                      ></i>
+                      ></TickIcon>
                     ) : (
-                      <i className="fas fa-times" style={{ color: "red" }}></i>
+                      <DaggerIcon className="fas fa-times"></DaggerIcon>
                     )}
                   </td>
                   <td>
@@ -133,7 +159,7 @@ const AdminUsersList = ({ history }) => {
           </Table>
           {/* Modal */}
           <Modal id="editModal" fade>
-            <Modal.Dialog>
+            <Modal.Dialog style={ModalDialog}>
               <Modal.Content>
                 <Modal.Header>
                   <Modal.Title>Изменение данных пользователя</Modal.Title>
@@ -184,10 +210,12 @@ const AdminUsersList = ({ history }) => {
                                 <option value="false">нет</option>
                               </Form.Control>
                             </Form.Group>
-                            <Button secondary data-dismiss="modal" style={{ marginRight: '0.3rem' }}>
-                                Закрыть
-                            </Button>
-                            <Button type="submit" dark>Обновить</Button>
+                            <Row style={CenterLayout}>
+                              <Button secondary data-dismiss="modal" style={{ marginRight: '0.5rem' }}>
+                                  Закрыть
+                              </Button>
+                              <Button type="submit" dark>Обновить</Button>
+                            </Row>
                           </Modal.Body>
                         </Form>
                     </FormContainer>

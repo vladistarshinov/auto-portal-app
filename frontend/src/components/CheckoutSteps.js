@@ -1,29 +1,32 @@
 import React from 'react';
 import { LinkContainer } from "react-router-bootstrap";
 import { Nav } from 'bootstrap-4-react';
+import styled from 'styled-components';
+
+const StepLink = styled.p`
+    font-size: 0.9rem;
+`;
 
 const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
+
     return (
         <Nav className="justify-content-center mb-4">
             <Nav.Item>
                 {step1  ? (
                     step1 == "done"
                     ) ? ( 
-                        <LinkContainer style={{ color: 'seagreen' }} to="/login">
-                            <Nav.Link>Авторизация</Nav.Link>
+                        <LinkContainer text="success" to="/login">
+                            <Nav.Link><StepLink>Авторизация</StepLink></Nav.Link>
                         </LinkContainer>
                     ) : (
                         <LinkContainer 
-                            style={{ 
-                                color: 'navy', 
-                                borderBottom: '1px solid navy' 
-                            }} 
+                            text="info"
                             to="/login"
                         >
-                            <Nav.Link>Авторизация</Nav.Link>
+                            <Nav.Link><StepLink>Авторизация</StepLink></Nav.Link>
                         </LinkContainer>
                 ) : (
-                    <Nav.Link style={{ color: 'grey' }} disabled>Авторизация</Nav.Link>
+                    <Nav.Link text="muted" disabled><StepLink>Авторизация</StepLink></Nav.Link>
                 )}
             </Nav.Item>
 
@@ -31,21 +34,18 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
                 {step2 ? (
                     step2 == "done"
                     ) ? ( 
-                        <LinkContainer style={{ color: 'seagreen' }} to="/shipping">
-                            <Nav.Link>Доставка</Nav.Link>
+                        <LinkContainer text="success" to="/shipping">
+                            <Nav.Link><StepLink>Доставка</StepLink></Nav.Link>
                         </LinkContainer>
                     ) : (
                         <LinkContainer 
-                            style={{ 
-                                color: 'navy', 
-                                borderBottom: '1px solid navy' 
-                            }} 
+                            text="info"
                             to="/shipping"
                         >
-                            <Nav.Link>Доставка</Nav.Link>
+                            <Nav.Link><StepLink>Доставка</StepLink></Nav.Link>
                         </LinkContainer>
                 ) : (
-                    <Nav.Link style={{ color: 'grey' }} disabled>Доставка</Nav.Link>
+                    <Nav.Link text="muted" disabled><StepLink>Доставка</StepLink></Nav.Link>
                 )}
             </Nav.Item>
 
@@ -53,21 +53,18 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
                 {step3 ? (
                     step3 == "done"
                     ) ? ( 
-                        <LinkContainer style={{ color: 'seagreen' }} to="/payment">
-                            <Nav.Link>Оплата</Nav.Link>
+                        <LinkContainer text="success" to="/payment">
+                            <Nav.Link><StepLink>Оплата</StepLink></Nav.Link>
                         </LinkContainer>
                     ) : (
                         <LinkContainer 
-                            style={{ 
-                                color: 'navy', 
-                                borderBottom: '1px solid navy' 
-                            }} 
+                            text="info"
                             to="/payment"
                         >
-                            <Nav.Link>Оплата</Nav.Link>
+                            <Nav.Link><StepLink>Оплата</StepLink></Nav.Link>
                         </LinkContainer>
                 ) : (
-                    <Nav.Link style={{ color: 'grey' }} disabled>Оплата</Nav.Link>
+                    <Nav.Link text="muted" disabled><StepLink>Оплата</StepLink></Nav.Link>
                 )}
             </Nav.Item>
 
@@ -75,21 +72,18 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
                 {step4 ? (
                     step4 == "done"
                     ) ? ( 
-                        <LinkContainer style={{ color: 'seagreen' }} to="/placeorder">
-                            <Nav.Link>Заказ</Nav.Link>
+                        <LinkContainer text="success" to="/placeorder">
+                            <Nav.Link><StepLink>Заказ</StepLink></Nav.Link>
                         </LinkContainer>
                     ) : (
                         <LinkContainer 
-                            style={{ 
-                                color: 'navy', 
-                                borderBottom: '1px solid navy' 
-                            }} 
+                            text="info"
                             to="/placeorder"
                         >
-                            <Nav.Link>Заказ</Nav.Link>
+                            <Nav.Link><StepLink>Заказ</StepLink></Nav.Link>
                         </LinkContainer>
                 ) : (
-                    <Nav.Link style={{ color: 'grey' }} disabled>Заказ</Nav.Link>
+                    <Nav.Link text="muted" disabled><StepLink>Заказ</StepLink></Nav.Link>
                 )}
             </Nav.Item>
         </Nav>

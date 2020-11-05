@@ -28,7 +28,7 @@ const Payment = ({ history }) => {
     return (
         <FormContainer>
             <CheckoutSteps step1="done" step2="done" step3="active" />
-            <h2>Оплата</h2>
+            <h2 style={{ padding: '1rem 0' }}>Оплата</h2>
             <Form onSubmit={submitHandler}>
                 <Form.Group>
                     <Form.Label as="legend">Выберите способ оплаты</Form.Label>

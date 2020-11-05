@@ -6,6 +6,7 @@ import { Card } from "react-bootstrap";
 import Message from "../components/Message";
 import { addProductToCart, removeProductFromCart } from "../redux/actions/cart.actions";
 import { Form } from "react-bootstrap";
+import styled from 'styled-components';
 
 const Cart = ({ match, location, history }) => {
   const productId = match.params.id;
@@ -30,6 +31,21 @@ const Cart = ({ match, location, history }) => {
     history.push("/login?redirect=shipping");
   };
 
+  const Title = styled.h2`
+    padding: 1rem 0;
+  `;
+
+  const CenterLayout = {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  };
+
+  const LinkToProductDetails = {
+    color: 'navy',
+    textDecoration: 'none'
+  };
+
   return (
     <>
       {cartProductItems.length === 0 && (
@@ -37,7 +53,7 @@ const Cart = ({ match, location, history }) => {
           <i className="fa fa-arrow-left mr-2" aria-hidden="true"></i>К каталогу
         </Link>
       )}
-      <h2>Корзина</h2>
+      <Title>Корзина</Title>
       <Row>
         <Col md={8}>
           {cartProductItems.length === 0 ? (
@@ -48,11 +64,7 @@ const Cart = ({ match, location, history }) => {
             <ListGroup variant="flush">
               {cartProductItems.map((item) => (
                 <ListGroup.Item key={item.product}>
-                  <Row
-                    display="flex"
-                    justifyContent="center"
-                    alignItems="center"
-                  >
+                  <Row style={CenterLayout}>
                     <Col md={3}>
                       <Figure.Image
                         src={item.image}
@@ -62,7 +74,7 @@ const Cart = ({ match, location, history }) => {
                       />
                     </Col>
                     <Col md={3}>
-                      <Link style={{ color: 'navy', textDecoration: 'none' }} to={`/product/${item.product}`}>{item.name}</Link>
+                      <Link style={LinkToProductDetails} to={`/product/${item.product}`}>{item.name}</Link>
                     </Col>
                     <Col md={2}>${item.price}</Col>
                     <Col md={2}>

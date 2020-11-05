@@ -1,12 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
+import styled from 'styled-components';
 
-const Rating = ({ value, color }) => {
+const Rating = ({ value, color, fontSize }) => {
+
+  const Star = styled.span`
+    margin-right: 0.2rem;
+  `;
+
   return (
     <div className="rating">
-      <span>
+      <Star>
         <i
-          style={{ color }}
+          style={{ color, fontSize }}
           className={
             value >= 1
               ? "fas fa-star"
@@ -15,10 +21,10 @@ const Rating = ({ value, color }) => {
               : "far fa-star"
           }
         ></i>
-      </span>
-      <span>
+      </Star>
+      <Star>
         <i
-          style={{ color }}
+          style={{ color, fontSize }}
           className={
             value >= 2
               ? "fas fa-star"
@@ -27,10 +33,10 @@ const Rating = ({ value, color }) => {
               : "far fa-star"
           }
         ></i>
-      </span>
-      <span>
+      </Star>
+      <Star>
         <i
-          style={{ color }}
+          style={{ color, fontSize }}
           className={
             value >= 3
               ? "fas fa-star"
@@ -39,10 +45,10 @@ const Rating = ({ value, color }) => {
               : "far fa-star"
           }
         ></i>
-      </span>
-      <span>
+      </Star>
+      <Star>
         <i
-          style={{ color }}
+          style={{ color, fontSize }}
           className={
             value >= 4
               ? "fas fa-star"
@@ -51,10 +57,10 @@ const Rating = ({ value, color }) => {
               : "far fa-star"
           }
         ></i>
-      </span>
-      <span>
+      </Star>
+      <Star>
         <i
-          style={{ color }}
+          style={{ color, fontSize }}
           className={
             value >= 5
               ? "fas fa-star"
@@ -63,13 +69,14 @@ const Rating = ({ value, color }) => {
               : "far fa-star"
           }
         ></i>
-      </span>
+      </Star>
     </div>
   );
 };
 
 Rating.defaultProps = {
   color: "orange",
+  fontSize: '0.8rem'
 };
 
 Rating.propTypes = {

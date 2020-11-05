@@ -9,6 +9,7 @@ import Rating from "../components/Rating";
 import Reviews from "../components/Reviews";
 import { Form } from "react-bootstrap";
 import { genEndOfNoun } from "../filters/GenEndOfNoun";
+import styled from 'styled-components';
 
 const ProductDetail = ({ history, match }) => {
   const [quantity, setQuantity] = useState(1);
@@ -27,6 +28,10 @@ const ProductDetail = ({ history, match }) => {
   const addToCartHandler = () => {
     history.push(`/cart/${match.params.id}?quantity=${quantity}`);
   };
+
+  const ReviewsCount = styled.span`
+    margin-left: 0.25rem;
+  `;
 
   return (
     <>
@@ -52,9 +57,9 @@ const ProductDetail = ({ history, match }) => {
                 <ListGroup.Item className="d-inline-flex">
                   <Rating value={product.rating} />
                   {product.numReviews == 0 ? (
-                    <span className="reviews">нет отзывов</span>
+                    <ReviewsCount>нет отзывов</ReviewsCount>
                   ) : (
-                    <span className="reviews">{product.numReviews} {genEndOfNoun(product.numReviews, "отзыв", "отзыва", "отзывов")}</span>
+                    <ReviewsCount>{product.numReviews} {genEndOfNoun(product.numReviews, "отзыв", "отзыва", "отзывов")}</ReviewsCount>
                   )}
                 </ListGroup.Item>
                 <ListGroup.Item>Цена: ${product.price}</ListGroup.Item>

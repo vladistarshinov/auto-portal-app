@@ -37,7 +37,7 @@
     * React-bootstrap-4
     * Redux
     * Redux-thunk
-    * SCSS
+    * Styled-components
     * Axios
     * React-router
     * React-paypal

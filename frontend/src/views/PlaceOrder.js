@@ -49,6 +49,11 @@ const PlaceOrder = ({ history }) => {
         }));
     };
 
+    const LinkToProductDetails = {
+        color: 'navy',
+        textDecoration: 'none'
+    };
+
     return (
         <>
             <CheckoutSteps step1="done" step2="done" step3="done" step4="active" />
@@ -67,7 +72,7 @@ const PlaceOrder = ({ history }) => {
                         </ListGroup.Item>
 
                         <ListGroup.Item>
-                            <h2>Оплата</h2>
+                            <h2 style={{ padding: '1rem 0' }}>Оплата</h2>
                             <strong>Способ:{' '}</strong>
                             {cart.paymentMethod}
                         </ListGroup.Item>
@@ -86,7 +91,7 @@ const PlaceOrder = ({ history }) => {
                                                 </Col>
                                                 <Col>
                                                     <Link 
-                                                        style={{ color: 'navy', textDecoration: 'none' }} 
+                                                        style={LinkToProductDetails} 
                                                         to={`/product/${item.product}`}
                                                     >
                                                         {item.name}

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Card } from "react-bootstrap";
 import Rating from "./Rating";
 import { genEndOfNoun } from "../filters/GenEndOfNoun";
+import styled from 'styled-components';
 
 const ProductList = ({ product }) => {
 
@@ -10,6 +11,14 @@ const ProductList = ({ product }) => {
         color: '#203040', 
         textDecoration: 'none'
     };
+
+    const ProductName = styled.strong`
+        font-size: 0.9rem;
+    `;
+
+    const Reviews = styled.span`
+        margin-left: 0.25rem;
+    `;
 
     return (
         <Card className="my-3 p-3 rounded d-flex align-center">
@@ -20,7 +29,7 @@ const ProductList = ({ product }) => {
             <Card.Body>
                 <Link className="text-center" style={productNameLink} to={`/product/${product._id}`}>
                     <Card.Title as="div">
-                        <strong>{product.name}</strong>
+                        <ProductName>{product.name}</ProductName>
                     </Card.Title>
                 </Link>
 
@@ -28,10 +37,10 @@ const ProductList = ({ product }) => {
                     <Rating 
                         value={product.rating}
                     />
-                    <span className="reviews">{product.numReviews} {genEndOfNoun(product.numReviews, "отзыв", "отзыва", "отзывов")}</span>
+                    <Reviews>{product.numReviews} {genEndOfNoun(product.numReviews, "отзыв", "отзыва", "отзывов")}</Reviews>
                 </Card.Text>
 
-                <Card.Text as="h4" className="text-center">
+                <Card.Text as="h4" className="text-center p-3">
                     {product.price} $
                 </Card.Text>
             </Card.Body>

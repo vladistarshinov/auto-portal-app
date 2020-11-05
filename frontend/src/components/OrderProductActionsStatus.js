@@ -12,6 +12,7 @@ import { getOrderDetails,
         updateStatusPayingOrder,
         updateStatusDeliveringOrder } from "../redux/actions/order.actions";
 import { DateTimeFilter } from "../filters/DateTimeFilter.js";
+import styled from 'styled-components';
 
 const OrderProductActionsStatus = (
   { orderId, 
@@ -69,6 +70,17 @@ const OrderProductActionsStatus = (
     dispatch(updateStatusDeliveringOrder(order));
   };
 
+  const StatusMessage = styled.div`
+    display: flex;
+    justify-content: center;
+    max-width: 250px;
+    padding-top: 0.9rem;
+
+    &:last-child {
+      padding-top: 0;
+    }
+  `;
+
   return (
     <>
       <Card>
@@ -92,15 +104,7 @@ const OrderProductActionsStatus = (
           )}
         </ListGroup>
       </Card>
-      <div
-        className="text-center"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          maxWidth: "250px",
-          paddingTop: "0.9rem",
-        }}
-      >
+      <StatusMessage className="text-center">
         {order.isPaid ? (
           <Message variant="success">
             Оплачено
@@ -110,15 +114,8 @@ const OrderProductActionsStatus = (
         ) : (
           <Message variant="danger">Не оплачено</Message>
         )}
-      </div>
-      <div
-        className="text-center"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          maxWidth: "250px",
-        }}
-      >
+      </StatusMessage>
+      <StatusMessage className="text-center">
         {order.isPaid &&
           (order.isDelivered ? (
             <Message variant="info">
@@ -129,7 +126,7 @@ const OrderProductActionsStatus = (
           ) : (
             <Message variant="danger">Не отправлено</Message>
           ))}
-      </div>
+      </StatusMessage>
       {loadingDeliveringProcess && <Loader />}
       {userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered && (
         <div className="text-center">

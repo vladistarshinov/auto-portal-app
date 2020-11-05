@@ -16,13 +16,29 @@ import Order from './views/Order';
 import AdminUsersList from './views/AdminUsersList';
 import AdminProductsList from './views/AdminProductsList';
 import AdminOrderList from './views/AdminOrderList';
+import styled from 'styled-components';
 
 const App = () => {
+
+  styled.html`
+    box-sizing: border-box;
+  `;
+
+  styled.body`
+    font: 1rem Helvetica;
+    height: 100vh;
+    margin: 0;
+  `;
+
+  const Main = styled.main`
+    min-height: 80vh;
+  `;
+
   return (
     <Router>
       <div className="grid-container">
         <Header />
-        <main className="py-3">
+        <Main className="py-3">
           <Container>
             <Route path="/register" component={Register} />
             <Route path="/login" component={Login} />
@@ -38,7 +54,7 @@ const App = () => {
             <Route path="/admin/orders" component={AdminOrderList} />
             <Route path="/" component={Home} exact />
           </Container>
-        </main>
+        </Main>
         <Footer />
       </div>
     </Router>

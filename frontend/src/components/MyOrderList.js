@@ -4,11 +4,21 @@ import { LinkContainer } from "react-router-bootstrap";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { DateFilter } from "../filters/DateTimeFilter.js";
+import styled from 'styled-components';
 
 const MyOrderList = ({ loadingOrders, errorOrders, orders }) => {
+
+    const TickIcon = styled.i`
+        color: green;
+    `;
+
+    const DaggerIcon = styled.i`
+        color: red;
+    `;
+
     return (
         <Col md={9}>
-            <h2>Мои заказы</h2>
+            <h2 style={{ padding: '1rem 0' }}>Мои заказы</h2>
             {loadingOrders ? <Loader /> : errorOrders ? (
                 <Message variant="danger">{errorOrders}</Message>
             ) : (
@@ -32,22 +42,22 @@ const MyOrderList = ({ loadingOrders, errorOrders, orders }) => {
                                 <td>
                                     {order.isPaid ? (
                                         <>
-                                            <i className="fas fa-check" style={{ color: 'green' }}></i><br />
+                                            <TickIcon className="fas fa-check"></TickIcon><br />
                                             {/* <span>{order.paidAt.substring(0, 10)}</span> */}
                                             <span>{DateFilter(order.paidAt)}</span>
                                         </>
                                     ) : (
-                                        <i className="fas fa-times" style={{ color: 'red' }}></i>
+                                        <DaggerIcon className="fas fa-times"></DaggerIcon>
                                     )}
                                 </td>
                                 <td>
                                     {order.isDelivered ? (
                                         <>
-                                            <i className="fas fa-check" style={{ color: 'green' }}></i><br />
+                                            <TickIcon className="fas fa-check"></TickIcon><br />
                                             <span>{DateFilter(order.deliveredAt)}</span>
                                         </>
                                     ) : (
-                                        <i className="fas fa-times" style={{ color: 'red' }}></i>
+                                        <DaggerIcon className="fas fa-times" style={{ color: 'red' }}></DaggerIcon>
                                     )}
                                 </td>
                                 <td>

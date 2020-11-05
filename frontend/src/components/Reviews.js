@@ -56,7 +56,7 @@ const Reviews = ({ productId, product }) => {
     return (
         <Row style={{ marginTop: '2rem' }}>
             <Col md={9}>
-              <h4>Комментарии {product.reviews.length === 0 ? '' : '(' + product.reviews.length + ')'}</h4>
+              <h4 style={{ padding: '1rem 0' }}>Комментарии {product.reviews.length === 0 ? '' : '(' + product.reviews.length + ')'}</h4>
               {successCreatingReview && (
                 <Message variant="success">Благодарим за Ваш отзыв</Message>
               )}

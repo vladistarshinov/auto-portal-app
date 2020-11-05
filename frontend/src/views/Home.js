@@ -5,6 +5,7 @@ import { listOfProduct } from '../redux/actions/product.actions';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 import { Row, Col } from 'bootstrap-4-react';
+import styled from 'styled-components';
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -12,11 +13,15 @@ const Home = () => {
     const { loading, products, error } = productList;
     useEffect(() => {
         dispatch(listOfProduct());
-    }, [dispatch])
+    }, [dispatch]);
+
+    const Heading = styled.h2`
+        color: #070049;
+    `;
 
     return (
         <>
-            <h2 style={{ color: '#070049' }}>Добро пожаловать в магазин IGadgetShop</h2>
+            <Heading>Добро пожаловать в магазин IGadgetShop</Heading>
             {loading ? (
                 <Loader />
             ) : error ? (

@@ -31,7 +31,7 @@ const Login = ({ history, location }) => {
 
   return (
     <FormContainer>
-      <h2>Авторизация</h2>
+      <h2 style={{ padding: '1rem 0' }}>Авторизация</h2>
       {error && <Message variant="danger">{error}</Message>}
       {loading && <Loader />}
       <Form onSubmit={submitHandler}>

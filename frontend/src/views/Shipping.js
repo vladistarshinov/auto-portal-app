@@ -26,7 +26,7 @@ const Shipping = ({ history }) => {
     return (
         <FormContainer>
             <CheckoutSteps step1="done" step2="active" />
-            <h2>Доставка</h2>
+            <h2 style={{ padding: '1rem 0' }}>Доставка</h2>
             <Form onSubmit={submitHandler}>
                 <Form.Group>
                     <label htmlFor="addressForm">Адрес</label>

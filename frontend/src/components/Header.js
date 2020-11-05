@@ -26,7 +26,7 @@ const Header = () => {
           <Navbar expand="lg" light bg="light" mb="3">
             <Container>
               <LinkContainer to="/">
-                <Navbar.Brand className="brand_title" text="black-50" href="/">
+                <Navbar.Brand className="text-capitalize" text="black-50" href="/">
                   <i 
                     className="fa fa-american-sign-language-interpreting mr-2" 
                     aria-hidden="true"
@@ -96,22 +96,6 @@ const Header = () => {
                       </Nav.ItemLink>
                     </LinkContainer>
                   )}
-                  {/* {userInfo && userInfo.isAdmin && (
-                     <Nav.Item dropdown>
-                     <Nav.Link className="header__category" dropdownToggle>Admin</Nav.Link>
-                     <Dropdown.Menu>
-                       <LinkContainer bg="light" text="dark" to="/admin/users">
-                         <Dropdown.Item>Пользователи</Dropdown.Item>
-                       </LinkContainer>
-                       <LinkContainer bg="light" text="dark" to="/admin/products-list">
-                         <Dropdown.Item>Товары</Dropdown.Item>
-                       </LinkContainer>
-                       <LinkContainer bg="light" text="dark" to="/admin/order-list">
-                         <Dropdown.Item>Заказы</Dropdown.Item>
-                       </LinkContainer>
-                     </Dropdown.Menu>
-                   </Nav.Item>
-                  )} */}
                 </Navbar.Nav>
               </Collapse>
             </Container>
