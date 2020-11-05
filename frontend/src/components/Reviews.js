@@ -12,15 +12,15 @@ import Message from "../components/Message";
 import Rating from "../components/Rating";
 import { Form } from "react-bootstrap";
 
-const Reviews = ({ productId }) => {
+const Reviews = ({ productId, product }) => {
 
     const dispatch = useDispatch();
 
     const [rating, setRating] = useState(0);
     const [comment, setComment] = useState("");
 
-    const productDetails = useSelector((state) => state.productDetails);
-    const { loading, product, error } = productDetails;
+/*     const productDetails = useSelector((state) => state.productDetails);
+    const { loading, product, error } = productDetails; */
 
     const reviewCreate = useSelector((state) => state.reviewCreate);
     const { error: errorCreatingReview, success: successCreatingReview } = reviewCreate;
@@ -57,6 +57,18 @@ const Reviews = ({ productId }) => {
         <Row style={{ marginTop: '2rem' }}>
             <Col md={9}>
               <h4>Комментарии {product.reviews.length === 0 ? '' : '(' + product.reviews.length + ')'}</h4>
+              {successCreatingReview && (
+                <Message variant="success">Благодарим за Ваш отзыв</Message>
+              )}
+              {errorCreatingReview && (
+                <Message variant="danger">{errorCreatingReview}</Message>
+              )}
+              {successRemovingReview && (
+                <Message variant="success">Комментарий удален</Message>
+              )}
+              {errorRemovingReview && (
+                <Message variant="danger">{errorRemovingReview}</Message>
+              )}
               {product.reviews.length === 0 && <Message>Нет комментариев</Message>}
               <ListGroup flush>
                 {product.reviews.map(review => (
@@ -76,15 +88,6 @@ const Reviews = ({ productId }) => {
                 ))}
                 <ListGroup.Item>
                   <h5>Оставить отзыв</h5>
-                  {successCreatingReview && (
-                    <Message variant="success">Благодарим за Ваш отзыв</Message>
-                  )}
-                  {errorCreatingReview && (
-                    <Message variant="danger">{errorCreatingReview}</Message>
-                  )}
-                   {errorRemovingReview && (
-                    <Message variant="danger">{errorRemovingReview}</Message>
-                  )}
                   {userInfo ? ( 
                     <Form onSubmit={submitReviewCreateHandler}>
                         <Form.Group controlId="rating">

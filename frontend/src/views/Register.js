@@ -7,7 +7,7 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import FormContainer from "../components/FormContainer";
 
-const Register = ({ history, location }) => {
+const Register = ({ history, location, meta }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -53,6 +53,12 @@ const Register = ({ history, location }) => {
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
+          {meta.error &&
+            meta.touched &&
+            <div>
+              {meta.error}
+            </div>
+          }
         </Form.Group>
         <Form.Group>
           <label htmlFor="emailForm">E-mail</label>
@@ -73,6 +79,12 @@ const Register = ({ history, location }) => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+          {meta.error &&
+            meta.touched &&
+            <div>
+              {meta.error}
+            </div>
+          }
         </Form.Group>
         <Form.Group>
           <label htmlFor="confirmPasswordForm">Подтверждение пароля</label>

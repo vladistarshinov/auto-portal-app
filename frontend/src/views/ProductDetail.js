@@ -51,7 +51,11 @@ const ProductDetail = ({ history, match }) => {
                 </ListGroup.Item>
                 <ListGroup.Item className="d-inline-flex">
                   <Rating value={product.rating} />
-                  <span className="reviews">{product.numReviews} {genEndOfNoun(product.numReviews, "отзыв", "отзыва", "отзывов")}</span>
+                  {product.numReviews == 0 ? (
+                    <span className="reviews">нет отзывов</span>
+                  ) : (
+                    <span className="reviews">{product.numReviews} {genEndOfNoun(product.numReviews, "отзыв", "отзыва", "отзывов")}</span>
+                  )}
                 </ListGroup.Item>
                 <ListGroup.Item>Цена: ${product.price}</ListGroup.Item>
                 <ListGroup.Item>Описание: {product.description}</ListGroup.Item>
@@ -117,7 +121,7 @@ const ProductDetail = ({ history, match }) => {
               </ListGroup>
             </Col>
           </Row>
-          <Reviews productId={productId} />           
+          <Reviews productId={productId} product={product} />           
           
         </>
       )}

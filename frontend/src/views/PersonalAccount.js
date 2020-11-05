@@ -158,7 +158,7 @@ const Profile = ({ history, location }) => {
                                 <td>
                                     {order.isDelivered ? (
                                         <>
-                                            <i className="fas fa-check" style={{ color: 'green' }}></i>
+                                            <i className="fas fa-check" style={{ color: 'green' }}></i><br />
                                             <span>{DateFilter(order.deliveredAt)}</span>
                                         </>
                                     ) : (
