@@ -7,13 +7,14 @@ import Message from '../components/Message';
 import { Row, Col } from 'bootstrap-4-react';
 import styled from 'styled-components';
 
-const Home = () => {
+const Home = ({ match }) => {
+    const keyword = match.params.keyword;
     const dispatch = useDispatch();
     const productList = useSelector(state => state.productList);
     const { loading, products, error } = productList;
     useEffect(() => {
-        dispatch(listOfProduct());
-    }, [dispatch]);
+        dispatch(listOfProduct(keyword));
+    }, [dispatch, keyword]);
 
     const Heading = styled.h2`
         color: #070049;

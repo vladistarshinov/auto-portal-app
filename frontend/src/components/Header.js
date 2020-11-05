@@ -1,8 +1,10 @@
 import React from "react";
+import { Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { LinkContainer } from "react-router-bootstrap";
 import { Navbar, Nav, Button, Form, Collapse, Container, Dropdown } from 'bootstrap-4-react';
 import { logout } from '../redux/actions/auth.actions';
+import SearchBox from './SearchBox';
 
 const Header = () => {
   
@@ -36,10 +38,7 @@ const Header = () => {
               </LinkContainer>
               <Navbar.Toggler target="#navbarColor1" />
               <Collapse navbar id="navbarColor1">
-                <Form inline m="auto" my="2 lg-0">
-                  <Form.Input type="search" placeholder="Поиск..." mr="sm-2" />
-                  <Button outline dark my="2 sm-0">Поиск</Button>
-                </Form>
+                <Route render={({ history }) => <SearchBox history={history} />} />
                 <Navbar.Nav ml="auto">
                   <Nav.Item dropdown>
                     <Nav.Link className="header__category" dropdownToggle>Категории</Nav.Link>
