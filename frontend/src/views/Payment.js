@@ -37,7 +37,7 @@ const Payment = ({ history }) => {
                             <Form.Check 
                                 style={{ paddingTop: '10px' }}
                                 type="radio" 
-                                label="PayPal или Кредитная карта" 
+                                label="PayPal" 
                                 id="PayPal"
                                 name="paymentMethod"
                                 value="PayPal"
@@ -47,19 +47,10 @@ const Payment = ({ history }) => {
                             <Form.Check 
                                 style={{ paddingTop: '10px' }}
                                 type="radio" 
-                                label="Яндекс.Деньги" 
-                                id="YandexMoney"
+                                label="Кредитная карта" 
+                                id="CreditCard"
                                 name="paymentMethod"
-                                value="Яндекс.Деньги"
-                                onChange={(e) => setPaymentMethod(e.target.value)}
-                            ></Form.Check>
-                            <Form.Check 
-                                style={{ paddingTop: '10px' }}
-                                type="radio" 
-                                label="QIWI кошелек" 
-                                id="Qiwi"
-                                name="paymentMethod"
-                                value="QIWI"
+                                value="Кредитная карта"
                                 onChange={(e) => setPaymentMethod(e.target.value)}
                             ></Form.Check>
                         </Col>

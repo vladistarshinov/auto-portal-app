@@ -7,12 +7,13 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import FormContainer from "../components/FormContainer";
 
-const Register = ({ history, location, meta }) => {
+const Register = ({ history, location }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState(null);
+  const [errors, setErrors] = useState({});
 
   const dispatch = useDispatch();
 
@@ -48,17 +49,11 @@ const Register = ({ history, location, meta }) => {
           <label htmlFor="nameForm">Имя</label>
           <Form.Input 
             type="name" 
-            id="nameForm" 
+            id="nameForm"
             placeholder="Введите имя и фамилию"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-          {meta.error &&
-            meta.touched &&
-            <div>
-              {meta.error}
-            </div>
-          }
         </Form.Group>
         <Form.Group>
           <label htmlFor="emailForm">E-mail</label>
@@ -79,12 +74,6 @@ const Register = ({ history, location, meta }) => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          {meta.error &&
-            meta.touched &&
-            <div>
-              {meta.error}
-            </div>
-          }
         </Form.Group>
         <Form.Group>
           <label htmlFor="confirmPasswordForm">Подтверждение пароля</label>

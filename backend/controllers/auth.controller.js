@@ -17,6 +17,38 @@ authController.registerUser = asyncHandler(async (req, res) => {
         throw new Error("Пользователь с такой почтой уже существует");
     } 
 
+    if (!name && !email && !password) {
+        res.status(400);
+        throw new Error("Введите имя пользователя, электронную почту и пароль");
+    }
+
+    if (!name && !email) {
+        res.status(400);
+        throw new Error("Введите имя пользователя и электронную почту");
+    } else if (!name && !password) {
+        res.status(400);
+        throw new Error("Введите имя пользователя и пароль");
+    } else if (!email && !password) {
+        res.status(400);
+        throw new Error("Введите электронную почту и пароль");
+    }
+
+    if (!name) {
+        res.status(400);
+        throw new Error("Введите имя пользователя");
+    } else if (!email) {
+        res.status(400);
+        throw new Error("Введите электронную почту");
+    } else if (!password) {
+        res.status(400);
+        throw new Error("Введите пароль");
+    }
+
+    if (password.length < 6) {
+        res.status(400);
+        throw new Error("Пароль должен содержать не менее 6 символов");
+    }
+
     const user = await User.create({
         name,
         email,
@@ -44,6 +76,18 @@ authController.authUser = asyncHandler(async (req, res) => {
         const { email, password } = req.body;
 
         const user = await User.findOne({ email });
+
+        if (!email && !password) {
+            res.status(400);
+            throw new Error("Введите электронную почту и пароль");
+        } else if (!email) {
+            res.status(400);
+            throw new Error("Введите электронную почту");
+        } else if (!password) {
+            res.status(400);
+            throw new Error("Введите пароль");
+        }
+        
 
         if (user && (await user.matchPassword(password))) {
             res.json({
