@@ -8,7 +8,7 @@ const productController = {};
 // @access   Public
 productController.getAllProducts = asyncHandler(async (req, res) => {
     try {
-      const pageSize = 4;
+      const pageSize = 8;
       const page = Number(req.query.pageNumber) || 1;
       const keyword = req.query.keyword ? {
         name: {

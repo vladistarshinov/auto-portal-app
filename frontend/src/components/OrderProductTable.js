@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, ListGroup, Figure, Collapse, Button } from "bootstrap-4-react";
+import { Col, ListGroup, Figure } from "bootstrap-4-react";
 import { MDBTable, MDBTableBody, MDBTableHead } from "mdbreact";
 import { Link } from "react-router-dom";
 import Message from "../components/Message";

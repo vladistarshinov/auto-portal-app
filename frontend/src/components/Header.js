@@ -2,7 +2,7 @@ import React from "react";
 import { Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { LinkContainer } from "react-router-bootstrap";
-import { Navbar, Nav, Button, Form, Collapse, Container, Dropdown } from 'bootstrap-4-react';
+import { Navbar, Nav, Collapse, Container, Dropdown } from 'bootstrap-4-react';
 import { logout } from '../redux/actions/auth.actions';
 import SearchBox from './SearchBox';
 
@@ -12,12 +12,6 @@ const Header = () => {
   
   const userLogin = useSelector(state => state.userLogin);
   const { userInfo } = userLogin;
-
-  
-/*   const updatedUserName = 
-    JSON.parse(localStorage.getItem('updatedUserInfo')) !== null 
-      ? JSON.parse(localStorage.getItem('updatedUserInfo')).name
-      : null; */
 
   const logoutHandler = () => {
     dispatch(logout());

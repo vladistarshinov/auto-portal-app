@@ -50,7 +50,8 @@ const App = () => {
             <Route path="/placeorder" component={PlaceOrder} />
             <Route path="/order/:id" component={Order} />
             <Route path="/admin/users" component={AdminUsersList} />
-            <Route path="/admin/products" component={AdminProductsList} />
+            <Route path="/admin/products" component={AdminProductsList} exact />
+            <Route path="/admin/products/:pageNumber" component={AdminProductsList} exact/>
             <Route path="/admin/orders" component={AdminOrderList} />
             <Route path="/search/:keyword" component={Home} exact />
             <Route path="/page/:pageNumber" component={Home} exact />

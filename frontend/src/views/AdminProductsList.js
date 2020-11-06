@@ -10,9 +10,12 @@ import { PRODUCT_CREATE_RESET, PRODUCT_UPDATE_RESET } from "../redux/constants/a
 import FormContainer from "../components/FormContainer";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
+import Pagination from '../components/Pagination';
 import styled from 'styled-components';
 
-const AdminProductList = ({ history }) => {
+const AdminProductList = ({ history, match }) => {
+  const pageNumber = match.params.pageNumber || 1;
+
   const dispatch = useDispatch();
 
   const imgSrc = localStorage.getItem("productImage");
@@ -27,7 +30,7 @@ const AdminProductList = ({ history }) => {
   const [uploading, setUploading] = useState(false);
 
   const productList = useSelector(state => state.productList);
-  const { loading, products, error } = productList;
+  const { loading, products, pages, page, error } = productList;
 
   const productCreate = useSelector(state => state.productCreate);
   const { loading: loadingCreateProduct, 
@@ -51,7 +54,7 @@ const AdminProductList = ({ history }) => {
     if (!userInfo.isAdmin) {
       history.push("/login");
     } else {
-      dispatch(listOfProduct());
+      dispatch(listOfProduct('', pageNumber));
     }
     
     if (successCreateProduct) {
@@ -61,7 +64,7 @@ const AdminProductList = ({ history }) => {
     if (successUpdateProduct) {
       dispatch({ type: PRODUCT_UPDATE_RESET });
     }
-  }, [dispatch, history, userInfo, successCreateProduct, successUpdateProduct, successDeleteProduct]);
+  }, [dispatch, pageNumber, history, userInfo, successCreateProduct, successUpdateProduct, successDeleteProduct]);
 
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0];
@@ -229,6 +232,7 @@ const AdminProductList = ({ history }) => {
               ))}
             </tbody>
           </Table>
+          <Pagination pages={pages} page={page} isAdmin={true} />
           {/* Modal */}
           <Modal id="createModal" fade>
             <Modal.Dialog style={ModalDialog}>
