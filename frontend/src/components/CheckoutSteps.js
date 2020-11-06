@@ -13,7 +13,7 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
         <Nav className="justify-content-center mb-4">
             <Nav.Item>
                 {step1  ? (
-                    step1 == "done"
+                    step1 === "done"
                     ) ? ( 
                         <LinkContainer text="success" to="/login">
                             <Nav.Link><StepLink>Авторизация</StepLink></Nav.Link>
@@ -32,7 +32,7 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
 
             <Nav.Item>
                 {step2 ? (
-                    step2 == "done"
+                    step2 === "done"
                     ) ? ( 
                         <LinkContainer text="success" to="/shipping">
                             <Nav.Link><StepLink>Доставка</StepLink></Nav.Link>
@@ -51,7 +51,7 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
 
             <Nav.Item>
                 {step3 ? (
-                    step3 == "done"
+                    step3 === "done"
                     ) ? ( 
                         <LinkContainer text="success" to="/payment">
                             <Nav.Link><StepLink>Оплата</StepLink></Nav.Link>
@@ -70,7 +70,7 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
 
             <Nav.Item>
                 {step4 ? (
-                    step4 == "done"
+                    step4 === "done"
                     ) ? ( 
                         <LinkContainer text="success" to="/placeorder">
                             <Nav.Link><StepLink>Заказ</StepLink></Nav.Link>

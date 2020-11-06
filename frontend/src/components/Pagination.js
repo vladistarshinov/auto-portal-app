@@ -7,7 +7,7 @@ const PaginationBox = ({ pages, page, isAdmin = false, keyword = '' }) => {
 
     const PaginationCenter = styled.nav`
         display: flex;
-        justify-content: center
+        justify-content: center;
     `;
     return (
         pages > 1 && (

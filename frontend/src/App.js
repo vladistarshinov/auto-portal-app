@@ -52,7 +52,7 @@ const App = () => {
             <Route path="/admin/users" component={AdminUsersList} />
             <Route path="/admin/products" component={AdminProductsList} />
             <Route path="/admin/orders" component={AdminOrderList} />
-            <Route path="/search/:keyword" component={Home} />
+            <Route path="/search/:keyword" component={Home} exact />
             <Route path="/page/:pageNumber" component={Home} exact />
             <Route path="/search/:keyword/page/:pageNumber" component={Home} exact />
             <Route path="/" component={Home} exact />
