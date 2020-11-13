@@ -29,6 +29,15 @@ productController.getAllProducts = asyncHandler(async (req, res) => {
     }
 });
 
+// @desc     Get products with top rating
+// @route    GET /api/products/top
+// @access   Public
+productController.getTopProducts = asyncHandler(async (req, res) => {
+  const products = await Product.find({}).sort({ rating: -1 }).limit(3);
+
+  res.json(products);
+});
+
 // @desc     Get product by Id
 // @route    GET /api/products/:id
 // @access   Public

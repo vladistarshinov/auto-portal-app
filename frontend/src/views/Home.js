@@ -5,6 +5,7 @@ import { listOfProduct } from '../redux/actions/product.actions';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 import Pagination from '../components/Pagination';
+import TopProductsCarousel from '../components/TopProductsCarousel';
 import { Row, Col } from 'bootstrap-4-react';
 import styled from 'styled-components';
 
@@ -27,6 +28,7 @@ const Home = ({ match }) => {
 
     return (
         <>
+            {!keyword && <TopProductsCarousel />}
             <Heading>Добро пожаловать в магазин IGadgetShop</Heading>
             {loading ? (
                 <Loader />

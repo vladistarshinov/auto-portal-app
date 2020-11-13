@@ -9,6 +9,7 @@ const router = express.Router();
 const { createProductReview, deleteProductReview } = reviewController;
 
 router.get("/", productController.getAllProducts);
+router.get("/top", productController.getTopProducts);
 router.get("/:id", productController.getProductById);
 router.route("/:id/reviews").post(protect, createProductReview);
 router.route("/:id1/reviews/:id2").delete(protect, adminProtect, deleteProductReview);
