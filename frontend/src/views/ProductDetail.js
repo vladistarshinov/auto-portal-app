@@ -7,6 +7,7 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import Rating from "../components/Rating";
 import Reviews from "../components/Reviews";
+import MetaHeader from '../components/MetaHeader';
 import { Form } from "react-bootstrap";
 import { genEndOfNoun } from "../filters/GenEndOfNoun";
 import styled from 'styled-components';
@@ -45,6 +46,7 @@ const ProductDetail = ({ history, match }) => {
         <Message variant="danger">{error}</Message>
       ): (
         <>
+          <MetaHeader title={product.name} />
           <Row>
             <Col md={5}>
               <Figure.Image src={product.image} alt={product.name} fluid />

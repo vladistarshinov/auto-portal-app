@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ProductList from "../components/ProductList";
 import { listOfProduct } from '../redux/actions/product.actions';
@@ -6,6 +7,7 @@ import Loader from '../components/Loader';
 import Message from '../components/Message';
 import Pagination from '../components/Pagination';
 import TopProductsCarousel from '../components/TopProductsCarousel';
+import MetaHeader from '../components/MetaHeader';
 import { Row, Col } from 'bootstrap-4-react';
 import styled from 'styled-components';
 
@@ -22,14 +24,23 @@ const Home = ({ match }) => {
         dispatch(listOfProduct(keyword, pageNumber));
     }, [dispatch, keyword, pageNumber]);
 
-    const Heading = styled.h2`
+    const Heading = styled.h3`
         color: #070049;
+        text-align: center;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
     `;
 
     return (
         <>
-            {!keyword && <TopProductsCarousel />}
-            <Heading>Добро пожаловать в магазин IGadgetShop</Heading>
+            <MetaHeader />
+            {!keyword ? (
+                <>
+                    <Heading>Лучшие товары</Heading>
+                    <TopProductsCarousel />
+                </>
+            ) : <Link to="/" className="btn btn-light">Назад</Link>}
+            <Heading>Ассортимент товаров</Heading>
             {loading ? (
                 <Loader />
             ) : error ? (
