@@ -12,6 +12,6 @@ router.get("/", productController.getAllProducts);
 router.get("/top", productController.getTopProducts);
 router.get("/:id", productController.getProductById);
 router.route("/:id/reviews").post(protect, createProductReview);
-router.route("/:id1/reviews/:id2").delete(protect, adminProtect, deleteProductReview);
+router.route("/:id1/reviews/:id2").delete(protect, deleteProductReview);
 
 export default router;

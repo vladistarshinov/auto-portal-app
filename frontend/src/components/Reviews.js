@@ -73,7 +73,7 @@ const Reviews = ({ productId, product }) => {
                 {product.reviews.map(review => (
                   <ListGroup.Item key={review._id} style={{ backgroundColor: '#fafafa' }}>
                     <strong>{review.name}{'     '}</strong>
-                    {userInfo && userInfo.isAdmin && (
+                    {(userInfo._id === review.user || userInfo.isAdmin) && (
                         <i 
                           className="fas fa-times" 
                           onClick={() => submitReviewDeleteHandler(productId, review._id)}
