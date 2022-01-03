@@ -1,5 +1,5 @@
 import asyncHandler from 'express-async-handler';
-import Order from '../models/order.model';
+import Order from '../models/order.model.js';
 import dotenv from "dotenv";
 
 const orderController = {};

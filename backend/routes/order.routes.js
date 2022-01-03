@@ -1,7 +1,7 @@
 import express from 'express';
-import orderController from '../controllers/order.controller';
-import { protect } from '../middleware/auth.middleware';
-import { adminProtect } from '../middleware/admin.middleware';
+import orderController from '../controllers/order.controller.js';
+import { protect } from '../middleware/auth.middleware.js';
+import { adminProtect } from '../middleware/admin.middleware.js';
 
 const router = express.Router();
 

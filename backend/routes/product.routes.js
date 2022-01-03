@@ -1,8 +1,8 @@
 import express from 'express';
-import productController from '../controllers/product.controller';
-import reviewController from '../controllers/review.controller';
-import { protect } from '../middleware/auth.middleware';
-import { adminProtect } from '../middleware/admin.middleware';
+import productController from '../controllers/product.controller.js';
+import reviewController from '../controllers/review.controller.js';
+import { protect } from '../middleware/auth.middleware.js';
+import { adminProtect } from '../middleware/admin.middleware.js';
 
 const router = express.Router();
 
