@@ -81,7 +81,7 @@ const AdminUsersList = ({ history }) => {
 
   const EmailLink = styled.a`
     color: navy,
-    text-decoration: none
+    textDecoration: none
   `;
 
   const ModalDialog = { 
