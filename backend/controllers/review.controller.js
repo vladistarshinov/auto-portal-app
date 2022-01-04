@@ -1,5 +1,4 @@
 import asyncHandler from 'express-async-handler';
-import Product from '../models/product.model.js';
 import ReviewService from '../services/review.service.js';
 
 const reviewController = {};
@@ -20,7 +19,7 @@ reviewController.createProductReview = asyncHandler(async (req, res) => {
 
 // @desc     Delete review
 // @route    DELETE /api/products/:id/reviews/:id
-// @access   Private/Admin
+// @access   Private/User
 reviewController.deleteProductReview = asyncHandler(async (req, res) => {
     try {
       await ReviewService.delete(req.params.id1, req.params.id2);

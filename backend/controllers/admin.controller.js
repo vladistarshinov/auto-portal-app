@@ -1,7 +1,5 @@
 import asyncHandler from 'express-async-handler';
-import User from '../models/user.model.js';
-import Product from '../models/product.model.js';
-import Order from '../models/order.model.js';
+import AdminService from '../services/admin.service.js';
 
 const adminController = {};
 
@@ -9,7 +7,7 @@ const adminController = {};
 // @route    GET /api/admin/users
 // @access   Private/Admin
 adminController.getUsers = asyncHandler(async (req, res) => {
-    const users = await User.find({});
+    const users = await AdminService.getUsers();
     res.json(users);
 });
 
@@ -17,38 +15,20 @@ adminController.getUsers = asyncHandler(async (req, res) => {
 // @route    GET /api/admin/users/:id
 // @access   Private/Admin
 adminController.getUserById = asyncHandler(async (req, res) => {
-    const user = await User.findById(req.params.id).select('-password');
-    if (user) {
-        res.json(user);
-    } else {
-        res.status(404);
-        throw new Error("Пользователь не найден")
-    }
+    const user = await AdminService.getUserById(req.params.id);
+    res.json(user);
 });
 
 // @desc     Update user
 // @route    PUT /api/admin/users/:id
 // @access   Private/Admin
 adminController.updateUser = asyncHandler(async (req, res) => {
-    const user = await User.findById(req.params.id);
-
-    if (user) {
-        user.name = req.body.name || user.name;
-        user.email = req.body.email || user.email;
-        user.isAdmin = req.body.isAdmin || user.isAdmin;
-
-        const updatedUser = await user.save();
-
-        res.json({
-            _id: updatedUser._id,
-            name: updatedUser.name,
-            email: updatedUser.email,
-            isAdmin: updatedUser.isAdmin
-        });
-
-    } else {
+    try {
+        const updatedUser = await AdminService.updateUser(req.params.id, req.body);
+        res.json(updatedUser);
+    } catch (e) {
         res.status(404);
-        throw new Error('Пользователь не найден');
+        throw new Error(e.message);
     }
 });
 
@@ -56,13 +36,12 @@ adminController.updateUser = asyncHandler(async (req, res) => {
 // @route    DELETE /api/admin/users/:id
 // @access   Private/Admin
 adminController.deleteUser = asyncHandler(async (req, res) => {
-    const user = await User.findById(req.params.id);
-    if (user) {
-        await user.remove();
-        res.json({ message: 'Пользователь успешно удален' });
-    } else {
-        res.status(404);
-        throw new Error("Пользователь не найден");
+    try {
+      await AdminService.deleteUser(req.params.id);
+      res.json({ message: "Пользователь успешно удален" });
+    } catch (e) {
+      res.status(404);
+      throw new Error(e.message);
     }
 });
 

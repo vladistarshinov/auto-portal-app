@@ -7,7 +7,7 @@
   "scripts": {
     "start": "nodemon --watch backend --exec babel-node backend/server.js",
     "server": "nodemon backend/server.js --exec babel-node",
-    "client": "cd frontend/ && npm run start",
+    "client": "nodemon cd frontend/ && npm run start",
     "dev": "npm-run-all --parallel server client",
     "data:import": "nodemon backend/seeder/seeder.js --exec babel-node",
     "data:destroy": "nodemon backend/seeder/seeder.js -d"

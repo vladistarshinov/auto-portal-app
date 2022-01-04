@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { LinkContainer } from "react-router-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Table, Modal, Button } from "bootstrap-4-react";
-import { Form } from 'react-bootstrap';
+import { Form } from "react-bootstrap";
 import {
   listOfUsers,
   updateUser,
@@ -12,7 +12,7 @@ import { USER_UPDATE_RESET } from "../redux/constants/admin.constants";
 import FormContainer from "../components/FormContainer";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const AdminUsersList = ({ history }) => {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ const AdminUsersList = ({ history }) => {
   const {
     loading: loadingUpdateUser,
     error: errorUpdateUser,
-    success: successUpdateUser
+    success: successUpdateUser,
   } = userUpdate;
 
   const userRemove = useSelector((state) => state.userRemove);
@@ -40,7 +40,7 @@ const AdminUsersList = ({ history }) => {
 
   useEffect(() => {
     if (successUpdateUser) {
-        dispatch({ type: USER_UPDATE_RESET });
+      dispatch({ type: USER_UPDATE_RESET });
     }
     if (userInfo && userInfo.isAdmin) {
       dispatch(listOfUsers());
@@ -84,17 +84,18 @@ const AdminUsersList = ({ history }) => {
     textDecoration: none
   `;
 
-  const ModalDialog = { 
-    maxWidth: '50vw' 
+  const ModalDialog = {
+    maxWidth: "50vw",
   };
 
   const CenterLayout = {
-    display: 'flex',
-    justifyContent: 'center'
+    display: "flex",
+    justifyContent: "center",
   };
 
   return (
     <>
+      {success && <Message variant="success">Пользователь удален</Message>}
       <Title>Список пользователей</Title>
       {loading ? (
         <Loader />
@@ -127,9 +128,7 @@ const AdminUsersList = ({ history }) => {
                   </td>
                   <td>
                     {user.isAdmin ? (
-                      <TickIcon
-                        className="fas fa-check"
-                      ></TickIcon>
+                      <TickIcon className="fas fa-check"></TickIcon>
                     ) : (
                       <DaggerIcon className="fas fa-times"></DaggerIcon>
                     )}
@@ -168,58 +167,66 @@ const AdminUsersList = ({ history }) => {
                   </Modal.Close>
                 </Modal.Header>
                 {loadingUpdateUser && <Loader />}
-                {errorUpdateUser && <Message variant="danger">{errorUpdateUser}</Message>}
+                {errorUpdateUser && (
+                  <Message variant="danger">{errorUpdateUser}</Message>
+                )}
                 {loading ? (
-                    <Loader />
-                  ) : error ? (
-                    <Message variant="danger">{error}</Message>
-                  ) : (
-                    <FormContainer>
-                      <Form onSubmit={submitUserUpdateHandler}>
-                        <Modal.Body>
-                            <Form.Group>
-                                <label>Имя</label>
-                                <Form.Control
-                                    type="name"
-                                    id="nameForm"
-                                    placeholder="Введите имя и фамилию"
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
-                                />
-                            </Form.Group>
-                            <Form.Group>
-                                <label>E-mail</label>
-                                <Form.Control
-                                    type="email"
-                                    id="emailForm"
-                                    placeholder="Введите email"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                />
-                            </Form.Group>
-                            <Form.Group>
-                              <label>Админ</label>
-                              <Form.Control
-                                as="select"
-                                value={isAdmin}
-                                onChange={(e) => setIsAdmin(e.target.value)}
-                                id="adminForm"
-                                custom
-                              >
-                                <option value="true">да</option>
-                                <option value="false">нет</option>
-                              </Form.Control>
-                            </Form.Group>
-                            <Row style={CenterLayout}>
-                              <Button secondary data-dismiss="modal" style={{ marginRight: '0.5rem' }}>
-                                  Закрыть
-                              </Button>
-                              <Button type="submit" dark>Обновить</Button>
-                            </Row>
-                          </Modal.Body>
-                        </Form>
-                    </FormContainer>
-                  )}
+                  <Loader />
+                ) : error ? (
+                  <Message variant="danger">{error}</Message>
+                ) : (
+                  <FormContainer>
+                    <Form onSubmit={submitUserUpdateHandler}>
+                      <Modal.Body>
+                        <Form.Group>
+                          <label>Имя</label>
+                          <Form.Control
+                            type="name"
+                            id="nameForm"
+                            placeholder="Введите имя и фамилию"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                          />
+                        </Form.Group>
+                        <Form.Group>
+                          <label>E-mail</label>
+                          <Form.Control
+                            type="email"
+                            id="emailForm"
+                            placeholder="Введите email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                          />
+                        </Form.Group>
+                        <Form.Group>
+                          <label>Админ</label>
+                          <Form.Control
+                            as="select"
+                            value={isAdmin}
+                            onChange={(e) => setIsAdmin(e.target.value)}
+                            id="adminForm"
+                            custom
+                          >
+                            <option value="true">да</option>
+                            <option value="false">нет</option>
+                          </Form.Control>
+                        </Form.Group>
+                        <Row style={CenterLayout}>
+                          <Button
+                            secondary
+                            data-dismiss="modal"
+                            style={{ marginRight: "0.5rem" }}
+                          >
+                            Закрыть
+                          </Button>
+                          <Button type="submit" dark>
+                            Обновить
+                          </Button>
+                        </Row>
+                      </Modal.Body>
+                    </Form>
+                  </FormContainer>
+                )}
               </Modal.Content>
             </Modal.Dialog>
           </Modal>
