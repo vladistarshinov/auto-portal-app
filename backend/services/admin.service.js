@@ -14,7 +14,6 @@ class AdminService {
     if (user) {
       return user;
     } else {
-      //res.status(404);
       throw new Error("Пользователь не найден");
     }
   }
@@ -51,13 +50,19 @@ class AdminService {
   }
 
   async createProduct(userId, data) {
-    const { name, description, image, price, countInStock, brand, category } =
-      data;
+    const { 
+      name, 
+      description, 
+      image, 
+      price, 
+      countInStock, 
+      brand, 
+      category 
+    } = data;
 
     const existProduct = await Product.findOne({ name });
 
     if (existProduct) {
-      //res.status(400);
       throw new Error("Товар с таким названием уже существует");
     }
 
@@ -95,7 +100,6 @@ class AdminService {
       const updatedProduct = await product.save();
       return updatedProduct;
     } else {
-      //res.status(404);
       throw new Error("Товар не найден");
     }
   }

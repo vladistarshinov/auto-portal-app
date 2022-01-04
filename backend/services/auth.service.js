@@ -3,7 +3,7 @@ import User from '../models/user.model.js';
 
 class AuthService {
 	async register(data) {
-		const { name, email, password } = data;
+        const { name, email, password } = data;
 
         const existUser = await User.findOne({ email });
 

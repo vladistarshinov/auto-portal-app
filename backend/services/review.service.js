@@ -4,38 +4,38 @@ class ReviewService {
 	async create(user, productId, reviewData) {
 		const { rating, comment } = reviewData;
 
-    const product = await Product.findById(productId);
+        const product = await Product.findById(productId);
 
-    if (product) {
-        const alreadyReviewed = product.reviews.find(
-            r => r.user.toString() === user._id.toString());
+        if (product) {
+            const alreadyReviewed = product.reviews.find(
+                r => r.user.toString() === user._id.toString());
 
-        if (alreadyReviewed) {
-            throw new Error("Вы уже оценили данный товар");
+            if (alreadyReviewed) {
+                throw new Error("Вы уже оценили данный товар");
+            }
+
+            const review = {
+                name: user.name,
+                rating: Number(rating),
+                comment,
+                user: user._id
+            };
+
+            product.reviews.push(review);
+            product.numReviews = product.reviews.length;
+            product.rating = product.reviews
+                .reduce((acc, item) => item.rating + acc, 0) / product.reviews.length;
+
+            await product.save();
+            return;
+
+        } else {
+            throw new Error("Товар не найден");
         }
-
-        const review = {
-            name: user.name,
-            rating: Number(rating),
-            comment,
-            user: user._id
-        };
-
-        product.reviews.push(review);
-        product.numReviews = product.reviews.length;
-        product.rating = product.reviews
-            .reduce((acc, item) => item.rating + acc, 0) / product.reviews.length;
-
-        await product.save();
-        return;
-
-    } else {
-        throw new Error("Товар не найден");
-    }
 	}
 
 	async delete(productId, reviewId) {
-    const product = await Product.findById(productId);
+        const product = await Product.findById(productId);
 
         if (product) {
             const alreadyReviewed = product.reviews.find(
