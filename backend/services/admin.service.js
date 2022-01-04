@@ -1,4 +1,3 @@
-import asyncHandler from "express-async-handler";
 import User from "../models/user.model.js";
 import Product from "../models/product.model.js";
 import Order from "../models/order.model.js";
