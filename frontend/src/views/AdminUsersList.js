@@ -47,7 +47,7 @@ const AdminUsersList = ({ history }) => {
     } else {
       history.push("/login");
     }
-  }, [dispatch, history, successUpdateUser, userInfo]);
+  }, [dispatch, history, successUpdateUser, userInfo, success]);
 
   const editUserHandler = (userId) => {
     const user = userList.find((user) => user._id == userId);

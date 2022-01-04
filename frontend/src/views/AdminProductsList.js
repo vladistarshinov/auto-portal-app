@@ -130,7 +130,7 @@ const AdminProductList = ({ history, match }) => {
   }; 
 
   const deleteProductHandler = (id) => {
-    if (window.confirm("Вы действительно хотите удалить пользователя?")) {
+    if (window.confirm("Вы действительно хотите удалить товар?")) {
       dispatch(removeProduct(id));
     }
   };
@@ -159,18 +159,24 @@ const AdminProductList = ({ history, match }) => {
 
   return (
     <>
-      {successDeleteProduct && <Message variant="danger">Товар удален</Message>}
-      {successCreateProduct && <Message variant="success">Товар создан</Message>}
-      {successUpdateProduct && <Message variant="success">Товар обновлен</Message>}
+      {successDeleteProduct && (
+        <Message variant="success">Товар удален</Message>
+      )}
+      {successCreateProduct && (
+        <Message variant="success">Товар создан</Message>
+      )}
+      {successUpdateProduct && (
+        <Message variant="success">Товар обновлен</Message>
+      )}
       <Row className="align-items-center">
         <Col>
           <Title>Список товаров</Title>
         </Col>
         <Col className="text-right">
-          <Button 
-            className="my-3" 
-            data-toggle="modal" 
-            data-target="#createModal" 
+          <Button
+            className="my-3"
+            data-toggle="modal"
+            data-target="#createModal"
             light
           >
             <PlusIcon className="fas fa-plus"></PlusIcon>
@@ -243,117 +249,125 @@ const AdminProductList = ({ history, match }) => {
                     <span aria-hidden="true">&times;</span>
                   </Modal.Close>
                 </Modal.Header>
-                  {loadingCreateProduct || loadingDeleteProduct && <Loader />}
-                  {errorCreateProduct && <Message variant="danger">{errorCreateProduct}</Message>}
-                  {loading ? (
-                    <Loader />
-                  ) : error ? (
-                    <Message variant="danger">{error}</Message>
-                  ) : (
-                    <FormContainer>
-                      <Form onSubmit={submitProductAddHandler}>      
-                        <Modal.Body>
-                          <Form.Group>
-                            <label>Название товара</label>
-                            <Form.Control
-                              type="name"
-                              id="nameForm"
-                              placeholder="Введите название товара"
-                              value={name}
-                              onChange={(e) => setName(e.target.value)}
-                            />
-                          </Form.Group>
-                          <Form.Group>
-                            <label>Описание</label>
-                            <Form.Control
-                              type="text"
-                              id="descriptionForm"
-                              placeholder="Введите описание товара"
-                              value={description}
-                              onChange={(e) => setDescription(e.target.value)}
-                            />
-                          </Form.Group>
-                          <Form.Group>
-                              <label>Фото товара</label>
+                {loadingCreateProduct || (loadingDeleteProduct && <Loader />)}
+                {errorCreateProduct && (
+                  <Message variant="danger">{errorCreateProduct}</Message>
+                )}
+                {loading ? (
+                  <Loader />
+                ) : error ? (
+                  <Message variant="danger">{error}</Message>
+                ) : (
+                  <FormContainer>
+                    <Form onSubmit={submitProductAddHandler}>
+                      <Modal.Body>
+                        <Form.Group>
+                          <label>Название товара</label>
+                          <Form.Control
+                            type="name"
+                            id="nameForm"
+                            placeholder="Введите название товара"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                          />
+                        </Form.Group>
+                        <Form.Group>
+                          <label>Описание</label>
+                          <Form.Control
+                            type="text"
+                            id="descriptionForm"
+                            placeholder="Введите описание товара"
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                          />
+                        </Form.Group>
+                        <Form.Group>
+                          <label>Фото товара</label>
+                          <Form.Control
+                            type="text"
+                            id="photoForm"
+                            placeholder="Введите ссылку на фото"
+                            value={image}
+                            onChange={(e) => setImage(e.target.value)}
+                          />
+                          <Form.File
+                            id="image-file"
+                            label="Выберите файл"
+                            custom
+                            onChange={uploadFileHandler}
+                          />
+                          {uploading && <Loader />}
+                        </Form.Group>
+                        <Row>
+                          <Col>
+                            <Form.Group>
+                              <label>Цена</label>
                               <Form.Control
-                                  type="text"
-                                  id="photoForm"
-                                  placeholder="Введите ссылку на фото"
-                                  value={image}
-                                  onChange={(e) => setImage(e.target.value)}
+                                type="number"
+                                id="priceForm"
+                                placeholder="Введите цену"
+                                value={price}
+                                onChange={(e) => setPrice(e.target.value)}
                               />
-                              <Form.File 
-                                id="image-file"
-                                label="Выберите файл"
-                                custom
-                                onChange={uploadFileHandler}
+                            </Form.Group>
+                          </Col>
+                          <Col>
+                            <Form.Group>
+                              <label>Количество</label>
+                              <Form.Control
+                                type="number"
+                                id="countInStockForm"
+                                placeholder="Введите кол-во"
+                                value={countInStock}
+                                onChange={(e) =>
+                                  setCountInStock(e.target.value)
+                                }
                               />
-                              {uploading && <Loader />}
-                          </Form.Group>
-                          <Row>
-                            <Col>
-                              <Form.Group>
-                                <label>Цена</label>
-                                <Form.Control
-                                    type="number"
-                                    id="priceForm"
-                                    placeholder="Введите цену"
-                                    value={price}
-                                    onChange={(e) => setPrice(e.target.value)}
-                                />
-                              </Form.Group>
-                            </Col>
-                            <Col>
-                              <Form.Group>
-                                <label>Количество</label>
-                                <Form.Control
-                                    type="number"
-                                    id="countInStockForm"
-                                    placeholder="Введите кол-во"
-                                    value={countInStock}
-                                    onChange={(e) => setCountInStock(e.target.value)}
-                                />
-                              </Form.Group>
-                            </Col>
-                          </Row>
-                          <Row>
-                            <Col>
-                              <Form.Group>
-                                <label>Категория</label>
-                                <Form.Control
-                                    type="text"
-                                    id="categoryForm"
-                                    placeholder="Введите категорию"
-                                    value={category}
-                                    onChange={(e) => setCategory(e.target.value)}
-                                />
-                              </Form.Group>
-                            </Col>
-                            <Col>
-                              <Form.Group>
-                                <label>Бренд</label>
-                                <Form.Control
-                                    type="text"
-                                    id="brandForm"
-                                    placeholder="Введите бренд"
-                                    value={brand}
-                                    onChange={(e) => setBrand(e.target.value)}
-                                />
-                              </Form.Group>
-                            </Col>
-                          </Row>
-                          <Row 
-                            style={CenterLayout}
+                            </Form.Group>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col>
+                            <Form.Group>
+                              <label>Категория</label>
+                              <Form.Control
+                                type="text"
+                                id="categoryForm"
+                                placeholder="Введите категорию"
+                                value={category}
+                                onChange={(e) => setCategory(e.target.value)}
+                              />
+                            </Form.Group>
+                          </Col>
+                          <Col>
+                            <Form.Group>
+                              <label>Бренд</label>
+                              <Form.Control
+                                type="text"
+                                id="brandForm"
+                                placeholder="Введите бренд"
+                                value={brand}
+                                onChange={(e) => setBrand(e.target.value)}
+                              />
+                            </Form.Group>
+                          </Col>
+                        </Row>
+                        <Row style={CenterLayout}>
+                          <Button
+                            secondary
+                            data-dismiss="modal"
+                            style={{ marginRight: "0.4rem" }}
                           >
-                            <Button secondary data-dismiss="modal" style={{ marginRight: '0.4rem'}}>
-                              Закрыть
-                            </Button>
-                            <Button type="submit" dark>Сохранить</Button>
-                          </Row>
-                        </Modal.Body>
-                      </Form>
-                    </FormContainer>
-                  )}
+                            Закрыть
+                          </Button>
+                          <Button type="submit" dark>
+                            Сохранить
+                          </Button>
+                        </Row>
+                      </Modal.Body>
+                    </Form>
+                  </FormContainer>
+                )}
               </Modal.Content>
             </Modal.Dialog>
           </Modal>
@@ -366,118 +380,126 @@ const AdminProductList = ({ history, match }) => {
                   <Modal.Close>
                     <span aria-hidden="true">&times;</span>
                   </Modal.Close>
-                </Modal.Header> 
-                  {loadingUpdateProduct && <Loader />}
-                  {errorUpdateProduct && <Message variant="danger">{errorUpdateProduct}</Message>}
-                  {loading ? (
-                    <Loader />
-                  ) : error ? (
-                    <Message variant="danger">{error}</Message>
-                  ) : (
-                    <FormContainer>
-                      <Form onSubmit={submitProductEditHandler}>
-                        <Modal.Body>      
-                          <Form.Group>
-                            <label>Название товара</label>
-                            <Form.Control
-                              type="name"
-                              id="nameForm"
-                              placeholder="Введите название товара"
-                              value={name}
-                              onChange={(e) => setName(e.target.value)}
-                            />
-                          </Form.Group>
-                          <Form.Group>
-                            <label>Описание</label>
-                            <Form.Control
-                              type="text"
-                              id="descriptionForm"
-                              placeholder="Введите описание товара"
-                              value={description}
-                              onChange={(e) => setDescription(e.target.value)}
-                            />
-                          </Form.Group>
-                          <Form.Group>
-                              <label>Фото товара</label>
+                </Modal.Header>
+                {loadingUpdateProduct && <Loader />}
+                {errorUpdateProduct && (
+                  <Message variant="danger">{errorUpdateProduct}</Message>
+                )}
+                {loading ? (
+                  <Loader />
+                ) : error ? (
+                  <Message variant="danger">{error}</Message>
+                ) : (
+                  <FormContainer>
+                    <Form onSubmit={submitProductEditHandler}>
+                      <Modal.Body>
+                        <Form.Group>
+                          <label>Название товара</label>
+                          <Form.Control
+                            type="name"
+                            id="nameForm"
+                            placeholder="Введите название товара"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                          />
+                        </Form.Group>
+                        <Form.Group>
+                          <label>Описание</label>
+                          <Form.Control
+                            type="text"
+                            id="descriptionForm"
+                            placeholder="Введите описание товара"
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                          />
+                        </Form.Group>
+                        <Form.Group>
+                          <label>Фото товара</label>
+                          <Form.Control
+                            type="text"
+                            id="photoForm"
+                            placeholder="Введите ссылку на фото"
+                            value={image}
+                            onChange={(e) => setImage(e.target.value)}
+                          />
+                          <Form.File
+                            id="image-file"
+                            label="Выберите файл"
+                            custom
+                            onChange={uploadFileHandler}
+                          />
+                          {uploading && <Loader />}
+                        </Form.Group>
+                        <Row>
+                          <Col>
+                            <Form.Group>
+                              <label>Цена</label>
                               <Form.Control
-                                  type="text"
-                                  id="photoForm"
-                                  placeholder="Введите ссылку на фото"
-                                  value={image}
-                                  onChange={(e) => setImage(e.target.value)}
+                                type="number"
+                                id="priceForm"
+                                placeholder="Введите цену"
+                                value={price}
+                                onChange={(e) => setPrice(e.target.value)}
                               />
-                              <Form.File 
-                                id="image-file"
-                                label="Выберите файл"
-                                custom
-                                onChange={uploadFileHandler}
+                            </Form.Group>
+                          </Col>
+                          <Col>
+                            <Form.Group>
+                              <label>Количество</label>
+                              <Form.Control
+                                type="number"
+                                id="countInStockForm"
+                                placeholder="Введите кол-во"
+                                value={countInStock}
+                                onChange={(e) =>
+                                  setCountInStock(e.target.value)
+                                }
                               />
-                              {uploading && <Loader />}
-                          </Form.Group>
-                          <Row>
-                            <Col>
-                              <Form.Group>
-                                <label>Цена</label>
-                                <Form.Control
-                                    type="number"
-                                    id="priceForm"
-                                    placeholder="Введите цену"
-                                    value={price}
-                                    onChange={(e) => setPrice(e.target.value)}
-                                />
-                              </Form.Group>
-                            </Col>
-                            <Col>
-                              <Form.Group>
-                                <label>Количество</label>
-                                <Form.Control
-                                    type="number"
-                                    id="countInStockForm"
-                                    placeholder="Введите кол-во"
-                                    value={countInStock}
-                                    onChange={(e) => setCountInStock(e.target.value)}
-                                />
-                              </Form.Group>
-                            </Col>
-                          </Row>
-                          <Row>
-                            <Col>
-                              <Form.Group>
-                                <label>Категория</label>
-                                <Form.Control
-                                    type="text"
-                                    id="categoryForm"
-                                    placeholder="Введите категорию"
-                                    value={category}
-                                    onChange={(e) => setCategory(e.target.value)}
-                                />
-                              </Form.Group>
-                            </Col>
-                            <Col>
-                              <Form.Group>
-                                <label>Бренд</label>
-                                <Form.Control
-                                    type="text"
-                                    id="brandForm"
-                                    placeholder="Введите бренд"
-                                    value={brand}
-                                    onChange={(e) => setBrand(e.target.value)}
-                                />
-                              </Form.Group>
-                            </Col>
-                          </Row>
-                          <Row 
-                            style={CenterLayout}
+                            </Form.Group>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col>
+                            <Form.Group>
+                              <label>Категория</label>
+                              <Form.Control
+                                type="text"
+                                id="categoryForm"
+                                placeholder="Введите категорию"
+                                value={category}
+                                onChange={(e) => setCategory(e.target.value)}
+                              />
+                            </Form.Group>
+                          </Col>
+                          <Col>
+                            <Form.Group>
+                              <label>Бренд</label>
+                              <Form.Control
+                                type="text"
+                                id="brandForm"
+                                placeholder="Введите бренд"
+                                value={brand}
+                                onChange={(e) => setBrand(e.target.value)}
+                              />
+                            </Form.Group>
+                          </Col>
+                        </Row>
+                        <Row style={CenterLayout}>
+                          <Button
+                            secondary
+                            data-dismiss="modal"
+                            style={{ marginRight: "0.4rem" }}
                           >
-                            <Button secondary data-dismiss="modal" style={{ marginRight: '0.4rem'}}>
-                              Закрыть
-                            </Button>
-                            <Button type="submit" dark>Обновить</Button>
-                          </Row>
-                        </Modal.Body>
-                      </Form>
-                    </FormContainer>
-                  )}
+                            Закрыть
+                          </Button>
+                          <Button type="submit" dark>
+                            Обновить
+                          </Button>
+                        </Row>
+                      </Modal.Body>
+                    </Form>
+                  </FormContainer>
+                )}
               </Modal.Content>
             </Modal.Dialog>
           </Modal>

@@ -49,75 +49,29 @@ adminController.deleteUser = asyncHandler(async (req, res) => {
 // @route    POST /api/admin/products
 // @access   Private/Admin
 adminController.createProduct = asyncHandler(async (req, res) => {
-    const { name, 
-            description, 
-            image, 
-            price, 
-            countInStock, 
-            brand, 
-            category } = req.body;
-
-    const existProduct = await Product.findOne({ name });
-
-    if (existProduct) {
-        res.status(400);
-        throw new Error("Товар с таким названием уже существует");
+    try {
+      const newProduct = await AdminService.createProduct(req.user._id, req.body);
+      res.status(201).json(newProduct);
+    } catch (e) {
+      res.status(500);
+      throw new Error(e.message);
     } 
-
-    const product = new Product({
-        user: req.user._id,
-        name, 
-        description, 
-        image, 
-        price, 
-        countInStock, 
-        brand, 
-        category,
-        numReviews: 0
-    });
-
-    const createdProduct = await product.save();
-    res.status(201).json(createdProduct);
-    
 });
 
 // @desc     Update product
 // @route    PUT /api/admin/products/:id
 // @access   Private/Admin
 adminController.updateProduct = asyncHandler(async (req, res) => {
-    const { name, 
-            description, 
-            image, 
-            price, 
-            countInStock, 
-            brand, 
-            category } = req.body;
-
-    const existProduct = await Product.findOne({ name });
-
-    if (existProduct) {
-        res.status(400);
-        throw new Error("Товар с таким названием уже существует");
-    } 
-
-    const product = await Product.findById(req.params.id);
-
-    if (product) {
-        product.name = name;
-        product.description = description;
-        product.image = image;
-        product.price = price;
-        product.countInStock = countInStock;
-        product.brand = brand;
-        product.category = category;
-
-        const updatedProduct = await product.save();
-        res.json(updatedProduct);
-    } else {
-        res.status(404);
-        throw new Error("Товар не найден");
-    }
-    
+     try {
+       const updatedProduct = await AdminService.updateProduct(
+         req.params.id,
+         req.body
+       );
+       res.json(updatedProduct);
+     } catch (e) {
+       res.status(500);
+       throw new Error(e.message);
+     } 
 });
 
 
@@ -125,22 +79,28 @@ adminController.updateProduct = asyncHandler(async (req, res) => {
 // @route    DELETE /api/admin/products/:id
 // @access   Private/Admin
 adminController.deleteProduct = asyncHandler(async (req, res) => {
-    const product = await Product.findById(req.params.id);
-    if (product) {
-        await product.remove();
-        res.json({ message: 'Товар успешно удален' });
-    } else {
-        res.status(404);
-        throw new Error("Товар не найден");
-    }
+    try {
+      await AdminService.deleteProduct(
+        req.params.id
+      );
+      res.json({ message: "Товар успешно удален" });
+    } catch (e) {
+      res.status(404);
+      throw new Error(e.message);
+    } 
 });
 
 // @desc     Get all orders
 // @route    GET /api/admin/orders
 // @access   Private/Admin
 adminController.getOrders = asyncHandler(async (req, res) => {
-    const orders = await Order.find({}).populate('user', 'id name');
-    res.json(orders);
+    try {
+      const orders = await AdminService.getOrders();
+      res.json(orders);
+    } catch (e) {
+      res.status(500);
+      throw new Error(e.message);
+    } 
 });
 
 
