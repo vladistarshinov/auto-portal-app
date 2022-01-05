@@ -2,6 +2,7 @@ import { createTheme } from "@mui/material";
 
 const THEME_COLORS = {
   primary: "#A5A6F6",
+  dark: "#343a40",
   text: "#000000DE",
   muted: "#9B9B9B",
 };
@@ -22,8 +23,8 @@ export default createTheme({
           style: {
             padding: "12px 30px",
             color: THEME_COLORS.text,
-            "&:hover": {
-              color: "#fff",
+            "&:focus": {
+              outline: "none",
             },
           },
         },
@@ -32,6 +33,7 @@ export default createTheme({
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
+          //height: "40px",
           [`& fieldset`]: {
             borderRadius: 10,
           },
@@ -94,6 +96,7 @@ export default createTheme({
   palette: {
     primary: {
       main: THEME_COLORS.primary,
+      dark: THEME_COLORS.dark,
     },
     text: {
       primary: THEME_COLORS.text,
