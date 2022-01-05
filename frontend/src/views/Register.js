@@ -31,17 +31,17 @@ const Register = ({ history, location }) => {
 
   const { loading, error, userInfo } = userRegister;
 
-   const handleClickShowPassword = () => {
-     setShowPassword(!showPassword);
-   };
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
-   const handleClickShowConfirmPassword = () => {
-     setShowConfirmPassword(!showConfirmPassword);
-   };
+  const handleClickShowConfirmPassword = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
 
-   const handleMouseDownPassword = (e) => {
-     e.preventDefault();
-   };
+  const handleMouseDownPassword = (e) => {
+    e.preventDefault();
+  };
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -96,6 +96,7 @@ const Register = ({ history, location }) => {
           <InputLabel htmlFor="outlined-adornment-password">Пароль</InputLabel>
           <OutlinedInput
             id="outlined-adornment-password"
+            placeholder="Введите пароль"
             type={showPassword ? "text" : "password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -121,6 +122,7 @@ const Register = ({ history, location }) => {
           <OutlinedInput
             id="outlined-adornment-password"
             fullWidth
+            placeholder="Подтвердите пароль"
             type={showConfirmPassword ? "text" : "password"}
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
