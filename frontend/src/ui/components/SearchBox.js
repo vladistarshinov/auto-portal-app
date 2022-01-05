@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Form, Button } from "bootstrap-4-react";
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import Divider from "@mui/material/Divider";
@@ -21,7 +20,7 @@ const SearchBox = ({ history }) => {
   return (
     <Paper
       component="form"
-      sx={{ p: "0 4px", display: "flex", alignItems: "center", width: 300 }}
+      sx={{ p: "0 4px", display: "flex", alignItems: "center", width: 300, my: { sm: 1, xs: 1 } }}
     >
       <InputBase
         sx={{ ml: 1, flex: 1 }}

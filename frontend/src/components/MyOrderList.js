@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Button, Table } from "bootstrap-4-react";
 import { LinkContainer } from "react-router-bootstrap";
-import Loader from "../components/Loader";
+import Loader from "../ui/components/Loader";
 import Message from "../components/Message";
 import { DateFilter } from "../filters/DateTimeFilter.js";
 import styled from 'styled-components';

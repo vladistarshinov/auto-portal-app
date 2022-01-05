@@ -6,7 +6,7 @@ import { Row, Col, Table, Modal, Button } from "bootstrap-4-react";
 import { Form } from 'react-bootstrap';
 import { listOfOrders } from "../redux/actions/admin.actions";
 import FormContainer from "../components/FormContainer";
-import Loader from "../components/Loader";
+import Loader from "../ui/components/Loader";
 import Message from "../components/Message";
 import { DateFilter } from "../filters/DateTimeFilter.js";
 import styled from 'styled-components';

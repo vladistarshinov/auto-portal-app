@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Row, Col, Form, Button, Card, Collapse } from "bootstrap-4-react";
 import { getUserProfile, updateUserProfile } from "../redux/actions/user.actions";
 import { listOfMyOrders } from "../redux/actions/order.actions";
-import Loader from "../components/Loader";
+import Loader from "../ui/components/Loader";
 import Message from "../components/Message";
 import MyOrderList from '../components/MyOrderList';
 

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ProductList from "../components/ProductList";
 import { listOfProduct } from '../redux/actions/product.actions';
-import Loader from '../components/Loader';
+import Loader from '../ui/components/Loader';
 import Message from '../components/Message';
 import Pagination from '../components/Pagination';
 import TopProductsCarousel from '../components/TopProductsCarousel';

@@ -8,7 +8,7 @@ import { listOfProduct } from "../redux/actions/product.actions";
 import { createProduct, updateProduct, removeProduct } from "../redux/actions/admin.actions";
 import { PRODUCT_CREATE_RESET, PRODUCT_UPDATE_RESET } from "../redux/constants/admin.constants";
 import FormContainer from "../components/FormContainer";
-import Loader from "../components/Loader";
+import Loader from "../ui/components/Loader";
 import Message from "../components/Message";
 import Pagination from '../components/Pagination';
 import styled from 'styled-components';

@@ -10,7 +10,7 @@ import {
 } from "../redux/actions/admin.actions";
 import { USER_UPDATE_RESET } from "../redux/constants/admin.constants";
 import FormContainer from "../components/FormContainer";
-import Loader from "../components/Loader";
+import Loader from "../ui/components/Loader";
 import Message from "../components/Message";
 import styled from "styled-components";
 
