@@ -100,7 +100,7 @@ const AdminUsersList = ({ history }) => {
       {loading ? (
         <Loader />
       ) : error ? (
-        <Message variant="danger">{error}</Message>
+        <Message variant="error">{error}</Message>
       ) : (
         <>
           <Table className="table-sm" striped bordered hover responsive>
@@ -168,12 +168,12 @@ const AdminUsersList = ({ history }) => {
                 </Modal.Header>
                 {loadingUpdateUser && <Loader />}
                 {errorUpdateUser && (
-                  <Message variant="danger">{errorUpdateUser}</Message>
+                  <Message variant="error">{errorUpdateUser}</Message>
                 )}
                 {loading ? (
                   <Loader />
                 ) : error ? (
-                  <Message variant="danger">{error}</Message>
+                  <Message variant="error">{error}</Message>
                 ) : (
                   <FormContainer>
                     <Form onSubmit={submitUserUpdateHandler}>

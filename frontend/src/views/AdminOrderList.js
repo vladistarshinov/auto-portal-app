@@ -55,7 +55,7 @@ const AdminOrderList = ({ history }) => {
       {loading ? (
         <Loader />
       ) : error ? (
-        <Message variant="danger">{error}</Message>
+        <Message variant="error">{error}</Message>
       ) : (
         <>
           <Table className="table-sm" striped bordered hover responsive>
@@ -80,9 +80,7 @@ const AdminOrderList = ({ history }) => {
                   <td>
                     {order.isPaid ? (
                       <>
-                        <TickIcon
-                          className="fas fa-check"
-                        ></TickIcon>
+                        <TickIcon className="fas fa-check"></TickIcon>
                         <br />
                         {DateFilter(order.paidAt)}
                       </>
@@ -93,9 +91,7 @@ const AdminOrderList = ({ history }) => {
                   <td>
                     {order.isDelivered ? (
                       <>
-                        <TickIcon
-                          className="fas fa-check"
-                        ></TickIcon>
+                        <TickIcon className="fas fa-check"></TickIcon>
                         <br />
                         {DateFilter(order.deliveredAt)}
                       </>
@@ -107,23 +103,18 @@ const AdminOrderList = ({ history }) => {
                     <LinkContainer
                       style={LinkToOrderDetails}
                       to={`/order/${order._id}`}
-                      >
-                        <Button
-                          className="btn-sm"
-                          text="light"
-                          dark
-                          circle
-                        >
-                          <i className="fas fa-info"></i>
-                        </Button>
-                      </LinkContainer>
+                    >
+                      <Button className="btn-sm" text="light" dark circle>
+                        <i className="fas fa-info"></i>
+                      </Button>
+                    </LinkContainer>
                   </td>
                 </tr>
               ))}
             </tbody>
           </Table>
         </>
-      )} 
+      )}
     </>
   );
 };

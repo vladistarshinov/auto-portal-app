@@ -43,8 +43,8 @@ const ProductDetail = ({ history, match }) => {
       {loading ? (
         <Loader />
       ) : error ? (
-        <Message variant="danger">{error}</Message>
-      ): (
+        <Message variant="error">{error}</Message>
+      ) : (
         <>
           <MetaHeader title={product.name} />
           <Row>
@@ -61,7 +61,15 @@ const ProductDetail = ({ history, match }) => {
                   {product.numReviews == 0 ? (
                     <ReviewsCount>нет отзывов</ReviewsCount>
                   ) : (
-                    <ReviewsCount>{product.numReviews} {genEndOfNoun(product.numReviews, "отзыв", "отзыва", "отзывов")}</ReviewsCount>
+                    <ReviewsCount>
+                      {product.numReviews}{" "}
+                      {genEndOfNoun(
+                        product.numReviews,
+                        "отзыв",
+                        "отзыва",
+                        "отзывов"
+                      )}
+                    </ReviewsCount>
                   )}
                 </ListGroup.Item>
                 <ListGroup.Item>Цена: ${product.price}</ListGroup.Item>
@@ -128,8 +136,7 @@ const ProductDetail = ({ history, match }) => {
               </ListGroup>
             </Col>
           </Row>
-          <Reviews productId={productId} product={product} />           
-          
+          <Reviews productId={productId} product={product} />
         </>
       )}
     </>

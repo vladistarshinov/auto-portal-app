@@ -55,73 +55,90 @@ const Profile = ({ history, location }) => {
 
   return (
     <Row>
-        <Col md={3}>
-            {/* <h2 id="accordionExample">Профиль</h2> */}
-            <Card id="accordionExample">
-                <Card.Header mb="0">
-                    <Collapse.Button target="#collapseOne" id="headingOne" aria-expanded="true">
-                        <h5>Профиль</h5>
-                    </Collapse.Button>
-                </Card.Header>
-                <Collapse id="collapseOne" show aria-labelledby="headingOne" data-parent="#accordionExample">
-                    <Card.Body>
-                        {message && <Message variant="danger">{message}</Message>}
-                        {success && <Message variant="success">Профиль изменен</Message>}
-                        {loading ? (
-                            <Loader />
-                        ) : error ? (
-                            <Message variant="danger">{error}</Message>
-                        ) : (
-                            <Form onSubmit={submitHandler}>
-                                <Form.Group>
-                                    <label htmlFor="nameForm">Имя</label>
-                                    <Form.Input 
-                                        type="name" 
-                                        id="nameForm" 
-                                        placeholder="Введите имя и фамилию"
-                                        value={name}
-                                        onChange={(e) => setName(e.target.value)}
-                                    />
-                                </Form.Group>
-                                <Form.Group>
-                                    <label htmlFor="emailForm">E-mail</label>
-                                    <Form.Input 
-                                        type="email" 
-                                        id="emailForm" 
-                                        placeholder="Введите email"
-                                        value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
-                                    />
-                                </Form.Group>
-                                <Form.Group>
-                                    <label htmlFor="passwordForm">Новый пароль</label>
-                                    <Form.Input 
-                                        type="password" 
-                                        id="passwordForm" 
-                                        placeholder="Введите новый пароль"
-                                        value={password}
-                                        onChange={(e) => setPassword(e.target.value)}
-                                    />
-                                </Form.Group>
-                                <Form.Group>
-                                    <label htmlFor="confirmPasswordForm">Подтверждение пароля</label>
-                                    <Form.Input 
-                                        type="password" 
-                                        id="confirmPasswordForm" 
-                                        placeholder="Подтвердите пароль"
-                                        value={confirmPassword}
-                                        onChange={(e) => setConfirmPassword(e.target.value)}
-                                    />
-                                </Form.Group>
-                                <Button type="submit" dark>Обновить</Button>
-                            </Form>
-                        )}
-                    </Card.Body>
-                </Collapse>
-            </Card>
-            {/* */}
-        </Col>
-        <MyOrderList loadingOrders={loadingOrders} errorOrders={errorOrders} orders={orders} />
+      <Col md={3}>
+        {/* <h2 id="accordionExample">Профиль</h2> */}
+        <Card id="accordionExample">
+          <Card.Header mb="0">
+            <Collapse.Button
+              target="#collapseOne"
+              id="headingOne"
+              aria-expanded="true"
+            >
+              <h5>Профиль</h5>
+            </Collapse.Button>
+          </Card.Header>
+          <Collapse
+            id="collapseOne"
+            show
+            aria-labelledby="headingOne"
+            data-parent="#accordionExample"
+          >
+            <Card.Body>
+              {message && <Message variant="error">{message}</Message>}
+              {success && <Message variant="success">Профиль изменен</Message>}
+              {loading ? (
+                <Loader />
+              ) : error ? (
+                <Message variant="error">{error}</Message>
+              ) : (
+                <Form onSubmit={submitHandler}>
+                  <Form.Group>
+                    <label htmlFor="nameForm">Имя</label>
+                    <Form.Input
+                      type="name"
+                      id="nameForm"
+                      placeholder="Введите имя и фамилию"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                  </Form.Group>
+                  <Form.Group>
+                    <label htmlFor="emailForm">E-mail</label>
+                    <Form.Input
+                      type="email"
+                      id="emailForm"
+                      placeholder="Введите email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </Form.Group>
+                  <Form.Group>
+                    <label htmlFor="passwordForm">Новый пароль</label>
+                    <Form.Input
+                      type="password"
+                      id="passwordForm"
+                      placeholder="Введите новый пароль"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                  </Form.Group>
+                  <Form.Group>
+                    <label htmlFor="confirmPasswordForm">
+                      Подтверждение пароля
+                    </label>
+                    <Form.Input
+                      type="password"
+                      id="confirmPasswordForm"
+                      placeholder="Подтвердите пароль"
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                    />
+                  </Form.Group>
+                  <Button type="submit" dark>
+                    Обновить
+                  </Button>
+                </Form>
+              )}
+            </Card.Body>
+          </Collapse>
+        </Card>
+        {/* */}
+      </Col>
+      <MyOrderList
+        loadingOrders={loadingOrders}
+        errorOrders={errorOrders}
+        orders={orders}
+      />
     </Row>
   );
 };

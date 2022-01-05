@@ -63,7 +63,7 @@ const Order = (props) => {
       {loading ? (
         <Loader />
       ) : error ? (
-        <Message variant="danger">{error}</Message>
+        <Message variant="error">{error}</Message>
       ) : (
         <>
           <div id="printOrder">
@@ -118,8 +118,8 @@ const Order = (props) => {
                         </ListGroup.Item>
                       </ListGroup>
                     </Card>
-                    <OrderProductActionsStatus 
-                      orderId={orderId} 
+                    <OrderProductActionsStatus
+                      orderId={orderId}
                       order={order}
                       loadingPayingProcess={loadingPayingProcess}
                       loadingDeliveringProcess={loadingDeliveringProcess}

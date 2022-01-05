@@ -39,15 +39,15 @@ const Register = ({ history, location }) => {
 
   return (
     <FormContainer>
-      <h2 style={{ padding: '1rem 0' }}>Регистрация</h2>
-      {message && <Message variant="danger">{message}</Message>}
-      {error && <Message variant="danger">{error}</Message>}
+      <h2 style={{ padding: "1rem 0" }}>Регистрация</h2>
+      {message && <Message variant="error">{message}</Message>}
+      {error && <Message variant="error">{error}</Message>}
       {loading && <Loader />}
       <Form onSubmit={submitHandler}>
         <Form.Group>
           <label htmlFor="nameForm">Имя</label>
-          <Form.Input 
-            type="name" 
+          <Form.Input
+            type="name"
             id="nameForm"
             placeholder="Введите имя и фамилию"
             value={name}
@@ -56,9 +56,9 @@ const Register = ({ history, location }) => {
         </Form.Group>
         <Form.Group>
           <label htmlFor="emailForm">E-mail</label>
-          <Form.Input 
-            type="email" 
-            id="emailForm" 
+          <Form.Input
+            type="email"
+            id="emailForm"
             placeholder="Введите email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -66,9 +66,9 @@ const Register = ({ history, location }) => {
         </Form.Group>
         <Form.Group>
           <label htmlFor="passwordForm">Пароль</label>
-          <Form.Input 
-            type="password" 
-            id="passwordForm" 
+          <Form.Input
+            type="password"
+            id="passwordForm"
             placeholder="Введите пароль"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -76,23 +76,27 @@ const Register = ({ history, location }) => {
         </Form.Group>
         <Form.Group>
           <label htmlFor="confirmPasswordForm">Подтверждение пароля</label>
-          <Form.Input 
-            type="password" 
-            id="confirmPasswordForm" 
+          <Form.Input
+            type="password"
+            id="confirmPasswordForm"
             placeholder="Подтвердите пароль"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </Form.Group>
-        <Button type="submit" dark>Зарегистрироваться</Button>
+        <Button type="submit" dark>
+          Зарегистрироваться
+        </Button>
       </Form>
       <Row className="py-3">
         <Col>
-          Есть аккаунт?{' '} 
-          <Link style={{ color: 'navy', textDecoration: 'none' }} to={redirect 
-            ? `/login?redirect=${redirect}` 
-            : '/login'}
-          >Войти</Link>
+          Есть аккаунт?{" "}
+          <Link
+            style={{ color: "navy", textDecoration: "none" }}
+            to={redirect ? `/login?redirect=${redirect}` : "/login"}
+          >
+            Войти
+          </Link>
         </Col>
       </Row>
     </FormContainer>

@@ -31,15 +31,15 @@ const Login = ({ history, location }) => {
 
   return (
     <FormContainer>
-      <h2 style={{ padding: '1rem 0' }}>Авторизация</h2>
-      {error && <Message variant="danger">{error}</Message>}
+      <h2 style={{ padding: "1rem 0" }}>Авторизация</h2>
+      {error && <Message variant="error">{error}</Message>}
       {loading && <Loader />}
       <Form onSubmit={submitHandler}>
         <Form.Group>
           <label htmlFor="emailForm">E-mail</label>
-          <Form.Input 
-            type="email" 
-            id="emailForm" 
+          <Form.Input
+            type="email"
+            id="emailForm"
             placeholder="Введите email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -47,23 +47,27 @@ const Login = ({ history, location }) => {
         </Form.Group>
         <Form.Group>
           <label htmlFor="passwordForm">Пароль</label>
-          <Form.Input 
-            type="password" 
-            id="passwordForm" 
+          <Form.Input
+            type="password"
+            id="passwordForm"
             placeholder="Введите пароль"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-        <Button type="submit" dark>Войти</Button>
+        <Button type="submit" dark>
+          Войти
+        </Button>
       </Form>
       <Row className="py-3">
         <Col>
-          Новый пользователь?{' '} 
-          <Link style={{ color: 'navy', textDecoration: 'none' }} to={redirect 
-            ? `/register?redirect=${redirect}` 
-            : '/register'}
-          >Зарегистрироваться</Link>
+          Новый пользователь?{" "}
+          <Link
+            style={{ color: "navy", textDecoration: "none" }}
+            to={redirect ? `/register?redirect=${redirect}` : "/register"}
+          >
+            Зарегистрироваться
+          </Link>
         </Col>
       </Row>
     </FormContainer>

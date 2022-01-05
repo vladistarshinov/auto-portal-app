@@ -55,108 +55,117 @@ const PlaceOrder = ({ history }) => {
     };
 
     return (
-        <>
-            <CheckoutSteps step1="done" step2="done" step3="done" step4="active" />
-            <Row>
-                <Col md={8}>
-                    <ListGroup flush>
-                        <ListGroup.Item>
-                            <h2>Доставка</h2>
-                            <p>
-                                <strong>Адрес:{' '}</strong>
-                                {cart.shippingAddress.address},{' '}
-                                {cart.shippingAddress.city},{' '}
-                                {cart.shippingAddress.postalCode},{' '}
-                                {cart.shippingAddress.country}
-                            </p>
-                        </ListGroup.Item>
+      <>
+        <CheckoutSteps step1="done" step2="done" step3="done" step4="active" />
+        <Row>
+          <Col md={8}>
+            <ListGroup flush>
+              <ListGroup.Item>
+                <h2>Доставка</h2>
+                <p>
+                  <strong>Адрес: </strong>
+                  {cart.shippingAddress.address}, {cart.shippingAddress.city},{" "}
+                  {cart.shippingAddress.postalCode},{" "}
+                  {cart.shippingAddress.country}
+                </p>
+              </ListGroup.Item>
 
-                        <ListGroup.Item>
-                            <h2 style={{ padding: '1rem 0' }}>Оплата</h2>
-                            <strong>Способ:{' '}</strong>
-                            {cart.paymentMethod}
-                        </ListGroup.Item>
+              <ListGroup.Item>
+                <h2 style={{ padding: "1rem 0" }}>Оплата</h2>
+                <strong>Способ: </strong>
+                {cart.paymentMethod}
+              </ListGroup.Item>
 
-                        <ListGroup.Item>
-                            <h2>Заказ</h2>
-                            {cart.cartProductItems.length === 0 ? (
-                                <Message>Ваша корзина пуста</Message>
-                            ) : (
-                                <ListGroup flush>
-                                    {cart.cartProductItems.map((item, index) => (
-                                        <ListGroup.Item key={index}>
-                                            <Row>
-                                                <Col md={2}>
-                                                    <Figure.Image src={item.image} alt={item.name} fluid rounded />
-                                                </Col>
-                                                <Col>
-                                                    <Link 
-                                                        style={LinkToProductDetails} 
-                                                        to={`/product/${item.product}`}
-                                                    >
-                                                        {item.name}
-                                                    </Link>
-                                                </Col>
-                                                <Col md={4}>
-                                                    {item.quantity} * ${item.price} ={' '}
-                                                    ${item.quantity * item.price}
-                                                </Col>
-                                            </Row>
-                                        </ListGroup.Item>
-                                    ))}
-                                </ListGroup>
-                            )}
-                        </ListGroup.Item>
-                    </ListGroup>
-                </Col>
-                <Col md={4}>
-                    <Card>
-                        <ListGroup flush>
-                            <ListGroup.Item>
-                                <h4>Суммарный заказ</h4>
-                            </ListGroup.Item>
-                            <ListGroup.Item>
-                                <Row>
-                                    <Col>Товары</Col>
-                                    <Col>${cart.productsPrice}</Col>            
-                                </Row>
-                            </ListGroup.Item>
-                            <ListGroup.Item>
-                                <Row>
-                                    <Col>Доставка</Col>
-                                    <Col>${cart.shippingPrice}</Col>            
-                                </Row>
-                            </ListGroup.Item>
-                            <ListGroup.Item>
-                                <Row>
-                                    <Col>Налог</Col>
-                                    <Col>${cart.taxPrice}</Col>            
-                                </Row>   
-                            </ListGroup.Item>
-                            <ListGroup.Item>
-                                <Row>
-                                    <Col><strong>Итого</strong></Col>
-                                    <Col><strong>${cart.totalPrice}</strong></Col>            
-                                </Row>   
-                            </ListGroup.Item>
-                            <ListGroup.Item>
-                                {error && <Message cariant="danger">{error}</Message>}
-                            </ListGroup.Item>
-                            <ListGroup.Item>
-                                <Button 
-                                    type="button"
-                                    className="btn-block"
-                                    dark
-                                    disabled={cart.cartProductItems === 0}
-                                    onClick={placeOrderHandler}
-                                >Отправить
-                                </Button> 
-                            </ListGroup.Item>
-                        </ListGroup>
-                    </Card>
-                </Col>
-            </Row>
-        </>
+              <ListGroup.Item>
+                <h2>Заказ</h2>
+                {cart.cartProductItems.length === 0 ? (
+                  <Message>Ваша корзина пуста</Message>
+                ) : (
+                  <ListGroup flush>
+                    {cart.cartProductItems.map((item, index) => (
+                      <ListGroup.Item key={index}>
+                        <Row>
+                          <Col md={2}>
+                            <Figure.Image
+                              src={item.image}
+                              alt={item.name}
+                              fluid
+                              rounded
+                            />
+                          </Col>
+                          <Col>
+                            <Link
+                              style={LinkToProductDetails}
+                              to={`/product/${item.product}`}
+                            >
+                              {item.name}
+                            </Link>
+                          </Col>
+                          <Col md={4}>
+                            {item.quantity} * ${item.price} = $
+                            {item.quantity * item.price}
+                          </Col>
+                        </Row>
+                      </ListGroup.Item>
+                    ))}
+                  </ListGroup>
+                )}
+              </ListGroup.Item>
+            </ListGroup>
+          </Col>
+          <Col md={4}>
+            <Card>
+              <ListGroup flush>
+                <ListGroup.Item>
+                  <h4>Суммарный заказ</h4>
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  <Row>
+                    <Col>Товары</Col>
+                    <Col>${cart.productsPrice}</Col>
+                  </Row>
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  <Row>
+                    <Col>Доставка</Col>
+                    <Col>${cart.shippingPrice}</Col>
+                  </Row>
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  <Row>
+                    <Col>Налог</Col>
+                    <Col>${cart.taxPrice}</Col>
+                  </Row>
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  <Row>
+                    <Col>
+                      <strong>Итого</strong>
+                    </Col>
+                    <Col>
+                      <strong>${cart.totalPrice}</strong>
+                    </Col>
+                  </Row>
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  {error && <Message cariant="error">{error}</Message>}
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  <Button
+                    type="button"
+                    className="btn-block"
+                    dark
+                    disabled={cart.cartProductItems === 0}
+                    onClick={placeOrderHandler}
+                  >
+                    Отправить
+                  </Button>
+                </ListGroup.Item>
+              </ListGroup>
+            </Card>
+          </Col>
+        </Row>
+      </>
     );
 };
 

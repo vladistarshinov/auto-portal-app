@@ -39,7 +39,7 @@ const App = () => {
         <Header />
         <Box
           sx={{
-            minHeight: "80vh",
+            minHeight: "70vh",
           }}
         >
           <Container>

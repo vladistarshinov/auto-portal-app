@@ -187,7 +187,7 @@ const AdminProductList = ({ history, match }) => {
       {loading ? (
         <Loader />
       ) : error ? (
-        <Message variant="danger">{error}</Message>
+        <Message variant="error">{error}</Message>
       ) : (
         <>
           <Table className="table-sm" striped bordered hover responsive>
@@ -251,12 +251,12 @@ const AdminProductList = ({ history, match }) => {
                 </Modal.Header>
                 {loadingCreateProduct || (loadingDeleteProduct && <Loader />)}
                 {errorCreateProduct && (
-                  <Message variant="danger">{errorCreateProduct}</Message>
+                  <Message variant="error">{errorCreateProduct}</Message>
                 )}
                 {loading ? (
                   <Loader />
                 ) : error ? (
-                  <Message variant="danger">{error}</Message>
+                  <Message variant="error">{error}</Message>
                 ) : (
                   <FormContainer>
                     <Form onSubmit={submitProductAddHandler}>
@@ -383,12 +383,12 @@ const AdminProductList = ({ history, match }) => {
                 </Modal.Header>
                 {loadingUpdateProduct && <Loader />}
                 {errorUpdateProduct && (
-                  <Message variant="danger">{errorUpdateProduct}</Message>
+                  <Message variant="error">{errorUpdateProduct}</Message>
                 )}
                 {loading ? (
                   <Loader />
                 ) : error ? (
-                  <Message variant="danger">{error}</Message>
+                  <Message variant="error">{error}</Message>
                 ) : (
                   <FormContainer>
                     <Form onSubmit={submitProductEditHandler}>

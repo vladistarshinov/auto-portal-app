@@ -86,7 +86,10 @@ const OrderProductActionsStatus = (
       <Card>
         <ListGroup>
           {!order.isPaid && (
-            <ListGroup.Item id="payingButtonElements" style={{ display: 'none' }}>
+            <ListGroup.Item
+              id="payingButtonElements"
+              style={{ display: "none" }}
+            >
               <Row>
                 <Col>
                   {loadingPayingProcess && <Loader />}
@@ -112,7 +115,7 @@ const OrderProductActionsStatus = (
             {DateTimeFilter(order.paidAt)}
           </Message>
         ) : (
-          <Message variant="danger">Не оплачено</Message>
+          <Message variant="error">Не оплачено</Message>
         )}
       </StatusMessage>
       <StatusMessage className="text-center">
@@ -124,7 +127,7 @@ const OrderProductActionsStatus = (
               {DateTimeFilter(order.deliveredAt)}
             </Message>
           ) : (
-            <Message variant="danger">Не отправлено</Message>
+            <Message variant="error">Не отправлено</Message>
           ))}
       </StatusMessage>
       {loadingDeliveringProcess && <Loader />}
@@ -135,13 +138,13 @@ const OrderProductActionsStatus = (
           </Button>
         </div>
       )}
-      {!order.isPaid &&
+      {!order.isPaid && (
         <div className="text-center">
           <Button type="button" dark onClick={payingActionHandler}>
             Оплатить
           </Button>
         </div>
-      }   
+      )}
     </>
   );
 };

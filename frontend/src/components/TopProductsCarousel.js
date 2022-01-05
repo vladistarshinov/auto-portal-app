@@ -44,29 +44,35 @@ const TopProductsCarousel = () => {
         borderRadius: '50%'
     };
 
-    return (
-        loading ? (
-            <Loader />
-        ) : error ? (
-            <Message variant="danger">{error}</Message>
-        ) : (
-            <Carousel pause="hover" className="bg-dark">
-                {products.map(product => (
-                    <Carousel.Item key={product._id}>
-                        <Link to={`/product/${product._id}`}>
-                            <CarouselElement>
-                                <Image style={CarouselImage} src={product.image} alt={product.name} fluid />
-                                {/* <CarouselElement> */}
-                                    <Carousel.Caption className="carousel-caption">
-                                        <h4>{product.name} (${product.price})</h4>
-                                    </Carousel.Caption>
-                                {/* </CarouselElement> */}
-                            </CarouselElement>
-                        </Link>
-                    </Carousel.Item>
-                ))};
-            </Carousel>
-        )
+    return loading ? (
+      <Loader />
+    ) : error ? (
+      <Message variant="error">{error}</Message>
+    ) : (
+      <Carousel pause="hover" className="bg-dark">
+        {products.map((product) => (
+          <Carousel.Item key={product._id}>
+            <Link to={`/product/${product._id}`}>
+              <CarouselElement>
+                <Image
+                  style={CarouselImage}
+                  src={product.image}
+                  alt={product.name}
+                  fluid
+                />
+                {/* <CarouselElement> */}
+                <Carousel.Caption className="carousel-caption">
+                  <h4>
+                    {product.name} (${product.price})
+                  </h4>
+                </Carousel.Caption>
+                {/* </CarouselElement> */}
+              </CarouselElement>
+            </Link>
+          </Carousel.Item>
+        ))}
+        ;
+      </Carousel>
     );
 };
 

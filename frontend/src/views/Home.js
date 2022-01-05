@@ -32,38 +32,42 @@ const Home = ({ match }) => {
     `;
 
     return (
-        <>
-            <MetaHeader />
-            {!keyword ? (
-                <>
-                    <Heading>Лучшие товары</Heading>
-                    <TopProductsCarousel />
-                </>
-            ) : <Link to="/" className="btn btn-light">Назад</Link>}
-            <Heading>Ассортимент товаров</Heading>
-            {loading ? (
-                <Loader />
-            ) : error ? (
-                // alert(`${error}`)
-                <Message variant="danger">{error}</Message>
-            ) : (
-                <>
-                    <Row>
-                        {products.map((product) => 
-                            <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-                            <ProductList product={product} />
-                            </Col>
-                        )}
-                    </Row>
-                    <Pagination 
-                        pages={pages} 
-                        page={page} 
-                        keyword={keyword ? keyword : ''} 
-                    />
-                </>
-            )}
-        </>
-    )
+      <>
+        <MetaHeader />
+        {!keyword ? (
+          <>
+            <Heading>Лучшие товары</Heading>
+            <TopProductsCarousel />
+          </>
+        ) : (
+          <Link to="/" className="btn btn-light">
+            Назад
+          </Link>
+        )}
+        <Heading>Ассортимент товаров</Heading>
+        {loading ? (
+          <Loader />
+        ) : error ? (
+          // alert(`${error}`)
+          <Message variant="error">{error}</Message>
+        ) : (
+          <>
+            <Row>
+              {products.map((product) => (
+                <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+                  <ProductList product={product} />
+                </Col>
+              ))}
+            </Row>
+            <Pagination
+              pages={pages}
+              page={page}
+              keyword={keyword ? keyword : ""}
+            />
+          </>
+        )}
+      </>
+    );
 }
 
 export default Home;
