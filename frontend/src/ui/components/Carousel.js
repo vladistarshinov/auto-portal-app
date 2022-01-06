@@ -15,14 +15,6 @@ const Carousel = ({ products }) => {
   const [activeStep, setActiveStep] = React.useState(0);
   const maxSteps = products.length;
 
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
   const handleStepChange = (step) => {
     setActiveStep(step);
   };

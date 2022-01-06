@@ -1,17 +1,24 @@
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col, Table, Modal, Figure, Button } from "bootstrap-4-react";
-import { Form } from 'react-bootstrap';
+import { Form } from "react-bootstrap";
 import { listOfProduct } from "../redux/actions/product.actions";
-import { createProduct, updateProduct, removeProduct } from "../redux/actions/admin.actions";
-import { PRODUCT_CREATE_RESET, PRODUCT_UPDATE_RESET } from "../redux/constants/admin.constants";
+import {
+  createProduct,
+  updateProduct,
+  removeProduct,
+} from "../redux/actions/admin.actions";
+import {
+  PRODUCT_CREATE_RESET,
+  PRODUCT_UPDATE_RESET,
+} from "../redux/constants/admin.constants";
 import FormContainer from "../components/FormContainer";
 import Loader from "../ui/components/Loader";
 import Message from "../ui/components/Message";
-import Pagination from '../components/Pagination';
-import styled from 'styled-components';
+import Pagination from "../ui/components/Pagination";
+import styled from "styled-components";
 
 const AdminProductList = ({ history, match }) => {
   const pageNumber = match.params.pageNumber || 1;
@@ -29,24 +36,30 @@ const AdminProductList = ({ history, match }) => {
   const [category, setCategory] = useState("");
   const [uploading, setUploading] = useState(false);
 
-  const productList = useSelector(state => state.productList);
+  const productList = useSelector((state) => state.productList);
   const { loading, products, pages, page, error } = productList;
 
-  const productCreate = useSelector(state => state.productCreate);
-  const { loading: loadingCreateProduct, 
-          success: successCreateProduct,
-          error: errorCreateProduct } = productCreate;
-  
-  const productUpdate = useSelector(state => state.productUpdate);
-  const { loading: loadingUpdateProduct, 
-          success: successUpdateProduct,
-          error: errorUpdateProduct } = productUpdate;
+  const productCreate = useSelector((state) => state.productCreate);
+  const {
+    loading: loadingCreateProduct,
+    success: successCreateProduct,
+    error: errorCreateProduct,
+  } = productCreate;
 
-  const productRemove = useSelector(state => state.productRemove);
-  const { loading: loadingDeleteProduct, 
-          success: successDeleteProduct,
-          error: errorDeleteProduct } = productRemove;
-          
+  const productUpdate = useSelector((state) => state.productUpdate);
+  const {
+    loading: loadingUpdateProduct,
+    success: successUpdateProduct,
+    error: errorUpdateProduct,
+  } = productUpdate;
+
+  const productRemove = useSelector((state) => state.productRemove);
+  const {
+    loading: loadingDeleteProduct,
+    success: successDeleteProduct,
+    error: errorDeleteProduct,
+  } = productRemove;
+
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
@@ -54,9 +67,9 @@ const AdminProductList = ({ history, match }) => {
     if (!userInfo.isAdmin) {
       history.push("/login");
     } else {
-      dispatch(listOfProduct('', pageNumber));
+      dispatch(listOfProduct("", pageNumber));
     }
-    
+
     if (successCreateProduct) {
       dispatch({ type: PRODUCT_CREATE_RESET });
     }
@@ -64,7 +77,15 @@ const AdminProductList = ({ history, match }) => {
     if (successUpdateProduct) {
       dispatch({ type: PRODUCT_UPDATE_RESET });
     }
-  }, [dispatch, pageNumber, history, userInfo, successCreateProduct, successUpdateProduct, successDeleteProduct]);
+  }, [
+    dispatch,
+    pageNumber,
+    history,
+    userInfo,
+    successCreateProduct,
+    successUpdateProduct,
+    successDeleteProduct,
+  ]);
 
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0];
@@ -77,31 +98,33 @@ const AdminProductList = ({ history, match }) => {
     try {
       const config = {
         headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      }
+          "Content-Type": "multipart/form-data",
+        },
+      };
 
       let { data } = await axios.post("/api/upload", formData, config);
 
       setImage(data);
       localStorage.setItem("productImage", data);
       setUploading(false);
-    } catch(error) {
+    } catch (error) {
       console.error(error);
       setUploading(false);
     }
   };
 
   const submitProductAddHandler = () => {
-    dispatch(createProduct({
-      name, 
-      description, 
-      image, 
-      price, 
-      countInStock, 
-      brand, 
-      category
-    }));
+    dispatch(
+      createProduct({
+        name,
+        description,
+        image,
+        price,
+        countInStock,
+        brand,
+        category,
+      })
+    );
   };
 
   const editProductHandler = (productId) => {
@@ -117,17 +140,19 @@ const AdminProductList = ({ history, match }) => {
   };
 
   const submitProductEditHandler = () => {
-    dispatch(updateProduct({
-      _id: id,
-      name, 
-      description, 
-      image, 
-      price, 
-      countInStock, 
-      brand, 
-      category
-    }));
-  }; 
+    dispatch(
+      updateProduct({
+        _id: id,
+        name,
+        description,
+        image,
+        price,
+        countInStock,
+        brand,
+        category,
+      })
+    );
+  };
 
   const deleteProductHandler = (id) => {
     if (window.confirm("Вы действительно хотите удалить товар?")) {
@@ -140,21 +165,21 @@ const AdminProductList = ({ history, match }) => {
   `;
 
   const PlusIcon = styled.i`
-    padding-right: 0.5rem
+    padding-right: 0.5rem;
   `;
 
   const LinkToProductDetails = {
-    color: 'navy',
-    textDecoration: 'none'
+    color: "navy",
+    textDecoration: "none",
   };
 
-  const ModalDialog = { 
-    maxWidth: '70vw' 
+  const ModalDialog = {
+    maxWidth: "70vw",
   };
 
   const CenterLayout = {
-    display: 'flex',
-    justifyContent: 'center'
+    display: "flex",
+    justifyContent: "center",
   };
 
   return (
