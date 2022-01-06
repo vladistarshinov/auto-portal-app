@@ -83,7 +83,6 @@ const Carousel = ({ products }) => {
         steps={maxSteps}
         position="static"
         activeStep={activeStep}
-        onClick={handleStepChange}
       />
     </Box>
   );
