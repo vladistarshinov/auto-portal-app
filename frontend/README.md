@@ -2,7 +2,7 @@
     
 ## Стек технологий/библиотек (Front-end)
     * React.js
-    * React-bootstrap-4
+    * MUI (v5)
     * Redux
     * Redux-thunk
     * Styled-components
