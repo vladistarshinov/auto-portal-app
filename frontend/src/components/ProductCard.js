@@ -10,7 +10,7 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import Rating from "./Rating";
+import Rating from "../ui/components/Rating";
 import { genEndOfNoun } from "../filters/GenEndOfNoun";
 import Box from "@mui/material/Box";
 import Hidden from "@mui/material/Hidden";

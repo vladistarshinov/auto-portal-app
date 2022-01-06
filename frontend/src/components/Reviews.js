@@ -8,7 +8,7 @@ import { REVIEW_CREATE_RESET } from "../redux/constants/review.constants";
 import { DateTimeFilter } from "../filters/DateTimeFilter.js";
 import { detailsOfProduct } from "../redux/actions/product.actions";
 import Message from "../ui/components/Message";
-import Rating from "../components/Rating";
+import Rating from "../ui/components/Rating";
 import { Form } from "react-bootstrap";
 
 const Reviews = ({ productId, product }) => {

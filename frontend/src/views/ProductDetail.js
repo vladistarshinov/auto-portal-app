@@ -5,12 +5,12 @@ import { Row, Col, ListGroup, Figure, Button } from "bootstrap-4-react";
 import { detailsOfProduct } from "../redux/actions/product.actions";
 import Loader from "../ui/components/Loader";
 import Message from "../ui/components/Message";
-import Rating from "../components/Rating";
+import Rating from "../ui/components/Rating";
 import Reviews from "../components/Reviews";
-import MetaHeader from '../components/MetaHeader';
+import MetaHeader from "../components/MetaHeader";
 import { Form } from "react-bootstrap";
 import { genEndOfNoun } from "../filters/GenEndOfNoun";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const ProductDetail = ({ history, match }) => {
   const [quantity, setQuantity] = useState(1);
@@ -18,7 +18,7 @@ const ProductDetail = ({ history, match }) => {
   const dispatch = useDispatch();
 
   const productId = match.params.id;
-  
+
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, product, error } = productDetails;
 
