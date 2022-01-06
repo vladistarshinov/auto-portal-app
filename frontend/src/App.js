@@ -24,14 +24,11 @@ const App = () => {
     box-sizing: border-box;
   `;
 
-  /* 
   styled.body`
     font: 1rem Helvetica;
     height: 100vh;
     margin: 0;
   `;
-
-  */
 
   return (
     <Router>

@@ -5,12 +5,9 @@ import ProductList from "../components/ProductList";
 import { listOfProduct } from "../redux/actions/product.actions";
 import Loader from "../ui/components/Loader";
 import Message from "../ui/components/Message";
-import Pagination from "../components/Pagination";
 import TopProductsCarousel from "../components/TopProductsCarousel";
 import MetaHeader from "../components/MetaHeader";
-import { styled } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
+import { styled } from "@mui/system";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import UndoIcon from "@mui/icons-material/Undo";
@@ -28,13 +25,13 @@ const Home = ({ match }) => {
     dispatch(listOfProduct(keyword, pageNumber));
   }, [dispatch, keyword, pageNumber]);
 
-  const Heading = styled(Typography)`
-    color: #070049;
-    text-align: center;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    font-size: 2rem;
-  `;
+  const Heading = styled(Typography)({
+    color: "#070049",
+    textAlign: "center",
+    marginTop: "2rem",
+    marginBottom: "1rem",
+    fontSize: "2rem",
+  });
 
   return (
     <>
@@ -74,26 +71,11 @@ const Home = ({ match }) => {
         <Message variant="error">{error}</Message>
       ) : (
         <>
-          <Box>
-            {products.map((product) => (
-              <Grid
-                display="inline-grid"
-                container
-                direction="row"
-                key={product._id}
-                sm={12}
-                md={6}
-                lg={4}
-                xl={3}
-              >
-                <ProductList product={product} />
-              </Grid>
-            ))}
-          </Box>
-          <Pagination
+          <ProductList
+            products={products}
             pages={pages}
             page={page}
-            keyword={keyword ? keyword : ""}
+            keyword={keyword}
           />
         </>
       )}

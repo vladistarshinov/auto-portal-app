@@ -1,21 +1,25 @@
-import React from "react";
-import { Spinner } from "react-bootstrap";
-import styled from "styled-components";
+import * as React from "react";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
+import { styled } from "@mui/system";
 
 const Loader = () => {
-  const Wrapper = styled.div`
-    width: 50px;
-    height: 50px;
-    margin: 90px auto;
-    color: navy;
-    display: block;
-  `;
+  const Wrapper = styled(Box)({
+    position: "absolute",
+    left: -24,
+    top: -24,
+    width: "calc(100% + 48px)",
+    height: "90vh",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    background: "#fff",
+    zIndex: 2,
+  });
 
   return (
     <Wrapper>
-      <Spinner className="spinner-grow" animation="border" role="status">
-        <span className="sr-only">Loading...</span>
-      </Spinner>
+      <CircularProgress />
     </Wrapper>
   );
 };
