@@ -11,7 +11,7 @@ import {
 import { USER_UPDATE_RESET } from "../redux/constants/admin.constants";
 import FormContainer from "../components/FormContainer";
 import Loader from "../ui/components/Loader";
-import Message from "../components/Message";
+import Message from "../ui/components/Message";
 import styled from "styled-components";
 
 const AdminUsersList = ({ history }) => {

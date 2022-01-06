@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../redux/actions/auth.actions";
 import Loader from "../ui/components/Loader";
-import Message from "../components/Message";
+import Message from "../ui/components/Message";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Visibility from "@mui/icons-material/Visibility";

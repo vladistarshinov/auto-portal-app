@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col, ListGroup, Figure, Button } from "bootstrap-4-react";
 import { Card } from "react-bootstrap";
-import Message from "../components/Message";
+import Message from "../ui/components/Message";
 import { addProductToCart, removeProductFromCart } from "../redux/actions/cart.actions";
 import { Form } from "react-bootstrap";
 import styled from 'styled-components';

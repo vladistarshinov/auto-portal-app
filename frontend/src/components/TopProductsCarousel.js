@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Carousel, Image } from 'react-bootstrap';
 import Loader from '../ui/components/Loader';
-import Message from './Message';
+import Message from '../ui/components/Message';
 import { listOfTopProduct } from '../redux/actions/product.actions';
 import styled from 'styled-components';
 

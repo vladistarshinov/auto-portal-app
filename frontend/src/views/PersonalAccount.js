@@ -4,7 +4,7 @@ import { Row, Col, Form, Button, Card, Collapse } from "bootstrap-4-react";
 import { getUserProfile, updateUserProfile } from "../redux/actions/user.actions";
 import { listOfMyOrders } from "../redux/actions/order.actions";
 import Loader from "../ui/components/Loader";
-import Message from "../components/Message";
+import Message from "../ui/components/Message";
 import MyOrderList from '../components/MyOrderList';
 
 const Profile = ({ history, location }) => {

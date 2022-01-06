@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Row, Col, ListGroup, Figure, Button } from "bootstrap-4-react";
 import { detailsOfProduct } from "../redux/actions/product.actions";
 import Loader from "../ui/components/Loader";
-import Message from "../components/Message";
+import Message from "../ui/components/Message";
 import Rating from "../components/Rating";
 import Reviews from "../components/Reviews";
 import MetaHeader from '../components/MetaHeader';

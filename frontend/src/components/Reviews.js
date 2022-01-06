@@ -7,7 +7,7 @@ import { createReview, removeReview } from "../redux/actions/review.actions";
 import { REVIEW_CREATE_RESET } from "../redux/constants/review.constants";
 import { DateTimeFilter } from "../filters/DateTimeFilter.js";
 import { detailsOfProduct } from "../redux/actions/product.actions";
-import Message from "../components/Message";
+import Message from "../ui/components/Message";
 import Rating from "../components/Rating";
 import { Form } from "react-bootstrap";
 

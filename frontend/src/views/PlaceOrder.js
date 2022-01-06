@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, ListGroup, Figure, Button } from 'bootstrap-4-react';
 import { Link } from "react-router-dom";
 import { Card } from 'react-bootstrap';
-import Message from '../components/Message';
+import Message from '../ui/components/Message';
 import CheckoutSteps from '../components/CheckoutSteps';
 import { createOrder } from '../redux/actions/order.actions';
 

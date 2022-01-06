@@ -4,7 +4,7 @@ import { Row, Col, ListGroup, Button } from "bootstrap-4-react";
 import axios from "axios";
 import { PayPalButton } from "react-paypal-button-v2";
 import { Card } from "react-bootstrap";
-import Message from "../components/Message";
+import Message from "../ui/components/Message";
 import Loader from "../ui/components/Loader";
 import { ORDER_UPDATE_STATUS_FOR_PAYING_RESET,
         ORDER_DELIVER_RESET } from '../redux/constants/order.constants'

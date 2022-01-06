@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col, ListGroup, Button } from "bootstrap-4-react";
 import { Card } from "react-bootstrap";
-import Message from "../components/Message";
+import Message from "../ui/components/Message";
 import Loader from "../ui/components/Loader";
 import { ORDER_UPDATE_STATUS_FOR_PAYING_RESET,
         ORDER_DELIVER_RESET } from '../redux/constants/order.constants';

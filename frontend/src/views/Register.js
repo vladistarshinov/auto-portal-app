@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Link from "@mui/material/Link";
 import { register } from "../redux/actions/auth.actions";
 import Loader from "../ui/components/Loader";
-import Message from "../components/Message";
+import Message from "../ui/components/Message";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";

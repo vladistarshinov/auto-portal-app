@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ProductList from "../components/ProductList";
 import { listOfProduct } from "../redux/actions/product.actions";
 import Loader from "../ui/components/Loader";
-import Message from "../components/Message";
+import Message from "../ui/components/Message";
 import Pagination from "../components/Pagination";
 import TopProductsCarousel from "../components/TopProductsCarousel";
 import MetaHeader from "../components/MetaHeader";
