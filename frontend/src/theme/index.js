@@ -87,8 +87,11 @@ export default createTheme({
     },
     MuiListItemText: {
       styleOverrides: {
+        root: {
+          padding: "0.5rem 0",
+        },
         primary: {
-          fontSize: "13px",
+          fontSize: "16px",
         },
       },
     },

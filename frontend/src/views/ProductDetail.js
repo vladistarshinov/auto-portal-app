@@ -1,16 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { Row, Col, ListGroup, Figure, Button } from "bootstrap-4-react";
 import { detailsOfProduct } from "../redux/actions/product.actions";
 import Loader from "../ui/components/Loader";
 import Message from "../ui/components/Message";
+import Button from "@mui/material/Button";
 import Rating from "../ui/components/Rating";
 import Reviews from "../components/Reviews";
 import MetaHeader from "../components/MetaHeader";
-import { Form } from "react-bootstrap";
 import { genEndOfNoun } from "../filters/GenEndOfNoun";
-import styled from "styled-components";
+import BreadCrumbs from "../ui/components/BreadCrumbs";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import { styled } from "@mui/system";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import Divider from "@mui/material/Divider";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import SelectInput from "../ui/components/SelectInput";
 
 const ProductDetail = ({ history, match }) => {
   const [quantity, setQuantity] = useState(1);
@@ -30,16 +42,18 @@ const ProductDetail = ({ history, match }) => {
     history.push(`/cart/${match.params.id}?quantity=${quantity}`);
   };
 
-  const ReviewsCount = styled.span`
-    margin-left: 0.25rem;
-  `;
+  const ReviewsCount = styled(Box)({
+    marginLeft: "0.25rem",
+  });
 
   return (
     <>
-      <Link className="btn btn-light my-3 text-capitalize" to="/">
-        <i className="fa fa-arrow-left mr-2" aria-hidden="true"></i>
-        Назад
-      </Link>
+      <BreadCrumbs
+        navElements={[
+          { title: "Catalog" },
+          { title: product?.name, url: `/product/${product?._id}` },
+        ]}
+      />
       {loading ? (
         <Loader />
       ) : error ? (
@@ -47,16 +61,22 @@ const ProductDetail = ({ history, match }) => {
       ) : (
         <>
           <MetaHeader title={product.name} />
-          <Row>
-            <Col md={5}>
-              <Figure.Image src={product.image} alt={product.name} fluid />
-            </Col>
-            <Col md={4}>
-              <ListGroup flush>
-                <ListGroup.Item>
+          <Grid container spacing={2}>
+            <Grid lg={4} md={4} sm={12} xs={12} item>
+              <Box
+                component="img"
+                sx={{ width: "100%" }}
+                src={product.image}
+                alt={product.name}
+              />
+            </Grid>
+            <Grid lg={5} md={4} sm={7} xs={12} item>
+              <List>
+                <ListItemText>
                   <h3>{product.name}</h3>
-                </ListGroup.Item>
-                <ListGroup.Item className="d-inline-flex">
+                </ListItemText>
+                <Divider />
+                <ListItem sx={{ display: "inline-flex", alignItems: "center" }}>
                   <Rating value={product.rating} />
                   {product.numReviews == 0 ? (
                     <ReviewsCount>нет отзывов</ReviewsCount>
@@ -71,71 +91,63 @@ const ProductDetail = ({ history, match }) => {
                       )}
                     </ReviewsCount>
                   )}
-                </ListGroup.Item>
-                <ListGroup.Item>Цена: ${product.price}</ListGroup.Item>
-                <ListGroup.Item>Описание: {product.description}</ListGroup.Item>
-              </ListGroup>
-            </Col>
-            <Col md={3}>
-              <ListGroup flush>
-                <ListGroup.Item>
-                  <Row>
-                    <Col>Цена:</Col>
-                    <Col>
-                      <strong>${product.price}</strong>
-                    </Col>
-                  </Row>
-                </ListGroup.Item>
-                <ListGroup.Item>
-                  <Row>
-                    <Col>Статус:</Col>
-                    <Col>
-                      {product.countInStock > 0 ? "В наличии" : "Отсутствует"}
-                    </Col>
-                  </Row>
-                </ListGroup.Item>
-                {product.countInStock > 0 && (
-                  <ListGroup.Item>
-                    <Row>
-                      <Col
-                        display="flex"
-                        justifyContent="center"
-                        alignItems="center"
-                      >
-                        Количество:
-                      </Col>
-                      <Col>
-                        <Form.Control
-                          as="select"
-                          value={quantity}
-                          onChange={(e) => setQuantity(e.target.value)}
-                        >
-                          {[...Array(product.countInStock).keys()].map((x) => (
-                            <option key={x + 1} value={x + 1}>
-                              {x + 1}
-                            </option>
-                          ))}
-                        </Form.Control>
-                      </Col>
-                    </Row>
-                  </ListGroup.Item>
-                )}
-                <ListGroup.Item>
+                </ListItem>
+                <Divider />
+                <ListItemText>Описание: {product.description}</ListItemText>
+              </List>
+            </Grid>
+            <Grid lg={3} md={4} sm={5} xs={12} item>
+              <TableContainer component={Paper}>
+                <Table>
+                  <TableBody>
+                    <TableRow sx={{ width: "200px" }}>
+                      <TableCell>Цена:</TableCell>
+                      <TableCell sx={{ fontWeight: "700" }}>
+                        ${product.price}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>Статус:</TableCell>
+                      <TableCell>
+                        {product.countInStock > 0 ? "В наличии" : "Отсутствует"}
+                      </TableCell>
+                    </TableRow>
+                    {product.countInStock > 0 && (
+                      <TableRow>
+                        <TableCell>Количество:</TableCell>
+                        <TableCell>
+                          <SelectInput value={quantity} onChange={(e) => setQuantity(e.target.value)} countInStock={product.countInStock} />
+                        </TableCell>
+                      </TableRow>
+                    )}
+                  </TableBody>
+                </Table>
+                <Box sx={{ py: 2 }} display="flex" justifyContent="center">
                   {product.countInStock > 0 && (
                     <Button
+                      variant="outlined"
+                      color="inherit"
                       onClick={addToCartHandler}
-                      className="btn-block"
-                      dark
-                      type="button" /* 
+                      sx={{
+                        fontSize: "12px",
+                        transition: ".5s",
+                        "&:hover": {
+                          bgcolor: "primary.dark",
+                          color: "#fff",
+                        },
+                        "&:focus": {
+                          outline: "none",
+                        },
+                      }} /* 
                       disabled = {product.countInStock === 0} */
                     >
                       Добавить в корзину
                     </Button>
                   )}
-                </ListGroup.Item>
-              </ListGroup>
-            </Col>
-          </Row>
+                </Box>
+              </TableContainer>
+            </Grid>
+          </Grid>
           <Reviews productId={productId} product={product} />
         </>
       )}
