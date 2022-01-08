@@ -1,79 +1,92 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from 'react-redux';
-import { Form, Button } from 'bootstrap-4-react';
-import FormContainer from '../components/FormContainer';
-import CheckoutSteps from '../components/CheckoutSteps';
-import { saveShippingAddress } from '../redux/actions/cart.actions';
+import { useDispatch, useSelector } from "react-redux";
+import CheckoutSteps from "../components/CheckoutSteps";
+import { saveShippingAddress } from "../redux/actions/cart.actions";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
 
 const Shipping = ({ history }) => {
+  const cart = useSelector((state) => state.cart);
+  const { shippingAddress } = cart;
 
-    const cart = useSelector(state => state.cart);
-    const { shippingAddress } = cart;
+  const [address, setAddress] = useState(shippingAddress.address);
+  const [city, setCity] = useState(shippingAddress.city);
+  const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
+  const [country, setCountry] = useState(shippingAddress.country);
 
-    const [address, setAddress] = useState(shippingAddress.address);
-    const [city, setCity] = useState(shippingAddress.city);
-    const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
-    const [country, setCountry] = useState(shippingAddress.country);
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch();
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(saveShippingAddress({ address, city, postalCode, country }));
+    history.push("/payment");
+  };
 
-    const submitHandler = (e) => {
-        e.preventDefault();
-        dispatch(saveShippingAddress({ address, city, postalCode, country }));
-        history.push('/payment');
-    };
+  return (
+    <Box>
+      <CheckoutSteps currentStep={0} />
+      <Typography variant="h4" style={{ padding: "1rem 0" }}>
+        Доставка
+      </Typography>
+      <Box onSubmit={submitHandler}>
+        <TextField
+          sx={{ mt: 3 }}
+          label="Адрес"
+          id="outlined-basic"
+          size="small"
+          fullWidth
+          type="text"
+          placeholder="Введите адрес"
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
+        />
+        <TextField
+          sx={{ mt: 3 }}
+          label="Город"
+          id="outlined-basic"
+          size="small"
+          fullWidth
+          type="text"
+          placeholder="Введите город"
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+        />
+        <TextField
+          sx={{ mt: 3 }}
+          label="Почтовый индекс"
+          id="outlined-basic"
+          size="small"
+          fullWidth
+          type="text"
+          placeholder="Введите почтовый индекс"
+          value={postalCode}
+          onChange={(e) => setPostalCode(e.target.value)}
+        />
+        <TextField
+          sx={{ mt: 3 }}
+          label="Страна"
+          id="outlined-basic"
+          size="small"
+          fullWidth
+          type="text"
+          placeholder="Введите страну"
+          value={country}
+          onChange={(e) => setCountry(e.target.value)}
+        />
 
-    return (
-      <FormContainer>
-        <CheckoutSteps currentStep={0} />
-        <h2 style={{ padding: "1rem 0" }}>Доставка</h2>
-        <Form onSubmit={submitHandler}>
-          <Form.Group>
-            <label htmlFor="addressForm">Адрес</label>
-            <Form.Input
-              type="text"
-              id="addressForm"
-              placeholder="Введите адрес"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-            />
-          </Form.Group>
-          <Form.Group>
-            <label htmlFor="cityForm">Город</label>
-            <Form.Input
-              type="text"
-              id="cityForm"
-              placeholder="Введите город"
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-            />
-          </Form.Group>
-          <Form.Group>
-            <label htmlFor="postalForm">Город</label>
-            <Form.Input
-              type="text"
-              id="postalForm"
-              placeholder="Введите почтовый индекс"
-              value={postalCode}
-              onChange={(e) => setPostalCode(e.target.value)}
-            />
-          </Form.Group>
-          <Form.Group>
-            <label htmlFor="countryForm">Страна</label>
-            <Form.Input
-              type="text"
-              id="countryForm"
-              placeholder="Введите страну"
-              value={country}
-              onChange={(e) => setCountry(e.target.value)}
-            />
-          </Form.Group>
-          <Button type="submit" dark>
-            Продолжить
-          </Button>
-        </Form>
-      </FormContainer>
-    );
+        <Button
+          variant="outlined"
+          sx={{ mt: 3 }}
+          color="inherit"
+          onClick={submitHandler}
+        >
+          Продолжить
+        </Button>
+      </Box>
+    </Box>
+  );
 };
 
 export default Shipping;

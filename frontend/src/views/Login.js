@@ -97,17 +97,6 @@ const Login = ({ history, location }) => {
             variant="outlined"
             color="inherit"
             onClick={submitHandler}
-            sx={{
-              mt: 3,
-              transition: ".5s",
-              "&:hover": {
-                bgcolor: "primary.dark",
-                color: "#fff",
-              },
-              "&:focus": {
-                outline: "none",
-              },
-            }}
           >
             Войти
           </Button>
