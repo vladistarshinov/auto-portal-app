@@ -15,6 +15,15 @@ export default createTheme({
           borderRadius: 10,
           boxShadow: "none",
           textTransform: "uppercase",
+          fontSize: "12px",
+          transition: ".5s",
+          "&:hover": {
+            backgroundColor: THEME_COLORS.dark,
+            color: "#fff",
+          },
+          "&:focus": {
+            outline: "none",
+          },
         },
       },
       variants: [

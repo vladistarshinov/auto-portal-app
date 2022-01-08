@@ -50,7 +50,7 @@ const ProductDetail = ({ history, match }) => {
     <>
       <BreadCrumbs
         navElements={[
-          { title: "Catalog" },
+          { title: "Каталог" },
           { title: product?.name, url: `/product/${product?._id}` },
         ]}
       />
@@ -128,18 +128,6 @@ const ProductDetail = ({ history, match }) => {
                       variant="outlined"
                       color="inherit"
                       onClick={addToCartHandler}
-                      sx={{
-                        fontSize: "12px",
-                        transition: ".5s",
-                        "&:hover": {
-                          bgcolor: "primary.dark",
-                          color: "#fff",
-                        },
-                        "&:focus": {
-                          outline: "none",
-                        },
-                      }} /* 
-                      disabled = {product.countInStock === 0} */
                     >
                       Добавить в корзину
                     </Button>

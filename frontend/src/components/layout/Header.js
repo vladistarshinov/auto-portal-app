@@ -51,6 +51,10 @@ const Header = () => {
               outline: "none",
               color: "inherit",
             },
+            "&:hover": {
+              bgcolor: "transparent",
+              color: "#000",
+            },
             my: { sm: 1, xs: 1 },
           }}
           id="basic-button"
