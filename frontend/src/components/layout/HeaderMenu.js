@@ -48,6 +48,10 @@ const HeaderMenu = () => {
                 outline: "none",
                 color: "inherit",
               },
+              "&:hover": {
+                bgcolor: "transparent",
+                color: "#000",
+              },
             }}
             aria-controls={openMenu ? "account-menu" : undefined}
             aria-haspopup="true"

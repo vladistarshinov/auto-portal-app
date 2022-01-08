@@ -76,6 +76,21 @@ export default createTheme({
         },
       },
     },
+    MuiStepButton: {
+      styleOverrides: {
+        root: {
+          cursor: "pointer",
+          transition: ".5s",
+          "&:hover": {
+            textDecoration: "none",
+            color: "inherit",
+          },
+          "&:focus": {
+            outline: "none",
+          },
+        },
+      },
+    },
     MuiAppBar: {
       styleOverrides: {
         root: {

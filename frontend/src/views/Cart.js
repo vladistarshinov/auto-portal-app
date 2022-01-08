@@ -49,14 +49,9 @@ const Cart = ({ match, location, history }) => {
 
   return (
     <>
-      {cartProductItems.length === 0 && (
-        <BreadCrumbs
-          navElements={[
-            { title: "Каталог" },
-            { title: "Корзина", url: "/cart" },
-          ]}
-        />
-      )}
+      <BreadCrumbs
+        navElements={[{ title: "Каталог" }, { title: "Корзина", url: "/cart" }]}
+      />
       <Typography variant="h4" style={{ padding: "1rem 0" }}>
         Корзина
       </Typography>

@@ -56,7 +56,7 @@ const PlaceOrder = ({ history }) => {
 
     return (
       <>
-        <CheckoutSteps step1="done" step2="done" step3="done" step4="active" />
+        <CheckoutSteps currentStep={2} />
         <Row>
           <Col md={8}>
             <ListGroup flush>
