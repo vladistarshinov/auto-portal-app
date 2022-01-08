@@ -30,7 +30,7 @@ const Shipping = ({ history }) => {
       <Typography variant="h4" style={{ padding: "1rem 0" }}>
         Доставка
       </Typography>
-      <Box onSubmit={submitHandler}>
+      <Box>
         <TextField
           sx={{ mt: 3 }}
           label="Адрес"
