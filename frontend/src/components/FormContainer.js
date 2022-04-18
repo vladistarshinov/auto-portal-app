@@ -1,14 +1,16 @@
 import React from 'react';
-import { Container, Row, Col } from 'bootstrap-4-react';
+import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
 
 const AuthForm = ({ children }) => {
     return (
         <Container>
-            <Row className="justify-content-md-center">
-                <Col xs={12} md={6}>
+            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                <Grid item xs={12} md={6}>
                     {children}
-                </Col>
-            </Row>
+                </Grid>
+            </Box>
         </Container>
     )
 };

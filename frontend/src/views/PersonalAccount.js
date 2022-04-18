@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col, Form, Button, Card, Collapse } from "bootstrap-4-react";
-import { getUserProfile, updateUserProfile } from "../redux/actions/user.actions";
+import {
+  getUserProfile,
+  updateUserProfile,
+} from "../redux/actions/user.actions";
 import { listOfMyOrders } from "../redux/actions/order.actions";
 import Loader from "../ui/components/Loader";
 import Message from "../ui/components/Message";
-import MyOrderList from '../components/MyOrderList';
+import MyOrderList from "../components/MyOrderList";
 
 const Profile = ({ history, location }) => {
   const [name, setName] = useState("");
@@ -16,41 +19,43 @@ const Profile = ({ history, location }) => {
 
   const dispatch = useDispatch();
 
-  const userProfile = useSelector(state => state.userProfile);
+  const userProfile = useSelector((state) => state.userProfile);
   const { loading, error, userDetails } = userProfile;
   console.log(userDetails);
 
-  const userLogin = useSelector(state => state.userLogin);
+  const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-  const updatingUserProfile = useSelector(state => state.updatingUserProfile);
+  const updatingUserProfile = useSelector((state) => state.updatingUserProfile);
   const { success } = updatingUserProfile;
 
-  const myOrderList = useSelector(state => state.myOrderList);
+  const myOrderList = useSelector((state) => state.myOrderList);
   const { loading: loadingOrders, orders, error: errorOrders } = myOrderList;
 
   useEffect(() => {
     if (!userInfo) {
       history.push("/login");
     } else {
-        if (userDetails.name == undefined || !userDetails.name) {
-            dispatch(getUserProfile('profile'));
-            dispatch(listOfMyOrders());
-        } else {
-            setName(userDetails.name);
-            setEmail(userDetails.email);
-        }
+      if (userDetails === undefined || !userDetails.name) {
+        dispatch(getUserProfile("profile"));
+        dispatch(listOfMyOrders());
+      } else {
+        setName(userDetails.name);
+        setEmail(userDetails.email);
+      }
     }
   }, [dispatch, history, userInfo, userDetails]);
 
   const submitHandler = (e) => {
-      e.preventDefault();
-      if (password !== confirmPassword) {
-        setMessage("Пароли не совпадают");
-      } else {
-        dispatch(updateUserProfile({ id: userDetails._id, name, email, password }));
-        dispatch(getUserProfile('profile'));
-      }
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      setMessage("Пароли не совпадают");
+    } else {
+      dispatch(
+        updateUserProfile({ id: userDetails._id, name, email, password })
+      );
+      dispatch(getUserProfile("profile"));
+    }
   };
 
   return (

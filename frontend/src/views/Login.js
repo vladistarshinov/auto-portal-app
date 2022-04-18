@@ -92,12 +92,8 @@ const Login = ({ history, location }) => {
             label="Password"
           />
         </FormControl>
-        <Box sx={{ textAlign: "center" }}>
-          <Button
-            variant="outlined"
-            color="inherit"
-            onClick={submitHandler}
-          >
+        <Box sx={{ textAlign: "center", mt: 3 }}>
+          <Button variant="outlined" color="inherit" onClick={submitHandler}>
             Войти
           </Button>
         </Box>

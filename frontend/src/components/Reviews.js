@@ -1,15 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { Row, Col, ListGroup, Button } from "bootstrap-4-react";
-
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
 import { createReview, removeReview } from "../redux/actions/review.actions";
 import { REVIEW_CREATE_RESET } from "../redux/constants/review.constants";
 import { DateTimeFilter } from "../filters/DateTimeFilter.js";
 import { detailsOfProduct } from "../redux/actions/product.actions";
 import Message from "../ui/components/Message";
 import Rating from "../ui/components/Rating";
-import { Form } from "react-bootstrap";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import TextField from "@mui/material/TextField";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 
 const Reviews = ({ productId, product }) => {
   const dispatch = useDispatch();
@@ -56,8 +63,8 @@ const Reviews = ({ productId, product }) => {
   };
 
   return (
-    <Row style={{ marginTop: "2rem" }}>
-      <Col md={9}>
+    <Box style={{ marginTop: "2rem" }}>
+      <Grid md={9}>
         <h4 style={{ padding: "1rem 0" }}>
           Комментарии{" "}
           {product.reviews.length === 0
@@ -77,11 +84,12 @@ const Reviews = ({ productId, product }) => {
           <Message variant="error">{errorRemovingReview}</Message>
         )}
         {product.reviews.length === 0 && <Message>Нет комментариев</Message>}
-        <ListGroup flush>
+        <List>
           {product.reviews.map((review) => (
-            <ListGroup.Item
+            <ListItem
+              alignItems="flex-start"
               key={review._id}
-              style={{ backgroundColor: "#fafafa" }}
+              style={{ backgroundColor: "#fafafa", flexDirection: "column" }}
             >
               <strong>
                 {review.name}
@@ -99,52 +107,66 @@ const Reviews = ({ productId, product }) => {
               <Rating value={review.rating} />
               <small>{DateTimeFilter(review.createdAt)}</small>
               <p style={{ marginTop: "1rem" }}>{review.comment}</p>
-            </ListGroup.Item>
+            </ListItem>
           ))}
-          <ListGroup.Item>
+          <ListItem alignItems="flex-start" style={{ flexDirection: "column" }}>
             <h5>Оставить отзыв</h5>
             {userInfo ? (
-              <Form onSubmit={submitReviewCreateHandler}>
-                <Form.Group controlId="rating">
-                  <Form.Label>Рейтинг для оценки качества товара</Form.Label>
-                  <Form.Control
-                    as="select"
+              <Box display="flex" flexDirection="column">
+                <FormControl
+                  variant="standard"
+                  style={{
+                    width: "300px",
+                    marginTop: "20px",
+                    marginBottom: "20px",
+                  }}
+                >
+                  <InputLabel id="demo-simple-select-standard-label">
+                    Рейтинг
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-standard-label"
+                    id="demo-simple-select-standard"
                     value={rating}
                     onChange={(e) => setRating(e.target.value)}
                   >
-                    <option value="">Выберите оценку...</option>
-                    <option value="1">Очень плохо</option>
-                    <option value="2">Плохо</option>
-                    <option value="3">Удовлетворительно</option>
-                    <option value="4">Хорошо</option>
-                    <option value="5">Отлично</option>
-                  </Form.Control>
-                </Form.Group>
-                <Form.Group controlId="comment">
-                  <Form.Label>Комментарий</Form.Label>
-                  <Form.Control
-                    as="textarea"
-                    row="3"
+                    <MenuItem value="">Выберите оценку...</MenuItem>
+                    <MenuItem value="1">Очень плохо</MenuItem>
+                    <MenuItem value="2">Плохо</MenuItem>
+                    <MenuItem value="3">Удовлетворительно</MenuItem>
+                    <MenuItem value="4">Хорошо</MenuItem>
+                    <MenuItem value="5">Отлично</MenuItem>
+                  </Select>
+                </FormControl>
+                <FormControl>
+                  <InputLabel>Комментарий</InputLabel>
+                  <TextField
+                    id="outlined-multiline-flexible"
+                    label="Комментарий"
+                    multiline
+                    minRows={3}
                     value={comment}
                     onChange={(e) => setComment(e.target.value)}
-                  >
-                    Комментарий
-                  </Form.Control>
-                </Form.Group>
-                <Button type="submit" dark variant="light">
+                  />
+                </FormControl>
+                <Button
+                  onSubmit={submitReviewCreateHandler}
+                  dark
+                  variant="light"
+                >
                   Отправить
                 </Button>
-              </Form>
+              </Box>
             ) : (
               <Message>
                 Пожалуйста, <Link to="/login">авторизируйтесь</Link> для
                 формирования отзыва{" "}
               </Message>
             )}
-          </ListGroup.Item>
-        </ListGroup>
-      </Col>
-    </Row>
+          </ListItem>
+        </List>
+      </Grid>
+    </Box>
   );
 };
 
