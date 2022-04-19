@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Modal } from "bootstrap-4-react";
 import Box from "@mui/material/Box";
 import Table from "@mui/material/Table";
 import TableHead from "@mui/material/TableHead";
@@ -9,31 +8,18 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import IconButton from "@mui/material/IconButton";
-import Button from "@mui/material/Button";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { Form } from "react-bootstrap";
 import {
   listOfUsers,
   updateUser,
   removeUser,
 } from "../redux/actions/admin.actions";
 import { USER_UPDATE_RESET } from "../redux/constants/admin.constants";
-import FormContainer from "../components/FormContainer";
 import Loader from "../ui/components/Loader";
 import Message from "../ui/components/Message";
 import styled from "styled-components";
 import EditUserModal from "../components/modals/EditUserModal";
-
-import Dialog from "@mui/material/Dialog";
-import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
-import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
-import TextField from "@mui/material/TextField";
-import CloseIcon from "@mui/icons-material/Close";
 
 const AdminUsersList = ({ history }) => {
   const dispatch = useDispatch();
@@ -131,7 +117,7 @@ const AdminUsersList = ({ history }) => {
                   <TableCell align="center">Имя пользователя</TableCell>
                   <TableCell align="center">Email</TableCell>
                   <TableCell align="center">Статус администратора</TableCell>
-                  <TableCell align="center"></TableCell>
+                  <TableCell></TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>

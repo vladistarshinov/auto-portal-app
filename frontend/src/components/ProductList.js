@@ -3,8 +3,6 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Pagination from "../ui/components/Pagination";
 import ProductCard from "./ProductCard";
-import { useDispatch, useSelector } from "react-redux";
-import { listOfProduct } from "../redux/actions/product.actions";
 
 const ProductList = ({ products, pages, page, keyword }) => {
   return (

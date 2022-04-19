@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Modal } from "bootstrap-4-react";
-import { Form } from "react-bootstrap";
 import { listOfProduct } from "../redux/actions/product.actions";
 import {
   createProduct,
@@ -14,7 +12,6 @@ import {
   PRODUCT_CREATE_RESET,
   PRODUCT_UPDATE_RESET,
 } from "../redux/constants/admin.constants";
-import FormContainer from "../components/FormContainer";
 import Loader from "../ui/components/Loader";
 import Message from "../ui/components/Message";
 import Pagination from "../ui/components/Pagination";
@@ -188,16 +185,16 @@ const AdminProductList = ({ history, match }) => {
           <Message variant="error">{error}</Message>
         )}
       </Box>
-      <Grid className="align-items-center">
-        <Box>
+      <Grid container >
+        <Grid item xs={8} sm={10} md={10}>
           <Title>Список товаров</Title>
-        </Box>
-        <Box className="text-right">
+        </Grid>
+        <Grid item xs={4} sm={2} md={2}>
           <Button className="my-3" onClick={() => addProductHandler()}>
             <PlusIcon className="fas fa-plus"></PlusIcon>
             <span>Добавить</span>
           </Button>
-        </Box>
+        </Grid>
       </Grid>
       {loading ? (
         <Loader />
@@ -257,17 +254,10 @@ const AdminProductList = ({ history, match }) => {
         setOpen={(bool) => setOpenModal(bool)}
         productData={productData}
         setProductData={setProductData}
-        action={() => submitProductEditHandler()}
-        uploadFileHandler={uploadFileHandler}
-        uploading={uploading}
-      />
-      <ProductModal
-        type={type}
-        open={openModal}
-        setOpen={(bool) => setOpenModal(bool)}
-        productData={productData}
-        setProductData={setProductData}
-        action={() => submitProductAddHandler()}
+        action={() => {
+          if (type === "submit") submitProductAddHandler();
+          else submitProductEditHandler();
+        }}
         uploadFileHandler={uploadFileHandler}
         uploading={uploading}
       />

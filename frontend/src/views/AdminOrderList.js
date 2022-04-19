@@ -1,15 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { LinkContainer } from "react-router-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Row, Col, Table, Modal, Button } from "bootstrap-4-react";
-import { Form } from 'react-bootstrap';
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Table from "@mui/material/Table";
+import TableHead from "@mui/material/TableHead";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableRow from "@mui/material/TableRow";
+import IconButton from "@mui/material/IconButton";
+import ReadMoreIcon from "@mui/icons-material/ReadMore";
 import { listOfOrders } from "../redux/actions/admin.actions";
-import FormContainer from "../components/FormContainer";
 import Loader from "../ui/components/Loader";
 import Message from "../ui/components/Message";
 import { DateFilter } from "../filters/DateTimeFilter.js";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const AdminOrderList = ({ history }) => {
   const dispatch = useDispatch();
@@ -22,9 +28,9 @@ const AdminOrderList = ({ history }) => {
 
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
-        dispatch(listOfOrders());
+      dispatch(listOfOrders());
     } else {
-        history.push("/login");
+      history.push("/login");
     }
   }, [dispatch, history, userInfo]);
 
@@ -42,42 +48,46 @@ const AdminOrderList = ({ history }) => {
 
   const LinkToOrderDetails = {
     color: "navy",
-    textDecoration: "none"
+    textDecoration: "none",
   };
 
   return (
     <>
-      <Row className="align-items-center">
-        <Col>
+      <Grid className="align-items-center">
+        <Box>
           <Title>Список заказов</Title>
-        </Col>
-      </Row>
+        </Box>
+      </Grid>
       {loading ? (
         <Loader />
       ) : error ? (
         <Message variant="error">{error}</Message>
       ) : (
-        <>
-          <Table className="table-sm" striped bordered hover responsive>
-            <thead>
-              <tr className="text-center">
-                <th>#</th>
-                <th>Клиент</th>
-                <th>Дата</th>
-                <th>К оплате</th>
-                <th>Статус оплаты</th>
-                <th>Статус отправки</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
+        <TableContainer>
+          <Table>
+            <TableHead>
+              <TableRow className="text-center">
+                <TableCell align="center">#</TableCell>
+                <TableCell align="center">Клиент</TableCell>
+                <TableCell align="center">Дата</TableCell>
+                <TableCell align="center">К оплате</TableCell>
+                <TableCell align="center">Статус оплаты</TableCell>
+                <TableCell align="center">Статус отправки</TableCell>
+                <TableCell></TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
               {ordersInfo.map((order) => (
-                <tr className="text-center" key={order._id}>
-                  <td>{order._id}</td>
-                  <td>{order.user && order.user.name}</td>
-                  <td>{DateFilter(order.createdAt)}</td>
-                  <td>${order.totalPrice}</td>
-                  <td>
+                <TableRow className="text-center" key={order._id}>
+                  <TableCell align="center">{order._id}</TableCell>
+                  <TableCell align="center">
+                    {order.user && order.user.name}
+                  </TableCell>
+                  <TableCell align="center">
+                    {DateFilter(order.createdAt)}
+                  </TableCell>
+                  <TableCell align="center">${order.totalPrice}</TableCell>
+                  <TableCell align="center">
                     {order.isPaid ? (
                       <>
                         <TickIcon className="fas fa-check"></TickIcon>
@@ -87,8 +97,8 @@ const AdminOrderList = ({ history }) => {
                     ) : (
                       <DaggerIcon className="fas fa-times"></DaggerIcon>
                     )}
-                  </td>
-                  <td>
+                  </TableCell>
+                  <TableCell align="center">
                     {order.isDelivered ? (
                       <>
                         <TickIcon className="fas fa-check"></TickIcon>
@@ -98,22 +108,19 @@ const AdminOrderList = ({ history }) => {
                     ) : (
                       <DaggerIcon className="fas fa-times"></DaggerIcon>
                     )}
-                  </td>
-                  <td>
-                    <LinkContainer
-                      style={LinkToOrderDetails}
-                      to={`/order/${order._id}`}
-                    >
-                      <Button className="btn-sm" text="light" dark circle>
-                        <i className="fas fa-info"></i>
-                      </Button>
-                    </LinkContainer>
-                  </td>
-                </tr>
+                  </TableCell>
+                  <TableCell align="center">
+                    <Link style={LinkToOrderDetails} to={`/order/${order._id}`}>
+                      <IconButton>
+                        <ReadMoreIcon />
+                      </IconButton>
+                    </Link>
+                  </TableCell>
+                </TableRow>
               ))}
-            </tbody>
+            </TableBody>
           </Table>
-        </>
+        </TableContainer>
       )}
     </>
   );
