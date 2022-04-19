@@ -2,7 +2,7 @@ import React from "react";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
 import { Link } from "react-router-dom";
-import { styled } from "@mui/system";
+import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 
 const PaginationBox = ({ pages, page, isAdmin = false, keyword = "" }) => {

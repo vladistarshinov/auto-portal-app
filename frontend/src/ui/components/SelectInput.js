@@ -2,7 +2,7 @@ import React from 'react'
 import Select from "@mui/material/Select";
 import InputBase from "@mui/material/InputBase";
 import MenuItem from "@mui/material/MenuItem";
-import { styled } from "@mui/system";
+import { styled } from "@mui/material/styles";
 
 const SelectInput = ({ value, onChange, countInStock }) => {
 

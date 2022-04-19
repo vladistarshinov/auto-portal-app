@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { Container } from "react-bootstrap";
+import Container from "@mui/material/Container";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import Home from "./views/Home";

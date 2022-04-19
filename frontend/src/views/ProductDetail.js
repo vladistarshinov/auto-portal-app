@@ -11,7 +11,7 @@ import { genEndOfNoun } from "../filters/GenEndOfNoun";
 import BreadCrumbs from "../ui/components/BreadCrumbs";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import { styled } from "@mui/system";
+import { styled } from "@mui/material/styles";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
@@ -116,7 +116,11 @@ const ProductDetail = ({ history, match }) => {
                       <TableRow>
                         <TableCell>Количество:</TableCell>
                         <TableCell>
-                          <SelectInput value={quantity} onChange={(e) => setQuantity(e.target.value)} countInStock={product.countInStock} />
+                          <SelectInput
+                            value={quantity}
+                            onChange={(e) => setQuantity(e.target.value)}
+                            countInStock={product.countInStock}
+                          />
                         </TableCell>
                       </TableRow>
                     )}

@@ -10,7 +10,7 @@ import {
   addProductToCart,
   removeProductFromCart,
 } from "../redux/actions/cart.actions";
-import { styled } from "@mui/system";
+import { styled } from "@mui/material/styles";
 import SelectInput from "../ui/components/SelectInput";
 import BreadCrumbs from "../ui/components/BreadCrumbs";
 import Grid from "@mui/material/Grid";

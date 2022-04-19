@@ -7,7 +7,7 @@ import Loader from "../ui/components/Loader";
 import Message from "../ui/components/Message";
 import TopProductsCarousel from "../components/TopProductsCarousel";
 import MetaHeader from "../components/MetaHeader";
-import { styled } from "@mui/system";
+import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import UndoIcon from "@mui/icons-material/Undo";

@@ -1,7 +1,7 @@
 import * as React from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
-import { styled } from "@mui/system";
+import { styled } from "@mui/material/styles";
 
 const Loader = () => {
   const Wrapper = styled(Box)({
