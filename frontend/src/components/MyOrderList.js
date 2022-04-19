@@ -24,31 +24,6 @@ const MyOrderList = ({ loadingOrders, errorOrders, orders }) => {
     color: red;
   `;
 
-  /*const orderList = [
-    {
-      _id: 1,
-      createdAt: "2021-21-11",
-      totalPrice: 1000,
-      isPaid: true,
-      paidAt: "2021-21-11",
-      isDelivered: true,
-      deliveredAt: "2021-21-11",
-    },
-    {
-      _id: 2,
-      createdAt: "2021-21-11",
-      totalPrice: 2000,
-      isPaid: true,
-      paidAt: "2021-21-11",
-    },
-    {
-      _id: 3,
-      createdAt: "2021-21-11",
-      totalPrice: 3000,
-      isPaid: false,
-    },
-  ]; */
-
   return (
     <Grid md={9} lg={8}>
       <Typography style={{ padding: "1rem 0" }}>Мои заказы</Typography>
