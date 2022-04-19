@@ -55,10 +55,6 @@ const AdminUsersList = ({ history }) => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-  const [id, setId] = useState("");
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [isAdmin, setIsAdmin] = useState(false);
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
@@ -81,10 +77,6 @@ const AdminUsersList = ({ history }) => {
       email: user.email,
       isAdmin: user.isAdmin,
     });
-    setName(user.name);
-    setEmail(user.email);
-    setIsAdmin(user.isAdmin);
-    setId(user._id);
   };
 
   const submitUserUpdateHandler = () => {
@@ -118,15 +110,12 @@ const AdminUsersList = ({ history }) => {
     maxWidth: "50vw",
   };
 
-  const CenterLayout = {
-    display: "flex",
-    justifyContent: "center",
-    marginBottom: "20px",
-  };
-
   return (
     <>
       {success && <Message variant="success">Пользователь удален</Message>}
+      {successUpdateUser && (
+        <Message variant="success">Изменены данные пользователя</Message>
+      )}
       <Title>Список пользователей</Title>
       {loading ? (
         <Loader />
@@ -181,13 +170,19 @@ const AdminUsersList = ({ history }) => {
               </TableBody>
             </Table>
           </TableContainer>
-          <EditUserModal
-            open={openModal}
-            setOpen={(bool) => setOpenModal(bool)}
-            userData={userData}
-            setUserData={setUserData}
-            action={() => submitUserUpdateHandler()}
-          />
+          {loadingUpdateUser ? (
+            <Loader />
+          ) : errorUpdateUser ? (
+            <Message variant="error">{error}</Message>
+          ) : (
+            <EditUserModal
+              open={openModal}
+              setOpen={(bool) => setOpenModal(bool)}
+              userData={userData}
+              setUserData={setUserData}
+              action={() => submitUserUpdateHandler()}
+            />
+          )}
         </>
       )}
     </>

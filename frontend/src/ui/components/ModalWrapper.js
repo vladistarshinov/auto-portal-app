@@ -5,11 +5,10 @@ import DialogTitle from "@mui/material/DialogTitle";
 import CloseIcon from "@mui/icons-material/Close";
 
 const ModalWrapper = ({ open, setOpen, title, children }) => {
-
-	const handleClose = () => {
+  const handleClose = () => {
     setOpen(false);
   };
-	
+
   return (
     <>
       <Dialog
@@ -59,8 +58,8 @@ const ModalWrapper = ({ open, setOpen, title, children }) => {
               sx={{
                 cursor: "pointer",
                 position: "absolute",
-                top: 0,
-                right: 0,
+                top: 2,
+                right: 2,
               }}
               src={CloseIcon}
               alt="close"
@@ -80,9 +79,7 @@ const ModalWrapper = ({ open, setOpen, title, children }) => {
               </h5>
             </DialogTitle>
           </div>
-          <DialogContent sx={{ padding: "0 16px" }}>
-            {children}
-          </DialogContent>
+          <DialogContent sx={{ padding: "0 16px" }}>{children}</DialogContent>
         </div>
       </Dialog>
     </>

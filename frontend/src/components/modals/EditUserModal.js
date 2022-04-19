@@ -1,22 +1,18 @@
 import React from "react";
+import Grid from "@mui/material/Grid";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import TextField from "@mui/material/TextField";
-import FormContainer from "../FormContainer";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import ModalWrapper from "../../ui/components/ModalWrapper";
 
 const EditUserModal = ({ open, setOpen, userData, setUserData, action }) => {
-  const handleClose = () => {
-    setOpen(false);
-  };
-
   const handleSubmit = () => {
     action();
-    handleClose();
+    setOpen(false);
   };
 
   const CenterLayout = {
@@ -33,7 +29,7 @@ const EditUserModal = ({ open, setOpen, userData, setUserData, action }) => {
         setOpen={setOpen}
         title={"Изменение данных пользователя"}
       >
-        <FormContainer>
+        <Grid>
           <FormControl sx={{ width: "100%" }}>
             <TextField
               type="name"
@@ -90,14 +86,11 @@ const EditUserModal = ({ open, setOpen, userData, setUserData, action }) => {
             </Select>
           </FormControl>
           <Box style={CenterLayout}>
-            <Button aria-label="add an alarm" style={{ marginRight: "0.5rem" }}>
-              Закрыть
-            </Button>
             <Button onClick={handleSubmit} variant="outlined" color="inherit">
               Обновить
             </Button>
           </Box>
-        </FormContainer>
+        </Grid>
       </ModalWrapper>
     </>
   );
