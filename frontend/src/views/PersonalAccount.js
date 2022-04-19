@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Row, Col, Form, Button, Card, Collapse } from "bootstrap-4-react";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Card from "@mui/material/Card";
+import Button from "@mui/material/Button";
+import CardContent from "@mui/material/CardContent";
+import FormControl from "@mui/material/FormControl";
+import Typography from "@mui/material/Typography";
+import TextField from "@mui/material/TextField";
 import {
   getUserProfile,
   updateUserProfile,
@@ -59,92 +66,86 @@ const Profile = ({ history, location }) => {
   };
 
   return (
-    <Row>
-      <Col md={3}>
+    <Box display="inline-flex" justifyContent="space-around">
+      <Grid lg={3} md={3}>
         {/* <h2 id="accordionExample">Профиль</h2> */}
-        <Card id="accordionExample">
-          <Card.Header mb="0">
-            <Collapse.Button
-              target="#collapseOne"
-              id="headingOne"
-              aria-expanded="true"
-            >
-              <h5>Профиль</h5>
-            </Collapse.Button>
-          </Card.Header>
-          <Collapse
-            id="collapseOne"
-            show
-            aria-labelledby="headingOne"
-            data-parent="#accordionExample"
-          >
-            <Card.Body>
-              {message && <Message variant="error">{message}</Message>}
-              {success && <Message variant="success">Профиль изменен</Message>}
-              {loading ? (
-                <Loader />
-              ) : error ? (
-                <Message variant="error">{error}</Message>
-              ) : (
-                <Form onSubmit={submitHandler}>
-                  <Form.Group>
-                    <label htmlFor="nameForm">Имя</label>
-                    <Form.Input
-                      type="name"
-                      id="nameForm"
-                      placeholder="Введите имя и фамилию"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                    />
-                  </Form.Group>
-                  <Form.Group>
-                    <label htmlFor="emailForm">E-mail</label>
-                    <Form.Input
-                      type="email"
-                      id="emailForm"
-                      placeholder="Введите email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                    />
-                  </Form.Group>
-                  <Form.Group>
-                    <label htmlFor="passwordForm">Новый пароль</label>
-                    <Form.Input
-                      type="password"
-                      id="passwordForm"
-                      placeholder="Введите новый пароль"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                    />
-                  </Form.Group>
-                  <Form.Group>
-                    <label htmlFor="confirmPasswordForm">
-                      Подтверждение пароля
-                    </label>
-                    <Form.Input
-                      type="password"
-                      id="confirmPasswordForm"
-                      placeholder="Подтвердите пароль"
-                      value={confirmPassword}
-                      onChange={(e) => setConfirmPassword(e.target.value)}
-                    />
-                  </Form.Group>
-                  <Button type="submit" dark>
-                    Обновить
-                  </Button>
-                </Form>
-              )}
-            </Card.Body>
-          </Collapse>
+        <Card>
+          <CardContent>
+            <Typography sx={{ my: 1 }} variant="h5">
+              Профиль
+            </Typography>
+            {message && <Message variant="error">{message}</Message>}
+            {success && <Message variant="success">Профиль изменен</Message>}
+            {loading ? (
+              <Loader />
+            ) : error ? (
+              <Message variant="error">{error}</Message>
+            ) : (
+              <Box>
+                <FormControl>
+                  <TextField
+                    id="outlined-basic"
+                    sx={{ my: 1 }}
+                    type="name"
+                    placeholder="Введите имя"
+                    label="Имя"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </FormControl>
+                <FormControl>
+                  <TextField
+                    id="outlined-basic"
+                    type="email"
+                    sx={{ my: 1 }}
+                    placeholder="Введите email"
+                    label="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </FormControl>
+                <FormControl>
+                  <TextField
+                    id="outlined-basic"
+                    sx={{ my: 1 }}
+                    type="password"
+                    placeholder="Введите новый пароль"
+                    label="Новый пароль"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </FormControl>
+                <FormControl>
+                  <TextField
+                    type="password"
+                    id="outlined-basic"
+                    sx={{ my: 1 }}
+                    placeholder="Подтвердите пароль"
+                    label="Подтвердите пароль"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                  />
+                </FormControl>
+                <Button
+                  variant="outlined"
+                  color="inherit"
+                  sx={{ my: 1 }}
+                  onSubmit={submitHandler}
+                >
+                  Обновить
+                </Button>
+              </Box>
+            )}
+          </CardContent>
         </Card>
         {/* */}
-      </Col>
+      </Grid>
       <MyOrderList
         loadingOrders={loadingOrders}
         errorOrders={errorOrders}
         orders={orders}
       />
-    </Row>
+    </Box>
   );
 };
 

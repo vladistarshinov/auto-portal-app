@@ -112,51 +112,60 @@ const Reviews = ({ productId, product }) => {
           <ListItem alignItems="flex-start" style={{ flexDirection: "column" }}>
             <h5>Оставить отзыв</h5>
             {userInfo ? (
-              <Box display="flex" flexDirection="column">
-                <FormControl
-                  variant="standard"
-                  style={{
-                    width: "300px",
-                    marginTop: "20px",
-                    marginBottom: "20px",
-                  }}
+              <>
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  style={{ width: "100%" }}
                 >
-                  <InputLabel id="demo-simple-select-standard-label">
-                    Рейтинг
-                  </InputLabel>
-                  <Select
-                    labelId="demo-simple-select-standard-label"
-                    id="demo-simple-select-standard"
-                    value={rating}
-                    onChange={(e) => setRating(e.target.value)}
+                  <FormControl
+                    variant="standard"
+                    style={{
+                      width: "300px",
+                      marginTop: "20px",
+                      marginBottom: "20px",
+                    }}
                   >
-                    <MenuItem value="">Выберите оценку...</MenuItem>
-                    <MenuItem value="1">Очень плохо</MenuItem>
-                    <MenuItem value="2">Плохо</MenuItem>
-                    <MenuItem value="3">Удовлетворительно</MenuItem>
-                    <MenuItem value="4">Хорошо</MenuItem>
-                    <MenuItem value="5">Отлично</MenuItem>
-                  </Select>
-                </FormControl>
-                <FormControl>
-                  <InputLabel>Комментарий</InputLabel>
-                  <TextField
-                    id="outlined-multiline-flexible"
-                    label="Комментарий"
-                    multiline
-                    minRows={3}
-                    value={comment}
-                    onChange={(e) => setComment(e.target.value)}
-                  />
-                </FormControl>
+                    <InputLabel id="demo-simple-select-standard-label">
+                      Рейтинг
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-standard-label"
+                      id="demo-simple-select-standard"
+                      value={rating}
+                      onChange={(e) => setRating(e.target.value)}
+                    >
+                      <MenuItem value="">Выберите оценку...</MenuItem>
+                      <MenuItem value="1">Очень плохо</MenuItem>
+                      <MenuItem value="2">Плохо</MenuItem>
+                      <MenuItem value="3">Удовлетворительно</MenuItem>
+                      <MenuItem value="4">Хорошо</MenuItem>
+                      <MenuItem value="5">Отлично</MenuItem>
+                    </Select>
+                  </FormControl>
+                  <FormControl>
+                    <InputLabel>Комментарий</InputLabel>
+                    <TextField
+                      id="outlined-multiline-flexible"
+                      label="Комментарий"
+                      multiline
+                      minRows={3}
+                      value={comment}
+                      onChange={(e) => setComment(e.target.value)}
+                    />
+                  </FormControl>
+                </Box>
                 <Button
                   onSubmit={submitReviewCreateHandler}
-                  dark
-                  variant="light"
+                  variant="outlined"
+                  color="inherit"
+                  style={{
+                    marginTop: "10px",
+                  }}
                 >
                   Отправить
                 </Button>
-              </Box>
+              </>
             ) : (
               <Message>
                 Пожалуйста, <Link to="/login">авторизируйтесь</Link> для
