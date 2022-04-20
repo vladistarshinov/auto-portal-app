@@ -16,12 +16,12 @@ import { listOfMyOrders } from "../redux/actions/order.actions";
 import Loader from "../ui/components/Loader";
 import Message from "../ui/components/Message";
 import MyOrderList from "../components/MyOrderList";
+import ChangePasswordModal from "../components/modals/ChangePasswordModal";
 
 const Profile = ({ history, location }) => {
+  const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState(null);
 
   const dispatch = useDispatch();
@@ -55,19 +55,13 @@ const Profile = ({ history, location }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
-      setMessage("Пароли не совпадают");
-    } else {
-      dispatch(
-        updateUserProfile({ id: userDetails._id, name, email, password })
-      );
-      dispatch(getUserProfile("profile"));
-    }
+    dispatch(updateUserProfile({ id: userDetails._id, name, email }));
+    dispatch(getUserProfile("profile"));
   };
 
   return (
-    <Box display="inline-flex" justifyContent="space-around">
-      <Grid lg={3} md={3}>
+    <Grid container display="inline-flex" justifyContent="space-around">
+      <Grid item lg={3} md={3}>
         {/* <h2 id="accordionExample">Профиль</h2> */}
         <Card>
           <CardContent>
@@ -104,33 +98,19 @@ const Profile = ({ history, location }) => {
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </FormControl>
-                <FormControl>
-                  <TextField
-                    id="outlined-basic"
-                    sx={{ my: 1 }}
-                    type="password"
-                    placeholder="Введите новый пароль"
-                    label="Новый пароль"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                </FormControl>
-                <FormControl>
-                  <TextField
-                    type="password"
-                    id="outlined-basic"
-                    sx={{ my: 1 }}
-                    placeholder="Подтвердите пароль"
-                    label="Подтвердите пароль"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                  />
-                </FormControl>
                 <Button
                   variant="outlined"
                   color="inherit"
                   sx={{ my: 1 }}
-                  onSubmit={submitHandler}
+                  onClick={() => setOpen(true)}
+                >
+                  Изменить пароль
+                </Button>
+                <Button
+                  variant="outlined"
+                  color="inherit"
+                  sx={{ my: 1 }}
+                  onClick={submitHandler}
                 >
                   Обновить
                 </Button>
@@ -140,12 +120,17 @@ const Profile = ({ history, location }) => {
         </Card>
         {/* */}
       </Grid>
+      <ChangePasswordModal
+        open={open}
+        setOpen={(bool) => setOpen(bool)}
+        detailId={userDetails._id}
+      />
       <MyOrderList
         loadingOrders={loadingOrders}
         errorOrders={errorOrders}
         orders={orders}
       />
-    </Box>
+    </Grid>
   );
 };
 

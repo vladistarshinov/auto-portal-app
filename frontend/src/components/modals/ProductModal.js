@@ -6,6 +6,8 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import ModalWrapper from "../../ui/components/ModalWrapper";
 import Loader from "../../ui/components/Loader";
+import { styled } from "@mui/material/styles";
+import Box from "@mui/material/Box";
 
 const EditProductModal = ({
   type,
@@ -22,12 +24,11 @@ const EditProductModal = ({
     setOpen(false);
   };
 
-  const CenterLayout = {
+  const CenterLayout = styled(Box)({
     display: "flex",
     justifyContent: "center",
-    marginTop: "20px",
     marginBottom: "20px",
-  };
+  });
 
   return (
     <>
@@ -180,11 +181,11 @@ const EditProductModal = ({
               </FormControl>
             </Grid>
           </Grid>
-          <Grid style={CenterLayout}>
+          <CenterLayout>
             <Button onClick={handleSubmit} variant="outlined" color="inherit">
               {type === "create" ? "Создать" : "Обновить"}
             </Button>
-          </Grid>
+          </CenterLayout>
         </Grid>
       </ModalWrapper>
     </>

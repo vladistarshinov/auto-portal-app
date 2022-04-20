@@ -8,6 +8,7 @@ import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import ModalWrapper from "../../ui/components/ModalWrapper";
+import { styled } from "@mui/material/styles";
 
 const EditUserModal = ({ open, setOpen, userData, setUserData, action }) => {
   const handleSubmit = () => {
@@ -15,11 +16,11 @@ const EditUserModal = ({ open, setOpen, userData, setUserData, action }) => {
     setOpen(false);
   };
 
-  const CenterLayout = {
+  const CenterLayout = styled(Box)({
     display: "flex",
     justifyContent: "center",
     marginBottom: "20px",
-  };
+  });
 
   return (
     <>
@@ -33,7 +34,7 @@ const EditUserModal = ({ open, setOpen, userData, setUserData, action }) => {
           <FormControl sx={{ width: "100%" }}>
             <TextField
               type="name"
-              label="Name"
+              label="Имя"
               fullWidth
               sx={{ my: 2 }}
               id="standard-basic"
@@ -85,11 +86,11 @@ const EditUserModal = ({ open, setOpen, userData, setUserData, action }) => {
               <MenuItem value="false">нет</MenuItem>
             </Select>
           </FormControl>
-          <Box style={CenterLayout}>
+          <CenterLayout>
             <Button onClick={handleSubmit} variant="outlined" color="inherit">
               Обновить
             </Button>
-          </Box>
+          </CenterLayout>
         </Grid>
       </ModalWrapper>
     </>

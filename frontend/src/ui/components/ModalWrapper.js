@@ -1,4 +1,6 @@
 import React from "react";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
@@ -42,15 +44,15 @@ const ModalWrapper = ({ open, setOpen, title, children }) => {
           },
         }}
       >
-        <div sx={{ padding: 15 }}>
-          <div
+        <Box sx={{ padding: 1 }}>
+          <Box
             sx={{
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
               textAlign: "center",
               position: "relative",
-              paddingTop: 21,
+              paddingTop: 1,
             }}
           >
             <CloseIcon
@@ -69,18 +71,19 @@ const ModalWrapper = ({ open, setOpen, title, children }) => {
                 padding: "12px 16px",
               }}
             >
-              <h5
+              <Typography
+                variant="h4"
                 sx={{
                   fontSize: 22,
                   lineHeight: "28px",
                 }}
               >
                 {title}
-              </h5>
+              </Typography>
             </DialogTitle>
-          </div>
+          </Box>
           <DialogContent sx={{ padding: "0 16px" }}>{children}</DialogContent>
-        </div>
+        </Box>
       </Dialog>
     </>
   );

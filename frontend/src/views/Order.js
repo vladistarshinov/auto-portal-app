@@ -72,23 +72,31 @@ const Order = (props) => {
         <Message variant="error">{error}</Message>
       ) : (
         <>
-          <div id="printOrder">
-            <div className="text-center" style={{ color: "grey" }}>
+          <Box id="printOrder">
+            <Box
+              style={{
+                display: "flex",
+                alignItems: "center",
+                flexDirection: "column",
+                color: "grey",
+                marginTop: "20px",
+              }}
+            >
               <i
                 className="fa fa-american-sign-language-interpreting mr-2"
                 style={{ fontSize: "2rem" }}
                 aria-hidden="true"
               ></i>
               <p>IGadgetShop</p>
-            </div>
-            <h5 className="text-center" style={{ color: "grey" }}>
-              Заказ № {order._id}
-            </h5>
+              <h5 className="text-center" style={{ color: "grey" }}>
+                Заказ № {order._id}
+              </h5>
+            </Box>
             <Grid>
               <Box>
-                <Grid display="inline-flex" justifyContent="center">
+                <Grid container display="inline-flex" justifyContent="center">
                   <OrderProductTable order={order} />
-                  <Box md={3} lg={3}>
+                  <Grid md={3} lg={3}>
                     <Paper>
                       <List>
                         <ListItem className="text-center">
@@ -132,21 +140,22 @@ const Order = (props) => {
                       successPayingProcess={successPayingProcess}
                       successDeliveringProcess={successDeliveringProcess}
                     />
-                  </Box>
+                  </Grid>
                 </Grid>
               </Box>
             </Grid>
-          </div>
-          <div className="text-center">
+          </Box>
+          <Box
+            sx={{ display: "flex", justifyContent: "center", marginBottom: 2 }}
+          >
             <Button
               variant="outlined"
               color="inherit"
               onClick={generateOrderPdfHandler}
-              style={{ marginBottom: 2 }}
             >
               Распечатать чек
             </Button>
-          </div>
+          </Box>
         </>
       )}
     </>
