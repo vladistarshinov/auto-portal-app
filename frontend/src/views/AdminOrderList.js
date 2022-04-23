@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Table from "@mui/material/Table";
@@ -15,10 +16,15 @@ import { listOfOrders } from "../redux/actions/admin.actions";
 import Loader from "../ui/components/Loader";
 import Message from "../ui/components/Message";
 import { DateFilter } from "../filters/DateTimeFilter.js";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import DoneIcon from "@mui/icons-material/Done";
+import CloseIcon from "@mui/icons-material/Close";
 
 const AdminOrderList = ({ history }) => {
   const dispatch = useDispatch();
+  const isMobile = useMediaQuery("(max-width:450px)");
+  const isTablet = useMediaQuery("(max-width:750px)");
 
   const orderList = useSelector((state) => state.orderList);
   const { loading, ordersInfo, error } = orderList;
@@ -34,39 +40,96 @@ const AdminOrderList = ({ history }) => {
     }
   }, [dispatch, history, userInfo]);
 
-  const Title = styled.h2`
-    padding: 1rem 0;
-  `;
-
-  const TickIcon = styled.i`
-    color: green;
-  `;
-
-  const DaggerIcon = styled.i`
-    color: red;
-  `;
-
-  const LinkToOrderDetails = {
+  const LinkToOrderDetails = styled(Link)({
     color: "navy",
     textDecoration: "none",
-  };
+  });
 
   return (
     <>
       <Grid className="align-items-center">
         <Box>
-          <Title>Список заказов</Title>
+          <Typography variant="h5" sx={{ padding: "1rem 0" }}>
+            Список заказов
+          </Typography>
         </Box>
       </Grid>
       {loading ? (
         <Loader />
       ) : error ? (
         <Message variant="error">{error}</Message>
+      ) : isTablet ? (
+        ordersInfo?.map((order, index) => (
+          <TableContainer key={order._id} idx={index}>
+            <Table sx={{ minWidth: 300 }}>
+              <TableRow>
+                <TableCell align="center">ID</TableCell>
+                <TableCell align="center">
+                  {isMobile ? index + 1 : order._id}
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell align="center">Клиент</TableCell>
+                <TableCell align="center">
+                  {order.user && order.user.name}
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell align="center">Дата</TableCell>
+                <TableCell align="center">
+                  {DateFilter(order.createdAt)}
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell align="center">К оплате</TableCell>
+                <TableCell align="center">${order.totalPrice}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell align="center">Статус оплаты</TableCell>
+                <TableCell align="center">
+                  {order.isPaid ? (
+                    <>
+                      <DoneIcon color="success"></DoneIcon>
+                      <br />
+                      {DateFilter(order.paidAt)}
+                    </>
+                  ) : (
+                    <CloseIcon color="error"></CloseIcon>
+                  )}
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell align="center">Статус отправки</TableCell>
+                <TableCell align="center">
+                  {order.isDelivered ? (
+                    <>
+                      <DoneIcon color="success"></DoneIcon>
+                      <br />
+                      {DateFilter(order.deliveredAt)}
+                    </>
+                  ) : (
+                    <CloseIcon color="error"></CloseIcon>
+                  )}
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell align="center">Подробнее</TableCell>
+                <TableCell align="center">
+                  <LinkToOrderDetails to={`/order/${order._id}`}>
+                    <IconButton>
+                      <ReadMoreIcon />
+                    </IconButton>
+                  </LinkToOrderDetails>
+                </TableCell>
+              </TableRow>
+            </Table>
+          </TableContainer>
+        ))
       ) : (
         <TableContainer>
           <Table>
             <TableHead>
-              <TableRow className="text-center">
+              <TableRow>
                 <TableCell align="center">#</TableCell>
                 <TableCell align="center">Клиент</TableCell>
                 <TableCell align="center">Дата</TableCell>
@@ -78,7 +141,7 @@ const AdminOrderList = ({ history }) => {
             </TableHead>
             <TableBody>
               {ordersInfo.map((order) => (
-                <TableRow className="text-center" key={order._id}>
+                <TableRow key={order._id}>
                   <TableCell align="center">{order._id}</TableCell>
                   <TableCell align="center">
                     {order.user && order.user.name}
@@ -90,31 +153,31 @@ const AdminOrderList = ({ history }) => {
                   <TableCell align="center">
                     {order.isPaid ? (
                       <>
-                        <TickIcon className="fas fa-check"></TickIcon>
+                        <DoneIcon color="success"></DoneIcon>
                         <br />
                         {DateFilter(order.paidAt)}
                       </>
                     ) : (
-                      <DaggerIcon className="fas fa-times"></DaggerIcon>
+                      <CloseIcon color="error"></CloseIcon>
                     )}
                   </TableCell>
                   <TableCell align="center">
                     {order.isDelivered ? (
                       <>
-                        <TickIcon className="fas fa-check"></TickIcon>
+                        <DoneIcon color="success"></DoneIcon>
                         <br />
                         {DateFilter(order.deliveredAt)}
                       </>
                     ) : (
-                      <DaggerIcon className="fas fa-times"></DaggerIcon>
+                      <CloseIcon color="error"></CloseIcon>
                     )}
                   </TableCell>
                   <TableCell align="center">
-                    <Link style={LinkToOrderDetails} to={`/order/${order._id}`}>
+                    <LinkToOrderDetails to={`/order/${order._id}`}>
                       <IconButton>
                         <ReadMoreIcon />
                       </IconButton>
-                    </Link>
+                    </LinkToOrderDetails>
                   </TableCell>
                 </TableRow>
               ))}

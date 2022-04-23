@@ -5,7 +5,6 @@ import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import axios from "axios";
 import { PayPalButton } from "react-paypal-button-v2";
 import Paper from "@mui/material/Paper";
 import Message from "../ui/components/Message";
@@ -20,7 +19,8 @@ import {
   updateStatusDeliveringOrder,
 } from "../redux/actions/order.actions";
 import { DateTimeFilter } from "../filters/DateTimeFilter.js";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
+import { addPayPalScript } from "../utils/addPaypalScript";
 
 const OrderProductActionsStatus = ({
   orderId,
@@ -38,24 +38,13 @@ const OrderProductActionsStatus = ({
   const [sdkPayPalReady, setSdkPayPalReady] = useState(false);
 
   useEffect(() => {
-    const addPayPalScript = async () => {
-      const { data: clientId } = await axios.get("/api/config/paypal");
-      const script = document.createElement("script");
-      script.type = "text/javascript";
-      script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
-      script.async = true;
-      script.onload = () => {
-        setSdkPayPalReady(true);
-      };
-      document.body.appendChild(script);
-    };
     if (!order || successPayingProcess || successDeliveringProcess) {
       dispatch({ type: ORDER_UPDATE_STATUS_FOR_PAYING_RESET });
       dispatch({ type: ORDER_DELIVER_RESET });
       dispatch(getOrderDetails(orderId));
     } else if (!order.isPaid) {
       if (!window.paypal) {
-        addPayPalScript();
+        addPayPalScript(setSdkPayPalReady);
       } else {
         setSdkPayPalReady(true);
       }
@@ -84,17 +73,17 @@ const OrderProductActionsStatus = ({
     dispatch(updateStatusDeliveringOrder(order));
   };
 
-  const StatusMessage = styled.div`
-    display: flex;
-    justify-content: center;
-    max-width: 250px;
-    padding-top: 0.9rem;
-    margin-bottom: 1rem;
+  const StatusMessage = styled(Box)({
+    display: "flex",
+    justifyContent: "center",
+    maxWidth: "250px",
+    paddingTop: "0.9rem",
+    marginBottom: "1rem",
 
-    &:last-child {
-      padding-top: 0;
-    }
-  `;
+    "&:last-child": {
+      paddingTop: 0,
+    },
+  });
 
   return (
     <>
@@ -119,7 +108,7 @@ const OrderProductActionsStatus = ({
           )}
         </List>
       </Paper>
-      <StatusMessage className="text-center">
+      <StatusMessage>
         {order.isPaid ? (
           <Message variant="success">
             Оплачено
@@ -130,7 +119,7 @@ const OrderProductActionsStatus = ({
           <Message variant="error">Не оплачено</Message>
         )}
       </StatusMessage>
-      <StatusMessage className="text-center">
+      <StatusMessage>
         {order.isPaid &&
           (order.isDelivered ? (
             <Message variant="info">
@@ -144,22 +133,23 @@ const OrderProductActionsStatus = ({
       </StatusMessage>
       {loadingDeliveringProcess && <Loader />}
       {userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered && (
-        <div className="text-center">
+        <Box display="flex" justifyContent="center">
           <Button variant="outlined" onClick={deliverHandler}>
             Отправить
           </Button>
-        </div>
+        </Box>
       )}
       {!order.isPaid && (
-        <div className="text-center">
+        <Box display="flex" justifyContent="center">
           <Button
             variant="outlined"
             color="inherit"
             onClick={payingActionHandler}
+            sx={{ mb: "1rem" }}
           >
             Оплатить
           </Button>
-        </div>
+        </Box>
       )}
     </>
   );

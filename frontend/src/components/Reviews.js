@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
+import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
@@ -17,15 +18,14 @@ import InputLabel from "@mui/material/InputLabel";
 import TextField from "@mui/material/TextField";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { IconButton } from "@mui/material";
 
 const Reviews = ({ productId, product }) => {
   const dispatch = useDispatch();
 
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
-
-  /*     const productDetails = useSelector((state) => state.productDetails);
-    const { loading, product, error } = productDetails; */
 
   const reviewCreate = useSelector((state) => state.reviewCreate);
   const { error: errorCreatingReview, success: successCreatingReview } =
@@ -63,14 +63,14 @@ const Reviews = ({ productId, product }) => {
   };
 
   return (
-    <Box style={{ marginTop: "2rem" }}>
+    <Box sx={{ marginTop: "2rem" }}>
       <Grid md={9}>
-        <h4 style={{ padding: "1rem 0" }}>
+        <Typography variant="h5" sx={{ padding: "1rem 0" }}>
           Комментарии{" "}
           {product.reviews.length === 0
             ? ""
             : "(" + product.reviews.length + ")"}
-        </h4>
+        </Typography>
         {successCreatingReview && (
           <Message variant="success">Благодарим за Ваш отзыв</Message>
         )}
@@ -89,39 +89,44 @@ const Reviews = ({ productId, product }) => {
             <ListItem
               alignItems="flex-start"
               key={review._id}
-              style={{ backgroundColor: "#fafafa", flexDirection: "column" }}
+              sx={{ backgroundColor: "#fafafa", flexDirection: "column" }}
             >
-              <strong>
-                {review.name}
-                {"     "}
-              </strong>
-              {(userInfo?._id === review.user || userInfo?.isAdmin) && (
-                <i
-                  className="fas fa-times"
-                  onClick={() =>
-                    submitReviewDeleteHandler(productId, review._id)
-                  }
-                  style={{ cursor: "pointer", color: "red" }}
-                ></i>
-              )}
+              <Grid display="inline-flex" alignItems="center">
+                <strong>
+                  {review.name}
+                  {"     "}
+                </strong>
+                {(userInfo?._id === review.user || userInfo?.isAdmin) && (
+                  <IconButton
+                    sx={{ ml: 1 }}
+                    onClick={() =>
+                      submitReviewDeleteHandler(productId, review._id)
+                    }
+                  >
+                    <DeleteIcon color="error"></DeleteIcon>
+                  </IconButton>
+                )}
+              </Grid>
               <Rating value={review.rating} />
               <small>{DateTimeFilter(review.createdAt)}</small>
-              <p style={{ marginTop: "1rem" }}>{review.comment}</p>
+              <Typography sx={{ marginTop: "1rem" }}>
+                {review.comment}
+              </Typography>
             </ListItem>
           ))}
-          <ListItem alignItems="flex-start" style={{ flexDirection: "column" }}>
-            <h5>Оставить отзыв</h5>
+          <ListItem alignItems="flex-start" sx={{ flexDirection: "column" }}>
+            <Typography variant="h6">Оставить отзыв</Typography>
             {userInfo ? (
               <>
                 <Box
                   display="flex"
                   flexDirection="column"
-                  style={{ width: "100%" }}
+                  sx={{ width: "100%" }}
                 >
                   <FormControl
                     variant="standard"
-                    style={{
-                      width: "300px",
+                    sx={{
+                      width: { md: "300px" },
                       marginTop: "20px",
                       marginBottom: "20px",
                     }}
@@ -159,7 +164,7 @@ const Reviews = ({ productId, product }) => {
                   onSubmit={submitReviewCreateHandler}
                   variant="outlined"
                   color="inherit"
-                  style={{
+                  sx={{
                     marginTop: "10px",
                   }}
                 >

@@ -19,6 +19,8 @@ import OrderProductActionsStatus from "../components/OrderProductActionsStatus";
 
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
+import { Typography } from "@mui/material";
+import DevicesOtherIcon from "@mui/icons-material/DevicesOther";
 
 const Order = (props) => {
   const dispatch = useDispatch();
@@ -45,8 +47,8 @@ const Order = (props) => {
       dispatch({ type: ORDER_UPDATE_STATUS_FOR_PAYING_RESET });
       dispatch({ type: CART_RESET_PRODUCTS });
       dispatch({ type: ORDER_DELIVER_RESET });
-      dispatch(getOrderDetails(orderId));
     }
+    dispatch(getOrderDetails(orderId));
   }, [orderId]);
 
   const generateOrderPdfHandler = () => {
@@ -74,7 +76,7 @@ const Order = (props) => {
         <>
           <Box id="printOrder">
             <Box
-              style={{
+              sx={{
                 display: "flex",
                 alignItems: "center",
                 flexDirection: "column",
@@ -82,25 +84,23 @@ const Order = (props) => {
                 marginTop: "20px",
               }}
             >
-              <i
-                className="fa fa-american-sign-language-interpreting mr-2"
-                style={{ fontSize: "2rem" }}
-                aria-hidden="true"
-              ></i>
-              <p>IGadgetShop</p>
-              <h5 className="text-center" style={{ color: "grey" }}>
+              <DevicesOtherIcon sx={{ fontSize: "2rem" }}></DevicesOtherIcon>
+              <Typography>IGadgetShop</Typography>
+              <Typography variant="h6" style={{ color: "grey" }}>
                 Заказ № {order._id}
-              </h5>
+              </Typography>
             </Box>
             <Grid>
               <Box>
                 <Grid container display="inline-flex" justifyContent="center">
                   <OrderProductTable order={order} />
-                  <Grid md={3} lg={3}>
+                  <Grid item xs={6} sm={6} md={3} lg={3}>
                     <Paper>
                       <List>
-                        <ListItem className="text-center">
-                          <h6 style={{ color: "grey" }}>Расчетная сумма</h6>
+                        <ListItem>
+                          <Typography variant="h6" style={{ color: "grey" }}>
+                            Расчетная сумма
+                          </Typography>
                         </ListItem>
                         <ListItem>
                           <Grid>

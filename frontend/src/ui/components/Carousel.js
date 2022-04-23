@@ -35,7 +35,6 @@ const Carousel = ({ products }) => {
           height: 70,
           py: 2,
           bgcolor: "#f8f9fa",
-          display: "flex",
           justifyContent: "center",
           flexDirection: "column",
         }}
@@ -62,6 +61,7 @@ const Carousel = ({ products }) => {
                     overflow: "hidden",
                     width: "100%",
                   }}
+                  draggable="false"
                   src={step.image}
                   alt={step.name}
                 />

@@ -7,10 +7,10 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Link from "@mui/material/Link";
 import HeaderMenu from "./HeaderMenu";
+import DevicesOtherIcon from "@mui/icons-material/DevicesOther";
 
 const Header = () => {
   const [anchorCategoryEl, setAnchorCategoryEl] = React.useState(null);
@@ -38,9 +38,9 @@ const Header = () => {
           href="/"
           underline="none"
           color="text.muted"
-          sx={{ my: { sm: 1, xs: 1 } }}
+          sx={{ display: "flex", my: { sm: 1, xs: 1 } }}
         >
-          <ShoppingBasketIcon sx={{ mr: 1 }} />
+          <DevicesOtherIcon sx={{ mr: 1 }} />
           IGadgetShop
         </Link>
         <Route render={({ history }) => <SearchBox history={history} />} />
@@ -83,7 +83,7 @@ const Header = () => {
           href="/cart"
           underline="none"
           color="text.muted"
-          sx={{ my: { sm: 1, xs: 1 } }}
+          sx={{ display: "flex", my: { sm: 1, xs: 1 } }}
         >
           <ShoppingCartIcon sx={{ mr: 1 }} />
           Корзина

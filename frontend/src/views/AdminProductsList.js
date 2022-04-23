@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { listOfProduct } from "../redux/actions/product.actions";
@@ -15,7 +14,8 @@ import {
 import Loader from "../ui/components/Loader";
 import Message from "../ui/components/Message";
 import Pagination from "../ui/components/Pagination";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
 import Table from "@mui/material/Table";
 import TableHead from "@mui/material/TableHead";
 import TableBody from "@mui/material/TableBody";
@@ -29,19 +29,26 @@ import Grid from "@mui/material/Grid";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ProductModal from "../components/modals/ProductModal";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import AddIcon from "@mui/icons-material/Add";
+import { uploadFile } from "../redux/actions/file.actions";
 
 const AdminProductList = ({ history, match }) => {
   const pageNumber = match.params.pageNumber || 1;
   const [openModal, setOpenModal] = useState(false);
   const [type, setType] = useState("");
   const dispatch = useDispatch();
+  const isMobile = useMediaQuery("(max-width:450px)");
+  const isTablet = useMediaQuery("(max-width:750px)");
 
   const imgSrc = localStorage.getItem("productImage");
   const [productData, setProductData] = useState(null);
-  const [uploading, setUploading] = useState(false);
 
   const productList = useSelector((state) => state.productList);
   const { loading, products, pages, page, error } = productList;
+
+  const uploadingImage = useSelector((state) => state.uploadingImage);
+  const { loading: uploading, image, error: errorUploading } = uploadingImage;
 
   const productCreate = useSelector((state) => state.productCreate);
   const {
@@ -73,14 +80,6 @@ const AdminProductList = ({ history, match }) => {
     } else {
       dispatch(listOfProduct("", pageNumber));
     }
-
-    if (successCreateProduct) {
-      dispatch({ type: PRODUCT_CREATE_RESET });
-    }
-
-    if (successUpdateProduct) {
-      dispatch({ type: PRODUCT_UPDATE_RESET });
-    }
   }, [
     dispatch,
     pageNumber,
@@ -91,30 +90,13 @@ const AdminProductList = ({ history, match }) => {
     successDeleteProduct,
   ]);
 
+  useEffect(() => {
+    if (image) setProductData({ ...productData, image: image });
+  }, [image]);
+
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0];
-    console.log(file);
-    const formData = new FormData();
-    formData.append("image", file);
-    console.log(formData);
-    setUploading(true);
-
-    try {
-      const config = {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      };
-
-      let { data } = await axios.post("/api/upload", formData, config);
-
-      setProductData({ ...productData, image: data });
-      localStorage.setItem("productImage", data);
-      setUploading(false);
-    } catch (error) {
-      console.error(error);
-      setUploading(false);
-    }
+    dispatch(uploadFile(file));
   };
 
   const addProductHandler = () => {
@@ -153,18 +135,10 @@ const AdminProductList = ({ history, match }) => {
     }
   };
 
-  const Title = styled.h2`
-    padding: 1rem 0;
-  `;
-
-  const PlusIcon = styled.i`
-    padding-right: 0.5rem;
-  `;
-
-  const LinkToProductDetails = {
+  const LinkToProductDetails = styled(Link)({
     color: "navy",
     textDecoration: "none",
-  };
+  });
 
   return (
     <>
@@ -185,13 +159,20 @@ const AdminProductList = ({ history, match }) => {
           <Message variant="error">{error}</Message>
         )}
       </Box>
-      <Grid container >
+      <Grid container display="flex" alignItems="center">
         <Grid item xs={8} sm={10} md={10}>
-          <Title>Список товаров</Title>
+          <Typography variant="h5" sx={{ padding: "1rem 0" }}>
+            Список товаров
+          </Typography>
         </Grid>
         <Grid item xs={4} sm={2} md={2}>
-          <Button className="my-3" onClick={() => addProductHandler()}>
-            <PlusIcon className="fas fa-plus"></PlusIcon>
+          <Button
+            variant="outlined"
+            color="inherit"
+            component="span"
+            onClick={() => addProductHandler()}
+          >
+            <AddIcon sx={{ pr: "0.5rem" }}></AddIcon>
             <span>Добавить</span>
           </Button>
         </Grid>
@@ -200,11 +181,58 @@ const AdminProductList = ({ history, match }) => {
         <Loader />
       ) : error ? (
         <Message variant="error">{error}</Message>
+      ) : isTablet ? (
+        products.map((product, index) => (
+          <TableContainer key={product._id} idx={index}>
+            <Table sx={{ minWidth: 300 }}>
+              <TableRow>
+                <TableCell align="center">ID</TableCell>
+                <TableCell align="center">
+                  {isMobile ? index + 1 : product._id}
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell align="center">Название</TableCell>
+                <TableCell align="center">
+                  <LinkToProductDetails to={`/product/${product._id}`}>
+                    {product.name}
+                  </LinkToProductDetails>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell align="center">Цена</TableCell>
+                <TableCell align="center">${product.price}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell align="center">Категория</TableCell>
+                <TableCell align="center">{product.category}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell align="center">Бренд</TableCell>
+                <TableCell align="center">{product.brand}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell align="center">Действия</TableCell>
+                <TableCell align="center">
+                  <IconButton
+                    onClick={() => editProductHandler(product._id)}
+                    style={{ marginRight: "0.5rem" }}
+                  >
+                    <EditIcon color="primary" />
+                  </IconButton>
+                  <IconButton onClick={() => deleteProductHandler(product._id)}>
+                    <DeleteIcon color="secondary" />
+                  </IconButton>
+                </TableCell>
+              </TableRow>
+            </Table>
+          </TableContainer>
+        ))
       ) : (
         <TableContainer>
           <Table>
             <TableHead>
-              <TableRow className="text-center">
+              <TableRow align="center">
                 <TableCell align="center">#</TableCell>
                 <TableCell align="center">Название</TableCell>
                 <TableCell align="center">Цена</TableCell>
@@ -215,15 +243,12 @@ const AdminProductList = ({ history, match }) => {
             </TableHead>
             <TableBody>
               {products.map((product) => (
-                <TableRow className="text-center" key={product._id}>
+                <TableRow align="center" key={product._id}>
                   <TableCell align="center">{product._id}</TableCell>
                   <TableCell align="center">
-                    <Link
-                      style={LinkToProductDetails}
-                      to={`/product/${product._id}`}
-                    >
+                    <LinkToProductDetails to={`/product/${product._id}`}>
                       {product.name}
-                    </Link>
+                    </LinkToProductDetails>
                   </TableCell>
                   <TableCell align="center">${product.price}</TableCell>
                   <TableCell align="center">{product.category}</TableCell>
@@ -255,7 +280,7 @@ const AdminProductList = ({ history, match }) => {
         productData={productData}
         setProductData={setProductData}
         action={() => {
-          if (type === "submit") submitProductAddHandler();
+          if (type === "create") submitProductAddHandler();
           else submitProductEditHandler();
         }}
         uploadFileHandler={uploadFileHandler}

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Pagination from "../ui/components/Pagination";
@@ -10,6 +10,7 @@ const ProductList = ({ products, pages, page, keyword }) => {
       <Box>
         {products.map((product) => (
           <Grid
+            item
             display="inline-grid"
             container
             direction="row"

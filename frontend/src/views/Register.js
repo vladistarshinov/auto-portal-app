@@ -72,7 +72,7 @@ const Register = ({ history, location }) => {
       {message && <Message variant="error">{message}</Message>}
       {error && <Message variant="error">{error}</Message>}
       {loading && <Loader />}
-      <Box sx={{ mt: 3, width: 500 }}>
+      <Box sx={{ mt: 3, minWidth: 300 }}>
         <TextField
           label="Имя"
           id="outlined-basic"

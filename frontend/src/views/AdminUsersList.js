@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Box from "@mui/material/Box";
+import Link from "@mui/material/Link";
+import Typography from "@mui/material/Typography";
 import Table from "@mui/material/Table";
 import TableHead from "@mui/material/TableHead";
 import TableBody from "@mui/material/TableBody";
@@ -18,11 +20,16 @@ import {
 import { USER_UPDATE_RESET } from "../redux/constants/admin.constants";
 import Loader from "../ui/components/Loader";
 import Message from "../ui/components/Message";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 import EditUserModal from "../components/modals/EditUserModal";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import DoneIcon from "@mui/icons-material/Done";
+import CloseIcon from "@mui/icons-material/Close";
 
 const AdminUsersList = ({ history }) => {
   const dispatch = useDispatch();
+  const isMobile = useMediaQuery("(max-width:450px)");
+  const isTablet = useMediaQuery("(max-width:750px)");
   const [openModal, setOpenModal] = useState(false);
 
   const usersList = useSelector((state) => state.usersList);
@@ -36,7 +43,11 @@ const AdminUsersList = ({ history }) => {
   } = userUpdate;
 
   const userRemove = useSelector((state) => state.userRemove);
-  const { success } = userRemove;
+  const {
+    loading: loadingRemoveUser,
+    success: successRemoveUser,
+    error: errorRemoveUser,
+  } = userRemove;
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -44,15 +55,12 @@ const AdminUsersList = ({ history }) => {
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
-    if (successUpdateUser) {
-      dispatch({ type: USER_UPDATE_RESET });
-    }
     if (userInfo && userInfo.isAdmin) {
       dispatch(listOfUsers());
     } else {
       history.push("/login");
     }
-  }, [dispatch, history, successUpdateUser, userInfo, success]);
+  }, [dispatch, history, userInfo, successUpdateUser, successRemoveUser]);
 
   const editUserHandler = (userId) => {
     setOpenModal(true);
@@ -75,102 +83,132 @@ const AdminUsersList = ({ history }) => {
     }
   };
 
-  const Title = styled.h2`
-    padding: 1rem 0;
-  `;
-
-  const TickIcon = styled.i`
-    color: green;
-  `;
-
-  const DaggerIcon = styled.i`
-    color: red;
-  `;
-
-  const EmailLink = styled.a`
-    color: navy,
-    textDecoration: none
-  `;
-
-  const ModalDialog = {
-    maxWidth: "50vw",
-  };
+  const PushingLink = styled(Link)({
+    color: "navy",
+    textDecoration: "none",
+  });
 
   return (
     <>
-      {success && <Message variant="success">Пользователь удален</Message>}
-      {successUpdateUser && (
-        <Message variant="success">Изменены данные пользователя</Message>
-      )}
-      <Title>Список пользователей</Title>
+      <Box sx={{ marginTop: "30px" }}>
+        {successRemoveUser && (
+          <Message variant="success">Пользователь удален</Message>
+        )}
+        {successUpdateUser && (
+          <Message variant="success">Изменены данные пользователя</Message>
+        )}
+        {(loadingUpdateUser || loadingRemoveUser) && <Loader />}
+        {(errorUpdateUser || errorRemoveUser) && (
+          <Message variant="error">{error}</Message>
+        )}
+      </Box>
+      <Typography variant="h5" sx={{ padding: "1rem 0" }}>
+        Список пользователей
+      </Typography>
       {loading ? (
         <Loader />
       ) : error ? (
         <Message variant="error">{error}</Message>
-      ) : (
-        <>
-          <TableContainer>
-            <Table>
-              <TableHead>
-                <TableRow className="text-center">
-                  <TableCell align="center">#</TableCell>
-                  <TableCell align="center">Имя пользователя</TableCell>
-                  <TableCell align="center">Email</TableCell>
-                  <TableCell align="center">Статус администратора</TableCell>
-                  <TableCell></TableCell>
-                </TableRow>
-              </TableHead>
+      ) : isTablet ? (
+        userList.map((user, index) => (
+          <TableContainer key={user._id} idx={index}>
+            <Table sx={{ minWidth: 300 }}>
               <TableBody>
-                {userList.map((user) => (
-                  <TableRow className="text-center" key={user._id}>
-                    <TableCell align="center">{user._id}</TableCell>
-                    <TableCell align="center">{user.name}</TableCell>
-                    <TableCell align="center">
-                      <EmailLink
-                        href={`mailto:${user.email}`}
-                        style={{ color: "navy", textDecoration: "none" }}
-                      >
-                        {user.email}
-                      </EmailLink>
-                    </TableCell>
-                    <TableCell align="center">
-                      {user.isAdmin ? (
-                        <TickIcon className="fas fa-check"></TickIcon>
-                      ) : (
-                        <DaggerIcon className="fas fa-times"></DaggerIcon>
-                      )}
-                    </TableCell>
-                    <TableCell align="center">
-                      <IconButton
-                        onClick={() => editUserHandler(user._id)}
-                        style={{ marginRight: "0.5rem" }}
-                      >
-                        <EditIcon color="primary" />
-                      </IconButton>
-                      <IconButton onClick={() => deleteUserHandler(user._id)}>
-                        <DeleteIcon color="secondary" />
-                      </IconButton>
-                    </TableCell>
-                  </TableRow>
-                ))}
+                <TableRow>
+                  <TableCell align="center">ID</TableCell>
+                  <TableCell align="center">
+                    {isMobile ? index + 1 : user._id}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell align="center">Email</TableCell>
+                  <TableCell align="center">
+                    <PushingLink href={`mailto:${user.email}`}>
+                      {user.email}
+                    </PushingLink>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell align="center">Статус администратора</TableCell>
+                  <TableCell align="center">
+                    {user.isAdmin ? (
+                      <DoneIcon color="success"></DoneIcon>
+                    ) : (
+                      <CloseIcon color="error"></CloseIcon>
+                    )}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell align="center">Действия</TableCell>
+                  <TableCell align="center">
+                    <IconButton
+                      onClick={() => editUserHandler(user._id)}
+                      style={{ marginRight: "0.5rem" }}
+                    >
+                      <EditIcon color="primary" />
+                    </IconButton>
+                    <IconButton onClick={() => deleteUserHandler(user._id)}>
+                      <DeleteIcon color="secondary" />
+                    </IconButton>
+                  </TableCell>
+                </TableRow>
               </TableBody>
             </Table>
           </TableContainer>
-          {loadingUpdateUser ? (
-            <Loader />
-          ) : errorUpdateUser ? (
-            <Message variant="error">{error}</Message>
-          ) : (
-            <EditUserModal
-              open={openModal}
-              setOpen={(bool) => setOpenModal(bool)}
-              userData={userData}
-              setUserData={setUserData}
-              action={() => submitUserUpdateHandler()}
-            />
-          )}
-        </>
+        ))
+      ) : (
+        <TableContainer>
+          <Table>
+            <TableHead>
+              <TableRow align="center">
+                <TableCell align="center">#</TableCell>
+                <TableCell align="center">Имя пользователя</TableCell>
+                <TableCell align="center">Email</TableCell>
+                <TableCell align="center">Статус администратора</TableCell>
+                <TableCell></TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {userList.map((user) => (
+                <TableRow align="center" key={user._id}>
+                  <TableCell align="center">{user._id}</TableCell>
+                  <TableCell align="center">{user.name}</TableCell>
+                  <TableCell align="center">
+                    <PushingLink href={`mailto:${user.email}`}>
+                      {user.email}
+                    </PushingLink>
+                  </TableCell>
+                  <TableCell align="center">
+                    {user.isAdmin ? (
+                      <DoneIcon color="success"></DoneIcon>
+                    ) : (
+                      <CloseIcon color="error"></CloseIcon>
+                    )}
+                  </TableCell>
+                  <TableCell align="center">
+                    <IconButton
+                      onClick={() => editUserHandler(user._id)}
+                      style={{ marginRight: "0.5rem" }}
+                    >
+                      <EditIcon color="primary" />
+                    </IconButton>
+                    <IconButton onClick={() => deleteUserHandler(user._id)}>
+                      <DeleteIcon color="secondary" />
+                    </IconButton>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
       )}
+      <EditUserModal
+        open={openModal}
+        setOpen={(bool) => setOpenModal(bool)}
+        userData={userData}
+        setUserData={setUserData}
+        action={() => submitUserUpdateHandler()}
+      />
     </>
   );
 };

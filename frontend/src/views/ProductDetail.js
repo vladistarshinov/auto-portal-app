@@ -78,7 +78,7 @@ const ProductDetail = ({ history, match }) => {
                 <Divider />
                 <ListItem sx={{ display: "inline-flex", alignItems: "center" }}>
                   <Rating value={product.rating} />
-                  {product.numReviews == 0 ? (
+                  {product.numReviews === 0 ? (
                     <ReviewsCount>нет отзывов</ReviewsCount>
                   ) : (
                     <ReviewsCount>

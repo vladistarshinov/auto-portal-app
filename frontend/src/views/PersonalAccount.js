@@ -55,13 +55,20 @@ const Profile = ({ history, location }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(updateUserProfile({ id: userDetails._id, name, email }));
+    dispatch(
+      updateUserProfile({
+        id: userDetails._id,
+        name,
+        email,
+        isAdmin: userDetails?.isAdmin,
+      })
+    );
     dispatch(getUserProfile("profile"));
   };
 
   return (
-    <Grid container display="inline-flex" justifyContent="space-around">
-      <Grid item lg={3} md={3}>
+    <Grid container display="inline-flex" justifyContent="space-around" mt={2}>
+      <Grid item lg={3} md={3} sm={6} mr={2}>
         {/* <h2 id="accordionExample">Профиль</h2> */}
         <Card>
           <CardContent>
@@ -75,7 +82,7 @@ const Profile = ({ history, location }) => {
             ) : error ? (
               <Message variant="error">{error}</Message>
             ) : (
-              <Box>
+              <Box display="flex" flexDirection="column">
                 <FormControl>
                   <TextField
                     id="outlined-basic"
@@ -98,22 +105,24 @@ const Profile = ({ history, location }) => {
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </FormControl>
-                <Button
-                  variant="outlined"
-                  color="inherit"
-                  sx={{ my: 1 }}
-                  onClick={() => setOpen(true)}
-                >
-                  Изменить пароль
-                </Button>
-                <Button
-                  variant="outlined"
-                  color="inherit"
-                  sx={{ my: 1 }}
-                  onClick={submitHandler}
-                >
-                  Обновить
-                </Button>
+                <Box display="flex" flexDirection="column">
+                  <Button
+                    variant="outlined"
+                    color="inherit"
+                    sx={{ my: 1 }}
+                    onClick={() => setOpen(true)}
+                  >
+                    Изменить пароль
+                  </Button>
+                  <Button
+                    variant="outlined"
+                    color="inherit"
+                    sx={{ my: 1 }}
+                    onClick={submitHandler}
+                  >
+                    Обновить
+                  </Button>
+                </Box>
               </Box>
             )}
           </CardContent>

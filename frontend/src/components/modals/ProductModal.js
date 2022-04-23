@@ -1,7 +1,6 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
 import FormControl from "@mui/material/FormControl";
-import Input from "@mui/material/Input";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import ModalWrapper from "../../ui/components/ModalWrapper";
@@ -28,6 +27,10 @@ const EditProductModal = ({
     display: "flex",
     justifyContent: "center",
     marginBottom: "20px",
+  });
+
+  const Input = styled("input")({
+    display: "none",
   });
 
   return (
@@ -70,20 +73,15 @@ const EditProductModal = ({
               }
             />
           </FormControl>
-          <FormControl sx={{ width: "100%" }}>
-            <TextField
-              type="text"
-              label="Ссылка на фото"
-              fullWidth
-              sx={{ my: 2 }}
-              id="standard-basic"
-              variant="standard"
-              placeholder="Введите ссылку на фото"
-              value={productData?.image}
-              onChange={(e) =>
-                setProductData({ ...productData, image: e.target.value })
-              }
+          {productData?.image && (
+            <Box
+              component="img"
+              sx={{ width: "100%" }}
+              src={productData?.image}
+              alt={productData.name}
             />
+          )}
+          <FormControl sx={{ width: "100%" }}>
             <label htmlFor="contained-button-file">
               <Input
                 accept="image/*"
