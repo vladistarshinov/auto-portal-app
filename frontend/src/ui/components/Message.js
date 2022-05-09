@@ -8,7 +8,6 @@ import IconButton from "@mui/material/IconButton";
 const Message = ({ variant = "info", children }) => {
   const [open, setOpen] = useState(true);
 
-  /*
   useEffect(() => {
     const handler = setTimeout(() => {
       setOpen(false);
@@ -18,7 +17,6 @@ const Message = ({ variant = "info", children }) => {
       clearTimeout(handler);
     };
   }, [open]);
-*/
 
   return (
     <Stack sx={{ width: "100%" }} spacing={2}>
