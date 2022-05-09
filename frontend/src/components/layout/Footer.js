@@ -4,7 +4,6 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 
 const Footer = () => {
-
   const CustomizedFooter = styled(Box)`
     display: flex;
     justify-content: center;

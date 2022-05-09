@@ -6,7 +6,7 @@ import connectDB from "./config/db.js";
 import morgan from 'morgan';
 
 import { notFound, errorHandler } from './middleware/error.middleware.js';
-import orderController from './controllers/order.controller.js';
+import PaypalController from "./controllers/paypal.controller.js";
 import authRoutes from './routes/auth.routes.js';
 import productRoutes from './routes/product.routes.js';
 import userRoutes from './routes/user.routes.js';
@@ -38,7 +38,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/upload", uploadRoutes);
-app.get("/api/config/paypal", orderController.payingOrder);
+app.get("/api/config/paypal", PaypalController.payingOrder);
 
 const __dirname = path.resolve();
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
