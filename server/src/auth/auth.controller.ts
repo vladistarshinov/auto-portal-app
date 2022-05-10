@@ -1,4 +1,5 @@
 import {
+	BadRequestException,
 	Body,
 	Controller,
 	HttpCode,
@@ -21,7 +22,6 @@ export class AuthController {
 	}
 
 	@UsePipes(new ValidationPipe())
-	@HttpCode(200)
 	@Post('register')
 	async register(@Body() dto: RegisterDto) {
 		return this._authService.register(dto);
