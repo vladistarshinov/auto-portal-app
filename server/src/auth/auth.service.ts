@@ -59,6 +59,10 @@ export class AuthService {
 			throw new UnauthorizedException('User not found');
 		}
 
+		if (!user.isActive) {
+			throw new UnauthorizedException('User banned. Contact the administrator');
+		}
+
 		const isValidPassword = await compare(dto.password, user.password);
 
 		if (!isValidPassword) {
@@ -102,6 +106,7 @@ export class AuthService {
 			email: user.email,
 			name: user.name,
 			isAdmin: user.isAdmin,
+			isActive: user.isActive,
 		};
 	}
 }
