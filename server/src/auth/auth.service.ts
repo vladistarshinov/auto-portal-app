@@ -14,12 +14,12 @@ import { RefreshTokenDto } from './dto/token.dto';
 @Injectable()
 export class AuthService {
 	constructor(
-		@InjectModel(UserModel) private readonly _userModel: ModelType<UserModel>,
-		private readonly _jwtService: JwtService
+		@InjectModel(UserModel) private readonly userModel: ModelType<UserModel>,
+		private readonly jwtService: JwtService
 	) {}
 
 	async register(dto: RegisterDto) {
-		const oldUser = await this._userModel.findOne({ email: dto.email });
+		const oldUser = await this.userModel.findOne({ email: dto.email });
 
 		if (oldUser)
 			throw new BadRequestException(
@@ -27,7 +27,7 @@ export class AuthService {
 			);
 
 		const salt = await genSalt(10);
-		const newUser = new this._userModel({
+		const newUser = new this.userModel({
 			email: dto.email,
 			name: dto.name,
 			password: await hash(dto.password, salt),
@@ -53,7 +53,7 @@ export class AuthService {
 	}
 
 	async validateUser(dto: AuthDto): Promise<UserModel> {
-		const user = await this._userModel.findOne({ email: dto.email });
+		const user = await this.userModel.findOne({ email: dto.email });
 
 		if (!user) {
 			throw new UnauthorizedException('User not found');
@@ -75,11 +75,11 @@ export class AuthService {
 	async issueTokenPair(userId: string) {
 		const data = { _id: userId };
 
-		const accessToken = await this._jwtService.signAsync(data, {
+		const accessToken = await this.jwtService.signAsync(data, {
 			expiresIn: '1h',
 		});
 
-		const refreshToken = await this._jwtService.signAsync(data, {
+		const refreshToken = await this.jwtService.signAsync(data, {
 			expiresIn: '14d',
 		});
 
@@ -89,10 +89,10 @@ export class AuthService {
 	async getNewTokens({ refreshToken }: RefreshTokenDto) {
 		if (!refreshToken) throw new UnauthorizedException('Please sign in');
 
-		const res = await this._jwtService.verifyAsync(refreshToken);
+		const res = await this.jwtService.verifyAsync(refreshToken);
 		if (!res) throw new UnauthorizedException('Invalid token or expired');
 
-		const user = await this._userModel.findById(res._id);
+		const user = await this.userModel.findById(res._id);
 		const tokens = await this.issueTokenPair(String(user._id));
 		return {
 			user: this.returnUserFields(user),

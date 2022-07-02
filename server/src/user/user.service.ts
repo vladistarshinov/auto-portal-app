@@ -9,11 +9,11 @@ import { UserModel } from './user.model';
 @Injectable()
 export class UserService {
 	constructor(
-		@InjectModel(UserModel) private readonly _userModel: ModelType<UserModel>
+		@InjectModel(UserModel) private readonly userModel: ModelType<UserModel>
 	) {}
 
 	async getProfile(id: string) {
-		const user = await this._userModel.findById(id).exec();
+		const user = await this.userModel.findById(id).exec();
 
 		if (user) return user;
 		throw new NotFoundException('User not found');
@@ -25,7 +25,7 @@ export class UserService {
 
 	async updateProfile(_id: string, dto: UpdateUserDto) {
 		const user = await this.getProfile(_id);
-		const isSameUser = await this._userModel.findOne({ email: dto.email });
+		const isSameUser = await this.userModel.findOne({ email: dto.email });
 
 		if (isSameUser && String(_id) !== String(isSameUser._id)) {
 			throw new NotFoundException('Email is busy');
@@ -60,7 +60,7 @@ export class UserService {
 			};
 		}
 
-		return this._userModel
+		return this.userModel
 			.find(options)
 			.select('-password -updatedAt -__v')
 			.sort({ createdAt: 'desc' })
@@ -68,6 +68,6 @@ export class UserService {
 	}
 
 	async delete(_id: string) {
-		return this._userModel.findByIdAndDelete(_id).exec();
+		return this.userModel.findByIdAndDelete(_id).exec();
 	}
 }

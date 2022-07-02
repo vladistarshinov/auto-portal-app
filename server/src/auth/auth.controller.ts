@@ -13,25 +13,25 @@ import { RefreshTokenDto } from './dto/token.dto';
 
 @Controller('auth')
 export class AuthController {
-	constructor(private readonly _authService: AuthService) {}
+	constructor(private readonly authService: AuthService) {}
 
 	@UsePipes(new ValidationPipe())
 	@HttpCode(200)
 	@Post('login')
 	async login(@Body() dto: AuthDto) {
-		return this._authService.login(dto);
+		return this.authService.login(dto);
 	}
 
 	@UsePipes(new ValidationPipe())
 	@HttpCode(200)
 	@Post('login/access-token')
 	async getNewTokens(@Body() dto: RefreshTokenDto) {
-		return this._authService.getNewTokens(dto);
+		return this.authService.getNewTokens(dto);
 	}
 
 	@UsePipes(new ValidationPipe())
 	@Post('register')
 	async register(@Body() dto: RegisterDto) {
-		return this._authService.register(dto);
+		return this.authService.register(dto);
 	}
 }
