@@ -6,10 +6,10 @@
   "type": "module",
   "scripts": {
     "start": "concurrently --kill-others \"npm run client\" \"npm run server\"",
-    "server": "nodemon backend/server.js --exec babel-node",
+    "server": "nodemon back/server.js --exec babel-node",
     "client": "cd frontend/ && npm run start",
-    "data:import": "nodemon backend/seeder/seeder.js --exec babel-node",
-    "data:destroy": "nodemon backend/seeder/seeder.js -d"
+    "data:import": "nodemon back/seeder/seeder.js --exec babel-node",
+    "data:destroy": "nodemon back/seeder/seeder.js -d"
   },
   "repository": {
     "type": "git",
