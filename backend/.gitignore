@@ -1,5 +1,6 @@
 # compiled output
 /dist
+dist/
 /node_modules
 node_modules/
 
@@ -21,12 +22,14 @@ lerna-debug.log*
 
 # IDEs and editors
 /.idea
+.env
 .project
 .classpath
 .c9/
 *.launch
 .settings/
 *.sublime-workspace
+
 
 # IDE - VSCode
 .vscode/*
