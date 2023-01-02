@@ -6,13 +6,16 @@ import { SignUpDto } from './dto/sign-up.dto'
 import { verify, hash, argon2id } from 'argon2'
 import { AuthErrorConstants } from 'common/constants/error.constants'
 import { SignInDto } from './dto/sign-in.dto'
+import { JwtService } from '@nestjs/jwt'
+import { JwtTokensResponse, UserResponse } from './dto/user.response'
 @Injectable()
 export class AuthService {
   constructor(
-    @InjectModel(User.name) private readonly userModel: Model<UserDocument>
+    @InjectModel(User.name) private readonly userModel: Model<UserDocument>,
+    private readonly jwtService: JwtService
   ) {}
 
-  public async signUp(dto: SignUpDto): Promise<User> {
+  public async signUp(dto: SignUpDto): Promise<UserResponse> {
     const oldUser = await this.findUser(dto.email)
     if (oldUser)
       throw new BadRequestException(
@@ -29,19 +32,31 @@ export class AuthService {
       }),
     })
 
-    return newUser.save()
+    const tokens = await this.createJwtTokens(newUser.email)
+
+    return {
+      email: newUser.email,
+      isAdmin: newUser.isAdmin,
+      ...tokens
+    }
   }
 
-  public async signIn(dto: SignInDto): Promise<Pick<User, 'email'>> {
-    const userEmail = this.validateUser(dto)
-    return userEmail
+  public async signIn(dto: SignInDto): Promise<UserResponse> {
+    const user = await this.validateUser(dto)
+    const tokens = await this.createJwtTokens(user.email)
+
+    return {
+      email: user.email,
+      isAdmin: user.isAdmin,
+      ...tokens
+    }
   }
 
   private async findUser(email: string): Promise<User> {
    return this.userModel.findOne({ email })
   }
 
-  private async validateUser(dto: SignInDto): Promise<Pick<User, 'email'>> {
+  private async validateUser(dto: SignInDto): Promise<Pick<User, 'email' | 'isAdmin'>> {
     const user = await this.findUser(dto.email)
     if (!user) throw new UnauthorizedException(AuthErrorConstants.USER_NOT_FOUND)
 
@@ -49,7 +64,17 @@ export class AuthService {
     if (!isCorrectPassword) throw new UnauthorizedException(AuthErrorConstants.PASSWORD_INCORRECT)
 
     return {
-      email: user.email
+      email: user.email,
+      isAdmin: user.isAdmin
+    }
+  }
+
+  private async createJwtTokens(email: string): Promise<JwtTokensResponse> {
+    const accessToken = await this.jwtService.signAsync({email}, {expiresIn: '1h'})
+    const refreshToken = await this.jwtService.signAsync({email}, {expiresIn: '7d'})
+    return {
+      accessToken,
+      refreshToken
     }
   }
 }

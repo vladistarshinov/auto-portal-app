@@ -10,6 +10,7 @@ import { AuthService } from './auth.service'
 import { SignUpDto } from './dto/sign-up.dto'
 import { User } from '../user/schema/user.schema'
 import { SignInDto } from './dto/sign-in.dto'
+import { UserResponse } from './dto/user.response'
 
 @Controller('auth')
 export class AuthController {
@@ -18,14 +19,14 @@ export class AuthController {
   @UsePipes(new ValidationPipe())
   @HttpCode(200)
   @Post('register')
-  public async register(@Body() dto: SignUpDto): Promise<User> {
+  public async register(@Body() dto: SignUpDto): Promise<UserResponse> {
     return this.authService.signUp(dto)
   }
 
   @UsePipes(new ValidationPipe())
   @HttpCode(200)
   @Post('login')
-  public async login(@Body() dto: SignInDto): Promise<Pick<User, 'email'>> {
+  public async login(@Body() dto: SignInDto): Promise<UserResponse> {
     return this.authService.signIn(dto)
   }
 }
