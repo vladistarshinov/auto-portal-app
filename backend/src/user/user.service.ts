@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
 import { argon2id, hash } from 'argon2'
+import { UserErrorConstants } from 'common/constants/error.constants'
 import { Model } from 'mongoose'
 import { UpdateUserDto } from './dto/update-user.dto'
 import { User, UserDocument } from './schema/user.schema'
@@ -34,7 +35,7 @@ export class UserService {
 
     public async getById(_id: string): Promise<UserDocument> {
         const user = await this.userModel.findById(_id)
-        if (!user) throw new NotFoundException('Пользователь не найден')
+        if (!user) throw new NotFoundException(UserErrorConstants.USER_NOT_FOUND)
         return user
     }
 
@@ -42,7 +43,7 @@ export class UserService {
         const user = await this.getById(_id)
         const sameUser = await this.userModel.findOne({email: dto.email})
         if (!sameUser && String(_id) !== String(sameUser._id))
-            throw new NotFoundException('Данная почта уже занята')
+            throw new NotFoundException(UserErrorConstants.MAIL_EXIST)
 
         if (dto.password) {
             user.password = await hash(dto.password, {
