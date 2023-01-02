@@ -7,7 +7,8 @@ import { verify, hash, argon2id } from 'argon2'
 import { AuthErrorConstants } from 'common/constants/error.constants'
 import { SignInDto } from './dto/sign-in.dto'
 import { JwtService } from '@nestjs/jwt'
-import { JwtTokensResponse, UserResponse } from './dto/user.response'
+import { JwtTokensResponse, UserResponse } from './types/user.response'
+import { RefreshTokenDto } from './dto/refresh-token.dto'
 @Injectable()
 export class AuthService {
   constructor(
@@ -44,6 +45,22 @@ export class AuthService {
   public async signIn(dto: SignInDto): Promise<UserResponse> {
     const user = await this.validateUser(dto)
     const tokens = await this.createJwtTokens(user.email)
+
+    return {
+      email: user.email,
+      isAdmin: user.isAdmin,
+      ...tokens
+    }
+  }
+
+  public async getNewTokens({refreshToken}: RefreshTokenDto): Promise<UserResponse> {
+    if (!refreshToken) throw new UnauthorizedException(AuthErrorConstants.LOGIN)
+
+    const res = await this.jwtService.verifyAsync(refreshToken)
+    if (!res) throw new UnauthorizedException(AuthErrorConstants.INVALID_TOKEN)
+
+    const user = await this.userModel.findOne({email: res.email})
+    const tokens = await this.createJwtTokens(res.email)
 
     return {
       email: user.email,
