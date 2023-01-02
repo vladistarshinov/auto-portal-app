@@ -1,20 +1,22 @@
-import { BadRequestException, Injectable } from '@nestjs/common'
+import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common'
 import { User, UserDocument } from '../user/schema/user.schema'
 import { Model } from 'mongoose'
 import { InjectModel } from '@nestjs/mongoose'
 import { SignUpDto } from './dto/sign-up.dto'
 import { verify, hash, argon2id } from 'argon2'
+import { AuthErrorConstants } from 'common/constants/error.constants'
+import { SignInDto } from './dto/sign-in.dto'
 @Injectable()
 export class AuthService {
   constructor(
     @InjectModel(User.name) private readonly userModel: Model<UserDocument>
   ) {}
 
-  public async createUser(dto: SignUpDto): Promise<User> {
-    const oldUser = await this.userModel.findOne({ email: dto.email })
+  public async signUp(dto: SignUpDto): Promise<User> {
+    const oldUser = await this.findUser(dto.email)
     if (oldUser)
       throw new BadRequestException(
-        'Пользователь с такой эл. почтой уже существует'
+          AuthErrorConstants.MAIL_EXIST
       )
     const newUser = new this.userModel({
       firstName: dto.firstName,
@@ -28,5 +30,26 @@ export class AuthService {
     })
 
     return newUser.save()
+  }
+
+  public async signIn(dto: SignInDto): Promise<Pick<User, 'email'>> {
+    const userEmail = this.validateUser(dto)
+    return userEmail
+  }
+
+  private async findUser(email: string): Promise<User> {
+   return this.userModel.findOne({ email })
+  }
+
+  private async validateUser(dto: SignInDto): Promise<Pick<User, 'email'>> {
+    const user = await this.findUser(dto.email)
+    if (!user) throw new UnauthorizedException(AuthErrorConstants.USER_NOT_FOUND)
+
+    const isCorrectPassword = await verify(user.password, dto.password)
+    if (!isCorrectPassword) throw new UnauthorizedException(AuthErrorConstants.PASSWORD_INCORRECT)
+
+    return {
+      email: user.email
+    }
   }
 }
