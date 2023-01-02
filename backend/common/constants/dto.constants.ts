@@ -1,3 +1,4 @@
-export enum AdminConstants {
-    NO_RIGHT = 'У вас нет прав доступа администратора'
+export enum DtoConstants {
+    NO_RIGHT = 'У вас нет прав доступа администратора',
+    CUSTOM_ID = 'Неверный формат id'
 }
