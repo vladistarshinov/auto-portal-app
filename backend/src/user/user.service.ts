@@ -42,7 +42,7 @@ export class UserService {
     public async update(_id: string, dto: UpdateUserDto): Promise<UserDocument> {
         const user = await this.getById(_id)
         const sameUser = await this.userModel.findOne({email: dto.email})
-        if (!sameUser && String(_id) !== String(sameUser._id))
+        if (sameUser && String(_id) !== String(sameUser._id))
             throw new NotFoundException(UserErrorConstants.MAIL_EXIST)
 
         if (dto.password) {
@@ -59,8 +59,7 @@ export class UserService {
 
         if (dto.isAdmin || dto.isAdmin === false) user.isAdmin = dto.isAdmin
 
-        await user.save()
-        return
+        return await user.save()
     }
 
     public async delete(id: string): Promise<UserDocument> {
