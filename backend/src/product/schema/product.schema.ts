@@ -8,7 +8,7 @@ export type ProductDocument = HydratedDocument<Product>
 @Schema({ timestamps: true })
 export class Product {
     @Prop()
-    name: string
+    title: string
 
     @Prop()
     description: string
@@ -17,13 +17,16 @@ export class Product {
     imageUrl: string
 
     @Prop()
-    videoUrl: string
+    videoUrl?: string
 
     @Prop()
     brand: string
 
     @Prop()
     price: number
+
+    @Prop()
+    countInStock: number
 
     @Prop()
     countOfViews: number
