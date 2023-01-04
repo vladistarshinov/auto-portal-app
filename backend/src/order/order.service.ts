@@ -140,17 +140,31 @@ export class OrderService {
         const order = await this.orderModel.findById(id)
 
         if (order) {
-            order.isPaid = true
-            //order.paidAt = Date.now()
-            /* order.payment = {
+             order.isPaid = true
+             order.paidAt = new Date(Date.now())
+             order.payment = {
+                method: dto.method,
                 status: dto.status,
                 createdAt: dto.createdAt,
                 email: dto.payment.email,
-            }*/
+            }
 
             return await order.save()
         } else {
             throw new NotFoundException(`Заказ ${id} не найден`)
+        }
+    }
+
+    public async updateDeliveringStatus(id: Types.ObjectId) {
+        const order = await this.orderModel.findById(id)
+
+        if (order) {
+            order.isDelivered = true;
+            order.deliveredAt = new Date(Date.now())
+
+            return await order.save()
+        } else {
+            throw new Error(`Заказ ${id} не найден`)
         }
     }
 }

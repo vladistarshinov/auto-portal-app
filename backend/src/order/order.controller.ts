@@ -38,8 +38,13 @@ export class OrderController {
         return this.orderService.getById(id)
     }
 
-    @Patch(':id')
+    @Patch(':id/pay')
     public async updatePayingStatus(@Param('id') id: Types.ObjectId, @Body() dto: any) {
         return this.orderService.updatePayingStatus(id, dto)
+    }
+
+    @Patch(':id/deliver')
+    public async updateDeliveringStatus(@Param('id') id: Types.ObjectId) {
+        return this.orderService.updateDeliveringStatus(id)
     }
 }
