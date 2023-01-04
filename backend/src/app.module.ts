@@ -11,6 +11,7 @@ import { CategoryModule } from './category/category.module';
 import { FileModule } from './file/file.module';
 import { ReviewModule } from './review/review.module';
 import { OrderModule } from './order/order.module';
+import { TelegramModule } from './telegram/telegram.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { OrderModule } from './order/order.module';
     FileModule,
     ReviewModule,
     OrderModule,
+    TelegramModule,
   ],
   controllers: [AppController],
   providers: [AppService],
