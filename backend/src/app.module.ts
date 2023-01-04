@@ -9,6 +9,7 @@ import { UserModule } from './user/user.module';
 import { ProductModule } from './product/product.module';
 import { CategoryModule } from './category/category.module';
 import { FileModule } from './file/file.module';
+import { ReviewModule } from './review/review.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { FileModule } from './file/file.module';
     ProductModule,
     CategoryModule,
     FileModule,
+    ReviewModule,
   ],
   controllers: [AppController],
   providers: [AppService],

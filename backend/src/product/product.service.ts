@@ -114,4 +114,20 @@ export class ProductService {
     public async delete(id: string): Promise<void> {
         this.productModel.findByIdAndDelete(id).exec()
     }
+
+    public async updateRating(id: Types.ObjectId, newRating: number) {
+        return await this.productModel
+            .findOneAndUpdate(
+                {
+                    product: id
+                },
+                {
+                    rating: newRating
+                },
+                {
+                    new: true
+                }
+            )
+            .exec()
+    }
 }

@@ -35,6 +35,8 @@ export class AuthService {
 
     const tokens = await this.createJwtTokens(newUser.email)
 
+    await newUser.save()
+
     return {
       email: newUser.email,
       isAdmin: newUser.isAdmin,
