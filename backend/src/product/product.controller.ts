@@ -21,6 +21,11 @@ export class ProductController {
         return await this.productService.getAll(page, limit, searchTerm, sort)
     }
 
+    @Get('top')
+    public async getTopProducts(): Promise<ProductDocument[]> {
+        return await this.productService.getTop()
+    }
+
     @Get(':id')
     public async getProduct(
         @Param('id', IdValidationPipe) id: string

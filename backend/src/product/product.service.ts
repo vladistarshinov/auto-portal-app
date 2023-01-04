@@ -78,6 +78,11 @@ export class ProductService {
         }
     }
 
+    public async getTop(): Promise<ProductDocument[]> {
+        const products = await this.productModel.find({}).sort({ rating: -1 }).limit(3);
+        return products;
+    }
+
     public async getById(id: string): Promise<Omit<ProductDocument, 'isSendTelegram | __v'>> {
         const product = await this.productModel.findById(id).populate('category').select('-isSendTelegram -__v')
         if (!product) throw new NotFoundException('Товар не найден')
