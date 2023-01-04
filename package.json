@@ -2,14 +2,10 @@
   "name": "mern-shop-app",
   "version": "1.0.0",
   "description": "Интернет-магазин гаджетов (MERN)",
-  "main": "server.js",
+  "main": "",
   "type": "module",
   "scripts": {
-    "start": "concurrently --kill-others \"npm run client\" \"npm run server\"",
-    "server": "nodemon backend-node/server.js --exec babel-node",
-    "client": "cd frontend/ && npm run start",
-    "data:import": "nodemon backend-node/seeder/seeder.js --exec babel-node",
-    "data:destroy": "nodemon backend-node/seeder/seeder.js -d"
+    "client": "cd frontend/ && npm run start"
   },
   "repository": {
     "type": "git",
@@ -22,23 +18,15 @@
   },
   "homepage": "https://github.com/vladistarshinov/mern-shop-app#readme",
   "dependencies": {
-    "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.10.6",
-    "morgan": "^1.10.0",
-    "multer": "^1.4.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.6",
     "@babel/core": "^7.17.9",
     "@babel/node": "^7.12.1",
     "@babel/preset-env": "^7.16.11",
-    "concurrently": "^5.3.0",
-    "nodemon": "^2.0.6",
-    "npm-run-all": "^4.1.5"
   }
 }

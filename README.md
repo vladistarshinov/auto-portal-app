@@ -30,7 +30,8 @@
     •	Система предоставляет возможность администратору загрузить фотографию товара, либо ввести ссылку на открытый источник размещения фотографии.
     • Административная страница с заказами должна предоставлять следующую информацию о заказах: id, имя клиента, дату создания, общую стоимость, статус оплаты и статус отправки. 
     • Страница просмотра заказа должна позволять администратору изменить статус доставки, если заказ был оплачен.
-    
+
+# Ветка main
     
 ## Стек технологий/библиотек (Front-end)
     * React.js
@@ -47,6 +48,36 @@
     * Moment
 
   ## Стек технологий/библиотек (Back-end)
+    * Nest.js
+    * TypeScript
+    * Jwt
+    * Argon2
+    * MongoDB
+    * Mongoose
+    * Multer
+    * Sharp
+    * Passport
+    * Swagger
+    * Telegraf
+
+
+# Ветка version/node
+
+## Стек технологий/библиотек (Front-end)
+    * React.js
+    * MUI (v5)
+    * Redux
+    * Redux-thunk
+    * Styled-components
+    * Axios
+    * React-router
+    * React-paypal
+    * Jspdf
+    * Html2canvas
+    * Mdbreact
+    * Moment
+
+## Стек технологий/библиотек (Back-end)
     * Node.js
     * Express
     * JsonWebToken
@@ -57,6 +88,7 @@
     * Colors
     * Express-async-handler
     * Morgan
+
 
   ## Основные команды
     ```
