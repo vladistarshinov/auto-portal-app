@@ -1,4 +1,5 @@
-import {IsBoolean, IsNumber, IsString } from "class-validator"
+import {IsBoolean, IsNumber, IsOptional, IsString } from "class-validator"
+import { Types } from "mongoose"
 
 export class CreateProductDto {
     @IsString()
@@ -15,18 +16,19 @@ export class CreateProductDto {
     @IsString()
     brand: string
 
+    @IsOptional()
+    @IsNumber()
+    oldPrice?: number;
+
     @IsNumber()
     price: number
-
-    @IsNumber()
-    countInStock: number
-
-    @IsNumber()
-    countOfViews: number
 
     @IsNumber()
     rating: number
 
     @IsBoolean()
     isSendTelegram: boolean
+
+    @IsString()
+    categoryId: Types.ObjectId;
 }

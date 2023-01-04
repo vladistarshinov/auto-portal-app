@@ -1,7 +1,7 @@
 import { Controller, HttpCode, Post, Query, UploadedFile, UseInterceptors } from '@nestjs/common'
 import { FileInterceptor } from '@nestjs/platform-express'
 import { Auth } from 'src/auth/decorators/auth.decorator'
-import { FileResponse } from './file.interface'
+import { FileResponse } from './response/file.response'
 import { FileService } from './file.service'
 import { MFile } from './types/mfile.class'
 
