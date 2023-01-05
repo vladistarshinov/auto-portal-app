@@ -135,4 +135,27 @@ export class ProductService {
             )
             .exec()
     }
+
+    public async checkProductCountInStock(id: Types.ObjectId, quantity: number) {
+        const productInStock = await this.productModel
+            .findById(id)
+            .select('title countInStock')
+            .then((res) => ({title: res.title, countInStock: res.countInStock}))
+
+        //if (productInStock.countInStock < quantity) throw new BadRequestException(`Количество товара ${productInStock.title} меньше запрашиваемого`)
+
+        return {
+            id,
+            title: productInStock.title,
+            countInStock: productInStock.countInStock,
+            quantity: quantity,
+            error: productInStock.countInStock < quantity ? true : false
+        }
+    }
+
+    public async updateProductCountInStock(id: Types.ObjectId, inStock: number, quantity: number) {
+        const product = await this.productModel.findById(id)
+        product.countInStock = inStock - quantity
+        return await product.save()
+    }
 }

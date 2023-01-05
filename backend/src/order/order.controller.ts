@@ -1,14 +1,21 @@
 import {Body, Controller, Get, Param, Patch, Post, Query } from "@nestjs/common"
 import { Types } from "mongoose"
+import { Auth } from "src/auth/decorators/auth.decorator"
 import { User } from "src/user/decorators/user.decorator"
+import { CreateOrderDto } from "./dto/create-order.dto"
 import { OrderService } from "./order.service"
+import { OrderDocument } from "./schema/order.schema"
 
 @Controller('orders')
 export class OrderController {
     constructor(private readonly orderService: OrderService) {}
 
+    @Auth()
     @Post()
-    public async createOrder(@User('id') id: Types.ObjectId, @Body() dto: any) {
+    public async createOrder(
+        @User('id') id: Types.ObjectId,
+        @Body() dto: CreateOrderDto
+    ): Promise<OrderDocument> {
         return this.orderService.create(id, dto)
     }
 
@@ -22,6 +29,7 @@ export class OrderController {
         return this.orderService.getAll(page, limit, searchTerm, sort)
     }
 
+    @Auth()
     @Get('my')
     public async getMyOrders(
         @User('id') id: Types.ObjectId,

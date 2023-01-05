@@ -14,22 +14,21 @@ export class ReviewService {
     ) {}
 
     public async getByUser(productId: Types.ObjectId, userId: Types.ObjectId) {
-       const userRating = await this.reviewModel
-            .findOne({product: productId, user: userId})
-            .select('rating')
-            .exec()
-            .then((data) => (data ? data.rating : 0))
-
-       const userDesc = await this.reviewModel
-            .findOne({product: productId, user: userId})
-            .select('description')
-            .exec()
-            .then((data) => (data ? data.description : null))
+       const userRating = await this.getFieldValueByIds('rating', productId, userId)
+       const userDesc = await this.getFieldValueByIds('description', productId, userId)
 
         return {
            rating: userRating,
            description: userDesc
         }
+    }
+
+    private async getFieldValueByIds(field: string, productId: Types.ObjectId, userId: Types.ObjectId) {
+        return await this.reviewModel
+            .findOne({product: productId, user: userId})
+            .select(field)
+            .exec()
+            .then((data) => (data ? data?.[field] : null))
     }
 
     public async getByProduct(productId: Types.ObjectId) {

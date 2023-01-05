@@ -1,7 +1,9 @@
 import {BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types } from 'mongoose';
+import { ProductService } from 'src/product/product.service';
 import { TelegramService } from 'src/telegram/telegram.service';
+import { CreateOrderDto } from './dto/create-order.dto';
 import { Order, OrderDocument } from './schema/order.schema';
 
 @Injectable()
@@ -9,14 +11,15 @@ export class OrderService {
     constructor(
         @InjectModel(Order.name)
         private readonly orderModel: Model<OrderDocument>,
+        private readonly productService: ProductService,
         private readonly telegramService: TelegramService
     ) {}
 
-    public async create(userId: Types.ObjectId, dto: any) {
+    public async create(userId: Types.ObjectId, dto: CreateOrderDto): Promise<OrderDocument> {
         const {
             orderItems,
             shippingAddress,
-            payment,
+            paymentMethod,
             productsPrice,
             shippingPrice,
             taxPrice,
@@ -26,11 +29,27 @@ export class OrderService {
         if (orderItems && orderItems.length === 0) {
             throw new BadRequestException("Нет товаров для заказа")
         } else {
+
+            let res = []
+            await Promise.all(orderItems.map(async (item) => {
+                const ok = await this.productService.checkProductCountInStock(item.product, item.quantity)
+                res.push(ok)
+            }))
+
+            if (res.filter(r => r.error).length > 0) {
+                throw new BadRequestException(`Количество товар${res.filter(r => r.error).length > 1 ? 'ов' : 'а'} ${res.filter(r => r.error).map(r => r.title).join(', ')} меньше запрашиваемого`)
+            }
+
+            await Promise.all(orderItems.map(async (item, idx) => {
+                const ok = await this.productService.updateProductCountInStock(res[idx].id, res[idx].countInStock, res[idx].quantity)
+                return ok
+            }))
+
             const order = new this.orderModel({
                 user: userId,
                 orderItems,
                 shippingAddress,
-                payment,
+                paymentMethod,
                 productsPrice,
                 shippingPrice,
                 taxPrice,
@@ -39,6 +58,7 @@ export class OrderService {
 
             return await order.save()
         }
+
     }
 
     public async getAll(
@@ -47,47 +67,7 @@ export class OrderService {
         searchTerm?: string,
         sort?: string
     ):  Promise<any> {
-        let sortOptions = {}
-        if (sort !== undefined && sort.includes('createdAt')) {
-            if (sort[0] === '-')
-                sortOptions = {
-                    createdAt: 'desc'
-                }
-            else
-                sortOptions = {
-                    createdAt: 'asc'
-                }
-        } else if (sort !== undefined && sort.includes('title')) {
-            if (sort[0] === '-')
-                sortOptions = {
-                    title: 'desc'
-                }
-            else
-                sortOptions = {
-                    title: 'asc'
-                }
-        } else {
-            sortOptions = {
-                createdAt: 'desc'
-            }
-        }
-
-        const res = await this.orderModel
-            .find({})
-            .select('-updatedAt -__v')
-            .sort(sortOptions)
-            .skip(page)
-            .limit(limitOfPages)
-            .exec()
-
-        const count = await this.orderModel.count()
-        return {
-            res,
-            total: count,
-            current_page: Number(page) + 1,
-            from: 1,
-            to: Math.floor(count / limitOfPages)
-        }
+        return await this.getOrders('admin', page, limitOfPages, searchTerm, sort)
     }
 
     public async getMy(
@@ -97,7 +77,19 @@ export class OrderService {
         searchTerm?: string,
         sort?: string
     ):  Promise<any> {
+       return await this.getOrders('my', page, limitOfPages, searchTerm, sort, userId)
+    }
+
+    private async getOrders(
+        access: string,
+        page: number = 0,
+        limitOfPages?: number,
+        searchTerm?: string,
+        sort?: string,
+        userId?: Types.ObjectId,
+    ):  Promise<any> {
         let sortOptions = {}
+        let res = null
         if (sort !== undefined) {
             if (sort[0] === '-')
                 sortOptions = {
@@ -109,13 +101,43 @@ export class OrderService {
                 }
         }
 
-        const res = await this.orderModel
-            .findOne({ user: userId })
-            .select('-updatedAt -__v')
-            .sort(sortOptions)
-            .skip(page)
-            .limit(limitOfPages)
-            .exec()
+        if (access === 'admin') {
+            res = await this.orderModel
+                .find({})
+                .populate({
+                    path: 'user',
+                    select: 'firstName lastName email'
+                })
+                .populate({
+                    path: 'orderItems',
+                    populate: {
+                        path: 'product',
+                        model: 'Product',
+                        select: 'title imageUrl price'
+                    }
+                })
+                .select('-__v')
+                .sort(sortOptions)
+                .skip(page)
+                .limit(limitOfPages)
+                .exec()
+        } else {
+            res = await this.orderModel
+                .findOne({ user: userId })
+                .populate({
+                    path: 'orderItems',
+                    populate: {
+                        path: 'product',
+                        model: 'Product',
+                        select: 'title imageUrl price'
+                    }
+                })
+                .select('-__v -user')
+                .sort(sortOptions)
+                .skip(page)
+                .limit(limitOfPages)
+                .exec()
+        }
 
         const count = await this.orderModel.count()
         return {
@@ -144,12 +166,7 @@ export class OrderService {
         if (order) {
              order.isPaid = true
              order.paidAt = new Date(Date.now())
-             order.payment = {
-                method: dto.method,
-                status: dto.status,
-                createdAt: dto.createdAt,
-                email: dto.payment.email,
-            }
+             order.paymentMethod = dto.paymentMethod
 
             return await order.save()
         } else {

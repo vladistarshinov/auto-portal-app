@@ -1,11 +1,12 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
 import mongoose, { HydratedDocument, Types } from 'mongoose'
+import { Product } from 'src/product/schema/product.schema'
 
 export type OrderDocument = HydratedDocument<Order>
 
 export class OrderItem {
     @Prop({ type: Types.ObjectId, ref: 'Product' })
-    product: Types.ObjectId
+    product: Product
 
     @Prop()
     quantity: number
@@ -25,21 +26,6 @@ export class ShippingAddress {
     country: string
 }
 
-export class Payment {
-    @Prop()
-    method: string
-
-    @Prop()
-    status: string
-
-    @Prop()
-    email: string
-
-    @Prop()
-    createdAt: Date
-
-}
-
 @Schema({ timestamps: true })
 export class Order {
     @Prop({ type: Types.ObjectId, ref: 'User' })
@@ -51,11 +37,11 @@ export class Order {
     @Prop({ type: () => ShippingAddress, _id: false })
     shippingAddress: ShippingAddress
 
-    @Prop({ type: () => Payment, _id: false })
-    payment: Payment
+    @Prop()
+    paymentMethod: string
 
     @Prop()
-    productPrice: string
+    productsPrice: string
 
     @Prop()
     taxPrice: string
