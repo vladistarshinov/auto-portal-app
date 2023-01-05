@@ -22,7 +22,7 @@ export class OrderController {
         return this.orderService.getAll(page, limit, searchTerm, sort)
     }
 
-    @Get()
+    @Get('my')
     public async getMyOrders(
         @User('id') id: Types.ObjectId,
         @Query('page') page?: number,

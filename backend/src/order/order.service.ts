@@ -1,13 +1,15 @@
 import {BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types } from 'mongoose';
+import { TelegramService } from 'src/telegram/telegram.service';
 import { Order, OrderDocument } from './schema/order.schema';
 
 @Injectable()
 export class OrderService {
     constructor(
         @InjectModel(Order.name)
-        private readonly orderModel: Model<OrderDocument>
+        private readonly orderModel: Model<OrderDocument>,
+        private readonly telegramService: TelegramService
     ) {}
 
     public async create(userId: Types.ObjectId, dto: any) {
@@ -166,5 +168,26 @@ export class OrderService {
         } else {
             throw new Error(`Заказ ${id} не найден`)
         }
+    }
+
+    /* Utilites */
+    public async sendNotifications(dto: any) {
+        // if (process.env.NODE_ENV !== 'development')
+        //    await this.telegramService.sendPhoto(dto.poster);
+
+        const msg = `<b>${dto.title}</b>`;
+
+        await this.telegramService.sendMessage(msg, {
+            reply_markup: {
+                inline_keyboard: [
+                    [
+                        {
+                            url: 'https://okko.tv/movie/free-guy',
+                            text: '🍿 Go to watch',
+                        },
+                    ],
+                ],
+            },
+        });
     }
 }

@@ -12,6 +12,7 @@ import { FileModule } from './file/file.module';
 import { ReviewModule } from './review/review.module';
 import { OrderModule } from './order/order.module';
 import { TelegramModule } from './telegram/telegram.module';
+import { getTelegramConfig } from 'config/telegram.config'
 
 @Module({
   imports: [
@@ -28,7 +29,11 @@ import { TelegramModule } from './telegram/telegram.module';
     FileModule,
     ReviewModule,
     OrderModule,
-    TelegramModule,
+    TelegramModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: getTelegramConfig,
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],

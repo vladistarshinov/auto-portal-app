@@ -2,6 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
 import {IsNumber, IsOptional } from 'class-validator'
 import mongoose, { HydratedDocument, Types } from 'mongoose'
 import { Category } from 'src/category/schema/category.schema'
+import { Review } from 'src/review/schema/review.schema'
 import { User } from 'src/user/schema/user.schema'
 
 export type ProductDocument = HydratedDocument<Product>
@@ -45,7 +46,7 @@ export class Product {
     category: Types.ObjectId
 
     @Prop({ type: Types.ObjectId, ref: 'User' })
-    user: Types.ObjectId
+    user: User
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product)

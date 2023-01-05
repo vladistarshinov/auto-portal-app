@@ -14,7 +14,7 @@ export class Review {
     rating: number
 
     @Prop({ type: Types.ObjectId, ref: 'Product' })
-    product: Types.ObjectId
+    product: Product
 
     @Prop({ type: Types.ObjectId, ref: 'User' })
     user: Types.ObjectId

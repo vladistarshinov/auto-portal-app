@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common'
 import { path } from 'app-root-path'
 import { ensureDir, writeFile } from 'fs-extra'
 import { FileResponse } from './response/file.response'
-import { format } from 'date-fns'
 import * as sharp from 'sharp'
 import { MFile } from './types/mfile.class'
 

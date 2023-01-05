@@ -1,9 +1,9 @@
-import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
-import { ProductModule } from 'src/product/product.module';
-import { ReviewController } from './review.controller';
-import { ReviewService } from './review.service';
-import { Review, ReviewSchema } from './schema/review.schema';
+import { Module } from '@nestjs/common'
+import { MongooseModule } from '@nestjs/mongoose'
+import { ProductModule } from 'src/product/product.module'
+import { ReviewController } from './review.controller'
+import { ReviewService } from './review.service'
+import { Review, ReviewSchema } from './schema/review.schema'
 
 @Module({
   imports: [
