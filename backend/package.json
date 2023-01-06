@@ -42,14 +42,15 @@
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
     "sharp": "^0.31.3",
-    "telegraf": "^4.11.2"
+    "telegraf": "^4.11.2",
+    "yookassa": "^0.1.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^8.0.0",
     "@nestjs/schematics": "^8.0.0",
     "@nestjs/testing": "^8.0.0",
-    "@types/fs-extra": "^9.0.13",
     "@types/express": "^4.17.13",
+    "@types/fs-extra": "^9.0.13",
     "@types/jest": "27.5.0",
     "@types/mongoose": "^5.11.97",
     "@types/multer": "^1.4.7",

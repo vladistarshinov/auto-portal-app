@@ -13,6 +13,7 @@ import { ReviewModule } from './review/review.module';
 import { OrderModule } from './order/order.module';
 import { TelegramModule } from './telegram/telegram.module';
 import { getTelegramConfig } from 'config/telegram.config'
+import { PaymentModule } from './payment/payment.module';
 
 @Module({
   imports: [
@@ -34,6 +35,7 @@ import { getTelegramConfig } from 'config/telegram.config'
       inject: [ConfigService],
       useFactory: getTelegramConfig,
     }),
+    PaymentModule,
   ],
   controllers: [AppController],
   providers: [AppService],

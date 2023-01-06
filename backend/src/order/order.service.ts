@@ -1,6 +1,7 @@
 import {BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types } from 'mongoose';
+import { PaymentService } from 'src/payment/payment.service';
 import { ProductService } from 'src/product/product.service';
 import { TelegramService } from 'src/telegram/telegram.service';
 import { CreateOrderDto } from './dto/create-order.dto';
@@ -12,6 +13,7 @@ export class OrderService {
         @InjectModel(Order.name)
         private readonly orderModel: Model<OrderDocument>,
         private readonly productService: ProductService,
+        private readonly paymentService: PaymentService,
         private readonly telegramService: TelegramService
     ) {}
 
@@ -162,8 +164,9 @@ export class OrderService {
 
     public async updatePayingStatus(id: Types.ObjectId, dto: any) {
         const order = await this.orderModel.findById(id)
+        const payment = await this.paymentService.payment({amount: Number(dto.totalPrice)})
 
-        if (order) {
+        if (order && payment) {
              order.isPaid = true
              order.paidAt = new Date(Date.now())
              order.paymentMethod = dto.paymentMethod
@@ -177,7 +180,7 @@ export class OrderService {
     public async updateDeliveringStatus(id: Types.ObjectId) {
         const order = await this.orderModel.findById(id)
 
-        if (order) {
+        if (order && order.isPaid) {
             order.isDelivered = true;
             order.deliveredAt = new Date(Date.now())
 
