@@ -1,0 +1,45 @@
+.button {
+  @apply btn-primary py-2 px-10;
+}
+
+.common {
+  @apply relative border-b border-gray-600 transition-colors focus-within:border-primary;
+
+  >label {
+    @apply block;
+
+    >span {
+      @apply text-xs uppercase text-gray-600 block;
+    }
+  }
+}
+
+.field {
+  @apply text-left mb-8;
+
+  input {
+    @apply outline-border-none focus:ring-0 bg-transparent text-gray-500 w-full m-0 px-0;
+  }
+}
+
+.error {
+  @apply absolute -bottom-6 left-0 text-sm w-full text-primary;
+}
+
+.editorWrapper {
+  @apply border-0;
+
+  .wrapper {
+    .toolbar {
+      @apply mt-4 outline-border-none rounded-t-lg mb-0 bg-gray-600 bg-opacity-40 p-3;
+
+      > div {
+        @apply m-0;
+
+        > div {
+          @apply outline-border-none shadow-none transition-colors border-gray-500 bg-gray-500 hover:bg-gray-300 mx-1.5;
+        }
+      }
+    }
+  }
+}
