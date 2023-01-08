@@ -11,7 +11,7 @@ import { removeTokensStorage, saveToStorage } from './auth.helper';
 export const AuthService = {
 	async register(email: string, password: string) {
 		const res = await axiosClassic.post<IAuthResponse>(
-			getAuthUrl('/register'),
+			getAuthUrl('register'),
 			{ email, password }
 		);
 
@@ -21,7 +21,7 @@ export const AuthService = {
 	},
 
 	async login(email: string, password: string) {
-		const res = await axiosClassic.post<IAuthResponse>(getAuthUrl('/login'), {
+		const res = await axiosClassic.post<IAuthResponse>(getAuthUrl('login'), {
 			email,
 			password,
 		});

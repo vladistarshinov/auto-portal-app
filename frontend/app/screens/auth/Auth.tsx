@@ -6,11 +6,12 @@ import Heading from '@/shared/ui/heading/Heading';
 import AccountDataFields from './AccountDataFields';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { IAuth } from './auth.interface';
-import { FormControl } from '@mui/material';
 import { useAuth } from '@/hooks/useAuth';
 import { useActions } from '@/hooks/useActions';
+import { useAuthRedirect } from './useAuthRedirect';
 
 const Auth: FC = () => {
+	useAuthRedirect()
 	const { isLoading } = useAuth();
 
 	const [type, setType] = useState<'login' | 'register'>('login')
@@ -19,16 +20,16 @@ const Auth: FC = () => {
 
 	// mode - ошибки при каждом вводе поля
 	const {
-		register: registerInput,
+		register: registerDto,
 		handleSubmit,
 		formState,
 		reset,
-	} = useForm<IAuth>({
+	} = useForm<IAuth<typeof type>>({
 		mode: 'onChange',
 		//resolver: yupResolver(LoginFormSchema),
 	});
 
-	const onSubmit: SubmitHandler<IAuth> = (data) => {
+	const onSubmit: SubmitHandler<IAuth<typeof type>> = (data) => {
 		if (type === 'login') login(data)
 		else if (type === 'register')  register(data)
 
@@ -38,27 +39,38 @@ const Auth: FC = () => {
 	return (
 		<Box display="flex" alignItems="center" flexDirection="column">
 			<Heading title='Aвторизация' />
-			<FormControl>
+			<form onSubmit={handleSubmit(onSubmit)}>
 				<AccountDataFields
+					type={type}
 					formState={formState}
-					register={registerInput}
+					register={registerDto}
 					isPasswordRequired
 				/>
 				<Box sx={{ textAlign: 'center', mt: 3 }}>
-					<Button variant="outlined" color="inherit" onClick={handleSubmit(onSubmit)}>
-						Войти
+					<Button  variant="outlined" color="inherit" type='submit'>
+						{type === 'login' ? 'Войти' : 'Зарегистрироваться'}
 					</Button>
 				</Box>
-			</FormControl>
+			</form>
 			<Box sx={{ py: 3 }}>
 				<Box>
-					Новый пользователь?{' '}
-					<Link
-						style={{ color: 'navy', textDecoration: 'none' }}
-						href={'/register'}
-					>
-						Зарегистрироваться
-					</Link>
+					{type === 'login' ? 'Новый пользователь?' : 'Уже есть аккаунт?'}{' '}
+					{type === 'login' ? (
+							<Link
+								style={{ color: 'navy', textDecoration: 'none', cursor: 'pointer' }}
+								onClick={() => setType('register')}
+							>
+								Зарегистрироваться
+							</Link>
+						) : (
+							<Link
+								style={{ color: 'navy', textDecoration: 'none', cursor: 'pointer' }}
+								onClick={() => setType('login')}
+							>
+								Войти
+							</Link>
+						)
+					}
 				</Box>
 			</Box>
 		</Box>

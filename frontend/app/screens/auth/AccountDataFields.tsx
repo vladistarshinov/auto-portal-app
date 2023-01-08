@@ -6,12 +6,14 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Visibility from '@mui/icons-material/Visibility';
 
 interface IAccountDataFields {
+	type: 'login' | 'register';
 	register: UseFormRegister<any>;
 	formState: FormState<any>;
 	isPasswordRequired?: boolean;
 }
 
 const AccountDataFields: FC<IAccountDataFields> = ({
+	   type,
 		 register,
 		 formState: { errors },
 		 isPasswordRequired = false,
@@ -20,18 +22,13 @@ const AccountDataFields: FC<IAccountDataFields> = ({
 	return (
 		<Box sx={{ mt: 3, minWidth: 300 }}>
 			<TextField
-				inputProps={register('email', {
-					required: 'Email is required',
-					pattern: {
-						value: validEmail,
-						message: 'Please enter a valid email',
-					},
-				})}
+				{...register('email', { required: true })}
 				sx={{ mt: 3 }}
 				label="Email"
 				id="outlined-basic"
 				fullWidth
 				type="email"
+				name="email"
 				placeholder="Введите email"
 			/>
 			<FormControl sx={{ mt: 3, width: '100%' }} variant="outlined">
@@ -40,7 +37,7 @@ const AccountDataFields: FC<IAccountDataFields> = ({
 					id="outlined-adornment-password"
 					type={showPassword ? 'text' : 'password'}
 					placeholder="Введите пароль"
-					inputProps={register(
+					{...register(
 						'password',
 						isPasswordRequired
 							? {
@@ -52,6 +49,7 @@ const AccountDataFields: FC<IAccountDataFields> = ({
 							}
 							: {}
 					)}
+					name="password"
 					endAdornment={
 						<InputAdornment position="end">
 							<IconButton
@@ -71,6 +69,30 @@ const AccountDataFields: FC<IAccountDataFields> = ({
 					label="Password"
 				/>
 			</FormControl>
+			{type === 'register' && (
+				<>
+					<TextField
+						{...register('firstName', { required: true })}
+						sx={{ mt: 3 }}
+						label="Имя"
+						id="outlined-basic"
+						fullWidth
+						type="text"
+						name="firstName"
+						placeholder="Введите имя"
+					/>
+					<TextField
+						{...register('lastName', { required: true })}
+						sx={{ mt: 3 }}
+						label="Фамилия"
+						id="outlined-basic"
+						fullWidth
+						type="text"
+						name="lastName"
+						placeholder="Введите фамилию"
+					/>
+				</>
+			)}
 		</Box>
 	)
 }
