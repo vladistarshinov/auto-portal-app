@@ -2,6 +2,8 @@ import { IUser } from '@/shared/types/user.types';
 
 export interface IUserState {
 	email: string;
+	firstName: string;
+	lastName: string;
 	isAdmin: boolean;
 }
 

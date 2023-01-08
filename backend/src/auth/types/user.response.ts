@@ -5,6 +5,8 @@ export class JwtTokensResponse {
 
 export class UserData {
     email: string
+    firstName: string
+    lastName: string
     isAdmin: boolean
 }
 

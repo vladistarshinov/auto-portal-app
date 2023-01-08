@@ -40,6 +40,8 @@ export class AuthService {
     return {
       user: {
         email: newUser.email,
+        firstName: newUser.firstName,
+        lastName: newUser.lastName,
         isAdmin: newUser.isAdmin,
       },
       ...tokens
@@ -53,6 +55,8 @@ export class AuthService {
     return {
       user: {
         email: user.email,
+        firstName: user.firstName,
+        lastName: user.lastName,
         isAdmin: user.isAdmin,
       },
       ...tokens
@@ -71,6 +75,8 @@ export class AuthService {
     return {
       user: {
         email: user.email,
+        firstName: user.firstName,
+        lastName: user.lastName,
         isAdmin: user.isAdmin,
       },
       ...tokens
@@ -81,7 +87,7 @@ export class AuthService {
    return this.userModel.findOne({ email })
   }
 
-  private async validateUser(dto: SignInDto): Promise<Pick<User, 'email' | 'isAdmin'>> {
+  private async validateUser(dto: SignInDto): Promise<Omit<User, '_id' | 'password'>> {
     const user = await this.findUser(dto.email)
     if (!user) throw new UnauthorizedException(AuthErrorConstants.USER_NOT_FOUND)
 
@@ -90,6 +96,8 @@ export class AuthService {
 
     return {
       email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName,
       isAdmin: user.isAdmin
     }
   }
