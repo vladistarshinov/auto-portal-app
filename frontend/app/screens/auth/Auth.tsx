@@ -18,7 +18,6 @@ const Auth: FC = () => {
 
 	const { register, login } = useActions();
 
-	// mode - ошибки при каждом вводе поля
 	const {
 		register: registerDto,
 		handleSubmit,
@@ -37,8 +36,8 @@ const Auth: FC = () => {
 	};
 
 	return (
-		<Box display="flex" alignItems="center" flexDirection="column">
-			<Heading title='Aвторизация' />
+		<Box display="flex" alignItems="center" paddingTop='5%' flexDirection="column">
+			<Heading title={type === 'login' ? 'Aвторизация': 'Регистрация'} />
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<AccountDataFields
 					type={type}

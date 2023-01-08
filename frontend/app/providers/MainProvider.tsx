@@ -19,8 +19,9 @@ const MainProvider: FC<TypeComponentAuthField> = ({ children, Component }) => {
 					<ThemeProvider theme={theme}>
 						<CssBaseline />
 						<ReduxToast />
-						<Layout />
-						{children}
+						<Layout>
+							{children}
+						</Layout>
 					</ThemeProvider>
 				</StylesProvider>
 			</Provider>
