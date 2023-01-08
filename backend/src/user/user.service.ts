@@ -34,7 +34,7 @@ export class UserService {
     }
 
     public async getById(_id: string): Promise<UserDocument> {
-        const user = await this.userModel.findById(_id)
+        const user = await this.userModel.findById(_id).select('-__v -createdAt -updatedAt -password')
         if (!user) throw new NotFoundException(UserErrorConstants.USER_NOT_FOUND)
         return user
     }
