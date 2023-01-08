@@ -3,7 +3,11 @@ export class JwtTokensResponse {
     refreshToken: string
 }
 
-export class UserResponse extends JwtTokensResponse {
+export class UserData {
     email: string
     isAdmin: boolean
+}
+
+export class UserResponse extends JwtTokensResponse {
+    user: UserData
 }

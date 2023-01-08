@@ -1,21 +1,14 @@
-import type { AppProps } from 'next/app';
-import { StylesProvider, ThemeProvider } from '@mui/styles'
-import theme from '@/assets/theme';
-import { CssBaseline } from '@mui/material';
-import MainProvider from '@/providers/MainProvider';
-import { TypeComponentAuthField } from '@/shared/types/auth.types';
+import type { AppProps } from 'next/app'
+import MainProvider from '@/providers/MainProvider'
+import { TypeComponentAuthField } from '@/shared/types/auth.types'
+import '@/assets/theme/globals.scss';
 
-type TypeAppProps = AppProps & TypeComponentAuthField;
+type TypeAppProps = AppProps & TypeComponentAuthField
 
 export default function App({ Component, pageProps }: TypeAppProps) {
 	return (
 		<MainProvider Component={Component}>
-			<StylesProvider injectFirst>
-				<ThemeProvider theme={theme}>
-					<CssBaseline />
-					<Component {...pageProps} />;
-				</ThemeProvider>
-			</StylesProvider>
+			<Component {...pageProps} />
 		</MainProvider>
 	)
 }

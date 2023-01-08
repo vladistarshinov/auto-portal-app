@@ -38,8 +38,10 @@ export class AuthService {
     await newUser.save()
 
     return {
-      email: newUser.email,
-      isAdmin: newUser.isAdmin,
+      user: {
+        email: newUser.email,
+        isAdmin: newUser.isAdmin,
+      },
       ...tokens
     }
   }
@@ -49,8 +51,10 @@ export class AuthService {
     const tokens = await this.createJwtTokens(user.email)
 
     return {
-      email: user.email,
-      isAdmin: user.isAdmin,
+      user: {
+        email: user.email,
+        isAdmin: user.isAdmin,
+      },
       ...tokens
     }
   }
@@ -65,8 +69,10 @@ export class AuthService {
     const tokens = await this.createJwtTokens(res.email)
 
     return {
-      email: user.email,
-      isAdmin: user.isAdmin,
+      user: {
+        email: user.email,
+        isAdmin: user.isAdmin,
+      },
       ...tokens
     }
   }

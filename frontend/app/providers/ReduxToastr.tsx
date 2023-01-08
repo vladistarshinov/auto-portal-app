@@ -1,5 +1,5 @@
-import { FC } from 'react';
-import ReduxToastrLib from 'react-redux-toastr';
+import { FC } from 'react'
+import ReduxToastrLib from 'react-redux-toastr'
 
 const ReduxToast: FC = () => {
 	return (
@@ -12,7 +12,7 @@ const ReduxToast: FC = () => {
 			transitionIn="fadeIn"
 			transitionOut="fadeOut"
 		/>
-	);
-};
+	)
+}
 
 export default ReduxToast;

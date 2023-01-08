@@ -1,8 +1,8 @@
-import cn from 'classnames';
-import { forwardRef } from 'react';
+import cn from 'classnames'
+import { forwardRef } from 'react'
 
-import styles from './Field.module.scss';
-import { IField } from './field.interface';
+import styles from './Field.module.scss'
+import { IField } from './field.interface'
 
 const Field = forwardRef<HTMLInputElement, IField>(
 	({ placeholder, error, type = 'text', style, ...rest }, ref) => {
