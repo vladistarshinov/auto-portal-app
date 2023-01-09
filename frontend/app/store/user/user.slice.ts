@@ -2,13 +2,12 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import { getStoreLocalStorage } from '@/utils/local-storage';
 
-import { checkAuth, login, logout, register, getProfile } from './user.actions';
+import { checkAuth, login, logout, register } from './user.actions';
 import { IInitialState } from './user.interface';
 
 const initialState: IInitialState = {
 	isLoading: false,
 	user: getStoreLocalStorage('user'),
-	profile: null
 };
 
 export const userSlice = createSlice({
@@ -45,17 +44,6 @@ export const userSlice = createSlice({
 			})
 			.addCase(checkAuth.fulfilled, (state, { payload }) => {
 				state.user = payload.user;
-			})
-			.addCase(getProfile.pending, (state) => {
-				state.isLoading = true;
-			})
-			.addCase(getProfile.fulfilled, (state, { payload }) => {
-				state.isLoading = false;
-				state.profile = payload;
-			})
-			.addCase(getProfile.rejected, (state) => {
-				state.isLoading = false;
-				state.profile = null;
 			})
 	},
 });

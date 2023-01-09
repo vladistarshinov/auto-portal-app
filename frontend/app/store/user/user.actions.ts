@@ -6,7 +6,7 @@ import { AuthService } from '@/services/auth/auth.service';
 
 import { toastError } from '@/utils/toast-error';
 
-import { IAuthRequest, IAuthResponse, IUserResponse } from './user.interface';
+import { IAuthRequest, IAuthResponse } from './user.interface';
 import { UserService } from '@/services/user/user.service';
 
 export const register = createAsyncThunk<IAuthResponse, IAuthRequest>(
@@ -56,20 +56,6 @@ export const checkAuth = createAsyncThunk<IAuthResponse>(
 				);
 				thunkApi.dispatch(logout());
 			}
-			return thunkApi.rejectWithValue(error);
-		}
-	}
-);
-
-export const getProfile = createAsyncThunk<IUserResponse, void>(
-	'user/get-profile',
-	async (_, thunkApi) => {
-		try {
-			const res = await UserService.getProfile();
-			//toastr.success('Registration', 'Completed successfully');
-			return res.data;
-		} catch (error) {
-			toastError(error);
 			return thunkApi.rejectWithValue(error);
 		}
 	}

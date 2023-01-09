@@ -10,6 +10,8 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Heading from "@/shared/ui/heading/Heading";
 import { useActions } from "@/hooks/useActions";
+import { useProfile } from "@/hooks/userProfile";
+import { IUserResponse } from "@/store/profile/profile.interface";
 
 
 const Profile: FC = () => {
@@ -30,6 +32,15 @@ const Profile: FC = () => {
 										type="name"
 										placeholder="Введите имя"
 										label="Имя"
+									/>
+								</FormControl>
+								<FormControl>
+									<TextField
+										id="outlined-basic"
+										sx={{ my: 1 }}
+										type="name"
+										placeholder="Введите фамилию"
+										label="Фамилия"
 									/>
 								</FormControl>
 								<FormControl>
