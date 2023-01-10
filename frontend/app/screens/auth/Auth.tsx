@@ -5,32 +5,32 @@ import Link from '@mui/material/Link';
 import Heading from '@/shared/ui/heading/Heading';
 import AccountDataFields from './AccountDataFields';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { IAuth } from './auth.interface';
-import { useAuth } from '@/hooks/useAuth';
-import { useActions } from '@/hooks/useActions';
+import { IAuth, ILogin, IRegister } from './auth.interface';
 import { useAuthRedirect } from './useAuthRedirect';
+import { useAuthMutations } from './useAuthMutations';
 
 const Auth: FC = () => {
 	useAuthRedirect()
-	const { isLoading } = useAuth();
 
 	const [type, setType] = useState<'login' | 'register'>('login')
-
-	const { register, login } = useActions();
 
 	const {
 		register: registerDto,
 		handleSubmit,
 		formState,
 		reset,
-	} = useForm<IAuth<typeof type>>({
+	} = useForm<IAuth<ILogin | IRegister>>({
 		mode: 'onChange',
 		//resolver: yupResolver(LoginFormSchema),
 	});
 
+	const { register, login, isLoading } = useAuthMutations(reset)
+
 	const onSubmit: SubmitHandler<IAuth<typeof type>> = (data) => {
 		if (type === 'login') login(data)
-		else if (type === 'register')  register(data)
+		else if (type === 'register')  { // @ts-ignore
+			register(data)
+		}
 
 		reset();
 	};

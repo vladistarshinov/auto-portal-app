@@ -13,12 +13,11 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { FC, useState } from 'react';
 
-import { useActions } from '@/hooks/useActions';
 import { useAuth } from '@/hooks/useAuth';
+import { AuthService } from '@/services/auth/auth.service';
 
 const HeaderMenu: FC = () => {
-	const { logout } = useActions();
-	const { user: userInfo } = useAuth();
+	const { user, setUser } = useAuth();
 
 	const [anchorMenuEl, setAnchorMenuEl] = useState(null);
 	const openMenu = Boolean(anchorMenuEl);
@@ -29,8 +28,9 @@ const HeaderMenu: FC = () => {
 		setAnchorMenuEl(null);
 	};
 
-	const logoutHandler = () => {
-		logout();
+	const logoutHandler = async () => {
+		await AuthService.logout()
+		setUser(null)
 	};
 
 	const buttonStyle = {
@@ -75,7 +75,7 @@ const HeaderMenu: FC = () => {
 
 	return (
 		<Box sx={{ my: { sm: 1, xs: 1 } }}>
-			{userInfo ? (
+			{user ? (
 				<>
 					<Button
 						onClick={handleMenuClick}
@@ -85,10 +85,10 @@ const HeaderMenu: FC = () => {
 						aria-haspopup="true"
 						aria-expanded={openMenu ? 'true' : undefined}
 					>
-						<Avatar sx={{ mr: 1 }}>{`${userInfo.firstName.charAt(
+						<Avatar sx={{ mr: 1 }}>{`${user.firstName.charAt(
 							0
-						)}${userInfo.lastName.charAt(0)}`}</Avatar>
-						{`${userInfo.firstName} ${userInfo.lastName}`}
+						)}${user.lastName.charAt(0)}`}</Avatar>
+						{`${user.firstName} ${user.lastName}`}
 					</Button>
 					<Menu
 						anchorEl={anchorMenuEl}

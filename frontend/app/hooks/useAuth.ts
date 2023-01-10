@@ -1,3 +1,6 @@
+import { AuthContext } from '@/store/auth-context'
+import { useContext } from 'react'
 import { useTypedSelector } from './useTypedSelector'
 
-export const useAuth = () => useTypedSelector((state) => state.user)
+
+export const useAuth = () => useContext(AuthContext)

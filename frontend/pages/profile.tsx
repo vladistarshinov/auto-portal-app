@@ -1,10 +1,12 @@
 import Profile from '@/screens/profile/Profile';
 import { UserService } from '@/services/user/user.service';
-import { IUserResponse } from '@/store/profile/profile.interface';
 import { GetStaticProps, NextPage } from 'next';
+import { NextAuthPage } from '@/shared/types/auth.types';
 
-const ProfilePage: NextPage = () => {
+const ProfilePage: NextAuthPage = () => {
 	return <Profile />;
 };
+
+ProfilePage.isOnlyUser = true;
 
 export default ProfilePage;

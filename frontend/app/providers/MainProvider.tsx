@@ -3,28 +3,39 @@ import { Provider } from 'react-redux'
 
 import { TypeComponentAuthField } from '@/shared/types/auth.types'
 
-import { store } from '@/store/store'
+import store  from '@/store/index'
 
 import ReduxToast from './ReduxToastr'
-import { StylesProvider, ThemeProvider } from '@mui/styles'
-import theme from '@/assets/theme'
-import { CssBaseline } from '@mui/material'
 import Layout from '@/components/layout/Layout'
+import MaterialUiProvider from './MaterialUiProvider'
+import RoleProvider from './RoleProvider'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import AuthProvider from './AuthProvider'
 
+const queryClient = new QueryClient({
+	defaultOptions: {
+		queries: {
+			refetchOnWindowFocus: false
+		}
+	}
+})
 
 const MainProvider: FC<TypeComponentAuthField> = ({ children, Component }) => {
 	return (
+		<QueryClientProvider client={queryClient}>
 			<Provider store={store}>
-				<StylesProvider injectFirst>
-					<ThemeProvider theme={theme}>
-						<CssBaseline />
-						<ReduxToast />
-						<Layout>
-							{children}
-						</Layout>
-					</ThemeProvider>
-				</StylesProvider>
+				<MaterialUiProvider>
+					<ReduxToast />
+					<AuthProvider>
+						<RoleProvider Component={Component}>
+							<Layout>
+								{children}
+							</Layout>
+						</RoleProvider>
+					</AuthProvider>
+				</MaterialUiProvider>
 			</Provider>
+		</QueryClientProvider>
 	)
 }
 

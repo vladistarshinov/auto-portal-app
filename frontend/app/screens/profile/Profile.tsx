@@ -9,9 +9,6 @@ import FormControl from "@mui/material/FormControl";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Heading from "@/shared/ui/heading/Heading";
-import { useActions } from "@/hooks/useActions";
-import { useProfile } from "@/hooks/userProfile";
-import { IUserResponse } from "@/store/profile/profile.interface";
 
 
 const Profile: FC = () => {
