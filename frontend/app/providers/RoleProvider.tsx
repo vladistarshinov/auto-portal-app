@@ -9,7 +9,6 @@ import { TypeComponentAuthField } from '@/shared/types/auth.types';
 import { AuthService } from '@/services/auth/auth.service';
 import { IUser } from '@/shared/types/user.types';
 import { errorCatch } from 'api/api.helper';
-import { useAuthCheck } from './useAuthCheck';
 
 const DynamicCheckRole = dynamic(() => import('./CheckRole'), { ssr: false });
 

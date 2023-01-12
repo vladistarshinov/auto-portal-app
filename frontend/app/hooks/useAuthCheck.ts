@@ -1,6 +1,6 @@
-import { useAuth } from "@/hooks/useAuth"
-import { AuthService } from "@/services/auth/auth.service"
-import { TypeUserState } from "@/store/auth-context"
+import { useAuth } from "./useAuth"
+import { AuthService } from "../services/auth/auth.service"
+import { TypeUserState } from "../store/auth-context"
 import Cookies from "js-cookie"
 import { useEffect, useState } from "react"
 

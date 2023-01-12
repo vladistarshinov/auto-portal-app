@@ -30,3 +30,19 @@ export interface IAuthRequest {
 export interface IAuthResponse extends ITokens {
 	user: IUser;
 }
+
+
+
+export interface IUserResponse {
+	_id: string;
+	email: string;
+	firstName: string;
+	lastName: string;
+	isAdmin: boolean;
+	favourites: [];
+}
+
+export interface IInitialProfileState {
+	profile: IUserResponse | null;
+	isLoading: boolean;
+}

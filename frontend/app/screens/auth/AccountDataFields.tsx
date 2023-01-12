@@ -1,12 +1,12 @@
 import { FC, useState } from 'react';
 import { validEmail } from '@/shared/regex';
 import { Box, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material';
-import { FormState, UseFormRegister } from 'react-hook-form';
+import { FormState, UseFormGetValues, UseFormRegister } from 'react-hook-form';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Visibility from '@mui/icons-material/Visibility';
 
 interface IAccountDataFields {
-	type: 'login' | 'register';
+	type: 'login' | 'register' | 'profile';
 	register: UseFormRegister<any>;
 	formState: FormState<any>;
 	isPasswordRequired?: boolean;
@@ -31,45 +31,47 @@ const AccountDataFields: FC<IAccountDataFields> = ({
 				name="email"
 				placeholder="Введите email"
 			/>
-			<FormControl sx={{ mt: 3, width: '100%' }} variant="outlined">
-				<InputLabel htmlFor="outlined-adornment-password">Пароль</InputLabel>
-				<OutlinedInput
-					id="outlined-adornment-password"
-					type={showPassword ? 'text' : 'password'}
-					placeholder="Введите пароль"
-					{...register(
-						'password',
-						isPasswordRequired
-							? {
-								required: 'Password is required',
-								minLength: {
-									value: 6,
-									message: 'Min length should more 6 symbols',
-								},
-							}
-							: {}
-					)}
-					name="password"
-					endAdornment={
-						<InputAdornment position="end">
-							<IconButton
-								aria-label="toggle password visibility"
-								edge="end"
-								onClick={() => {
-									setShowPassword(!showPassword);
-								}}
-								onMouseDown={(e) => {
-									e.preventDefault();
-								}}
-							>
-								{showPassword ? <VisibilityOff /> : <Visibility />}
-							</IconButton>
-						</InputAdornment>
-					}
-					label="Password"
-				/>
-			</FormControl>
-			{type === 'register' && (
+			{type !== 'profile' && (
+				<FormControl sx={{ mt: 3, width: '100%' }} variant="outlined">
+					<InputLabel htmlFor="outlined-adornment-password">Пароль</InputLabel>
+					<OutlinedInput
+						id="outlined-adornment-password"
+						type={showPassword ? 'text' : 'password'}
+						placeholder="Введите пароль"
+						{...register(
+							'password',
+							isPasswordRequired
+								? {
+									required: 'Password is required',
+									minLength: {
+										value: 6,
+										message: 'Min length should more 6 symbols',
+									},
+								}
+								: {}
+						)}
+						name="password"
+						endAdornment={
+							<InputAdornment position="end">
+								<IconButton
+									aria-label="toggle password visibility"
+									edge="end"
+									onClick={() => {
+										setShowPassword(!showPassword);
+									}}
+									onMouseDown={(e) => {
+										e.preventDefault();
+									}}
+								>
+									{showPassword ? <VisibilityOff /> : <Visibility />}
+								</IconButton>
+							</InputAdornment>
+						}
+						label="Password"
+					/>
+				</FormControl>
+			)}
+			{type === 'register' || type === 'profile' && (
 				<>
 					<TextField
 						{...register('firstName', { required: true })}

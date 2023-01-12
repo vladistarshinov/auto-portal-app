@@ -13,7 +13,7 @@ const Auth: FC = () => {
 	useAuthRedirect()
 
 	const [type, setType] = useState<'login' | 'register'>('login')
-
+	console.log(type)
 	const {
 		register: registerDto,
 		handleSubmit,
