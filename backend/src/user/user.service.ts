@@ -54,8 +54,8 @@ export class UserService {
         }
 
         user.email = dto.email
-        user.firstName = dto.firstName
-        user.lastName = dto.lastName
+        if (dto.firstName)  user.firstName = dto.firstName
+        if (dto.lastName)  user.lastName = dto.lastName
 
         if (dto.isAdmin || dto.isAdmin === false) user.isAdmin = dto.isAdmin
 

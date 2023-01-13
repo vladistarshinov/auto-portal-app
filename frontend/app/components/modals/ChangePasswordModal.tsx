@@ -17,6 +17,11 @@ import {
 } from 'react';
 import ModalWrapper from "@/shared/ui/modal-wrapper/ModalWrapper";
 import { toastError } from "@/utils/toast-error";
+import { UserService } from "@/services/user/user.service";
+import { useMutation } from "@tanstack/react-query";
+import { toastr } from "react-redux-toastr";
+import { IProfileInput } from "@/screens/profile/profile.interface";
+import { useAuth } from "@/hooks/useAuth";
 
 interface IChangePasswordModal {
 	open: boolean
@@ -24,6 +29,8 @@ interface IChangePasswordModal {
 }
 
 const ChangePasswordModal: FC<IChangePasswordModal> = ({ open, setOpen }) => {
+	const {user} = useAuth()
+	console.log(user)
 	const [msg, setMsg] = useState(null);
 	const [oldPassword, setOldPassword] = useState("");
 	const [newPassword, setNewPassword] = useState("");
@@ -57,12 +64,26 @@ const ChangePasswordModal: FC<IChangePasswordModal> = ({ open, setOpen }) => {
 		marginBottom: "20px",
 	});
 
-	const submitHandler = (e: any) => {
+	const { mutateAsync: editPassword } = useMutation(
+		['update profile'],
+		(data: IProfileInput) => UserService.updateProfile({ email: user!.email, password: newPassword }),
+		{
+			onSuccess() {
+				toastr.success('Update profile', 'update was successful');
+			},
+			onError(error) {
+				toastError(error, 'Update profile');
+			},
+		}
+	);
+
+	const submitHandler = async (e: any) => {
 		e.preventDefault();
 		if (newPassword !== confirmPassword) {
 			toastError('Пароль не совпадает', 'Error')
 		} else {
-			setOpen(false);
+			await editPassword({ email: user!.email, password: newPassword })
+			setOpen(false)
 			setOldPassword("");
 			setNewPassword("");
 			setConfirmPassword("");
@@ -76,7 +97,7 @@ const ChangePasswordModal: FC<IChangePasswordModal> = ({ open, setOpen }) => {
 				<Grid>
 					<FormControl sx={{ mt: 3, width: "100%" }} variant="outlined">
 						<InputLabel htmlFor="outlined-adornment-password">
-							Пароль
+							Старый пароль
 						</InputLabel>
 						<OutlinedInput
 							id="outlined-adornment-password"

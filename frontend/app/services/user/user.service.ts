@@ -12,4 +12,5 @@ export const UserService = {
 	async updateProfile(data: IProfileInput) {
 		return await instance.patch<IUserResponse>(getUsersUrl('profile'), data);
 	},
+
 };

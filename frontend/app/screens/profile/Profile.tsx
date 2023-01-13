@@ -62,8 +62,7 @@ const Profile: FC = () => {
 		<Grid container display="inline-flex" justifyContent="space-around" paddingTop='5%'>
 			<ChangePasswordModal
 				open={open}
-				setOpen={(bool: any) => setOpen(bool)}
-				detailId={''}
+				setOpen={(bool: boolean) => setOpen(bool)}
 			/>
 			<Grid item lg={3} md={3} sm={6} mr={2}>
 				<Card>
