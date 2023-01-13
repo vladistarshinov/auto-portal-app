@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 import Grid from "@mui/material/Grid";
 import FormControl from "@mui/material/FormControl";
 import Box from "@mui/material/Box";
@@ -30,7 +29,6 @@ interface IChangePasswordModal {
 
 const ChangePasswordModal: FC<IChangePasswordModal> = ({ open, setOpen }) => {
 	const {user} = useAuth()
-	console.log(user)
 	const [msg, setMsg] = useState(null);
 	const [oldPassword, setOldPassword] = useState("");
 	const [newPassword, setNewPassword] = useState("");
@@ -54,8 +52,6 @@ const ChangePasswordModal: FC<IChangePasswordModal> = ({ open, setOpen }) => {
 	const handleMouseDownPassword = (e: any) => {
 		e.preventDefault();
 	};
-
-	const dispatch = useDispatch();
 
 	const CenterLayout = styled(Box)({
 		display: "flex",
