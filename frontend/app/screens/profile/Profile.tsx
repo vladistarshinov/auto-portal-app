@@ -17,6 +17,7 @@ import { toastError } from "@/utils/toast-error";
 import AccountDataFields from "../auth/AccountDataFields";
 import { IAuth } from "../auth/auth.interface";
 import { toastr } from "react-redux-toastr";
+import ChangePasswordModal from "@/components/modals/ChangePasswordModal";
 
 
 const Profile: FC = () => {
@@ -59,6 +60,11 @@ const Profile: FC = () => {
 
 	return (
 		<Grid container display="inline-flex" justifyContent="space-around" paddingTop='5%'>
+			<ChangePasswordModal
+				open={open}
+				setOpen={(bool: any) => setOpen(bool)}
+				detailId={''}
+			/>
 			<Grid item lg={3} md={3} sm={6} mr={2}>
 				<Card>
 					<CardContent>

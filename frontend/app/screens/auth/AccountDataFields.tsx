@@ -27,9 +27,10 @@ const AccountDataFields: FC<IAccountDataFields> = ({
 				label="Email"
 				id="outlined-basic"
 				fullWidth
-				type="email"
+				type={type === 'profile' ? 'text' : 'email'}
 				name="email"
 				placeholder="Введите email"
+				defaultValue=" "
 			/>
 			{type !== 'profile' && (
 				<FormControl sx={{ mt: 3, width: '100%' }} variant="outlined">
@@ -82,6 +83,7 @@ const AccountDataFields: FC<IAccountDataFields> = ({
 						type="text"
 						name="firstName"
 						placeholder="Введите имя"
+						defaultValue=" "
 					/>
 					<TextField
 						{...register('lastName', { required: true })}
@@ -92,6 +94,7 @@ const AccountDataFields: FC<IAccountDataFields> = ({
 						type="text"
 						name="lastName"
 						placeholder="Введите фамилию"
+						defaultValue=" "
 					/>
 				</>
 			)}
