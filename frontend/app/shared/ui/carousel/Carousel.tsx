@@ -67,7 +67,7 @@ const Carousel: FC<{ products: any }> = ({ products }) => {
 									component="img"
 									sx={{
 										height: 255,
-										display: "grab",
+										cursor: "grab",
 										maxWidth: 400,
 										overflow: "hidden",
 										width: "100%",

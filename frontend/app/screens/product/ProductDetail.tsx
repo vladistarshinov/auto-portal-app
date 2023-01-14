@@ -1,3 +1,4 @@
+import Reviews from "@/components/reviews/Reviews"
 import Heading from "@/shared/ui/heading/Heading"
 import Rating from "@/shared/ui/rating/Rating"
 import { genEndOfNoun } from "@/utils/gen-end-of-noun"
@@ -10,15 +11,22 @@ import {
 	ListItem,
 	ListItemText,
 	Paper,
+	styled,
 	Table,
 	TableBody,
 	TableCell,
 	TableContainer,
 	TableRow
 } from "@mui/material"
-import { FC } from "react"
+import { FC, useState } from "react"
 
 const ProductDetail: FC<{product: any}> = ({product}) => {
+	const [quantity, setQuantity] = useState(1);
+
+	const ReviewsCount = styled(Box)({
+		marginLeft: "0.25rem",
+	});
+
 	return (
 		<Box sx={{ mx: 5 }}>
 			<Heading title={product.name} />
@@ -39,7 +47,7 @@ const ProductDetail: FC<{product: any}> = ({product}) => {
 						<ListItem sx={{ display: "inline-flex", alignItems: "center" }}>
 							<Rating value={product.rating} />
 							{product.countOfReviews === 0 ? (
-								<Box>Нет отзывов</Box>
+								<ReviewsCount>нет отзывов</ReviewsCount>
 							) : (
 								<Box>
 									{product.countOfReviews}{" "}
@@ -94,6 +102,7 @@ const ProductDetail: FC<{product: any}> = ({product}) => {
 					</TableContainer>
 				</Grid>
 			</Grid>
+			<Reviews productId={product._id} product={product} />
 		</Box>
 	)
 }
