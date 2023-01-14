@@ -61,14 +61,13 @@ const Carousel: FC<{ products: any }> = ({ products }) => {
 				enableMouseEvents
 			>
 				{products.map((step: any, index: number) => (
-					<Box key={step.name}>
+					<Box key={step._id}>
 						{Math.abs(activeStep - index) <= 2 ? (
-							<Link href={`/product/${step._id}`}>
 								<Box
 									component="img"
 									sx={{
 										height: 255,
-										display: "block",
+										display: "grab",
 										maxWidth: 400,
 										overflow: "hidden",
 										width: "100%",
@@ -77,7 +76,6 @@ const Carousel: FC<{ products: any }> = ({ products }) => {
 									src={step.imageUrl}
 									alt={step.title}
 								/>
-							</Link>
 						) : null}
 					</Box>
 				))}

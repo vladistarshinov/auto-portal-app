@@ -12,5 +12,10 @@ export const ProductService = {
 		return res;
 	},
 
+	async getProduct(id: string) {
+		const res = await instance.get<any>(getProductsUrl(`${id}`));
+		return res;
+	},
+
 
 };

@@ -12,6 +12,7 @@ import DevicesOtherIcon from "@mui/icons-material/DevicesOther";
 import {
 	FC
 } from 'react';
+import { Box } from "@mui/material";
 
 const Header: FC = () => {
 	const [anchorCategoryEl, setAnchorCategoryEl] = React.useState(null);
@@ -27,7 +28,7 @@ const Header: FC = () => {
 
 	return (
 		<Stack sx={{ bgcolor: "#f8f9fa", p: 1 }}>
-			<Container
+			<Box
 				sx={{
 					display: "flex",
 					alignItems: "center",
@@ -89,7 +90,7 @@ const Header: FC = () => {
 					Корзина
 				</Link>
 				<HeaderMenu />
-			</Container>
+			</Box>
 		</Stack>
 	);
 };
