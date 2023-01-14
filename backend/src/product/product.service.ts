@@ -62,6 +62,7 @@ export class ProductService {
 
         const res = await this.productModel
             .find(searchTermOptions)
+            .populate('reviews')
             .select('-updatedAt -__v')
             .sort(sortOptions)
             .skip(page)
@@ -120,20 +121,12 @@ export class ProductService {
         this.productModel.findByIdAndDelete(id).exec()
     }
 
-    public async updateRating(id: Types.ObjectId, newRating: number) {
-        return await this.productModel
-            .findOneAndUpdate(
-                {
-                    product: id
-                },
-                {
-                    rating: newRating
-                },
-                {
-                    new: true
-                }
-            )
-            .exec()
+    public async updateRating(id: Types.ObjectId, newRating: number, mode: string) {
+        const product = await this.productModel.findById(id)
+
+        product.rating = newRating
+        product.countOfReviews = mode === 'C' ? product.countOfReviews + 1 : product.countOfReviews - 1
+        return await product.save();
     }
 
     public async checkProductCountInStock(id: Types.ObjectId, quantity: number) {

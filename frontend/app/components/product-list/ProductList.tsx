@@ -3,11 +3,11 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import ProductCard from "../product-card/ProductCard";
 
-const ProductList: FC<{products: any[]}> = ({ products }) => {
+const ProductList: FC<{products: any}> = ({ products }) => {
 	return (
 		<>
 			<Box>
-				{products.map((product: any) => (
+				{products?.res?.map((product: any) => (
 					<Grid
 						item
 						display="inline-grid"

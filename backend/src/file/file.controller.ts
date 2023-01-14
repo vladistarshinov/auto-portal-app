@@ -13,18 +13,18 @@ export class FileController {
     @HttpCode(200)
     @UseInterceptors(FileInterceptor('file'))
     @Post('upload')
-    async uploadFile(
-        @UploadedFile() file: Express.Multer.File,
-        @Query('folder') folder?: string
+    public async uploadFile(
+      @UploadedFile() file: Express.Multer.File,
+      @Query('folder') folder?: string
     ): Promise<FileResponse[]> {
         const saveArray: MFile[] = [new MFile(file)];
         if (file.mimetype.includes('image')) {
             const buffer = await this.fileService.convertToWebp(file.buffer)
             saveArray.push(
-                new MFile({
-                    originalname: `${file.originalname.split('.')[0]}.webp`,
-                    buffer,
-                }),
+              new MFile({
+                  originalname: `${file.originalname.split('.')[0]}.webp`,
+                  buffer,
+              }),
             )
         }
         return this.fileService.saveFiles(saveArray, folder)

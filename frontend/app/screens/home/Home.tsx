@@ -1,8 +1,9 @@
+import ProductList from '@/components/product-list/ProductList';
 import { FC } from 'react';
 
-const Home: FC = () => {
+const Home: FC<{products: any}> = ({products}) => {
 	return (
-		<div>fdsfdsfdsfds</div>
+		<ProductList products={products}/>
 	);
 };
 

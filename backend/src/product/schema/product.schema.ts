@@ -37,6 +37,9 @@ export class Product {
     countOfViews: number
 
     @Prop({ default: 0 })
+    countOfReviews: number
+
+    @Prop({ default: 0 })
     rating: number
 
     @Prop()
@@ -47,6 +50,9 @@ export class Product {
 
     @Prop({ type: Types.ObjectId, ref: 'User' })
     user: User
+
+    @Prop({ type: Types.ObjectId, ref: 'Review' })
+    reviews: Types.ObjectId[]
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product)
