@@ -17,7 +17,7 @@ const Footer: FC = () => {
 	return (
 		<CustomizedFooter>
 			<Container>
-				<Box sx={{ textAlign: "center", py: 3 }}>
+				<Box sx={{ textAlign: "center", py: 1 }}>
 					Copyright &copy; IGadgetShop
 				</Box>
 			</Container>

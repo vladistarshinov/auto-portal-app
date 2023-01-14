@@ -7,5 +7,10 @@ export const ProductService = {
 		return res;
 	},
 
+	async getTopProducts() {
+		const res = await instance.get<any>(getProductsUrl('top'));
+		return res;
+	},
+
 
 };
