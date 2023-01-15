@@ -1,4 +1,5 @@
 import Reviews from "@/components/reviews/Reviews"
+import { useAuth } from "@/hooks/useAuth"
 import Heading from "@/shared/ui/heading/Heading"
 import Rating from "@/shared/ui/rating/Rating"
 import { genEndOfNoun } from "@/utils/gen-end-of-noun"
@@ -16,12 +17,14 @@ import {
 	TableBody,
 	TableCell,
 	TableContainer,
-	TableRow
+	TableRow,
+    Typography
 } from "@mui/material"
 import { FC, useState } from "react"
 
 const ProductDetail: FC<{product: any}> = ({product}) => {
 	const [quantity, setQuantity] = useState(1);
+	const {user} = useAuth()
 
 	const ReviewsCount = styled(Box)({
 		marginLeft: "0.25rem",
@@ -46,19 +49,9 @@ const ProductDetail: FC<{product: any}> = ({product}) => {
 						</ListItemText>
 						<ListItem sx={{ display: "inline-flex", alignItems: "center" }}>
 							<Rating value={product.rating} />
-							{product.countOfReviews === 0 ? (
-								<ReviewsCount>нет отзывов</ReviewsCount>
-							) : (
-								<Box>
-									{product.countOfReviews}{" "}
-									{genEndOfNoun(
-										product.countOfReviews,
-										"отзыв",
-										"отзыва",
-										"отзывов"
-									)}
-								</Box>
-							)}
+							<Typography variant='h5' sx={{ml: '10px', mb: 1}}>
+								{product.rating}
+							</Typography>
 						</ListItem>
 						<ListItemText>{product.description}</ListItemText>
 					</List>
@@ -102,7 +95,11 @@ const ProductDetail: FC<{product: any}> = ({product}) => {
 					</TableContainer>
 				</Grid>
 			</Grid>
-			<Reviews productId={product._id} product={product} />
+			{user ? (
+				<Reviews productId={product._id} product={product} />
+			) : (
+				<Box marginTop={2}>Авторизуйтесь для оставления комментария</Box>
+			)}
 		</Box>
 	)
 }

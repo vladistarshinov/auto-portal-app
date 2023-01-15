@@ -47,7 +47,7 @@ export class ReviewService {
             )
             .exec()
         const averageRating = await this.averageRatingByProduct(productId, rating)
-        await this.productModel.updateRating(productId, averageRating, 'C')
+        await this.productModel.updateRating(productId, averageRating, 'C', newRating._id)
 
         return newRating
     }
@@ -60,7 +60,7 @@ export class ReviewService {
         else {
             await this.reviewModel.findByIdAndDelete(reviewId).exec()
             const averageRating = await this.averageRatingByProduct(productId)
-            await this.productModel.updateRating(productId, averageRating, 'D')
+            await this.productModel.updateRating(productId, averageRating, 'D', reviewId)
         }
     }
 
@@ -68,7 +68,7 @@ export class ReviewService {
         if (!productId) throw new BadRequestException('Не понимаю, у какого продукта удалять коммент')
         await this.reviewModel.findByIdAndDelete(reviewId).exec()
         const averageRating = await this.averageRatingByProduct(productId)
-        await this.productModel.updateRating(productId, averageRating, 'D')
+        await this.productModel.updateRating(productId, averageRating, 'D', reviewId)
     }
 
 

@@ -11,7 +11,7 @@ import { Product, ProductDocument } from './schema/product.schema';
 export class ProductService {
     constructor(
         @InjectModel(Product.name)
-        private readonly productModel: Model<ProductDocument>
+        private readonly productModel: Model<ProductDocument>,
     ) {}
 
     public async getAll(
@@ -63,7 +63,6 @@ export class ProductService {
 
         const res = await this.productModel
             .find(searchTermOptions)
-            .populate('reviews')
             .select('-updatedAt -__v')
             .sort(sortOptions)
             .skip(page)
@@ -86,7 +85,18 @@ export class ProductService {
     }
 
     public async getById(id: Types.ObjectId): Promise<ProductDocument> {
-        const product = await this.productModel.findById(id).populate('category').select('-isSendTelegram -__v')
+        const product = await this.productModel.findById(id)
+              .populate('category')
+              .populate({
+                  path: 'reviews',
+                  model: 'Review',
+                  populate: {
+                      path: 'user',
+                      model: 'User',
+                      select: '_id firstName lastName'
+                  }
+              })
+              .select('-isSendTelegram -__v')
         //const reviews = await this.reviewService.getByProduct(id)
         if (!product) throw new NotFoundException('Товар не найден')
         //reviews: reviews
@@ -124,11 +134,13 @@ export class ProductService {
         this.productModel.findByIdAndDelete(id).exec()
     }
 
-    public async updateRating(id: Types.ObjectId, newRating: number, mode: string) {
+    public async updateRating(id: Types.ObjectId, newRating: number, mode: string, reviewId: Types.ObjectId) {
         const product = await this.productModel.findById(id)
 
-        product.rating = newRating
+        let reviews = mode === 'C' ? product.reviews?.concat([reviewId]) : product.reviews.filter((r: Types.ObjectId) => String(r) !== String(reviewId))
+        product.rating = newRating ?? 0
         product.countOfReviews = mode === 'C' ? product.countOfReviews + 1 : product.countOfReviews - 1
+        product.reviews = reviews
         return await product.save();
     }
 

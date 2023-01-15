@@ -1,5 +1,6 @@
 import { useAuth } from "@/hooks/useAuth";
 import Rating from "@/shared/ui/rating/Rating";
+import { convertDate } from "@/utils/date-time-filter";
 import { Box, Button, FormControl, Grid, IconButton, InputLabel, List, ListItem, MenuItem, Select, TextField, Typography } from "@mui/material";
 import Link from "next/link";
 import { FC, useState } from "react";
@@ -25,29 +26,29 @@ const Reviews: FC<{productId: string, product: any}> = ({ productId, product }) 
 		<Box sx={{ marginTop: "2rem" }}>
 			<Grid md={9}>
 				<Typography variant="h5" sx={{ padding: "1rem 0" }}>
-					Комментарии{" "}
+					Отзывы{" "}
 					{product?.reviews?.length === 0
 						? ""
-						: "(" + product.reviews?.length + ")"}
+						: "(" + product.countOfReviews + ")"}
 				</Typography>
-				{product.reviews?.length === 0 && <Box>Нет комментариев</Box>}
+				{product.reviews?.length === 0 && <Box>Нет отзывов</Box>}
 				<List>
 					{product.reviews?.map((review: any) => (
 						<ListItem
 							alignItems="flex-start"
 							key={review._id}
-							sx={{ backgroundColor: "#fafafa", flexDirection: "column" }}
+							sx={{ backgroundColor: "#fafafa", flexDirection: "column", my: 1 }}
 						>
 							<Grid display="inline-flex" alignItems="center">
 								<strong>
-									{review.name}
+									{review.user.firstName}
 									{"     "}
 								</strong>
 							</Grid>
 							<Rating value={review.rating} />
-							<small>{review.createdAt}</small>
+							<small>{convertDate(review.createdAt)}</small>
 							<Typography sx={{ marginTop: "1rem" }}>
-								{review.comment}
+								{review.description}
 							</Typography>
 						</ListItem>
 					))}
