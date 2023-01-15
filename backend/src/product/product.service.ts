@@ -1,6 +1,7 @@
 import {BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types } from 'mongoose';
+import { ReviewService } from 'src/review/review.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { AllProductResponse } from './product.interface';
@@ -84,9 +85,11 @@ export class ProductService {
         return products;
     }
 
-    public async getById(id: string): Promise<Omit<ProductDocument, 'isSendTelegram | __v'>> {
+    public async getById(id: Types.ObjectId): Promise<ProductDocument> {
         const product = await this.productModel.findById(id).populate('category').select('-isSendTelegram -__v')
+        //const reviews = await this.reviewService.getByProduct(id)
         if (!product) throw new NotFoundException('Товар не найден')
+        //reviews: reviews
         return product
     }
 

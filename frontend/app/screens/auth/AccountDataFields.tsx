@@ -13,11 +13,11 @@ interface IAccountDataFields {
 }
 
 const AccountDataFields: FC<IAccountDataFields> = ({
-	   type,
-		 register,
-		 formState: { errors },
-		 isPasswordRequired = false,
-	 }) => {
+																										 type,
+																										 register,
+																										 formState: { errors },
+																										 isPasswordRequired = false,
+																									 }) => {
 	const [showPassword, setShowPassword] = useState(false);
 	return (
 		<Box sx={{ mt: 3, minWidth: 300 }}>

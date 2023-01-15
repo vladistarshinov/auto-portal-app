@@ -28,7 +28,7 @@ export class ProductController {
 
     @Get(':id')
     public async getProduct(
-        @Param('id', IdValidationPipe) id: string
+        @Param('id', IdValidationPipe) id: Types.ObjectId
     ): Promise<Omit<ProductDocument, 'isSendTelegram | __v'>> {
         return await this.productService.getById(id)
     }

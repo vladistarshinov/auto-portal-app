@@ -55,20 +55,20 @@ const Auth: FC = () => {
 				<Box>
 					{type === 'login' ? 'Новый пользователь?' : 'Уже есть аккаунт?'}{' '}
 					{type === 'login' ? (
-							<Link
-								style={{ color: 'navy', textDecoration: 'none', cursor: 'pointer' }}
-								onClick={() => setType('register')}
-							>
-								Зарегистрироваться
-							</Link>
-						) : (
-							<Link
-								style={{ color: 'navy', textDecoration: 'none', cursor: 'pointer' }}
-								onClick={() => setType('login')}
-							>
-								Войти
-							</Link>
-						)
+						<Link
+							style={{ color: 'navy', textDecoration: 'none', cursor: 'pointer' }}
+							onClick={() => setType('register')}
+						>
+							Зарегистрироваться
+						</Link>
+					) : (
+						<Link
+							style={{ color: 'navy', textDecoration: 'none', cursor: 'pointer' }}
+							onClick={() => setType('login')}
+						>
+							Войти
+						</Link>
+					)
 					}
 				</Box>
 			</Box>

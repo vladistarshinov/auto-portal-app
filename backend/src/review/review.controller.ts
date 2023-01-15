@@ -21,7 +21,7 @@ export class ReviewController {
     }
 
     @Auth()
-    @Get('byProduct/:productId')
+    @Get('by-product/:productId')
     public async getReviewsByProduct(
         @Param('productId', IdValidationPipe) productId: Types.ObjectId,
     ) {
