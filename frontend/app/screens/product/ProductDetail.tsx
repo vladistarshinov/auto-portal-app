@@ -22,6 +22,7 @@ import {
 	TableRow,
     Typography
 } from "@mui/material"
+import SelectInput from "@/shared/ui/select-input/SelectInput"
 import axios from "axios"
 import { FC, useState } from "react"
 
@@ -33,7 +34,7 @@ const ProductDetail: FC<{product: any}> = ({product}) => {
 	const addCartHandler = (item: any, value: number) => {
 		addToCart({
 			product: item,
-			quantity: 1,
+			quantity,
 		})
 	};
 
@@ -87,7 +88,13 @@ const ProductDetail: FC<{product: any}> = ({product}) => {
 									<TableRow>
 										<TableCell>Количество:</TableCell>
 										<TableCell>
-											{product.countInStock}
+											<SelectInput
+												value={quantity}
+												onChange={(e: any) =>
+													setQuantity(e.target.value)
+												}
+												countInStock={product.countInStock}
+											/>
 										</TableCell>
 									</TableRow>
 								)}

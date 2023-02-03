@@ -12,7 +12,7 @@ import { useCart } from "@/hooks/useCart";
 const Cart: FC = () => {
 	//const quantity = location.search ? Number(location.search.split("=")[1]) : 1;
 	const cartProductItems: any[] = []
-	const { cart, total } = useCart()
+	const { cart, total, totalNum } = useCart()
 	const checkoutHandler = () => {
 		//history.push("/login?redirect=shipping");
 	};
@@ -50,14 +50,14 @@ const Cart: FC = () => {
 							<CardContent>
 								<Typography variant="h5">К оплате</Typography>
 								<Typography>
-									Общее количество товара: {productQuantity(cartProductItems)}{" "}
+									Общее количество товара: {totalNum}{" "}
 									шт.
 								</Typography>
 								<Typography
 									sx={{ display: "flex", justifyContent: "flex-end" }}
 									variant="h5"
 								>
-									${productQuantityPrice(cartProductItems)}
+									${total}
 								</Typography>
 								<Button
 									variant="outlined"

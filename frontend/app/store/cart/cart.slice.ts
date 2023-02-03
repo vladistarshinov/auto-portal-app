@@ -22,7 +22,9 @@ export const cartSlice = createSlice({
 		changeQuantity: (state, action: PayloadAction<IChangeQuantityPayload>) => {
 			const { id, type } = action.payload
 			const item = state.items.find(item => item.id === id)
-			if (item) type === 'plus' ? item.quantity++ : item.quantity--
+			if (item) type === 'plus'
+				? item.product.countInStock !== item.quantity && item.quantity++
+				: item.quantity > 1 && item.quantity--
 		},
 		reset: state => {
 			state.items = []

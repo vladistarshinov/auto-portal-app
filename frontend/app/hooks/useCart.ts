@@ -6,7 +6,12 @@ export const useCart = () => {
 	const total = cart.reduce(
 		(acc, item) => acc + item.product.price * item.quantity,
 		0
+	).toFixed(2)
+
+	const totalNum = cart.reduce(
+		(acc, item) => acc + item.quantity,
+		0
 	)
 
-	return { cart, total }
+	return { cart, total, totalNum }
 }
