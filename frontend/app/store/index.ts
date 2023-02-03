@@ -1,13 +1,10 @@
-import {createStore, combineReducers} from 'redux'
-import {reducer as toastrReducer} from 'react-redux-toastr'
-import { cartSlice } from './cart/cart.slice'
+import { configureStore } from '@reduxjs/toolkit';
 
-const reducers = {
-  toastr: toastrReducer,
-  cart: cartSlice.reducer
-}
+import { reducers } from './reducer';
 
-const reducer = combineReducers(reducers)
-const store = createStore(reducer)
+export const store = configureStore({
+  reducer: reducers,
+  devTools: true,
+});
 
-export default store
+export type TypeRootState = ReturnType<typeof store.getState>;

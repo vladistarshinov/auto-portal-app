@@ -3,6 +3,7 @@ import { UserService } from '@/services/user/user.service';
 import { GetStaticProps, NextPage } from 'next';
 import { NextAuthPage } from '@/shared/types/auth.types';
 import Cart from '@/screens/cart/Cart';
+import dynamic from 'next/dynamic';
 
 const CartPage: NextAuthPage = () => {
 	return <Cart />;
@@ -10,4 +11,4 @@ const CartPage: NextAuthPage = () => {
 
 CartPage.isOnlyUser = true;
 
-export default CartPage;
+export default dynamic(() => Promise.resolve(CartPage), { ssr: false });

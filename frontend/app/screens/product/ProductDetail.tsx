@@ -20,11 +20,16 @@ import {
 	TableRow,
     Typography
 } from "@mui/material"
+import axios from "axios"
 import { FC, useState } from "react"
 
 const ProductDetail: FC<{product: any}> = ({product}) => {
 	const [quantity, setQuantity] = useState(1);
 	const {user} = useAuth()
+
+	const addCartHandler = (item: any, value: number) => {
+		//add
+	};
 
 	const ReviewsCount = styled(Box)({
 		marginLeft: "0.25rem",
@@ -87,6 +92,7 @@ const ProductDetail: FC<{product: any}> = ({product}) => {
 								<Button
 									variant="outlined"
 									color="inherit"
+									onClick={() => addCartHandler(product, 1)}
 								>
 									Добавить в корзину
 								</Button>

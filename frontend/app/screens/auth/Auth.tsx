@@ -8,12 +8,15 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { IAuth, ILogin, IRegister } from './auth.interface';
 import { useAuthRedirect } from './useAuthRedirect';
 import { useAuthMutations } from './useAuthMutations';
+import { useAuth } from '@/hooks/useAuth';
+import { AuthService } from '@/services/auth/auth.service';
+import { useMutation } from '@tanstack/react-query';
+import { useActions } from '@/hooks/useActions';
 
 const Auth: FC = () => {
 	useAuthRedirect()
 
 	const [type, setType] = useState<'login' | 'register'>('login')
-	console.log(type)
 	const {
 		register: registerDto,
 		handleSubmit,
@@ -24,15 +27,18 @@ const Auth: FC = () => {
 		//resolver: yupResolver(LoginFormSchema),
 	});
 
-	const { register, login, isLoading } = useAuthMutations(reset)
+	const { register, login } = useActions();
 
-	const onSubmit: SubmitHandler<IAuth<typeof type>> = (data) => {
-		if (type === 'login') login(data)
-		else if (type === 'register')  { // @ts-ignore
+
+	const onSubmit: SubmitHandler<IAuth<ILogin | IRegister>> = (data: any) => {
+		if (type === 'login') {
+			login(data)
+		}
+		 else if (type === 'register')  {
 			register(data)
 		}
 
-		reset();
+		//reset();
 	};
 
 	return (

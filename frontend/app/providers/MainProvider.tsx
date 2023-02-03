@@ -3,7 +3,7 @@ import { Provider } from 'react-redux'
 
 import { TypeComponentAuthField } from '@/shared/types/auth.types'
 
-import store  from '@/store/index'
+import {store}  from '@/store/index'
 
 import ReduxToast from './ReduxToastr'
 import Layout from '@/components/layout/Layout'
@@ -26,13 +26,11 @@ const MainProvider: FC<TypeComponentAuthField> = ({ children, Component }) => {
 			<Provider store={store}>
 				<MaterialUiProvider>
 					<ReduxToast />
-					<AuthProvider>
 						<RoleProvider Component={Component}>
 							<Layout>
 								{children}
 							</Layout>
 						</RoleProvider>
-					</AuthProvider>
 				</MaterialUiProvider>
 			</Provider>
 		</QueryClientProvider>

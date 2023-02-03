@@ -6,14 +6,11 @@ import { FC } from "react";
 import DeleteIcon from '@mui/icons-material/Delete';
 import SelectInput from "@/shared/ui/select-input/SelectInput";
 import { productQuantity, productQuantityPrice } from "@/utils/product-quantity-calc";
+import CardProductItem from "@/components/cart/CartProductItem";
 
 const Cart: FC = () => {
 	//const quantity = location.search ? Number(location.search.split("=")[1]) : 1;
-const cartProductItems: any[] = []
-
-	const removeFromCartHandler = (id: string) => {
-		//removeFromCard
-	};
+	const cartProductItems: any[] = []
 
 	const checkoutHandler = () => {
 		//history.push("/login?redirect=shipping");
@@ -41,50 +38,7 @@ const cartProductItems: any[] = []
 					) : (
 						<Card>
 							{cartProductItems.map((item: any) => (
-								<CardContent key={item.product}>
-									<Grid>
-										<Grid
-											container
-											spacing={2}
-											alignItems="center"
-											justifyContent="center"
-										>
-											<Grid lg={3} md={3} sm={5} xs={12} item>
-												<Box
-													component="img"
-													sx={{ width: "100%" }}
-													src={item.image}
-													alt={item.name}
-												/>
-											</Grid>
-											<Grid lg={3} md={3} sm={6} xs={12} item>
-												<LinkToProductDetails href={`/product/${item.product}`}>
-													{item.name}
-												</LinkToProductDetails>
-											</Grid>
-											<Grid lg={2} md={2} sm={2} xs={4} item>
-												${item.price}
-											</Grid>
-											<Grid lg={2} md={2} sm={2} xs={4} item>
-												<SelectInput
-													value={item.quantity}
-													onChange={(e: any) =>
-													{}
-													}
-													countInStock={item.countInStock}
-												/>
-											</Grid>
-											<Grid lg={1} md={1} sm={2} xs={4} item>
-												<IconButton
-													color="inherit"
-													onClick={() => removeFromCartHandler(item.product)}
-												>
-													<DeleteIcon color="error"></DeleteIcon>
-												</IconButton>
-											</Grid>
-										</Grid>
-									</Grid>
-								</CardContent>
+								<CardProductItem item={item} key={item.product} />
 							))}
 						</Card>
 					)}

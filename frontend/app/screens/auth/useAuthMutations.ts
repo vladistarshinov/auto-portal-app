@@ -17,8 +17,9 @@ export const useAuthMutations = (reset: UseFormReset<ILogin> | UseFormReset<IReg
 			AuthService.login(email, password),
 		{
 			onSuccess(data) {
-				reset()
+				console.log(data)
 				setUser(data.user)
+				reset()
 			}
 		}
 	)
@@ -30,8 +31,8 @@ export const useAuthMutations = (reset: UseFormReset<ILogin> | UseFormReset<IReg
 		{
 			onSuccess(data) {
 				setTimeout(() => {
-					reset()
 					setUser(data.user)
+					reset()
 				})
 			}
 		}

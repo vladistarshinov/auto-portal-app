@@ -17,7 +17,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { AuthService } from '@/services/auth/auth.service';
 
 const HeaderMenu: FC = () => {
-	const { user, setUser } = useAuth();
+	const { user } = useAuth();
 
 	const [anchorMenuEl, setAnchorMenuEl] = useState(null);
 	const openMenu = Boolean(anchorMenuEl);
@@ -30,7 +30,8 @@ const HeaderMenu: FC = () => {
 
 	const logoutHandler = async () => {
 		await AuthService.logout()
-		setUser(null)
+		location.reload()
+		//setUser(null)
 	};
 
 	const buttonStyle = {
