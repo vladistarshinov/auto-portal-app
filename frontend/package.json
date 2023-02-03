@@ -40,6 +40,7 @@
     "react-star-rating-component": "^1.4.1",
     "react-swipeable-views": "^0.14.0",
     "react-swipeable-views-utils": "^0.14.0",
+    "redux-persist": "^6.0.0",
     "sass": "^1.49.9",
     "simplebar-react": "^2.3.6",
     "string-strip-html": "^9.1.12",

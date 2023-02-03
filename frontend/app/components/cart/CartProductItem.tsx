@@ -2,21 +2,13 @@ import { Box, CardContent, Grid, IconButton, Link, styled } from '@mui/material'
 import { FC } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
 import SelectInput from "@/shared/ui/select-input/SelectInput";
+import { useActions } from '@/hooks/useActions';
 
-const CardProductItem: FC<{item: any}> = ({item}) => {
+const CardProductItem: FC<{item: any, quantity: number}> = ({item, quantity}) => {
+	const { addToCart, removeFromCart, changeQuantity } = useActions()
 
 	const addCartHandler = (item: any, value: number) => {
-		//removeFromCard
-		let cart: any[] = localStorage.get('cart')
-		if (cart.find(p => p.product.id === item._id)) {
-			cart = cart.filter(p => p.product.id !== item._id)
-		}
-		cart.push({product: item, quantity: value})
-		localStorage.set('cart', cart)
-	};
 
-	const removeFromCartHandler = (id: string) => {
-		//removeFromCard
 	};
 
 	const LinkToProductDetails = styled(Link)({
@@ -26,7 +18,7 @@ const CardProductItem: FC<{item: any}> = ({item}) => {
 
 
 	return (
-		<CardContent key={item.product}>
+		<CardContent key={item._id}>
 			<Grid>
 				<Grid
 					container
@@ -38,13 +30,13 @@ const CardProductItem: FC<{item: any}> = ({item}) => {
 						<Box
 							component="img"
 							sx={{ width: "100%" }}
-							src={item.image}
-							alt={item.name}
+							src={item.imageUrl}
+							alt={item.title}
 						/>
 					</Grid>
 					<Grid lg={3} md={3} sm={6} xs={12} item>
-						<LinkToProductDetails href={`/product/${item.product}`}>
-							{item.name}
+						<LinkToProductDetails href={`/product/${item._id}`}>
+							{item.title}
 						</LinkToProductDetails>
 					</Grid>
 					<Grid lg={2} md={2} sm={2} xs={4} item>
@@ -52,9 +44,9 @@ const CardProductItem: FC<{item: any}> = ({item}) => {
 					</Grid>
 					<Grid lg={2} md={2} sm={2} xs={4} item>
 						<SelectInput
-							value={item.quantity}
+							value={quantity}
 							onChange={(e: any) =>
-							addCartHandler(item, e.target.value)
+								addCartHandler(item, e.target.value)
 							}
 							countInStock={item.countInStock}
 						/>
@@ -62,7 +54,7 @@ const CardProductItem: FC<{item: any}> = ({item}) => {
 					<Grid lg={1} md={1} sm={2} xs={4} item>
 						<IconButton
 							color="inherit"
-							onClick={() => removeFromCartHandler(item.product)}
+							onClick={() => removeFromCart({ id: item._id })}
 						>
 							<DeleteIcon color="error"></DeleteIcon>
 						</IconButton>

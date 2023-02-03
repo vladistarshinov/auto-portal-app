@@ -1,5 +1,7 @@
 import Reviews from "@/components/reviews/Reviews"
+import { useActions } from "@/hooks/useActions"
 import { useAuth } from "@/hooks/useAuth"
+import { useCart } from "@/hooks/useCart"
 import Heading from "@/shared/ui/heading/Heading"
 import Rating from "@/shared/ui/rating/Rating"
 import { genEndOfNoun } from "@/utils/gen-end-of-noun"
@@ -26,9 +28,13 @@ import { FC, useState } from "react"
 const ProductDetail: FC<{product: any}> = ({product}) => {
 	const [quantity, setQuantity] = useState(1);
 	const {user} = useAuth()
-
+	const { addToCart, removeFromCart } = useActions()
+	const { cart } = useCart()
 	const addCartHandler = (item: any, value: number) => {
-		//add
+		addToCart({
+			product: item,
+			quantity: 1,
+		})
 	};
 
 	const ReviewsCount = styled(Box)({

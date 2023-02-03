@@ -7,11 +7,12 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import SelectInput from "@/shared/ui/select-input/SelectInput";
 import { productQuantity, productQuantityPrice } from "@/utils/product-quantity-calc";
 import CardProductItem from "@/components/cart/CartProductItem";
+import { useCart } from "@/hooks/useCart";
 
 const Cart: FC = () => {
 	//const quantity = location.search ? Number(location.search.split("=")[1]) : 1;
 	const cartProductItems: any[] = []
-
+	const { cart, total } = useCart()
 	const checkoutHandler = () => {
 		//history.push("/login?redirect=shipping");
 	};
@@ -31,14 +32,14 @@ const Cart: FC = () => {
 			</Typography>
 			<Grid container spacing={3}>
 				<Grid lg={8} md={8} sm={12} xs={12} item>
-					{cartProductItems.length === 0 ? (
+					{cart.length === 0 ? (
 						<>
 							<Typography>Корзина пустая</Typography>
 						</>
 					) : (
 						<Card>
-							{cartProductItems.map((item: any) => (
-								<CardProductItem item={item} key={item.product} />
+							{cart.map((item: any) => (
+								<CardProductItem item={item.product} quantity={item.quantity} key={item.product} />
 							))}
 						</Card>
 					)}
