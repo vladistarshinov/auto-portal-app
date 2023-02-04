@@ -14,7 +14,7 @@ import storage from 'redux-persist/lib/storage'
 import { reducers, rootReducer } from './reducer';
 
 const persistConfig = {
-  key: 'xmas-shop',
+  key: 'root',
   storage,
   whitelist: ['cart']
 }
