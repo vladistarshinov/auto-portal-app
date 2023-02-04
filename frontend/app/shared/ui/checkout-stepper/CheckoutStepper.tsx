@@ -1,14 +1,15 @@
 import { Box, Step, StepButton, Stepper } from "@mui/material";
 import { steps } from "helpers/stepTitles";
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 const CheckoutStepper = ({ currentStep = 0 }) =>  {
-	//const history = useHistory();
+	const router = useRouter();
 	const [activeStep, setActiveStep] = useState(currentStep);
 	const [completed] = useState({} as any);
 
 	const handleStep = (step: any, url: string) => () => {
-		//history.push(url);
+		router.push(url);
 		setActiveStep(step);
 	};
 

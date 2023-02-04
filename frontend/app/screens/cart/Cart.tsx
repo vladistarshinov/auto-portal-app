@@ -8,13 +8,16 @@ import SelectInput from "@/shared/ui/select-input/SelectInput";
 import { productQuantity, productQuantityPrice } from "@/utils/product-quantity-calc";
 import CardProductItem from "@/components/cart/CartProductItem";
 import { useCart } from "@/hooks/useCart";
+import { useRouter } from "next/router";
+import { useAuth } from "@/hooks/useAuth";
 
 const Cart: FC = () => {
-	//const quantity = location.search ? Number(location.search.split("=")[1]) : 1;
-	const cartProductItems: any[] = []
+	const router = useRouter();
+	const {user} = useAuth();
 	const { cart, total, totalNum } = useCart()
 	const checkoutHandler = () => {
-		//history.push("/login?redirect=shipping");
+		if (user) router.push("/shipping");
+		else router.push("/login");
 	};
 
 	const LinkToProductDetails = styled(Link)({
@@ -61,7 +64,7 @@ const Cart: FC = () => {
 								</Typography>
 								<Button
 									variant="outlined"
-									disabled={cartProductItems.length === 0}
+									disabled={cart.length === 0}
 									color="inherit"
 									onClick={checkoutHandler}
 								>

@@ -25,7 +25,7 @@ const Profile: FC = () => {
 	const [open, setOpen] = useState(false);
 	const [message, setMessage] = useState(null);
 	const type = 'profile';
-	const { handleSubmit, register, formState, getValues, setValue } =
+	const { handleSubmit, register, formState, setValue } =
 		useForm<IProfileInput>({
 			mode: 'onChange',
 		});

@@ -6,7 +6,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Visibility from '@mui/icons-material/Visibility';
 
 interface IAccountDataFields {
-	type: 'login' | 'register';
+	type: 'login' | 'register' | 'profile';
 	register: UseFormRegister<any>;
 	formState: FormState<any>;
 	isPasswordRequired?: boolean;
@@ -27,7 +27,7 @@ const AccountDataFields: FC<IAccountDataFields> = ({
 				label="Email"
 				id="outlined-basic"
 				fullWidth
-				type='email'
+				type={type === 'profile' ? 'text' : 'email'}
 				name="email"
 				placeholder="Введите email"
 				defaultValue=" "
@@ -70,7 +70,7 @@ const AccountDataFields: FC<IAccountDataFields> = ({
 					label="Password"
 				/>
 			</FormControl>
-			{type === 'register' && (
+			{type === 'register' || type === 'profile' && (
 				<>
 					<TextField
 						{...register('firstName', { required: true })}

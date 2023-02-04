@@ -1,8 +1,7 @@
 import { FC } from 'react'
 import { Provider } from 'react-redux'
-
 import { TypeComponentAuthField } from '@/shared/types/auth.types'
-
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import {store}  from '@/store/index'
 
 import ReduxToast from './ReduxToastr'
@@ -37,6 +36,7 @@ const MainProvider: FC<TypeComponentAuthField> = ({ children, Component }) => {
 					</MaterialUiProvider>
 				</PersistGate>
 			</Provider>
+			<ReactQueryDevtools initialIsOpen={false} position={'bottom-right'} />
 		</QueryClientProvider>
 	)
 }
