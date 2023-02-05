@@ -153,7 +153,18 @@ export class OrderService {
     }
 
     public async getById(id: Types.ObjectId) {
-        const order = await this.orderModel.findById(String(id)).populate("user")
+        const order = await this.orderModel
+          .findById(id)
+          .populate("user")
+          .populate({
+              path: 'orderItems',
+              populate: {
+                  path: 'product',
+                  model: 'Product',
+                  select: '_id title imageUrl price slug'
+              }
+          })
+          .select('-__v')
 
         if (!order) {
             throw new NotFoundException(`Заказ ${id} не найден`)

@@ -12,6 +12,10 @@ export class UpdateProductDto {
 
     @IsOptional()
     @IsString()
+    slug?: string
+
+    @IsOptional()
+    @IsString()
     imageUrl?: string
 
     @IsOptional()

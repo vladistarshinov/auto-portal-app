@@ -16,6 +16,9 @@ export class Product {
     description: string
 
     @Prop()
+    slug: string
+
+    @Prop()
     imageUrl: string
 
     @Prop()

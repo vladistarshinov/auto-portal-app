@@ -12,10 +12,13 @@ export const ProductService = {
 		return res;
 	},
 
-	async getProduct(id: string) {
-		const res = await instance.get<any>(getProductsUrl(`${id}`));
+	async getProduct(slug: string) {
+		const res = await instance.get<any>(getProductsUrl(`by-slug/${slug}`));
 		return res;
 	},
 
-
+	async getProductById(id: string) {
+		const res = await instance.get<any>(getProductsUrl(`${id}`));
+		return res;
+	},
 };

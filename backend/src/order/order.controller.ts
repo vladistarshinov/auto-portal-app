@@ -1,5 +1,6 @@
 import {Body, Controller, Get, Param, Patch, Post, Query } from "@nestjs/common"
 import { Types } from "mongoose"
+import { IdValidationPipe } from "pipes/id-validation.pipe"
 import { Auth } from "src/auth/decorators/auth.decorator"
 import { User } from "src/user/decorators/user.decorator"
 import { CreateOrderDto } from "./dto/create-order.dto"
@@ -42,7 +43,7 @@ export class OrderController {
     }
 
     @Get(':id')
-    public async getOrderById(@Param('id') id: Types.ObjectId,) {
+    public async getOrderById(@Param('id', IdValidationPipe) id: Types.ObjectId,) {
         return this.orderService.getById(id)
     }
 

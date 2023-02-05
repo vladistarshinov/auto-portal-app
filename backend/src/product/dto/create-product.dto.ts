@@ -9,6 +9,9 @@ export class CreateProductDto {
     description: string
 
     @IsString()
+    slug: string
+
+    @IsString()
     imageUrl: string
 
     videoUrl?: string

@@ -19,7 +19,7 @@ const ProductCard: FC<{ product: any }> = ({ product }) => {
 
 	return (
 		<Card sx={{ my: 3, mx: 2, cursor: 'pointer' }}>
-			<Link href={`/products/${product._id}`}>
+			<Link href={`/products/${product.slug}`}>
 				<Box sx={{ width: '200px', height: '200px', position: 'relative', margin: '1rem auto' }}>
 					<Image
 						layout='fill'

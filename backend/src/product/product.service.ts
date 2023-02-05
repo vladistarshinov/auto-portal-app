@@ -103,6 +103,26 @@ export class ProductService {
         return product
     }
 
+    public async getBySlug(slug: string) {
+        const product = await this.productModel.findOne({ slug })
+          .populate('category')
+          .populate({
+              path: 'reviews',
+              model: 'Review',
+              populate: {
+                  path: 'user',
+                  model: 'User',
+                  select: '_id firstName lastName'
+              }
+          })
+          .select('-isSendTelegram -__v')
+          .exec();
+        //const reviews = await this.reviewService.getByProduct(id)
+        if (!product) throw new NotFoundException('Товар не найден')
+        //reviews: reviews
+        return product
+    }
+
     public async getByCategory(categoryId: Types.ObjectId): Promise<ProductDocument[]> {
         const products = await this.productModel
             .find({ category: categoryId })
@@ -119,6 +139,7 @@ export class ProductService {
 
         if (dto.title) product.title = dto.title
         if (dto.description) product.description = dto.description
+        if (dto.slug) product.slug = dto.slug
         if (dto.imageUrl) product.imageUrl = dto.imageUrl
         if (dto.videoUrl) product.videoUrl = dto.videoUrl
         if (dto.brand) product.brand = dto.brand

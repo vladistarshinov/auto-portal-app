@@ -9,7 +9,7 @@ import { IAuth, ILogin, IRegister } from './auth.interface';
 import { IUser } from '@/shared/types/user.types';
 
 export const useAuthMutations = (reset: UseFormReset<ILogin> | UseFormReset<IRegister>) => {
-	const { setUser } = useAuth();
+	const { user } = useAuth();
 
 	const { mutate: login, isLoading: isLoginLoading } = useMutation(
 		['login'],
@@ -18,7 +18,6 @@ export const useAuthMutations = (reset: UseFormReset<ILogin> | UseFormReset<IReg
 		{
 			onSuccess(data) {
 				console.log(data)
-				setUser(data.user)
 				reset()
 			}
 		}
@@ -31,7 +30,6 @@ export const useAuthMutations = (reset: UseFormReset<ILogin> | UseFormReset<IReg
 		{
 			onSuccess(data) {
 				setTimeout(() => {
-					setUser(data.user)
 					reset()
 				})
 			}

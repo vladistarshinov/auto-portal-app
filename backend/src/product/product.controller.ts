@@ -27,10 +27,17 @@ export class ProductController {
     }
 
     @Get(':id')
-    public async getProduct(
+    public async getProductById(
         @Param('id', IdValidationPipe) id: Types.ObjectId
     ): Promise<Omit<ProductDocument, 'isSendTelegram | __v'>> {
         return await this.productService.getById(id)
+    }
+
+    @Get('by-slug/:slug')
+    public async getProduct(
+      @Param('slug') slug: string
+    ): Promise<Omit<ProductDocument, 'isSendTelegram | __v'>> {
+        return await this.productService.getBySlug(slug)
     }
 
     @Get('by-category/:categoryId')
