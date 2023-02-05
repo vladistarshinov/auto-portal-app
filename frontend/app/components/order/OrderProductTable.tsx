@@ -67,7 +67,7 @@ const OrderProductTable: FC<{order: any}> = ({ order }) => {
 										<TableRow>
 											<TableCell>Название</TableCell>
 											<TableCell>
-												<PushingLink href={`/product/${item.product._id}`}>
+												<PushingLink href={`/products/${item.product.slug}`}>
 													{item.product.title}
 												</PushingLink>
 											</TableCell>
@@ -115,7 +115,7 @@ const OrderProductTable: FC<{order: any}> = ({ order }) => {
 												/>
 											</TableCell>
 											<TableCell>
-												<PushingLink href={`/product/${item.product.slug}`}>
+												<PushingLink href={`/products/${item.product.slug}`}>
 													{item.product.title}
 												</PushingLink>
 											</TableCell>

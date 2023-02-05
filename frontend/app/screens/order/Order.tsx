@@ -4,6 +4,7 @@ import { Box, Grid, List, ListItem, Paper, Typography } from '@mui/material';
 import { FC } from 'react';
 import DevicesOtherIcon from "@mui/icons-material/DevicesOther";
 import OrderProductTable from '@/components/order/OrderProductTable';
+import OrderProductActionsStatus from '@/components/order/OrderProductActionStatus';
 
 const Order: FC<{order: any}> = ({order}) => {
 	console.log(order);
@@ -69,6 +70,9 @@ const Order: FC<{order: any}> = ({order}) => {
 									</ListItem>
 								</List>
 							</Paper>
+							<OrderProductActionsStatus
+								order={order}
+							/>
 						</Grid>
 					</Grid>
 				</Box>
