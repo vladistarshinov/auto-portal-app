@@ -27,7 +27,14 @@ const Header: FC = () => {
 	};
 
 	return (
-		<Stack sx={{ bgcolor: "#f8f9fa", p: 1 }}>
+		<Stack sx={{
+			bgcolor: "#f8f9fa",
+			p: 1,
+			boxShadow: '0px 2px 12px -3px rgba(0, 0, 0, 0.25)',
+			position: 'fixed',
+			width: '100%',
+			zIndex: 10
+		}}>
 			<Box
 				sx={{
 					display: "flex",
@@ -39,7 +46,7 @@ const Header: FC = () => {
 				<Link
 					href="/"
 					underline="none"
-					color="text.muted"
+					color="text.primary"
 					sx={{ display: "flex", my: { sm: 1, xs: 1 } }}
 				>
 					<DevicesOtherIcon sx={{ mr: 1 }} />
@@ -47,7 +54,7 @@ const Header: FC = () => {
 				</Link>
 				<Button
 					sx={{
-						color: "text.muted",
+						color: "text.primary",
 						"&:focus": {
 							outline: "none",
 							color: "inherit",

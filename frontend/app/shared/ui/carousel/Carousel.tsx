@@ -60,21 +60,21 @@ const Carousel: FC<{ products: any }> = ({ products }) => {
 				onChangeIndex={handleStepChange}
 				enableMouseEvents
 			>
-				{products.map((step: any, index: number) => (
-					<Box key={step._id}>
+				{products.map((p: any, index: number) => (
+					<Box key={p._id} display='flex' justifyContent='center'>
 						{Math.abs(activeStep - index) <= 2 ? (
 								<Box
 									component="img"
 									sx={{
-										height: 255,
+										height: 200,
 										cursor: "grab",
-										maxWidth: 400,
+										maxWidth: 300,
 										overflow: "hidden",
 										width: "100%",
 									}}
 									draggable="false"
-									src={step.imageUrl}
-									alt={step.title}
+									src={p.imageUrl}
+									alt={p.title}
 								/>
 						) : null}
 					</Box>

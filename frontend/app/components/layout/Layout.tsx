@@ -7,7 +7,7 @@ const Layout: FC = ({children}) => {
 	return (
 		<>
 			<Header />
-			<Box sx={{flex: "1 0 auto", height: '88vh', overflowY: 'auto', paddingBottom: '2rem'}}>
+			<Box sx={{flex: "1 0 auto", height: '95vh', overflowY: 'auto', pb: '2rem', pt: '5rem'}}>
 				{children}
 			</Box>
 			<Footer />
