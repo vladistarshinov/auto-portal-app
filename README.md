@@ -34,18 +34,17 @@
 # Ветка main
     
 ## Стек технологий/библиотек (Front-end)
-    * React.js
+    * React
+    * Next
+    * Typescript
     * MUI (v5)
-    * Redux
-    * Redux-thunk
-    * Styled-components
+    * Tanstack Query
+    * Redux Toolkit
+    * Redux Persist
     * Axios
-    * React-router
-    * React-paypal
-    * Jspdf
-    * Html2canvas
-    * Mdbreact
-    * Moment
+    * Yookassa
+    * React-hook-form
+    * Draft.js
 
   ## Стек технологий/библиотек (Back-end)
     * Nest.js
@@ -59,6 +58,7 @@
     * Passport
     * Swagger
     * Telegraf
+    * Yookassa
 
 
 # Ветка version/node

@@ -101,7 +101,7 @@ const HeaderMenu: FC = () => {
 						transformOrigin={{ horizontal: 'right', vertical: 'top' }}
 						anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
 					>
-						<Link href="/profile" underline="none" color="text.primary">
+						<Link href="/personal-area" underline="none" color="text.primary">
 							<MenuItem>
 								<Avatar />
 								Личный кабинет

@@ -13,12 +13,11 @@ import Heading from "@/shared/ui/heading/Heading";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { UserService } from "@/services/user/user.service";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { IProfileInput } from "./profile.interface";
 import { toastError } from "@/utils/toast-error";
-import AccountDataFields from "../auth/AccountDataFields";
-import { IAuth } from "../auth/auth.interface";
 import { toastr } from "react-redux-toastr";
 import ChangePasswordModal from "@/components/modals/ChangePasswordModal";
+import { IProfileInput } from "./profile.interface";
+import AccountDataFields from "@/screens/auth/AccountDataFields";
 
 
 const Profile: FC = () => {
@@ -106,54 +105,3 @@ const Profile: FC = () => {
 };
 
 export default Profile;
-
-
-
-/*
-* <FormControl>
-									<TextField
-										id="outlined-basic"
-										sx={{ my: 1 }}
-										type="name"
-										placeholder="Введите имя"
-										label="Имя"
-									/>
-								</FormControl>
-								<FormControl>
-									<TextField
-										id="outlined-basic"
-										sx={{ my: 1 }}
-										type="name"
-										placeholder="Введите фамилию"
-										label="Фамилия"
-									/>
-								</FormControl>
-								<FormControl>
-									<TextField
-										id="outlined-basic"
-										type="email"
-										sx={{ my: 1 }}
-										placeholder="Введите email"
-										label="Email"
-
-									/>
-								</FormControl>
-								<Box display="flex" flexDirection="column">
-									<Button
-										variant="outlined"
-										color="inherit"
-										sx={{ my: 1 }}
-										onClick={() => setOpen(true)}
-									>
-										Изменить пароль
-									</Button>
-									<Button
-										variant="outlined"
-										color="inherit"
-										sx={{ my: 1 }}
-									>
-										Обновить
-									</Button>
-								</Box>
-*
-*  */
