@@ -3,6 +3,7 @@ import { convertDate } from "@/utils/date-time-filter";
 import styled from "@emotion/styled";
 import { Alert, Box, Button, Grid, List, ListItem, Paper, Typography } from "@mui/material";
 import { FC, useState } from "react";
+import DownloadInvoiceButton from "@/shared/ui/download-invoice-button/DownloadInvoiceButton";
 
 const OrderProductActionsStatus: FC<{ order: any }> = ({ order }) => {
 	const { user } = useAuth();
@@ -79,7 +80,10 @@ const OrderProductActionsStatus: FC<{ order: any }> = ({ order }) => {
 						{convertDate(order.paidAt)}
 					</Alert>
 				) : (
-					<Alert severity="error">Не оплачено</Alert>
+					<Box display='flex' flexWrap='wrap'>
+						<Alert severity="error">Не оплачено</Alert>
+						<DownloadInvoiceButton order={order}></DownloadInvoiceButton>
+					</Box>
 				)}
 			</StatusMessage>
 			<StatusMessage>

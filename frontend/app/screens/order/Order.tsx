@@ -7,11 +7,9 @@ import OrderProductTable from '@/components/order/OrderProductTable';
 import OrderProductActionsStatus from '@/components/order/OrderProductActionStatus';
 
 const Order: FC<{order: any}> = ({order}) => {
-	console.log(order);
 	return (
 		<>
 			<Box id="printOrder">
-
 				<Box
 					sx={{
 						display: "flex",
