@@ -1,5 +1,5 @@
-import { useActions } from "@/hooks/useActions";
-import { useOrder } from "@/hooks/useOrder";
+import { useActions } from "@/shared/hooks/useActions";
+import { useOrder } from "@/shared/hooks/useOrder";
 import CheckoutSteps from "@/widgets/chechout-steps/CheckoutSteps";
 import { Box, Button, FormControl, FormControlLabel, FormLabel, Link, Radio, RadioGroup, Typography } from "@mui/material";
 import { useRouter } from "next/router";

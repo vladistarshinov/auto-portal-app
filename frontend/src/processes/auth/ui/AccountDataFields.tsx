@@ -1,5 +1,4 @@
 import { FC, useState } from 'react';
-import { validEmail } from '@/shared/regex';
 import { Box, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material';
 import { FormState, UseFormGetValues, UseFormRegister } from 'react-hook-form';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';

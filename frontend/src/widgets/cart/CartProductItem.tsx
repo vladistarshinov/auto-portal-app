@@ -2,9 +2,9 @@ import { Box, CardContent, Grid, IconButton, Link, styled } from '@mui/material'
 import { FC } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
 import SelectInput from "@/shared/ui/select-input/SelectInput";
-import { useActions } from '@/hooks/useActions';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import { useActions } from '@/shared/hooks/useActions';
 
 const CardProductItem: FC<{item: any, quantity: number, isPlaceorder?: boolean}> = ({item, quantity, isPlaceorder}) => {
 	const { addToCart, removeFromCart, changeQuantity } = useActions()

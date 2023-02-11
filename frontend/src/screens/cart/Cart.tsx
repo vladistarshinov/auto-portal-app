@@ -5,10 +5,10 @@ import Link from "next/link";
 import { FC } from "react";
 import DeleteIcon from '@mui/icons-material/Delete';
 import SelectInput from "@/shared/ui/select-input/SelectInput";
-import { useCart } from "@/hooks/useCart";
 import { useRouter } from "next/router";
-import { useAuth } from "@/hooks/useAuth";
 import CardProductItem from "@/widgets/cart/CartProductItem";
+import { useAuth } from "@/shared/hooks/useAuth";
+import { useCart } from "@/shared/hooks/useCart";
 
 const Cart: FC = () => {
 	const router = useRouter();

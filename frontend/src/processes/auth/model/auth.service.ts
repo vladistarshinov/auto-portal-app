@@ -1,11 +1,11 @@
-import { getContentType } from '@/shared/api/api.helper';
-import { axiosClassic } from '@/shared/api/interceptors';
+import { getContentType } from '../../../shared/api/api.helper';
+import { axiosClassic } from '../../../shared/api/interceptors';
 import Cookies from 'js-cookie';
 
-import { removeTokensStorage, saveToStorage } from './auth.helper';
-import { request } from '@/shared/api/request.api';
-import { IAuthResponse } from '@/shared/types/user.types';
-import { getAuthUrl } from '@/shared/configs/api.config';
+import { request } from '../../../shared/api/request.api';
+import { IAuthResponse } from '../../../shared/types/user.types';
+import { getAuthUrl } from '../../../shared/configs/api.config';
+import { removeTokensStorage, saveToStorage } from '../lib/auth.helper';
 
 export const AuthService = {
 

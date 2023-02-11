@@ -1,7 +1,6 @@
+import { useAuth } from '@/shared/hooks/useAuth';
 import { useRouter } from 'next/router';
 import { FC } from 'react';
-
-import { useAuth } from '../../hooks/useAuth';
 
 import { TypeComponentAuthField } from '../../shared/types/auth.types';
 

@@ -10,6 +10,7 @@
 		"^@/app/(.*)$",
 		"^@/features/(.*)$",
 		"^@/widgets/(.*)$",
+		"^@/processes/(.*)$",
 		"^@/components/(.*)$",
 		"^@/screens/(.*)$",
 		"^@/ui/(.*)$",

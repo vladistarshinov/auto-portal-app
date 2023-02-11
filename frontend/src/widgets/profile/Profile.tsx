@@ -16,8 +16,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { toastError } from "@/shared/libs/toast-error";
 import { toastr } from "react-redux-toastr";
 import { IProfileInput } from "./profile.interface";
-import AccountDataFields from "@/screens/auth/AccountDataFields";
 import ChangePasswordModal from "../modals/ChangePasswordModal";
+import AccountDataFields from "@/processes/auth/ui/AccountDataFields";
 
 
 const Profile: FC = () => {

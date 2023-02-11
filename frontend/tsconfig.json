@@ -20,6 +20,7 @@
 			"@/ui/*": ["components/ui/*"],
 			"@/screens/*": ["screens/*"],
 			"@/app/*": ["app/*"],
+			"@/processes/*": ["processes/*"],
 			"@/features/*": ["features/*"],
 			"@/widgets/*": ["widgets/*"],
 			"@/shared/*": ["shared/*"],

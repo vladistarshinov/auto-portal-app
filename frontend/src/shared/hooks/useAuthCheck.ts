@@ -1,8 +1,8 @@
 import { useAuth } from "./useAuth"
-import { AuthService } from "../services/auth/auth.service"
+import { AuthService } from "../../services/auth/auth.service"
 import Cookies from "js-cookie"
 import { useEffect, useState } from "react"
-import { TypeUserState } from "@/app/store/auth-context"
+import { TypeUserState } from "../../app/store/auth-context"
 
 export const useAuthCheck = (pathname?: string) => {
 	const [user, setUser] = useState<TypeUserState>(null)

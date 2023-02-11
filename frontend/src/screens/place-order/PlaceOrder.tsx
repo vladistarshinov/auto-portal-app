@@ -1,5 +1,5 @@
-import { useCart } from '@/hooks/useCart';
-import { useOrder } from '@/hooks/useOrder';
+import { useCart } from '@/shared/hooks/useCart';
+import { useOrder } from '@/shared/hooks/useOrder';
 import CardProductItem from '@/widgets/cart/CartProductItem';
 import CheckoutSteps from '@/widgets/chechout-steps/CheckoutSteps';
 import { Box, Button, Card, CardMedia, Grid, List, ListItem, Paper } from '@mui/material';
@@ -84,7 +84,7 @@ const PlaceOrder = () => {
 									<Box>Ваша корзина пуста</Box>
 								) : (
 									<Card>
-										{cart.map((item, index) => (
+										{cart.map((item: any, index: number) => (
 											<CardProductItem isPlaceorder item={item.product} quantity={item.quantity} key={item.product} />
 										))}
 									</Card>

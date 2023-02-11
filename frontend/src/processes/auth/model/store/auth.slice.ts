@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { getStoreLocalStorage } from '@/shared/libs/local-storage';
+import { getStoreLocalStorage } from '../../../../shared/libs/local-storage';
 
 import { checkAuth, login, logout, register } from './auth.actions';
 import { IInitialState } from './auth.interface';

@@ -1,6 +1,3 @@
-import { useActions } from "@/hooks/useActions"
-import { useAuth } from "@/hooks/useAuth"
-import { useCart } from "@/hooks/useCart"
 import Heading from "@/shared/ui/heading/Heading"
 import Rating from "@/shared/ui/rating/Rating"
 import {
@@ -24,6 +21,9 @@ import SelectInput from "@/shared/ui/select-input/SelectInput"
 import axios from "axios"
 import { FC, useState } from "react"
 import Reviews from "@/widgets/reviews/Reviews"
+import { useAuth } from "@/shared/hooks/useAuth"
+import { useCart } from "@/shared/hooks/useCart"
+import { useActions } from "@/shared/hooks/useActions"
 
 const ProductDetail: FC<{product: any}> = ({product}) => {
 	const [quantity, setQuantity] = useState(1);

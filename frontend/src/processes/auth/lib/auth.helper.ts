@@ -1,4 +1,4 @@
-import { IAuthResponse, ITokens } from '@/shared/types/user.types';
+import { IAuthResponse, ITokens } from '../../../shared/types/user.types';
 import Cookies from 'js-cookie';
 
 

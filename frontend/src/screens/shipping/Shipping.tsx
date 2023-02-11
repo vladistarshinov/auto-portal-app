@@ -1,5 +1,5 @@
-import { useActions } from "@/hooks/useActions"
-import { useOrder } from "@/hooks/useOrder"
+import { useActions } from "@/shared/hooks/useActions"
+import { useOrder } from "@/shared/hooks/useOrder"
 import CheckoutSteps from "@/widgets/chechout-steps/CheckoutSteps"
 import { Box, Button, Link, TextField, Typography } from "@mui/material"
 import { useRouter } from "next/router"
@@ -7,7 +7,7 @@ import { FC, useState } from "react"
 import { useEffect } from 'react'
 
 const Shipping: FC = () => {
-	const router = useRouter();
+	const router = useRouter()
 	const {saveShippingAddress} = useActions()
 	const { shippingAddress } = useOrder()
 	const [address, setAddress] = useState('')

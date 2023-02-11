@@ -1,11 +1,10 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-import { removeTokensStorage } from '@/services/auth/auth.helper';
-import { AuthService } from '@/services/auth/auth.service';
-
 import { errorCatch, getContentType } from './api.helper';
 import { API_URL } from '../configs/api.config';
+import { AuthService } from '@/processes/auth/model/auth.service';
+import { removeTokensStorage } from '@/processes/auth/lib/auth.helper';
 
 export const axiosClassic = axios.create({
 	baseURL: API_URL,

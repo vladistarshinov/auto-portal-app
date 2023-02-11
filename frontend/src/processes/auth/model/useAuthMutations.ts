@@ -2,11 +2,10 @@ import { useMutation } from '@tanstack/react-query'
 import { SetStateAction, useMemo } from 'react'
 import { UseFormReset } from 'react-hook-form';
 
-import { useAuth } from '@/hooks/useAuth';
-
-import { AuthService } from '@/services/auth/auth.service';
+import { IUser } from '../../../shared/types/user.types';
+import { useAuth } from '../../../shared/hooks/useAuth';
+import { AuthService } from './auth.service';
 import { IAuth, ILogin, IRegister } from './auth.interface';
-import { IUser } from '@/shared/types/user.types';
 
 export const useAuthMutations = (reset: UseFormReset<ILogin> | UseFormReset<IRegister>) => {
 	const { user } = useAuth();

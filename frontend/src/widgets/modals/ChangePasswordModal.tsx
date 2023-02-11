@@ -19,8 +19,8 @@ import { toastError } from "@/shared/libs/toast-error";
 import { UserService } from "@/services/user/user.service";
 import { useMutation } from "@tanstack/react-query";
 import { toastr } from "react-redux-toastr";
-import { useAuth } from "@/hooks/useAuth";
 import { IProfileInput } from "../profile/profile.interface";
+import { useAuth } from "@/shared/hooks/useAuth";
 
 interface IChangePasswordModal {
 	open: boolean
