@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import { FC } from "react";
-import { usePrintInvoice } from "./usePrintInvoice";
+import { usePrintInvoice } from "../usePrintInvoice";
 
 const PrintInvoiceButton: FC<{ order: any }> = ({order}) => {
 

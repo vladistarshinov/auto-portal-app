@@ -17,8 +17,8 @@ const initialState: ICartInitialState = {
 	paymentMethod: null,
 }
 
-export const orderSlice = createSlice({
-	name: 'order',
+export const checkoutSlice = createSlice({
+	name: 'checkout',
 	initialState,
 	reducers: {
 		saveShippingAddress: (state, action: PayloadAction<IShippingAddress>) => {
@@ -30,4 +30,4 @@ export const orderSlice = createSlice({
 	}
 });
 
-export const { reducer } = orderSlice;
+export const { reducer } = checkoutSlice;

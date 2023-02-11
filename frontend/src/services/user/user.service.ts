@@ -1,7 +1,7 @@
 import { IUserResponse } from "@/shared/types/user.types";
 import instance from "@/shared/api/interceptors";
-import { IProfileInput } from "@/components/profile/profile.interface";
 import { getUsersUrl } from "@/shared/configs/api.config";
+import { IProfileInput } from "@/widgets/profile/profile.interface";
 
 export const UserService = {
 	async getProfile() {

@@ -1,12 +1,20 @@
 import { Box, CardContent, Grid, IconButton, Link, styled } from '@mui/material';
 import { FC } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
-import SelectInput from "@/shared/ui/select-input/SelectInput";
+import SelectInput from "../../../shared/ui/select-input/SelectInput";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { useActions } from '@/shared/hooks/useActions';
+import ChangeQuantityProductButton from '@/features/change-product-quantity/ChangeQuantityProduct';
+import RemoveFromCartButton from '@/features/remove-from-cart/RemoveFromCartButton';
 
-const CardProductItem: FC<{item: any, quantity: number, isPlaceorder?: boolean}> = ({item, quantity, isPlaceorder}) => {
+interface ICardProductItem {
+	item: any
+	quantity: number
+	isPlaceorder?: boolean
+}
+
+const CardProductItem: FC<ICardProductItem> = ({item, quantity, isPlaceorder}) => {
 	const { addToCart, removeFromCart, changeQuantity } = useActions()
 
 	const LinkToProductDetails = styled(Link)({
@@ -33,7 +41,7 @@ const CardProductItem: FC<{item: any, quantity: number, isPlaceorder?: boolean}>
 						/>
 					</Grid>
 					<Grid lg={3} md={3} sm={6} xs={12} item>
-						<LinkToProductDetails href={`/product/${item._id}`}>
+						<LinkToProductDetails href={`/products/${item.slug}`}>
 							{item.title}
 						</LinkToProductDetails>
 					</Grid>
@@ -42,25 +50,16 @@ const CardProductItem: FC<{item: any, quantity: number, isPlaceorder?: boolean}>
 					</Grid>
 					<Grid lg={2} md={2} sm={2} xs={4} item display='inline-flex' alignItems='center'>
 						{!isPlaceorder && (
-							<IconButton aria-label="minus" size="large" onClick={() => changeQuantity({ id: item._id, type: 'minus' })}>
-								<RemoveIcon fontSize="inherit" />
-							</IconButton>
+							<ChangeQuantityProductButton item={item} type='minus' />
 						)}
 						<h3>{quantity} {isPlaceorder && 'шт.'}</h3>
 						{!isPlaceorder && (
-							<IconButton aria-label="plus" size="large" onClick={() => changeQuantity({ id: item._id, type: 'plus' })}>
-								<AddIcon fontSize="inherit" />
-							</IconButton>
+							<ChangeQuantityProductButton item={item} type='plus' />
 						)}
 					</Grid>
 					<Grid lg={1} md={1} sm={2} xs={4} item>
 						{!isPlaceorder && (
-								<IconButton
-									color="inherit"
-									onClick={() => removeFromCart({ id: item._id })}
-								>
-									<DeleteIcon color="error"></DeleteIcon>
-								</IconButton>
+								<RemoveFromCartButton item={item} />
 						)}
 					</Grid>
 				</Grid>

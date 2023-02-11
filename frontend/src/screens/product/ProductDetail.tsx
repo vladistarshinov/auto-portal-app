@@ -21,21 +21,16 @@ import SelectInput from "@/shared/ui/select-input/SelectInput"
 import axios from "axios"
 import { FC, useState } from "react"
 import Reviews from "@/widgets/reviews/Reviews"
-import { useAuth } from "@/shared/hooks/useAuth"
-import { useCart } from "@/shared/hooks/useCart"
 import { useActions } from "@/shared/hooks/useActions"
+import AddToCartButton from "@/features/add-to-cart/AddToCartButton"
+import { useAuth } from "@/processes/auth/model/hooks/useAuth"
+import { useCart } from "@/entities/cart/model/useCart"
 
 const ProductDetail: FC<{product: any}> = ({product}) => {
 	const [quantity, setQuantity] = useState(1);
 	const {user} = useAuth()
 	const { addToCart, removeFromCart } = useActions()
 	const { cart } = useCart()
-	const addCartHandler = (item: any, value: number) => {
-		addToCart({
-			product: item,
-			quantity,
-		})
-	};
 
 	const ReviewsCount = styled(Box)({
 		marginLeft: "0.25rem",
@@ -101,13 +96,7 @@ const ProductDetail: FC<{product: any}> = ({product}) => {
 						</Table>
 						<Box sx={{ py: 2 }} display="flex" justifyContent="center">
 							{product.countInStock > 0 && (
-								<Button
-									variant="outlined"
-									color="inherit"
-									onClick={() => addCartHandler(product, 1)}
-								>
-									Добавить в корзину
-								</Button>
+								<AddToCartButton item={product} quantity={quantity} />
 							)}
 						</Box>
 					</TableContainer>

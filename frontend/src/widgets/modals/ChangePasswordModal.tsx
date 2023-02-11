@@ -20,7 +20,7 @@ import { UserService } from "@/services/user/user.service";
 import { useMutation } from "@tanstack/react-query";
 import { toastr } from "react-redux-toastr";
 import { IProfileInput } from "../profile/profile.interface";
-import { useAuth } from "@/shared/hooks/useAuth";
+import { useAuth } from "@/processes/auth/model/hooks/useAuth";
 
 interface IChangePasswordModal {
 	open: boolean

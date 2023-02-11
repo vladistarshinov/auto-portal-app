@@ -15,7 +15,7 @@ import { rootReducer } from './reducer';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['cart', 'order']
+  whitelist: ['cart', 'checkout']
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

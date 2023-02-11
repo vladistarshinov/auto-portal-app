@@ -1,6 +1,6 @@
-import { useCart } from '@/shared/hooks/useCart';
-import { useOrder } from '@/shared/hooks/useOrder';
-import CardProductItem from '@/widgets/cart/CartProductItem';
+import { useCart } from '@/entities/cart/model/useCart';
+import CardProductItem from '@/entities/cart/ui/CartProductItem';
+import { useCheckout } from '@/processes/checkout/model/useCheckout';
 import CheckoutSteps from '@/widgets/chechout-steps/CheckoutSteps';
 import { Box, Button, Card, CardMedia, Grid, List, ListItem, Paper } from '@mui/material';
 import Link from 'next/link';
@@ -10,7 +10,7 @@ import { FC, useEffect } from 'react';
 const PlaceOrder = () => {
 	const router = useRouter()
 	const {cart, total} = useCart()
-	const {shippingAddress, paymentMethod} = useOrder()
+	const {shippingAddress, paymentMethod} = useCheckout()
 
 	const addDecimal = (num: number) => {
 		return (Math.round(num * 100) / 100).toFixed(2);

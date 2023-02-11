@@ -3,7 +3,7 @@ import { convertDate } from "@/shared/libs/date-time-filter";
 import { Box, Button, FormControl, Grid, IconButton, InputLabel, List, ListItem, MenuItem, Select, TextField, Typography } from "@mui/material";
 import Link from "next/link";
 import { FC, useState } from "react";
-import { useAuth } from "@/shared/hooks/useAuth";
+import { useAuth } from "@/processes/auth/model/hooks/useAuth";
 
 const Reviews: FC<{productId: string, product: any}> = ({ productId, product }) => {
 	const user = useAuth()

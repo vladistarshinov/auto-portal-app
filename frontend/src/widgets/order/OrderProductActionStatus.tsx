@@ -3,8 +3,8 @@ import { Alert, Box, Button, Grid, List, ListItem, Paper, Typography } from "@mu
 import styled from "@emotion/styled";
 
 import { convertDate } from "@/shared/libs/date-time-filter";
-import PrintInvoiceButton from "features/print-invoice/PrintInvoiceButton";
-import { useAuth } from "@/shared/hooks/useAuth";
+import { useAuth } from "@/processes/auth/model/hooks/useAuth";
+import PrintInvoiceButton from "@/features/print-invoice/ui/PrintInvoiceButton";
 
 const OrderProductActionsStatus: FC<{ order: any }> = ({ order }) => {
 	const { user } = useAuth();

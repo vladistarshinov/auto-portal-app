@@ -13,8 +13,8 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { FC, useState } from 'react';
 
-import { useAuth } from '@/shared/hooks/useAuth';
 import { AuthService } from '@/processes/auth/model/auth.service';
+import { useAuth } from '@/processes/auth/model/hooks/useAuth';
 
 const HeaderMenu: FC = () => {
 	const { user } = useAuth();

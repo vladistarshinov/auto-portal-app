@@ -1,9 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {
-	ICartInitialState,
-	IAddToCartPayload,
-    IChangeQuantityPayload
-} from './cart.interface'
+import { IAddToCartPayload, ICartInitialState, IChangeQuantityPayload } from "./cart.interface";
+
 
 const initialState: ICartInitialState = {
 	items: []

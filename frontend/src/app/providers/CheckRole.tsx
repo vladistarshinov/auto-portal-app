@@ -1,4 +1,4 @@
-import { useAuth } from '@/shared/hooks/useAuth';
+import { useAuth } from '@/processes/auth/model/hooks/useAuth';
 import { useRouter } from 'next/router';
 import { FC } from 'react';
 
