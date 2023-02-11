@@ -14,12 +14,14 @@
 		"isolatedModules": true,
 		"jsx": "preserve",
 		"incremental": true,
-		"baseUrl": "./app/",
+		"baseUrl": "./src/",
 		"paths": {
 			"@/components/*": ["components/*"],
 			"@/ui/*": ["components/ui/*"],
 			"@/screens/*": ["screens/*"],
-
+			"@/app/*": ["app/*"],
+			"@/features/*": ["features/*"],
+			"@/widgets/*": ["widgets/*"],
 			"@/shared/*": ["shared/*"],
 			"@/hooks/*": ["hooks/*"],
 			"@/services/*": ["services/*"],

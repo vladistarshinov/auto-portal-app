@@ -7,6 +7,9 @@
 	"importOrder": [
 		"<THIRD_PARTY_MODULES>",
 		"^@/screens/(.*)$",
+		"^@/app/(.*)$",
+		"^@/features/(.*)$",
+		"^@/widgets/(.*)$",
 		"^@/components/(.*)$",
 		"^@/screens/(.*)$",
 		"^@/ui/(.*)$",
