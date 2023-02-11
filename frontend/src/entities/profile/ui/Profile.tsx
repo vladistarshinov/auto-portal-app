@@ -9,15 +9,15 @@ import {
 	Typography,
 	TextField
 } from "@mui/material";
-import Heading from "@/shared/ui/heading/Heading";
+import Heading from "../../../shared/ui/heading/Heading";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { UserService } from "@/services/user/user.service";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { toastError } from "@/shared/libs/toast-error";
+import { toastError } from "../../../shared/libs/toast-error";
 import { toastr } from "react-redux-toastr";
 import { IProfileInput } from "./profile.interface";
-import ChangePasswordModal from "../modals/ChangePasswordModal";
-import AccountDataFields from "@/processes/auth/ui/AccountDataFields";
+import AccountDataFields from "../../../processes/auth/ui/AccountDataFields";
+import { ProfileService } from "../model/profile.service";
+import ChangePasswordModal from "@/features/change-password/ui/ChangePasswordModal";
 
 
 const Profile: FC = () => {
@@ -29,7 +29,7 @@ const Profile: FC = () => {
 			mode: 'onChange',
 		});
 
-	const { isLoading } = useQuery(['profile'], () => UserService.getProfile(), {
+	const { isLoading } = useQuery(['profile'], () => ProfileService.getProfile(), {
 		onSuccess({ data }) {
 			setValue('email', data.email);
 			setValue('firstName', data.firstName);
@@ -43,7 +43,7 @@ const Profile: FC = () => {
 
 	const { mutateAsync: editProfile } = useMutation(
 		['update profile'],
-		(data: IProfileInput) => UserService.updateProfile(data),
+		(data: IProfileInput) => ProfileService.updateProfile(data),
 		{
 			onSuccess() {
 				toastr.success('Update profile', 'update was successful');

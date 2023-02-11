@@ -1,5 +1,5 @@
+import { OrderService } from "@/entities/order/model/order.service";
 import Order from "@/screens/order/Order";
-import { OrderService } from "@/services/order/order.service";
 import { NextAuthPage } from "@/shared/types/auth.types";
 import { GetServerSideProps, GetStaticProps } from "next";
 

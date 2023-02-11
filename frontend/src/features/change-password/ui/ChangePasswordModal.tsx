@@ -14,13 +14,14 @@ import { FC } from 'react';
 import {
 	ChangeEvent, MouseEvent,
 } from 'react';
-import ModalWrapper from "@/shared/ui/modal-wrapper/ModalWrapper";
-import { toastError } from "@/shared/libs/toast-error";
-import { UserService } from "@/services/user/user.service";
+import ModalWrapper from "../../../shared/ui/modal-wrapper/ModalWrapper";
+import { toastError } from "../../../shared/libs/toast-error";
 import { useMutation } from "@tanstack/react-query";
 import { toastr } from "react-redux-toastr";
-import { IProfileInput } from "../profile/profile.interface";
-import { useAuth } from "@/processes/auth/model/hooks/useAuth";
+import { useAuth } from "../../../processes/auth/model/hooks/useAuth";
+import { IProfileInput } from "../../../entities/profile/ui/profile.interface";
+import { ProfileService } from "../../../entities/profile/model/profile.service";
+import { useUpdateProdileMutation } from "../model/useUpdateProfileMutation";
 
 interface IChangePasswordModal {
 	open: boolean
@@ -60,18 +61,7 @@ const ChangePasswordModal: FC<IChangePasswordModal> = ({ open, setOpen }) => {
 		marginBottom: "20px",
 	});
 
-	const { mutateAsync: editPassword } = useMutation(
-		['update profile'],
-		(data: IProfileInput) => UserService.updateProfile({ email: user!.email, password: newPassword }),
-		{
-			onSuccess() {
-				toastr.success('Update profile', 'update was successful');
-			},
-			onError(error) {
-				toastError(error, 'Update profile');
-			},
-		}
-	);
+	const { mutateAsync: editPassword } = useUpdateProdileMutation(user, newPassword)
 
 	const submitHandler = async (e: any) => {
 		e.preventDefault();

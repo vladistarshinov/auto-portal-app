@@ -1,5 +1,5 @@
-import instance from "@/shared/api/interceptors";
-import { getProductsUrl } from "@/shared/configs/api.config";
+import instance from "../../../shared/api/interceptors";
+import { getProductsUrl } from "../../../shared/configs/api.config";
 
 export const ProductService = {
 	async getProducts() {

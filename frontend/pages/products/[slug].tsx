@@ -1,11 +1,11 @@
-import ProductDetail from "@/screens/product/ProductDetail";
-import { ProductService } from "@/services/product/product.service";
+import { ProductService } from "@/entities/product/model/product.service";
+import Product from "@/screens/product/Product";
 import { NextAuthPage } from "@/shared/types/auth.types";
 import { GetStaticPaths, GetStaticProps } from "next";
 
 
 const ProductPage: NextAuthPage<{ product: any | undefined }> = ({product}) => {
-	return <ProductDetail product={product} />
+	return <Product product={product} />
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {

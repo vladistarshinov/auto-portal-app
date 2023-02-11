@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, SyntheticEvent, useState } from "react";
 import {
 	Box,
 } from "@mui/material";
@@ -6,12 +6,12 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import {a11yProps} from '@/shared/libs/a11y-tab-props'
 import TabPanel from "@/shared/ui/tab-panel/TabPanel";
-import Profile from "@/widgets/profile/Profile";
+import Profile from "@/entities/profile/ui/Profile";
 
 const PersonalArea: FC = () => {
 	const [tabValue, setTabValue] = useState(0);
 
-	const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+	const handleChange = (event: SyntheticEvent, newValue: number) => {
 		setTabValue(newValue);
 	};
 

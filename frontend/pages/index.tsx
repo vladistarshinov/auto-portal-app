@@ -1,5 +1,5 @@
+import { ProductService } from '@/entities/product/model/product.service';
 import Home from '@/screens/home/Home';
-import { ProductService } from '@/services/product/product.service';
 import { GetStaticProps, NextPage } from 'next';
 
 const HomePage: NextPage<{ products: any, topProducts: any[] }> = ({ products, topProducts }) => {
