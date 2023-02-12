@@ -1,34 +1,38 @@
-import {FC, useState} from "react";
-import { useTheme } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import MobileStepper from "@mui/material/MobileStepper";
-import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
+import { FC, useState } from "react"
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
-import Link from "@mui/material/Link";
-import { Button } from "@mui/material";
-import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
-import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+import { useTheme } from "@mui/material/styles"
+import {
+	Box,
+	MobileStepper,
+	Paper,
+	Typography,
+	Link,
+	Button
+} from "@mui/material"
+import {
+	KeyboardArrowLeft,
+	KeyboardArrowRight
+} from '@mui/icons-material'
 
-const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
+const AutoPlaySwipeableViews = autoPlay(SwipeableViews)
 
 const Carousel: FC<{ products: any }> = ({ products }) => {
-	const theme = useTheme();
-	const [activeStep, setActiveStep] = useState(0);
-	const maxSteps = products.length;
+	const theme = useTheme()
+	const [activeStep, setActiveStep] = useState(0)
+	const maxSteps = products.length
 
 	const handleStepChange = (step: any) => {
-		setActiveStep(step);
-	};
+		setActiveStep(step)
+	}
 
 	const handleNext = () => {
-		setActiveStep((prevActiveStep) => prevActiveStep + 1);
-	};
+		setActiveStep((prevActiveStep) => prevActiveStep + 1)
+	}
 
 	const handleBack = () => {
-		setActiveStep((prevActiveStep) => prevActiveStep - 1);
-	};
+		setActiveStep((prevActiveStep) => prevActiveStep - 1)
+	}
 
 
 	return (
@@ -93,7 +97,7 @@ const Carousel: FC<{ products: any }> = ({ products }) => {
 				}
 			/>
 		</Box>
-	);
-};
+	)
+}
 
-export default Carousel;
+export default Carousel

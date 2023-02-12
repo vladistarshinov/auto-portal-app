@@ -1,27 +1,26 @@
-import { useEffect, useState } from "react";
-import Grid from "@mui/material/Grid";
-import FormControl from "@mui/material/FormControl";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import { styled } from "@mui/material/styles";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import IconButton from "@mui/material/IconButton";
-import InputLabel from "@mui/material/InputLabel";
-import InputAdornment from "@mui/material/InputAdornment";
-import { FC } from 'react';
+import { FC, ChangeEvent, MouseEvent, useEffect, useState } from 'react'
 import {
-	ChangeEvent, MouseEvent,
-} from 'react';
-import ModalWrapper from "../../../shared/ui/modal-wrapper/ModalWrapper";
-import { toastError } from "../../../shared/libs/toast-error";
-import { useMutation } from "@tanstack/react-query";
-import { toastr } from "react-redux-toastr";
-import { useAuth } from "../../../processes/auth/model/hooks/useAuth";
-import { IProfileInput } from "../../../entities/profile/ui/profile.interface";
-import { ProfileService } from "../../../entities/profile/model/profile.service";
-import { useUpdateProdileMutation } from "../model/useUpdateProfileMutation";
+	Grid,
+	FormControl,
+	Box,
+	Button,
+	OutlinedInput,
+	IconButton,
+	InputLabel,
+	InputAdornment
+} from "@mui/material"
+import { styled } from "@mui/material/styles"
+import {
+	Visibility,
+	VisibilityOff
+} from "@mui/icons-material"
+
+import ModalWrapper from "@/shared/ui/modal-wrapper/ModalWrapper"
+import { toastError } from "@/shared/libs/toast-error"
+import { useAuth } from "@/processes/auth/model/hooks/useAuth"
+import { IProfileInput } from "@/entities/profile/ui/profile.interface"
+import { ProfileService } from "@/entities/profile/model/profile.service"
+import { useUpdateProdileMutation } from "../model/useUpdateProfileMutation"
 
 interface IChangePasswordModal {
 	open: boolean
@@ -30,55 +29,54 @@ interface IChangePasswordModal {
 
 const ChangePasswordModal: FC<IChangePasswordModal> = ({ open, setOpen }) => {
 	const {user} = useAuth()
-	const [msg, setMsg] = useState(null);
-	const [oldPassword, setOldPassword] = useState("");
-	const [newPassword, setNewPassword] = useState("");
-	const [confirmPassword, setConfirmPassword] = useState("");
-	const [showOldPassword, setShowOldPassword] = useState(false);
-	const [showNewPassword, setShowNewPassword] = useState(false);
-	const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+	const [msg, setMsg] = useState(null)
+	const [oldPassword, setOldPassword] = useState("")
+	const [newPassword, setNewPassword] = useState("")
+	const [confirmPassword, setConfirmPassword] = useState("")
+	const [showOldPassword, setShowOldPassword] = useState(false)
+	const [showNewPassword, setShowNewPassword] = useState(false)
+	const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
 	const handleClickShowOldPassword = () => {
-		setShowOldPassword(!showOldPassword);
-	};
+		setShowOldPassword(!showOldPassword)
+	}
 
 	const handleClickShowNewPassword = () => {
-		setShowNewPassword(!showNewPassword);
-	};
+		setShowNewPassword(!showNewPassword)
+	}
 
 	const handleClickShowConfirmPassword = () => {
-		setShowConfirmPassword(!showConfirmPassword);
-	};
+		setShowConfirmPassword(!showConfirmPassword)
+	}
 
 	const handleMouseDownPassword = (e: any) => {
-		e.preventDefault();
-	};
+		e.preventDefault()
+	}
 
 	const CenterLayout = styled(Box)({
 		display: "flex",
 		justifyContent: "center",
 		marginTop: "20px",
 		marginBottom: "20px",
-	});
+	})
 
 	const { mutateAsync: editPassword } = useUpdateProdileMutation(user, newPassword)
 
-	const submitHandler = async (e: any) => {
-		e.preventDefault();
+	const submitHandler = async (e: MouseEvent) => {
+		e.preventDefault()
 		if (newPassword !== confirmPassword) {
 			toastError('Пароль не совпадает', 'Error')
 		} else {
 			await editPassword({ email: user!.email, password: newPassword })
 			setOpen(false)
-			setOldPassword("");
-			setNewPassword("");
-			setConfirmPassword("");
+			setOldPassword("")
+			setNewPassword("")
+			setConfirmPassword("")
 		}
-	};
+	}
 
 	return (
 		<>
-			{/* Modal */}
 			<ModalWrapper open={open} setOpen={setOpen} title={"Изменение пароля"}>
 				<Grid>
 					<FormControl sx={{ mt: 3, width: "100%" }} variant="outlined">
@@ -166,7 +164,7 @@ const ChangePasswordModal: FC<IChangePasswordModal> = ({ open, setOpen }) => {
 				</Grid>
 			</ModalWrapper>
 		</>
-	);
-};
+	)
+}
 
-export default ChangePasswordModal;
+export default ChangePasswordModal

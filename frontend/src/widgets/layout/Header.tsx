@@ -1,27 +1,32 @@
-import React, { FC, useState } from 'react';
-import Stack from "@mui/material/Stack";
-import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import Link from "@mui/material/Link";
-import HeaderMenu from "../../shared/ui/menu/HeaderMenu";
-import DevicesOtherIcon from "@mui/icons-material/DevicesOther";
-import { Box } from "@mui/material";
+import { FC, useState } from 'react'
+import {
+	Stack,
+	Container,
+	Button,
+	Menu,
+	MenuItem,
+	Link,
+	Box
+} from "@mui/material"
+import {
+	ArrowDropDown as ArrowDropDownIcon,
+	ShoppingCart as ShoppingCartIcon,
+	DevicesOther as DevicesOtherIcon
+} from "@mui/icons-material"
+
+import HeaderMenu from "@/shared/ui/menu/HeaderMenu"
 
 const Header: FC = () => {
-	const [anchorCategoryEl, setAnchorCategoryEl] = useState(null);
-	const openCategory = Boolean(anchorCategoryEl);
+	const [anchorCategoryEl, setAnchorCategoryEl] = useState(null)
+	const openCategory = Boolean(anchorCategoryEl)
 
 	const handleCategoryClick = (event: any) => {
-		setAnchorCategoryEl(event.currentTarget);
-	};
+		setAnchorCategoryEl(event.currentTarget)
+	}
 
 	const handleCategoryClose = () => {
-		setAnchorCategoryEl(null);
-	};
+		setAnchorCategoryEl(null)
+	}
 
 	return (
 		<Stack sx={{
@@ -95,7 +100,7 @@ const Header: FC = () => {
 				<HeaderMenu />
 			</Box>
 		</Stack>
-	);
-};
+	)
+}
 
-export default Header;
+export default Header

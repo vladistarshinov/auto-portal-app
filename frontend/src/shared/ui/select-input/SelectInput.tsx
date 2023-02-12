@@ -1,8 +1,10 @@
-import Select from "@mui/material/Select";
-import InputBase from "@mui/material/InputBase";
-import MenuItem from "@mui/material/MenuItem";
-import { styled } from "@mui/material/styles";
-import { FC } from "react";
+import { FC } from "react"
+import {
+	Select,
+	InputBase,
+	MenuItem
+} from "@mui/material"
+import { styled } from "@mui/material/styles"
 
 interface ISelectInput {
 	value: number
@@ -11,7 +13,6 @@ interface ISelectInput {
 }
 
 const SelectInput: FC<ISelectInput> = ({ value, onChange, countInStock }) => {
-
 	const BootstrapInput = styled(InputBase)(({ theme }) => ({
 		"label + &": {
 			marginTop: theme.spacing(3),
@@ -24,7 +25,6 @@ const SelectInput: FC<ISelectInput> = ({ value, onChange, countInStock }) => {
 			fontSize: 16,
 			padding: "10px 26px 10px 12px",
 			transition: theme.transitions.create(["border-color", "box-shadow"]),
-			// Use the system font instead of the default Roboto font.
 			fontFamily: [
 				"-apple-system",
 				"BlinkMacSystemFont",
@@ -43,7 +43,7 @@ const SelectInput: FC<ISelectInput> = ({ value, onChange, countInStock }) => {
 				boxShadow: "0 0 0 0.2rem rgba(0,123,255,.25)",
 			},
 		},
-	}));
+	}))
 
 	// @ts-ignore
 	let countInStockCount = [...Array(countInStock).keys()]
@@ -62,7 +62,7 @@ const SelectInput: FC<ISelectInput> = ({ value, onChange, countInStock }) => {
 				</MenuItem>
 			))}
 		</Select>
-	);
+	)
 }
 
-export default SelectInput;
+export default SelectInput

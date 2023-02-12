@@ -1,8 +1,9 @@
-import { ProfileService } from "@/entities/profile/model/profile.service";
-import { IProfileInput } from "@/entities/profile/ui/profile.interface";
-import { toastError } from "@/shared/libs/toast-error";
-import { useMutation } from "@tanstack/react-query";
-import { toastr } from "react-redux-toastr";
+import { useMutation } from "@tanstack/react-query"
+import { toastr } from "react-redux-toastr"
+
+import { toastError } from "@/shared/libs/toast-error"
+import { ProfileService } from "@/entities/profile/model/profile.service"
+import { IProfileInput } from "@/entities/profile/ui/profile.interface"
 
 export const useUpdateProdileMutation = (user: any, newPassword: string) => {
 	const { mutateAsync } = useMutation(
@@ -10,13 +11,13 @@ export const useUpdateProdileMutation = (user: any, newPassword: string) => {
 		(data: IProfileInput) => ProfileService.updateProfile({ email: user!.email, password: newPassword }),
 		{
 			onSuccess() {
-				toastr.success('Update profile', 'update was successful');
+				toastr.success('Update profile', 'update was successful')
 			},
 			onError(error) {
-				toastError(error, 'Update profile');
+				toastError(error, 'Update profile')
 			},
 		}
 	)
 
 	return { mutateAsync }
-};
+}

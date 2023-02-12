@@ -1,4 +1,3 @@
-
 export interface ICartItem {
 	id: string
 	product: any

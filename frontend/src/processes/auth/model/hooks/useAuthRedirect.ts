@@ -1,15 +1,16 @@
-import { useAuth } from './useAuth';
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
+
+import { useAuth } from './useAuth'
 
 export const useAuthRedirect = () => {
-	const { user } = useAuth();
+	const { user } = useAuth()
 
-	const { query, push } = useRouter();
+	const { query, push } = useRouter()
 
-	const redirect = query.redirect ? String(query.redirect) : '/';
+	const redirect = query.redirect ? String(query.redirect) : '/'
 
 	useEffect(() => {
-		if (user) push(redirect);
-	}, [user, redirect, push]);
-};
+		if (user) push(redirect)
+	}, [user, redirect, push])
+}

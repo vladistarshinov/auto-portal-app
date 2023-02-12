@@ -1,22 +1,23 @@
-import {FC, useState} from "react";
-import { styled } from "@mui/material/styles";
-import Link from "next/link";
-import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
-import Collapse from "@mui/material/Collapse";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import Box from "@mui/material/Box";
-import Hidden from "@mui/material/Hidden";
-import { genEndOfNoun } from "@/shared/libs/gen-end-of-noun";
+import {FC, useState} from "react"
+import Link from "next/link"
 import Image from 'next/image';
-import Rating from "@/shared/ui/rating/Rating";
+import { styled } from "@mui/material/styles"
+import {
+	Card,
+	CardMedia,
+	CardContent,
+	CardActions,
+	Collapse,
+	IconButton,
+	Typography,
+	Box,
+	Hidden
+} from "@mui/material"
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
+import Rating from "@/shared/ui/rating/Rating"
+import { genEndOfNoun } from "@/shared/libs/gen-end-of-noun"
 
 const ProductCard: FC<{ product: any }> = ({ product }) => {
-
 	return (
 		<Card sx={{ my: 3, mx: 2, cursor: 'pointer' }}>
 			<Link href={`/products/${product.slug}`}>
@@ -53,12 +54,14 @@ const ProductCard: FC<{ product: any }> = ({ product }) => {
 					</Typography>
 				</Box>
 				<Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '1rem' }}>
-					<Typography variant="h6" sx={{ textDecoration: 'line-through' }}>{product.oldPrice} RUB</Typography>
+					<Typography variant="h6" sx={{ textDecoration: 'line-through' }}>
+						{product.oldPrice} RUB
+					</Typography>
 					<Typography variant="h5">{product.price} RUB</Typography>
 				</Box>
 			</CardActions>
 		</Card>
-	);
-};
+	)
+}
 
-export default ProductCard;
+export default ProductCard

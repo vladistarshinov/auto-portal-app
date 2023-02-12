@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { StylesProvider, ThemeProvider } from '@mui/styles'
-
 import { CssBaseline } from '@mui/material'
+
 import theme from '../assets/theme'
 
 

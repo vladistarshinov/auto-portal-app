@@ -1,17 +1,18 @@
-import { Box, Step, StepButton, Stepper } from "@mui/material";
-import { steps } from "@/shared/helpers/stepTitles";
-import { useRouter } from "next/router";
-import { useState } from "react";
+import { FC, useState } from "react"
+import { useRouter } from "next/router"
+import { Box, Step, StepButton, Stepper } from "@mui/material"
 
-const CheckoutStepper = ({ currentStep = 0 }) =>  {
-	const router = useRouter();
-	const [activeStep, setActiveStep] = useState(currentStep);
-	const [completed] = useState({} as any);
+import { steps } from "@/shared/helpers/stepTitles"
+
+const CheckoutStepper: FC<{ currentStep: number }> = ({ currentStep = 0 }) =>  {
+	const router = useRouter()
+	const [activeStep, setActiveStep] = useState(currentStep)
+	const [completed] = useState({} as any)
 
 	const handleStep = (step: any, url: string) => () => {
-		router.push(url);
-		setActiveStep(step);
-	};
+		router.push(url)
+		setActiveStep(step)
+	}
 
 	return (
 		<Box sx={{ width: "100%" }}>
@@ -25,7 +26,7 @@ const CheckoutStepper = ({ currentStep = 0 }) =>  {
 				))}
 			</Stepper>
 		</Box>
-	);
+	)
 }
 
 export default CheckoutStepper

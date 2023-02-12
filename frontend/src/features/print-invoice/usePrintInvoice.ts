@@ -1,9 +1,9 @@
-import jsPDF from "jspdf";
-import autoTable from "jspdf-autotable";
+import jsPDF from "jspdf"
+import autoTable from "jspdf-autotable"
 
 export const usePrintInvoice = (order: any) => {
 	const download = (order: any) => {
-		const doc = new jsPDF();
+		const doc = new jsPDF()
 
 		autoTable(doc, {
 			body: [
@@ -236,11 +236,10 @@ export const usePrintInvoice = (order: any) => {
 				]
 			],
 			theme: "plain"
-		});
+		})
 
 		return doc.save("invoice")
 	}
 
-	return { download };
-
+	return { download }
 }

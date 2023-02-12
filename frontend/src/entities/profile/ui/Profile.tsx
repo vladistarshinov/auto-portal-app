@@ -1,4 +1,7 @@
-import { FC, useState, useEffect } from "react";
+import { FC, useState, useEffect } from "react"
+import { SubmitHandler, useForm } from "react-hook-form"
+import { useMutation, useQuery } from "@tanstack/react-query"
+import { toastr } from "react-redux-toastr"
 import {
 	Box,
 	Grid,
@@ -8,37 +11,35 @@ import {
 	FormControl,
 	Typography,
 	TextField
-} from "@mui/material";
-import Heading from "../../../shared/ui/heading/Heading";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { toastError } from "../../../shared/libs/toast-error";
-import { toastr } from "react-redux-toastr";
-import { IProfileInput } from "./profile.interface";
-import AccountDataFields from "../../../processes/auth/ui/AccountDataFields";
-import { ProfileService } from "../model/profile.service";
-import ChangePasswordModal from "@/features/change-password/ui/ChangePasswordModal";
+} from "@mui/material"
+
+import Heading from "@/shared/ui/heading/Heading"
+import { toastError } from "@/shared/libs/toast-error"
+import AccountDataFields from "@/processes/auth/ui/AccountDataFields"
+import ChangePasswordModal from "@/features/change-password/ui/ChangePasswordModal"
+import { IProfileInput } from "./profile.interface"
+import { ProfileService } from "../model/profile.service"
 
 
 const Profile: FC = () => {
-	const [open, setOpen] = useState(false);
-	const [message, setMessage] = useState(null);
-	const type = 'profile';
+	const [open, setOpen] = useState(false)
+	const [message, setMessage] = useState(null)
+	const type = 'profile'
 	const { handleSubmit, register, formState, setValue } =
 		useForm<IProfileInput>({
 			mode: 'onChange',
-		});
+		})
 
 	const { isLoading } = useQuery(['profile'], () => ProfileService.getProfile(), {
 		onSuccess({ data }) {
-			setValue('email', data.email);
-			setValue('firstName', data.firstName);
-			setValue('lastName', data.lastName);
+			setValue('email', data.email)
+			setValue('firstName', data.firstName)
+			setValue('lastName', data.lastName)
 		},
 		onError(error) {
-			toastError(error, 'Get profile');
+			toastError(error, 'Get profile')
 		},
-	});
+	})
 
 
 	const { mutateAsync: editProfile } = useMutation(
@@ -46,17 +47,17 @@ const Profile: FC = () => {
 		(data: IProfileInput) => ProfileService.updateProfile(data),
 		{
 			onSuccess() {
-				toastr.success('Update profile', 'update was successful');
+				toastr.success('Update profile', 'update was successful')
 			},
 			onError(error) {
-				toastError(error, 'Update profile');
+				toastError(error, 'Update profile')
 			},
 		}
-	);
+	)
 
 	const onSubmit: SubmitHandler<IProfileInput> = async (data) => {
 		await editProfile(data)
-	};
+	}
 
 	return (
 		<Grid container display="inline-flex" justifyContent="space-around" paddingTop='5%'>
@@ -101,7 +102,7 @@ const Profile: FC = () => {
 				{/* */}
 			</Grid>
 		</Grid>
-	);
-};
+	)
+}
 
-export default Profile;
+export default Profile

@@ -1,14 +1,28 @@
-import { FC, useState } from 'react';
-import { Box, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, TextField } from '@mui/material';
-import { FormState, UseFormGetValues, UseFormRegister } from 'react-hook-form';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import Visibility from '@mui/icons-material/Visibility';
+import { FC, useState } from 'react'
+import {
+	FormState,
+	UseFormGetValues,
+	UseFormRegister
+} from 'react-hook-form'
+import {
+	Box,
+	FormControl,
+	IconButton,
+	InputAdornment,
+	InputLabel,
+	OutlinedInput,
+	TextField
+} from '@mui/material'
+import {
+	VisibilityOff,
+	Visibility
+} from '@mui/icons-material'
 
 interface IAccountDataFields {
-	type: 'login' | 'register' | 'profile';
-	register: UseFormRegister<any>;
-	formState: FormState<any>;
-	isPasswordRequired?: boolean;
+	type: 'login' | 'register' | 'profile'
+	register: UseFormRegister<any>
+	formState: FormState<any>
+	isPasswordRequired?: boolean
 }
 
 const AccountDataFields: FC<IAccountDataFields> = ({
@@ -17,7 +31,7 @@ const AccountDataFields: FC<IAccountDataFields> = ({
 	 formState: { errors },
 	 isPasswordRequired = false,
  }) => {
-	const [showPassword, setShowPassword] = useState(false);
+	const [showPassword, setShowPassword] = useState(false)
 	return (
 		<Box sx={{ mt: 3, minWidth: 300 }}>
 			<TextField
@@ -69,7 +83,7 @@ const AccountDataFields: FC<IAccountDataFields> = ({
 					label="Password"
 				/>
 			</FormControl>
-			{type === 'register' || type === 'profile' && (
+			{type === 'register' || type === 'profile' ? (
 				<>
 					<TextField
 						{...register('firstName', { required: true })}
@@ -94,7 +108,7 @@ const AccountDataFields: FC<IAccountDataFields> = ({
 						defaultValue=" "
 					/>
 				</>
-			)}
+			) : null}
 		</Box>
 	)
 }

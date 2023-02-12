@@ -1,11 +1,12 @@
-import PlaceOrder from "@/screens/place-order/PlaceOrder";
-import { NextAuthPage } from "@/shared/types/auth.types";
-import dynamic from 'next/dynamic';
+import dynamic from 'next/dynamic'
+
+import { NextAuthPage } from "@/shared/types/auth.types"
+import PlaceOrderScreen from "@/screens/place-order/PlaceOrder"
 
 const PlaceOrderPage: NextAuthPage = () => {
-	return <PlaceOrder />;
-};
+	return <PlaceOrderScreen />
+}
 
-PlaceOrderPage.isOnlyUser = true;
+PlaceOrderPage.isOnlyUser = true
 
-export default dynamic(() => Promise.resolve(PlaceOrderPage), { ssr: false });
+export default dynamic(() => Promise.resolve(PlaceOrderPage), { ssr: false })

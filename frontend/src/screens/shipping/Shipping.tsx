@@ -1,9 +1,10 @@
+import { FC } from "react"
+import { Box, Typography } from "@mui/material"
+
 import ShippingForm from "@/processes/checkout/ui/ShippingForm"
 import CheckoutSteps from "@/widgets/chechout-steps/CheckoutSteps"
-import { Box, Typography } from "@mui/material"
-import { FC } from "react"
 
-const Shipping: FC = () => {
+const ShippingScreen: FC = () => {
 
 	return (
 		<Box marginX={10}>
@@ -16,4 +17,4 @@ const Shipping: FC = () => {
 	)
 }
 
-export default Shipping
+export default ShippingScreen

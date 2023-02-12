@@ -1,6 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IAddToCartPayload, ICartInitialState, IChangeQuantityPayload } from "./cart.interface";
-
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { IAddToCartPayload, ICartInitialState, IChangeQuantityPayload } from "./cart.interface"
 
 const initialState: ICartInitialState = {
 	items: []
@@ -27,6 +26,6 @@ export const cartSlice = createSlice({
 			state.items = []
 		}
 	}
-});
+})
 
-export const { reducer } = cartSlice;
+export const { reducer } = cartSlice

@@ -1,14 +1,13 @@
-import BreadCrumbs from "@/shared/ui/breadcrumbs/Breadcrumbs";
-import styled from "@emotion/styled";
-import { Box, Button, Card, CardContent, Grid, IconButton, Typography } from "@mui/material";
-import Link from "next/link";
-import { FC } from "react";
+import { FC } from "react"
+import { useRouter } from "next/router"
+import Link from "next/link"
+import styled from "@emotion/styled"
+import { Box, Button, Card, CardContent, Grid, IconButton, Typography } from "@mui/material"
 import DeleteIcon from '@mui/icons-material/Delete';
+
+import BreadCrumbs from "@/shared/ui/breadcrumbs/Breadcrumbs";
 import SelectInput from "@/shared/ui/select-input/SelectInput";
-import { useRouter } from "next/router";
-import { useAuth } from "@/shared/hooks/useAuth"
-import { useCart } from "@/shared/hooks/useCart"
-import Cart from "entities/cart/ui/Cart";
+import Cart from "@/entities/cart/ui/Cart";
 
 const CartScreen: FC = () => {
 
@@ -22,7 +21,7 @@ const CartScreen: FC = () => {
 			</Typography>
 			<Cart />
 		</Box>
-	);
-};
+	)
+}
 
-export default CartScreen;
+export default CartScreen

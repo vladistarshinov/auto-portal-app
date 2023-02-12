@@ -1,8 +1,9 @@
-import React, { FC } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Box from "@mui/material/Box";
-import Carousel from "@/shared/ui/carousel/Carousel";
-import Heading from "@/shared/ui/heading/Heading";
+import { FC } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import Box from "@mui/material/Box"
+
+import Carousel from "@/shared/ui/carousel/Carousel"
+import Heading from "@/shared/ui/heading/Heading"
 
 const TopProductsCarousel: FC<{ products: any[] }> = ({products}) => {
 
@@ -20,6 +21,6 @@ const TopProductsCarousel: FC<{ products: any[] }> = ({products}) => {
 			</Box>
 		</>
 	)
-};
+}
 
-export default TopProductsCarousel;
+export default TopProductsCarousel

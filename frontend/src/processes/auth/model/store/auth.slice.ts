@@ -1,14 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit'
 
-import { getStoreLocalStorage } from '../../../../shared/libs/local-storage';
-
-import { checkAuth, login, logout, register } from './auth.actions';
-import { IInitialState } from './auth.interface';
+import { getStoreLocalStorage } from '@/shared/libs/local-storage'
+import { checkAuth, login, logout, register } from './auth.actions'
+import { IInitialState } from './auth.interface'
 
 const initialState: IInitialState = {
 	isLoading: false,
 	user: getStoreLocalStorage('user'),
-};
+}
 
 export const userSlice = createSlice({
 	name: 'user',
@@ -46,6 +45,6 @@ export const userSlice = createSlice({
 				state.user = payload.user;
 			});
 	},
-});
+})
 
-export const { reducer } = userSlice;
+export const { reducer } = userSlice

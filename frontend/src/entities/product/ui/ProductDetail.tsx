@@ -1,15 +1,12 @@
-import Heading from "../../../shared/ui/heading/Heading"
-import Rating from "../../../shared/ui/rating/Rating"
+import { ChangeEvent, FC, useState } from "react"
+import axios from "axios"
 import {
 	Box,
-	Button,
-	Divider,
 	Grid,
 	List,
 	ListItem,
 	ListItemText,
 	Paper,
-	styled,
 	Table,
 	TableBody,
 	TableCell,
@@ -17,19 +14,16 @@ import {
 	TableRow,
 	Typography
 } from "@mui/material"
-import SelectInput from "../../../shared/ui/select-input/SelectInput"
-import axios from "axios"
-import { FC, useState } from "react"
-import Reviews from "../../../widgets/reviews/Reviews"
-import { useActions } from "../../../shared/hooks/useActions"
-import AddToCartButton from "../../../features/add-to-cart/AddToCartButton"
-import { useAuth } from "../../../processes/auth/model/hooks/useAuth"
-import { useCart } from "../../cart/model/useCart"
+
+import Heading from "@/shared/ui/heading/Heading"
+import Rating from "@/shared/ui/rating/Rating"
+import SelectInput from "@/shared/ui/select-input/SelectInput"
+import { useActions } from "@/shared/hooks/useActions"
+import AddToCartButton from "@/features/add-to-cart/AddToCartButton"
+import { useAuth } from "@/processes/auth/model/hooks/useAuth"
 
 const ProductDetail: FC<{product: any}> = ({product}) => {
-	const [quantity, setQuantity] = useState(1);
-	const { addToCart, removeFromCart } = useActions()
-	const { cart } = useCart()
+	const [quantity, setQuantity] = useState(1)
 
 	return (
 		<Grid container spacing={2}>
@@ -77,7 +71,7 @@ const ProductDetail: FC<{product: any}> = ({product}) => {
 									<TableCell>
 										<SelectInput
 											value={quantity}
-											onChange={(e: any) =>
+											onChange={(e) =>
 												setQuantity(e.target.value)
 											}
 											countInStock={product.countInStock}

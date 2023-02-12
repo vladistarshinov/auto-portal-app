@@ -1,8 +1,9 @@
-import { useActions } from "@/shared/hooks/useActions"
-import { Button, IconButton } from "@mui/material"
 import { FC } from "react"
-import AddIcon from '@mui/icons-material/Add';
-import DeleteIcon from '@mui/icons-material/Delete';
+import { Button, IconButton } from "@mui/material"
+import AddIcon from '@mui/icons-material/Add'
+import DeleteIcon from '@mui/icons-material/Delete'
+
+import { useActions } from "@/app/store/utils/useActions"
 
 interface IAddToCartProps {
 	item: any

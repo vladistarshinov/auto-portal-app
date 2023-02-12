@@ -1,15 +1,24 @@
-import { FC, useState } from "react";
-import { Alert, Box, Button, Grid, List, ListItem, Paper, Typography } from "@mui/material";
-import styled from "@emotion/styled";
+import { FC, useState } from "react"
+import {
+	Alert,
+	Box,
+	Button,
+	Grid,
+	List,
+	ListItem,
+	Paper,
+	Typography
+} from "@mui/material"
+import styled from "@emotion/styled"
 
-import { convertDate } from "@/shared/libs/date-time-filter";
-import { useAuth } from "@/processes/auth/model/hooks/useAuth";
-import PrintInvoiceButton from "@/features/print-invoice/ui/PrintInvoiceButton";
+import { convertDate } from "@/shared/libs/date-time-filter"
+import { useAuth } from "@/processes/auth/model/hooks/useAuth"
+import PrintInvoiceButton from "../print-invoice/ui/PrintInvoiceButton"
 
 const OrderProductActionsStatus: FC<{ order: any }> = ({ order }) => {
-	const { user } = useAuth();
+	const { user } = useAuth()
 
-	const [sdkPayPalReady, setSdkPayPalReady] = useState(false);
+	const [sdkPayPalReady, setSdkPayPalReady] = useState(false)
 
 	/*useEffect(() => {
 		if (!order || successPayingProcess || successDeliveringProcess) {
@@ -34,9 +43,9 @@ const OrderProductActionsStatus: FC<{ order: any }> = ({ order }) => {
 
 
 	const successPaymentHandler = (paymentResult: any) => {
-		console.log(paymentResult);
-		//dispatch(updateStatusPayingOrder(orderId, paymentResult));
-	};
+		console.log(paymentResult)
+		//dispatch(updateStatusPayingOrder(orderId, paymentResult))
+	}
 
 	const payingActionHandler = () => {
 
@@ -44,7 +53,7 @@ const OrderProductActionsStatus: FC<{ order: any }> = ({ order }) => {
 
 	const deliverHandler = () => {
 		//dispatch(updateStatusDeliveringOrder(order));
-	};
+	}
 
 	const StatusMessage = styled(Box)({
 		display: "flex",
@@ -56,7 +65,7 @@ const OrderProductActionsStatus: FC<{ order: any }> = ({ order }) => {
 		"&:last-child": {
 			paddingTop: 0,
 		},
-	});
+	})
 
 	return (
 		<>
@@ -119,7 +128,7 @@ const OrderProductActionsStatus: FC<{ order: any }> = ({ order }) => {
 				</Box>
 			)}
 		</>
-	);
-};
+	)
+}
 
-export default OrderProductActionsStatus;
+export default OrderProductActionsStatus

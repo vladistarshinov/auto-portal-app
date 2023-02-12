@@ -1,15 +1,17 @@
 import { FC } from 'react'
 import { Provider } from 'react-redux'
-import { TypeComponentAuthField } from '../../shared/types/auth.types'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { PersistGate } from 'redux-persist/integration/react'
+
+import { TypeComponentAuthField } from '@/shared/types/auth.types'
+import Layout from '@/widgets/layout/Layout'
+
+import { persistor, store } from '../store'
 import ReduxToast from './ReduxToastr'
 import MaterialUiProvider from './MaterialUiProvider'
 import RoleProvider from './RoleProvider'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import AuthProvider from './AuthProvider'
-import { PersistGate } from 'redux-persist/integration/react'
-import Layout from '@/widgets/layout/Layout'
-import { persistor, store } from '../store'
 
 const queryClient = new QueryClient({
 	defaultOptions: {

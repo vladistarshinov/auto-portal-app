@@ -1,28 +1,31 @@
-import React, { FC } from "react";
-import Grid from "@mui/material/Grid";
-import TableContainer from "@mui/material/TableContainer";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { styled } from "@mui/material/styles";
-import Link from "@mui/material/Link";
+import React, { FC } from "react"
+import Image from 'next/image'
+import { styled } from "@mui/material/styles"
+import {
+	Grid,
+	TableContainer,
+	Table,
+	TableBody,
+	TableCell,
+	TableHead,
+	TableRow,
+	Paper,
+	Typography,
+	List,
+	ListItem,
+	Link,
+	useMediaQuery
+} from "@mui/material"
+
 import { convertDate } from '@/shared/libs/date-time-filter'
-import Image from 'next/image';
 
 const OrderProductTable: FC<{order: any}> = ({ order }) => {
-	const isMobile = useMediaQuery("(max-width:500px)");
+	const isMobile = useMediaQuery("(max-width:500px)")
 
 	const PushingLink = styled(Link)({
 		color: "navy",
 		textDecoration: "none",
-	});
+	})
 
 	return (
 		<Grid item xs={6} sm={6} md={8} lg={8}>
@@ -131,7 +134,7 @@ const OrderProductTable: FC<{order: any}> = ({ order }) => {
 				</ListItem>
 			</List>
 		</Grid>
-	);
-};
+	)
+}
 
-export default OrderProductTable;
+export default OrderProductTable

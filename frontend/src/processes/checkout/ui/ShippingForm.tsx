@@ -1,14 +1,14 @@
-import { useCheckout } from "@/processes/checkout/model/useCheckout"
-import { useActions } from "@/shared/hooks/useActions"
-import CheckoutSteps from "@/widgets/chechout-steps/CheckoutSteps"
-import { Box, Button, Link, TextField, Typography } from "@mui/material"
+import { FC, useState, useEffect } from "react"
 import { useRouter } from "next/router"
-import { FC, useState } from "react"
-import { useEffect } from 'react'
+import { Box, Button, Link, TextField, Typography } from "@mui/material"
+
+import { useActions } from "@/app/store/utils/useActions"
+import { useCheckout } from "@/processes/checkout/model/useCheckout"
+import CheckoutSteps from "@/widgets/chechout-steps/CheckoutSteps"
 
 const ShippingForm = () => {
 	const router = useRouter()
-	const {saveShippingAddress} = useActions()
+	const { saveShippingAddress } = useActions()
 	const { shippingAddress } = useCheckout()
 	const [address, setAddress] = useState('')
 	const [city, setCity] = useState('')
@@ -25,7 +25,7 @@ const ShippingForm = () => {
 	const submitHandler = () => {
 		saveShippingAddress({ address, city, country, postalCode })
 		router.push("/payment")
-	};
+	}
 
 	return (
 		<>

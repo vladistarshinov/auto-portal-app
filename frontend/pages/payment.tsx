@@ -1,10 +1,10 @@
-import Payment from "@/screens/payment/Payment";
-import { NextAuthPage } from "@/shared/types/auth.types";
+import { NextAuthPage } from "@/shared/types/auth.types"
+import PaymentScreen from "@/screens/payment/Payment"
 
 const PaymentPage: NextAuthPage = () => {
-	return <Payment />;
-};
+	return <PaymentScreen />
+}
 
-PaymentPage.isOnlyUser = true;
+PaymentPage.isOnlyUser = true
 
-export default PaymentPage;
+export default PaymentPage

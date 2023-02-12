@@ -1,10 +1,10 @@
-import { Box, Typography } from "@mui/material";
-import { FC, ReactNode } from "react";
+import { FC, ReactNode } from "react"
+import { Box, Typography } from "@mui/material"
 
 interface TabPanelProps {
-	children?: ReactNode;
-	index: number;
-	value: number;
+	children?: ReactNode
+	index: number
+	value: number
 }
 
 const TabPanel: FC<TabPanelProps> = ({ children, value, index, ...other }) =>  {
@@ -23,7 +23,7 @@ const TabPanel: FC<TabPanelProps> = ({ children, value, index, ...other }) =>  {
 				</Box>
 			)}
 		</div>
-	);
+	)
 }
 
 export default TabPanel

@@ -1,9 +1,9 @@
-import { NextPage } from 'next';
+import { NextPage } from 'next'
 
-import Auth from '@/screens/auth/Auth';
+import AuthScreen from '@/screens/auth/Auth'
 
 const AuthPage: NextPage = () => {
-	return <Auth />;
-};
+	return <AuthScreen />
+}
 
-export default AuthPage;
+export default AuthPage

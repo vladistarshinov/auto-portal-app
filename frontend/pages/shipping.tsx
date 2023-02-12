@@ -1,13 +1,13 @@
-import { UserService } from '@/services/user/user.service';
-import { GetStaticProps, NextPage } from 'next';
-import { NextAuthPage } from '@/shared/types/auth.types';
-import Shipping from '@/screens/shipping/Shipping';
-import dynamic from 'next/dynamic';
+import { GetStaticProps, NextPage } from 'next'
+import dynamic from 'next/dynamic'
+
+import { NextAuthPage } from '@/shared/types/auth.types'
+import ShippingScreen from '@/screens/shipping/Shipping'
 
 const ShippingPage: NextAuthPage = () => {
-	return <Shipping />;
-};
+	return <ShippingScreen />
+}
 
-ShippingPage.isOnlyUser = true;
+ShippingPage.isOnlyUser = true
 
-export default dynamic(() => Promise.resolve(ShippingPage), { ssr: false });
+export default dynamic(() => Promise.resolve(ShippingPage), { ssr: false })

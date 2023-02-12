@@ -15,4 +15,4 @@ const ReduxToast: FC = () => {
 	)
 }
 
-export default ReduxToast;
+export default ReduxToast

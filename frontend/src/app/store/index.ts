@@ -10,6 +10,7 @@ import {
   persistStore
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
+
 import { rootReducer } from './reducer';
 
 const persistConfig = {
@@ -33,4 +34,4 @@ export const store = configureStore({
 
 export const persistor = persistStore(store)
 
-export type TypeRootState = ReturnType<typeof rootReducer>;
+export type TypeRootState = ReturnType<typeof rootReducer>

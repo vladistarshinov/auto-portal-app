@@ -1,8 +1,11 @@
-import { FC } from "react";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import ProductCard from "../product-card/ProductCard";
-import Heading from "@/shared/ui/heading/Heading";
+import { FC } from "react"
+import {
+	Box,
+	Grid
+} from "@mui/material"
+
+import Heading from "@/shared/ui/heading/Heading"
+import ProductCard from "@/entities/product/ui/ProductCard"
 
 const ProductList: FC<{products: any}> = ({ products }) => {
 	return (
@@ -29,7 +32,7 @@ const ProductList: FC<{products: any}> = ({ products }) => {
 				))}
 			</Box>
 		</>
-	);
-};
+	)
+}
 
-export default ProductList;
+export default ProductList

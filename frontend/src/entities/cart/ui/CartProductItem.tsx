@@ -1,12 +1,13 @@
-import { Box, CardContent, Grid, IconButton, Link, styled } from '@mui/material';
-import { FC } from 'react';
-import DeleteIcon from '@mui/icons-material/Delete';
-import SelectInput from "../../../shared/ui/select-input/SelectInput";
-import AddIcon from '@mui/icons-material/Add';
-import RemoveIcon from '@mui/icons-material/Remove';
-import { useActions } from '@/shared/hooks/useActions';
-import ChangeQuantityProductButton from '@/features/change-product-quantity/ChangeQuantityProduct';
-import RemoveFromCartButton from '@/features/remove-from-cart/RemoveFromCartButton';
+import { FC } from 'react'
+import { Box, CardContent, Grid, IconButton, Link, styled } from '@mui/material'
+import DeleteIcon from '@mui/icons-material/Delete'
+import SelectInput from "@/shared/ui/select-input/SelectInput"
+import AddIcon from '@mui/icons-material/Add'
+import RemoveIcon from '@mui/icons-material/Remove'
+
+import { useActions } from '@/app/store/utils/useActions'
+import ChangeQuantityProductButton from '@/features/change-product-quantity/ChangeQuantityProduct'
+import RemoveFromCartButton from '@/features/remove-from-cart/RemoveFromCartButton'
 
 interface ICardProductItem {
 	item: any
@@ -20,7 +21,7 @@ const CardProductItem: FC<ICardProductItem> = ({item, quantity, isPlaceorder}) =
 	const LinkToProductDetails = styled(Link)({
 		color: "navy",
 		textDecoration: "none",
-	});
+	})
 
 
 	return (

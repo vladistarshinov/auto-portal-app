@@ -1,7 +1,8 @@
-import CardProductItem from "./CartProductItem"
-import { Button, Card, CardContent, Grid, Link, styled, Typography } from "@mui/material"
 import { useRouter } from "next/router"
+import { Button, Card, CardContent, Grid, Link, styled, Typography } from "@mui/material"
+
 import { useAuth } from "@/processes/auth/model/hooks/useAuth"
+import CardProductItem from "./CartProductItem"
 import { useCart } from "../model/useCart"
 
 const Cart = () => {
@@ -10,14 +11,14 @@ const Cart = () => {
 	const { cart, total, totalNum } = useCart()
 
 	const checkoutHandler = () => {
-		if (user) router.push("/shipping");
+		if (user) router.push("/shipping")
 		else router.push("/login")
-	};
+	}
 
 	const LinkToProductDetails = styled(Link)({
 		color: "navy",
 		textDecoration: "none",
-	});
+	})
 
 	return (
 		<>

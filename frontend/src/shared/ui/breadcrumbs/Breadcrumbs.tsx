@@ -1,5 +1,5 @@
-import { Box, Breadcrumbs, Link } from "@mui/material";
-import { FC } from "react";
+import { FC } from "react"
+import { Box, Breadcrumbs, Link } from "@mui/material"
 
 interface INavElements {
 	title: string
@@ -24,7 +24,7 @@ const BreadCrumbs: FC<{navElements: INavElements[]}> = ({ navElements }) => {
 					))}
 			</Breadcrumbs>
 		</Box>
-	);
-};
+	)
+}
 
-export default BreadCrumbs;
+export default BreadCrumbs

@@ -1,20 +1,30 @@
-import { useCheckout } from "@/processes/checkout/model/useCheckout";
-import { useActions } from "@/shared/hooks/useActions";
-import CheckoutSteps from "@/widgets/chechout-steps/CheckoutSteps";
-import { Box, Button, FormControl, FormControlLabel, FormLabel, Link, Radio, RadioGroup, Typography } from "@mui/material";
-import { useRouter } from "next/router";
-import { FC, useState } from "react";
+import { FC, useState } from "react"
+import { useRouter } from "next/router"
+import {
+	Box,
+	Button,
+	FormControl,
+	FormControlLabel,
+	FormLabel,
+	Link,
+	Radio,
+	RadioGroup,
+	Typography
+} from "@mui/material"
+
+import { useActions } from "@/app/store/utils/useActions"
+import { useCheckout } from "@/processes/checkout/model/useCheckout"
+import CheckoutSteps from "@/widgets/chechout-steps/CheckoutSteps"
 
 const PaymentForm: FC = () => {
-
 	const router = useRouter()
 	const {savePaymentMethod} = useActions()
 	const {paymentMethod: payment} = useCheckout()
-	const [paymentMethod, setPaymentMethod] = useState("card");
+	const [paymentMethod, setPaymentMethod] = useState("card")
 
 	const submitHandler = () => {
 		savePaymentMethod(paymentMethod)
-		router.push("/placeorder");
+		router.push("/placeorder")
 	};
 
 	return (
@@ -54,7 +64,7 @@ const PaymentForm: FC = () => {
 					</Link>
 				</Button>
 			</>
-	);
-};
+	)
+}
 
-export default PaymentForm;
+export default PaymentForm

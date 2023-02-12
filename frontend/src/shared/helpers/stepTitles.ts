@@ -11,4 +11,4 @@ export const steps: { label: string, url: string }[] = [
 		label: "Заказ",
 		url: "/placeorder",
 	},
-];
+]

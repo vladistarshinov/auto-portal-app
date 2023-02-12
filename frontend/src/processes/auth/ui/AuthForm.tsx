@@ -1,11 +1,12 @@
-import { useActions } from "@/shared/hooks/useActions"
-import { useAuthRedirect } from "@/shared/hooks/useAuthRedirect"
-import Heading from "@/shared/ui/heading/Heading"
-import { Box, Button, Link } from "@mui/material"
 import { useState } from "react"
+import { Box, Button, Link } from "@mui/material"
 import { SubmitHandler, useForm } from "react-hook-form"
-import { IAuth, ILogin, IRegister } from "../model/types/auth.interface"
+
+import { useActions } from "@/app/store/utils/useActions"
+import Heading from "@/shared/ui/heading/Heading"
 import AccountDataFields from "./AccountDataFields"
+import { IAuth, ILogin, IRegister } from "../model/types/auth.interface"
+import { useAuthRedirect } from "../model/hooks/useAuthRedirect"
 
 const AuthForm = () => {
 	useAuthRedirect()
@@ -18,7 +19,6 @@ const AuthForm = () => {
 		reset,
 	} = useForm<IAuth<ILogin | IRegister>>({
 		mode: 'onChange',
-		//resolver: yupResolver(LoginFormSchema),
 	})
 
 	const { register, login } = useActions()
@@ -31,7 +31,7 @@ const AuthForm = () => {
 			register(data)
 		}
 
-		//reset();
+		//reset()
 	}
 
 	return (

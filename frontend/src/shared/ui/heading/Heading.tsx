@@ -1,5 +1,5 @@
-import { Typography } from '@mui/material';
-import {FC} from 'react';
+import { FC } from 'react'
+import { Typography } from '@mui/material'
 
 interface IHeading {
 	title: string

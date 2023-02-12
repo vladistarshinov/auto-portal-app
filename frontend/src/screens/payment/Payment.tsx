@@ -1,10 +1,10 @@
-import PaymentForm from "@/processes/checkout/ui/PaymentForm";
-import CheckoutSteps from "@/widgets/chechout-steps/CheckoutSteps";
-import { Box, Typography } from "@mui/material";
-import { FC } from "react";
+import { FC } from "react"
+import { Box, Typography } from "@mui/material"
 
-const Payment: FC = () => {
+import PaymentForm from "@/processes/checkout/ui/PaymentForm"
+import CheckoutSteps from "@/widgets/chechout-steps/CheckoutSteps"
 
+const PaymentScreen: FC = () => {
 	return (
 		<Box flexDirection={"column"} marginX={10}>
 			<CheckoutSteps currentStep={1} />
@@ -13,7 +13,7 @@ const Payment: FC = () => {
 			</Typography>
 			<PaymentForm />
 		</Box>
-	);
-};
+	)
+}
 
-export default Payment;
+export default PaymentScreen

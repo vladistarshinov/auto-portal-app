@@ -1,10 +1,11 @@
-import { Box, Grid, List, ListItem, Paper, Typography } from '@mui/material';
-import { FC } from 'react';
-import DevicesOtherIcon from "@mui/icons-material/DevicesOther";
-import OrderProductTable from '@/widgets/order/OrderProductTable';
-import OrderProductActionsStatus from '@/widgets/order/OrderProductActionStatus';
+import { FC } from 'react'
+import { Box, Grid, List, ListItem, Paper, Typography } from '@mui/material'
+import DevicesOtherIcon from "@mui/icons-material/DevicesOther"
 
-const Order: FC<{order: any}> = ({order}) => {
+import OrderProductTable from '@/entities/order/ui/OrderProductTable'
+import OrderProductActionsStatus from '@/features/change-order-status/OrderProductActionStatus'
+
+const OrderScreen: FC<{order: any}> = ({order}) => {
 	return (
 		<>
 			<Box id="printOrder">
@@ -75,7 +76,7 @@ const Order: FC<{order: any}> = ({order}) => {
 
 			</Box>
 		</>
-	);
-};
+	)
+}
 
-export default Order;
+export default OrderScreen

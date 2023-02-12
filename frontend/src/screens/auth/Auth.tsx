@@ -1,8 +1,9 @@
 import { FC } from 'react'
 import Box from '@mui/material/Box'
+
 import AuthForm from '@/processes/auth/ui/AuthForm'
 
-const Auth: FC = () => {
+const AuthScreen: FC = () => {
 
 	return (
 		<Box display="flex" alignItems="center" paddingTop='5%' flexDirection="column">
@@ -11,4 +12,4 @@ const Auth: FC = () => {
 	)
 }
 
-export default Auth
+export default AuthScreen

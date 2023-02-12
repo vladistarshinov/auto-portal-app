@@ -1,33 +1,38 @@
-import { useCart } from '@/entities/cart/model/useCart';
-import CardProductItem from '@/entities/cart/ui/CartProductItem';
-import { useCheckout } from '@/processes/checkout/model/useCheckout';
-import CheckoutSteps from '@/widgets/chechout-steps/CheckoutSteps';
-import { Box, Button, Card, CardMedia, Grid, List, ListItem, Paper } from '@mui/material';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { FC, useEffect } from 'react';
+import { FC, useEffect } from 'react'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import {
+	Box,
+	Button,
+	Card,
+	CardMedia,
+	Grid,
+	List,
+	ListItem,
+	Paper
+} from '@mui/material'
 
-const PlaceOrder = () => {
+import CheckoutSteps from '@/widgets/chechout-steps/CheckoutSteps'
+import CardProductItem from '@/entities/cart/ui/CartProductItem'
+import { useCart } from '@/entities/cart/model/useCart'
+import { useCheckout } from '@/processes/checkout/model/useCheckout'
+
+const PlaceOrderScreen = () => {
 	const router = useRouter()
 	const {cart, total} = useCart()
 	const {shippingAddress, paymentMethod} = useCheckout()
 
 	const addDecimal = (num: number) => {
-		return (Math.round(num * 100) / 100).toFixed(2);
-	};
+		return (Math.round(num * 100) / 100).toFixed(2)
+	}
 
-	const shippingPrice = addDecimal(Number(total) > 300 ? 0 : 100);
-	const taxPrice = addDecimal(Number(0.13 * Number(total)));
+	const shippingPrice = addDecimal(Number(total) > 300 ? 0 : 100)
+	const taxPrice = addDecimal(Number(0.13 * Number(total)))
 	const totalPrice = addDecimal(
 		Number(total) +
 		Number(shippingPrice) +
 		Number(taxPrice)
-	);
-
-	//const dispatch = useDispatch();
-
-	//const orderCreate = useSelector((state) => state.orderCreate);
-	//const { order, success, error } = orderCreate;
+	)
 
 	const placeOrderHandler = () => {
 		/* createOrder({
@@ -40,12 +45,12 @@ const PlaceOrder = () => {
 			totalPrice: cart.totalPrice,
 		}) */
 		//router.push(`/order/${order._id}`);
-	};
+	}
 
 	const LinkToProductDetails = {
 		color: "navy",
 		textDecoration: "none",
-	};
+	}
 
 	return (
 		<>
@@ -142,7 +147,7 @@ const PlaceOrder = () => {
 				</Grid>
 			</Box>
 		</>
-	);
-};
+	)
+}
 
-export default PlaceOrder;
+export default PlaceOrderScreen

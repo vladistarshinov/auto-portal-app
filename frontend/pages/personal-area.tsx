@@ -1,12 +1,12 @@
-import PersonalArea from '@/screens/personal-area/PersonalArea';
-import { UserService } from '@/services/user/user.service';
-import { GetStaticProps, NextPage } from 'next';
-import { NextAuthPage } from '@/shared/types/auth.types';
+import { GetStaticProps, NextPage } from 'next'
+
+import { NextAuthPage } from '@/shared/types/auth.types'
+import PersonalAreaScreen from '@/screens/personal-area/PersonalArea'
 
 const PersonalAreaPage: NextAuthPage = () => {
-	return <PersonalArea />;
-};
+	return <PersonalAreaScreen />
+}
 
-PersonalAreaPage.isOnlyUser = true;
+PersonalAreaPage.isOnlyUser = true
 
-export default PersonalAreaPage;
+export default PersonalAreaPage

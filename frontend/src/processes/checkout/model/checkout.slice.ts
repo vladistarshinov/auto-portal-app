@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 interface IShippingAddress {
 	address: string
@@ -28,6 +28,6 @@ export const checkoutSlice = createSlice({
 			state.paymentMethod = action.payload
 		},
 	}
-});
+})
 
-export const { reducer } = checkoutSlice;
+export const { reducer } = checkoutSlice

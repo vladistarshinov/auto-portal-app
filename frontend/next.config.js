@@ -17,8 +17,8 @@ const nextConfig = {
 				source: '/uploads/:path*',
 				destination: `http://localhost:4201/uploads/:path*`,
 			},
-		];
+		]
 	},
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig

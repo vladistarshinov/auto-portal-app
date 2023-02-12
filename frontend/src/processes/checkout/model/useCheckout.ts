@@ -1,4 +1,4 @@
-import { useTypedSelector } from '../../../shared/hooks/useTypedSelector'
+import { useTypedSelector } from "@/app/store/utils/useTypedSelector"
 
 export const useCheckout = () => {
 	const shippingAddress = useTypedSelector(state => state.checkout.shippingAddress)

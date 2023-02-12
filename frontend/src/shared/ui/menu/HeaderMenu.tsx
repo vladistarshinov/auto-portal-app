@@ -1,38 +1,42 @@
-import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
-import BookmarksIcon from '@mui/icons-material/Bookmarks';
-import GroupIcon from '@mui/icons-material/Group';
-import Inventory2Icon from '@mui/icons-material/Inventory2';
-import Logout from '@mui/icons-material/Logout';
-import Avatar from '@mui/material/Avatar';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Divider from '@mui/material/Divider';
-import Link from '@mui/material/Link';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import { FC, useState } from 'react';
+import { FC, useState } from 'react'
+import {
+	AdminPanelSettings as AdminPanelSettingsIcon,
+	Bookmarks as BookmarksIcon,
+	Group as GroupIcon,
+	Inventory2 as Inventory2Icon,
+	Logout as LogoutIcon
+} from '@mui/icons-material'
+import {
+	Avatar,
+	Box,
+	Button,
+	Divider,
+	Link,
+	ListItemIcon,
+	Menu,
+	MenuItem
+} from '@mui/material'
 
-import { AuthService } from '@/processes/auth/model/auth.service';
-import { useAuth } from '@/processes/auth/model/hooks/useAuth';
+import { AuthService } from '@/processes/auth/model/auth.service'
+import { useAuth } from '@/processes/auth/model/hooks/useAuth'
 
 const HeaderMenu: FC = () => {
-	const { user } = useAuth();
+	const { user } = useAuth()
 
-	const [anchorMenuEl, setAnchorMenuEl] = useState(null);
-	const openMenu = Boolean(anchorMenuEl);
+	const [anchorMenuEl, setAnchorMenuEl] = useState(null)
+	const openMenu = Boolean(anchorMenuEl)
 	const handleMenuClick = (event: any) => {
-		setAnchorMenuEl(event.currentTarget);
-	};
+		setAnchorMenuEl(event.currentTarget)
+	}
 	const handleMenuClose = () => {
-		setAnchorMenuEl(null);
-	};
+		setAnchorMenuEl(null)
+	}
 
 	const logoutHandler = async () => {
 		await AuthService.logout()
 		location.reload()
 		//setUser(null)
-	};
+	}
 
 	const buttonStyle = {
 		ml: 2,
@@ -45,7 +49,7 @@ const HeaderMenu: FC = () => {
 			bgcolor: 'transparent',
 			color: '#000',
 		},
-	};
+	}
 
 	const menuStyle = {
 		elevation: 0,
@@ -72,7 +76,7 @@ const HeaderMenu: FC = () => {
 				zIndex: 0,
 			},
 		},
-	};
+	}
 
 	return (
 		<Box sx={{ my: { sm: 1, xs: 1 } }}>
@@ -110,7 +114,7 @@ const HeaderMenu: FC = () => {
 						<Divider />
 						<MenuItem onClick={logoutHandler}>
 							<ListItemIcon>
-								<Logout fontSize="small" />
+								<LogoutIcon fontSize="small" />
 							</ListItemIcon>
 							Logout
 						</MenuItem>
@@ -122,7 +126,7 @@ const HeaderMenu: FC = () => {
 				</Link>
 			)}
 		</Box>
-	);
-};
+	)
+}
 
-export default HeaderMenu;
+export default HeaderMenu

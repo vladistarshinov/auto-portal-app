@@ -1,15 +1,15 @@
-import { createTheme } from "@mui/material";
+import { createTheme } from "@mui/material"
 
 const THEME_COLORS = {
   primary: "#A5A6F6",
   dark: "#343a40",
   text: "#000000DE",
   muted: "#9B9B9B",
-};
+}
 
 declare module "@mui/material/styles/createPalette" {
   interface TypeText {
-    muted: string;
+    muted: string
   }
 }
 
@@ -136,4 +136,4 @@ export default createTheme({
       muted: THEME_COLORS.muted,
     },
   },
-});
+})

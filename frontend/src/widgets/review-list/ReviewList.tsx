@@ -1,7 +1,8 @@
+import { FC } from "react"
+import { Box } from "@mui/material"
+
 import Reviews from "@/entities/review/ui/Reviews"
 import { useAuth } from "@/processes/auth/model/hooks/useAuth"
-import { Box } from "@mui/material"
-import { FC } from "react"
 
 const ReviewList: FC<{product: any}> = ({product}) => {
 	const {user} = useAuth()

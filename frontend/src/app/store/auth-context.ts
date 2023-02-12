@@ -1,5 +1,5 @@
-import { IUser } from "../../shared/types/user.types"
 import { createContext, Dispatch, SetStateAction } from "react"
+import { IUser } from "@/shared/types/user.types"
 
 export type TypeUserState = IUser | null
 

@@ -1,11 +1,13 @@
-import React, { FC } from "react";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Dialog from "@mui/material/Dialog";
-import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
-import CloseIcon from "@mui/icons-material/Close";
-import { IconButton } from "@mui/material";
+import { FC } from "react"
+import {
+	Box,
+	Typography,
+	Dialog,
+	DialogTitle,
+	DialogContent,
+	IconButton
+} from "@mui/material"
+import CloseIcon from "@mui/icons-material/Close"
 
 interface IModalWrapper {
 	open: boolean
@@ -16,8 +18,8 @@ interface IModalWrapper {
 const ModalWrapper: FC<IModalWrapper> = ({ open, setOpen, title, children }) => {
 
 	const handleClose = () => {
-		setOpen(false);
-	};
+		setOpen(false)
+	}
 
 	return (
 		<>
@@ -95,7 +97,7 @@ const ModalWrapper: FC<IModalWrapper> = ({ open, setOpen, title, children }) => 
 				</Box>
 			</Dialog>
 		</>
-	);
-};
+	)
+}
 
-export default ModalWrapper;
+export default ModalWrapper
