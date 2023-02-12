@@ -20,7 +20,6 @@ import {
 import Heading from "@/shared/ui/heading/Heading"
 import Rating from "@/shared/ui/rating/Rating"
 import SelectInput from "@/shared/ui/select-input/SelectInput"
-import { useActions } from "@/shared/hooks/useActions"
 import AddToCartButton from "@/features/add-to-cart/AddToCartButton"
 import ProductDetail from "@/entities/product/ui/ProductDetail"
 import ReviewList from "@/widgets/review-list/ReviewList"
