@@ -11,7 +11,7 @@ const Footer: FC = () => {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex: 0 0 auto;
+    //flex: 0 0 auto;
     background-color: #f8f9fa;
     border-top: 0.1rem rgba(0, 0, 0, 0.05) solid;
     color: rgba(0, 0, 0, 0.5);

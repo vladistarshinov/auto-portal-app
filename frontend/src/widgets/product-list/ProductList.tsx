@@ -6,15 +6,16 @@ import {
 
 import Heading from "@/shared/ui/heading/Heading"
 import ProductCard from "@/entities/product/ui/ProductCard"
+import { IProduct, IProductsResponse } from "@/shared/api/types/product.types"
 
-const ProductList: FC<{products: any}> = ({ products }) => {
+const ProductList: FC<{products: IProductsResponse}> = ({ products }) => {
 	return (
 		<>
 			<Box sx={{ display: 'flex', justifyContent: 'center', mt: '1rem' }}>
 				<Heading title='Все товары'></Heading>
 			</Box>
 			<Box>
-				{products?.res?.map((product: any) => (
+				{products?.res?.map((product: IProduct) => (
 					<Grid
 						item
 						display="inline-grid"

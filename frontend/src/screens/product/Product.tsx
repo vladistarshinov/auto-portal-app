@@ -20,13 +20,14 @@ import {
 import Heading from "@/shared/ui/heading/Heading"
 import Rating from "@/shared/ui/rating/Rating"
 import SelectInput from "@/shared/ui/select-input/SelectInput"
+import { IProductDetailResponse } from "@/shared/api/types/product.types"
 import AddToCartButton from "@/features/add-to-cart/AddToCartButton"
 import ProductDetail from "@/entities/product/ui/ProductDetail"
 import ReviewList from "@/widgets/review-list/ReviewList"
 import { useAuth } from "@/processes/auth/model/hooks/useAuth"
 import { useCart } from "@/entities/cart/model/useCart"
 
-const ProductScreen: FC<{ product: any }> = ({product}) => {
+const ProductScreen: FC<{ product: IProductDetailResponse }> = ({product}) => {
 	const {user} = useAuth()
 	const ReviewsCount = styled(Box)({
 		marginLeft: "0.25rem",
@@ -34,7 +35,6 @@ const ProductScreen: FC<{ product: any }> = ({product}) => {
 
 	return (
 		<Box sx={{ mx: 5 }}>
-			<Heading title={product.name} />
 			<ProductDetail product={product} />
 			<ReviewList product={product} />
 		</Box>

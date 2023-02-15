@@ -6,15 +6,15 @@ import {
 	Menu,
 	MenuItem,
 	Link,
-	Box
+	Box,
 } from "@mui/material"
 import {
 	ArrowDropDown as ArrowDropDownIcon,
-	ShoppingCart as ShoppingCartIcon,
-	DevicesOther as DevicesOtherIcon
+	CarRepairOutlined as CarRepairOutlinedIcon
 } from "@mui/icons-material"
 
 import HeaderMenu from "@/shared/ui/menu/HeaderMenu"
+import CartIconButton from '@/entities/cart/ui/CartIconButton'
 
 const Header: FC = () => {
 	const [anchorCategoryEl, setAnchorCategoryEl] = useState(null)
@@ -49,10 +49,10 @@ const Header: FC = () => {
 					href="/"
 					underline="none"
 					color="text.primary"
-					sx={{ display: "flex", my: { sm: 1, xs: 1 } }}
+					sx={{ display: "flex", alignItems: 'center', my: { sm: 1, xs: 1 } }}
 				>
-					<DevicesOtherIcon sx={{ mr: 1 }} />
-					IGadgetShop
+					<CarRepairOutlinedIcon sx={{ mr: 1, fontSize: 40 }} />
+					<h3>Автоголд</h3>
 				</Link>
 				<Button
 					sx={{
@@ -73,7 +73,7 @@ const Header: FC = () => {
 					aria-expanded={openCategory ? "true" : undefined}
 					onClick={handleCategoryClick}
 				>
-					Категория
+					Каталог
 					<ArrowDropDownIcon />
 				</Button>
 				<Menu
@@ -89,14 +89,7 @@ const Header: FC = () => {
 					<MenuItem onClick={handleCategoryClose}>Телефоны</MenuItem>
 					<MenuItem onClick={handleCategoryClose}>Разное</MenuItem>
 				</Menu>
-				<Link
-					href="/cart"
-					underline="none"
-					color="text.primary"
-					sx={{ display: "flex", my: { sm: 1, xs: 1 } }}
-				>
-					<ShoppingCartIcon />
-				</Link>
+				<CartIconButton />
 				<HeaderMenu />
 			</Box>
 		</Stack>

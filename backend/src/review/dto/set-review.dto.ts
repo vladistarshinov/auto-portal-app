@@ -12,7 +12,4 @@ export class SetReviewDto {
 
     @IsObjectId({ message: 'Невалидный id товара' })
     productId: Types.ObjectId
-
-    @IsObjectId({ message: 'Невалидный id товара' })
-    userId: Types.ObjectId
 }

@@ -3,17 +3,21 @@ import { GetStaticPaths, GetStaticProps } from "next"
 import { NextAuthPage } from "@/shared/types/auth.types"
 import ProductScreen from "@/screens/product/Product"
 import { ProductService } from "@/entities/product/model/product.service"
+import { IProduct, IProductDetailResponse } from "@/shared/api/types/product.types"
+import NotFoundPage from "../404"
 
 
-const ProductPage: NextAuthPage<{ product: any | undefined }> = ({product}) => {
-	return <ProductScreen product={product} />
+const ProductPage: NextAuthPage<{ product: IProductDetailResponse | undefined }> = ({product}) => {
+	return (
+		product ? <ProductScreen product={product} /> : <NotFoundPage />
+	)
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	try {
 		const { data: products } = await ProductService.getProducts()
 
-		const paths = products.res.map((product: any) => ({
+		const paths = products.res.map((product: IProduct) => ({
 			params: { slug: product.slug },
 		}))
 

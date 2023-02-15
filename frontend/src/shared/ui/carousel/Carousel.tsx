@@ -15,14 +15,16 @@ import {
 	KeyboardArrowRight
 } from '@mui/icons-material'
 
+import { IProduct } from "@/shared/api/types/product.types";
+
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews)
 
-const Carousel: FC<{ products: any }> = ({ products }) => {
+const Carousel: FC<{ products: IProduct[] }> = ({ products }) => {
 	const theme = useTheme()
 	const [activeStep, setActiveStep] = useState(0)
 	const maxSteps = products.length
 
-	const handleStepChange = (step: any) => {
+	const handleStepChange = (step: number) => {
 		setActiveStep(step)
 	}
 
@@ -64,7 +66,7 @@ const Carousel: FC<{ products: any }> = ({ products }) => {
 				onChangeIndex={handleStepChange}
 				enableMouseEvents
 			>
-				{products.map((p: any, index: number) => (
+				{products.map((p: IProduct, index: number) => (
 					<Box key={p._id} display='flex' justifyContent='center'>
 						{Math.abs(activeStep - index) <= 2 ? (
 								<Box

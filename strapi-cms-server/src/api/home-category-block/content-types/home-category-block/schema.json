@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "home_category_blocks",
+  "info": {
+    "singularName": "home-category-block",
+    "pluralName": "home-category-blocks",
+    "displayName": "HomeCategoryBlock",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "desc": {
+      "type": "text",
+      "maxLength": 160,
+      "required": true
+    },
+    "icon": {
+      "type": "string",
+      "required": false,
+      "unique": true
+    },
+    "isMain": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

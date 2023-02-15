@@ -1,4 +1,6 @@
-export type IProducts = IMeta & {
+import { IUserResponse } from "@/shared/types/user.types"
+
+export type IProductsResponse = IMeta & {
 	res: IProduct[]
 }
 
@@ -7,6 +9,7 @@ export interface IProduct {
 	title: string
 	description: string
 	imageUrl: string
+	videoUrl?: string
 	brand: string
 	oldPrice: number
 	price: number
@@ -14,11 +17,11 @@ export interface IProduct {
 	countOfViews: number
 	rating: number
 	isSendTelegram: boolean
-	category: string
 	createdAt: string
-	reviews: string[]
 	countOfReviews: number
 	slug: string
+	category: string
+	reviews: string[]
 }
 
 export interface IMeta {
@@ -26,4 +29,29 @@ export interface IMeta {
 	current_page: number
 	from: number
 	to: number
+}
+
+export interface ICategory {
+	_id: string
+	title: string
+	slug: string
+	description: string
+	icon: string
+	createdAt: string
+	updatedAt: string
+}
+
+export interface IReview {
+	_id: string
+	product: string
+	user: Omit<IUserResponse, '_id' | 'firstName' | 'lastName'>
+	description: string
+	rating: number
+	createdAt: string
+	updatedAt: string
+}
+
+	export type IProductDetailResponse = IProduct & {
+		category: ICategory,
+		reviews: IReview[]
 }

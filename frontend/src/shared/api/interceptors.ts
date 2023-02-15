@@ -5,10 +5,15 @@ import { AuthService } from '@/processes/auth/model/auth.service'
 import { removeTokensStorage } from '@/processes/auth/lib/auth.helper'
 import { API_URL } from '../configs/api.config'
 import { errorCatch, getContentType } from './api.helper'
+import { STRAPI_CMS_URL } from '../configs/strapi-api.config'
 
 export const axiosClassic = axios.create({
 	baseURL: API_URL,
 	headers: getContentType(),
+})
+
+export const axiosStrapiClassic = axios.create({
+	baseURL: STRAPI_CMS_URL,
 })
 
 export const instance = axios.create({

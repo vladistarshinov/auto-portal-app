@@ -86,10 +86,14 @@ export class ProductService {
 
     public async getById(id: Types.ObjectId): Promise<ProductDocument> {
         const product = await this.productModel.findById(id)
-              .populate('category')
+              .populate({
+                  path: 'category',
+                  select: '-__v'
+              })
               .populate({
                   path: 'reviews',
                   model: 'Review',
+                  select: '-__v',
                   populate: {
                       path: 'user',
                       model: 'User',
@@ -105,10 +109,14 @@ export class ProductService {
 
     public async getBySlug(slug: string) {
         const product = await this.productModel.findOne({ slug })
-          .populate('category')
+          .populate({
+              path: 'category',
+              select: '-__v'
+          })
           .populate({
               path: 'reviews',
               model: 'Review',
+              select: '-__v',
               populate: {
                   path: 'user',
                   model: 'User',

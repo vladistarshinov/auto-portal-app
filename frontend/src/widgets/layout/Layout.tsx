@@ -8,7 +8,7 @@ const Layout: FC = ({children}) => {
 	return (
 		<>
 			<Header />
-			<Box sx={{flex: "1 0 auto", height: '95vh', overflowY: 'auto', pb: '2rem', pt: '5rem'}}>
+			<Box sx={{flex: "1 0 auto",  minHeight: '95vh', overflowY: 'auto', pb: '2rem', pt: '6rem'}}>
 				{children}
 			</Box>
 			<Footer />

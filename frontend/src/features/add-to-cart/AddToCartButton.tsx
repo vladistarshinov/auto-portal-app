@@ -4,12 +4,15 @@ import AddIcon from '@mui/icons-material/Add'
 import DeleteIcon from '@mui/icons-material/Delete'
 
 import { useActions } from "@/app/store/utils/useActions"
+import { IProductDetailResponse } from "@/shared/api/types/product.types"
 
 interface IAddToCartProps {
-	item: any
+	item: IProductDetailResponse
 	quantity : number
 }
-
+ /*
+	TODO: Убрать из item лишние данные
+ */
 const AddToCartButton: FC<IAddToCartProps> = ({ item, quantity }) => {
 	const { addToCart } = useActions()
 	return (

@@ -1,6 +1,6 @@
 import {FC, useState} from "react"
 import Link from "next/link"
-import Image from 'next/image';
+import Image from 'next/image'
 import { styled } from "@mui/material/styles"
 import {
 	Card,
@@ -16,8 +16,9 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 import Rating from "@/shared/ui/rating/Rating"
 import { genEndOfNoun } from "@/shared/libs/gen-end-of-noun"
+import { IProduct } from "@/shared/api/types/product.types"
 
-const ProductCard: FC<{ product: any }> = ({ product }) => {
+const ProductCard: FC<{ product: IProduct }> = ({ product }) => {
 	return (
 		<Card sx={{ my: 3, mx: 2, cursor: 'pointer' }}>
 			<Link href={`/products/${product.slug}`}>

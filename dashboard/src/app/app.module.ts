@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { ScreensRoutingModule } from './screens/screens-routing.module';
+import { PagesRoutingModule } from './pages/pages-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderModule } from './shared/ui/layout/header/header.module';
 
@@ -11,7 +11,7 @@ import { HeaderModule } from './shared/ui/layout/header/header.module';
   ],
   imports: [
     BrowserModule,
-    ScreensRoutingModule,
+    PagesRoutingModule,
     HeaderModule
   ],
   providers: [],

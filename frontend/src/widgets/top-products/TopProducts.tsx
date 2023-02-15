@@ -4,8 +4,9 @@ import Box from "@mui/material/Box"
 
 import Carousel from "@/shared/ui/carousel/Carousel"
 import Heading from "@/shared/ui/heading/Heading"
+import { IProduct } from '@/shared/api/types/product.types'
 
-const TopProductsCarousel: FC<{ products: any[] }> = ({products}) => {
+const TopProductsCarousel: FC<{ products: IProduct[] }> = ({products}) => {
 
 	return (
 		<>

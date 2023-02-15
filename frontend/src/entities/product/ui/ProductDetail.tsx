@@ -18,11 +18,11 @@ import {
 import Heading from "@/shared/ui/heading/Heading"
 import Rating from "@/shared/ui/rating/Rating"
 import SelectInput from "@/shared/ui/select-input/SelectInput"
-import { useActions } from "@/shared/hooks/useActions"
+import { IProductDetailResponse } from "@/shared/api/types/product.types"
 import AddToCartButton from "@/features/add-to-cart/AddToCartButton"
 import { useAuth } from "@/processes/auth/model/hooks/useAuth"
 
-const ProductDetail: FC<{product: any}> = ({product}) => {
+const ProductDetail: FC<{product: IProductDetailResponse}> = ({product}) => {
 	const [quantity, setQuantity] = useState(1)
 
 	return (
