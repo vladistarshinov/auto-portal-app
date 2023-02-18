@@ -1,0 +1,39 @@
+.wrapper {
+  @apply relative inline-flex;
+
+  .logo__btn {
+    //@apply shadow-icon;
+  }
+
+  .form {
+    @apply p-4 absolute right-2 w-60 z-20 rounded-lg;
+    top: calc(100% + 1.4rem);
+    background-color: #dbe0f0;
+
+    &-item {
+      @apply relative block mb-5;
+
+      &__input {
+        @apply p-2 w-full text-xs rounded-md overflow-hidden block bg-white;
+
+        &::placeholder {
+          @apply text-gray-400 font-light;
+        }
+
+        &:focus-visible {
+          outline: none;
+        }
+      }
+
+      &__error {
+        @apply absolute -bottom-4 left-0 w-full text-primary;
+        font-size: 0.75rem;
+      }
+
+      > .icon {
+        @apply absolute top-2 left-2 text-stone-600 text-lg;
+      }
+    }
+  }
+}
+

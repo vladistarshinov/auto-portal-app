@@ -1,0 +1,13 @@
+<div class='wrapper'>
+  <button class='logo__btn' (click)='handleShow()'>Открыть</button>
+  <form class='form' *ngIf="isShow">
+    <div class='form-item'>
+      <input class='form-item__input' type='text' placeholder='Введите логин' />
+      <div class='form-item__error'>Не введен пароль</div>
+    </div>
+    <div class='form-item'>
+      <input class='form-item__input' type='password' placeholder='Введите пароль' />
+      <div class='form-item__error'>Не введен пароль</div>
+    </div>
+  </form>
+</div>
