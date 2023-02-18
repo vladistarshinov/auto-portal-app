@@ -5,14 +5,21 @@ import HomeScreen from '@/screens/home/Home'
 import { ProductService } from '@/entities/product/model/product.service'
 import { axiosStrapiClassic } from '@/shared/api/interceptors'
 import { getHomeCategoryBlockUrl } from '@/shared/configs/strapi-api.config'
+import { IHomeCategoryBlockContent } from '@/shared/api/types/strapi-content.types'
 
-const HomePage: NextPage<{ homeCategoryBlocks: any, products: IProductsResponse, topProducts: IProduct[] }> = ({ homeCategoryBlocks, products, topProducts }) => {
+interface IHomePage {
+	homeCategoryBlocks: any
+	products: IProductsResponse
+	topProducts: IProduct[]
+}
+
+const HomePage: NextPage<IHomePage> = ({ homeCategoryBlocks, products, topProducts }) => {
 	return <HomeScreen homeCategoryBlocks={homeCategoryBlocks.data} products={products} topProducts={topProducts} />
 }
 
 export const getStaticProps: GetStaticProps = async () => {
 	try {
-		const { data: homeCategoryBlocks } = await axiosStrapiClassic.get<any[]>(getHomeCategoryBlockUrl())
+		const { data: homeCategoryBlocks } = await axiosStrapiClassic.get<IHomeCategoryBlockContent[]>(getHomeCategoryBlockUrl())
 		const { data: products } = await ProductService.getProducts()
 		const { data: topProducts } = await ProductService.getTopProducts()
 		return {
