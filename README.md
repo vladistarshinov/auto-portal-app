@@ -46,6 +46,16 @@
     * React-hook-form
     * Draft.js
 
+## Стек технологий/библиотек (Dashboard)
+    * Angular
+    * Typescript
+    * Tailwind
+    * Rx.js
+    * Axios
+    * Chart.js
+    * Ngx-toastr
+    * Draft.js
+
   ## Стек технологий/библиотек (Back-end)
     * Nest.js
     * TypeScript
