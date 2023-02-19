@@ -1,0 +1,78 @@
+.loading-container {
+  position: relative;
+  display: flex;
+  div {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > div {
+      width: 16px;
+      height: 16px;
+      display: block;
+      border-radius: 100%;
+
+      &.green {
+        background: #7BE03E;
+        animation: loading-1 2s linear infinite;
+      }
+
+      &.pink {
+        background: #D77EF8;
+        animation: loading-2  2s  linear infinite;
+      }
+
+      &.blue {
+        background: #1DD5FF;
+        animation: loading-3  2s  linear infinite;
+      }
+    }
+  }
+}
+
+@keyframes loading-1 {
+  0% {
+    width: 16px;
+    height: 16px;
+  }
+  16% {
+    width: 32px;
+    height: 32px;
+  }
+  33%, 100% {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@keyframes loading-2 {
+  0%,33% {
+    width: 16px;
+    height: 16px;
+  }
+  49% {
+    width: 32px;
+    height: 32px;
+  }
+  66%, 100% {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@keyframes loading-3 {
+  0%,66% {
+    width: 16px;
+    height: 16px;
+  }
+  83% {
+    width: 32px;
+    height: 32px;
+  }
+  100% {
+    width: 16px;
+    height: 16px;
+  }
+}

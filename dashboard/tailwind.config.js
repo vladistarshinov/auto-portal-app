@@ -50,18 +50,19 @@ module.exports = {
           }
         }
       }),
-      addUtilities({
-        '.flex-center-between': {
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center'
-        },
-        '.flex-center-center': {
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center'
-        }
-      })
+        addUtilities({
+          '.flex-center-between': {
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center'
+          },
+          '.flex-center-center': {
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }
+        })
     })
   ],
 }
+

@@ -8,9 +8,6 @@
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
-        },
-        "@schematics/angular:application": {
-          "strict": true
         }
       },
       "root": "",
@@ -31,7 +28,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": []
           },
@@ -107,5 +105,7 @@
       }
     }
   },
-  "defaultProject": "dashboard"
+  "cli": {
+    "analytics": "e008ced7-c1b1-4063-a225-994714030e2a"
+  }
 }

@@ -11,15 +11,26 @@
       </defs>
     </svg>
   </button>
-  <form class='form' *ngIf="isShow">
+  <form class='form' [formGroup]='loginForm' (ngSubmit)="handleSubmit()" *ngIf="isShow">
     <div class='form-item'>
-      <input class='form-item__input' type='text' placeholder='Введите логин' />
-      <div class='form-item__error'>Не введен пароль</div>
+      <input class='form-item__input' type='text' formControlName="email" placeholder='Введите логин' />
+      <label class='form-item__error'>{{
+        this.loginForm.get('email')?.invalid && this.loginForm.get('email')?.touched
+          ? 'Введите свой логин'
+          : ''
+        }}</label>
     </div>
     <div class='form-item'>
-      <input class='form-item__input' type='password' placeholder='Введите пароль' />
-      <div class='form-item__error'>Не введен пароль</div>
+      <input class='form-item__input' type='password' formControlName="password" placeholder='Введите пароль' />
+      <label class='form-item__error'>{{
+        this.loginForm.get('password')?.invalid && this.loginForm.get('password')?.touched
+          ? 'Введите свой пароль'
+          : ''
+        }}</label>
     </div>
-    <button class='button'>Войти</button>
+    <button *ngIf="!isLoading" [disabled]='this.loginForm.invalid' class='button'>Войти</button>
+    <div class="progress" *ngIf="isLoading">
+      <app-loading></app-loading>
+    </div>
   </form>
 </div>

@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="76d172d4-4753-4dba-b42a-cfdfc110222f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/backend/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.prettierrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/app/app.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/src/app/app.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/app/core/guards/auth.guard.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/app/core/guards/auth.guard.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/app/core/shared/services/persistance/persistence.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/app/core/shared/services/toastr/toastr.service.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/app/core/shared/services/toastr/toastr.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/assets/404/404.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/assets/header/account-icon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/pages/access-denied/access-denied.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/pages/access-denied/access-denied.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/pages/access-denied/access-denied.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/pages/access-denied/access-denied.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/pages/access-denied/access-denied.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/pages/home-page/home-page.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/pages/home-page/home-page.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/pages/home-page/home-page.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/pages/home-page/home-page.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/pages/home-page/home-page.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/pages/not-found/not-found.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/pages/not-found/not-found.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/pages/not-found/not-found.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/pages/not-found/not-found.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/pages/not-found/not-found.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/pages/pages-routing.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/pages/pages.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/processes/auth/components/login-form/login-form.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/processes/auth/components/login-form/login-form.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/processes/auth/components/login-form/login-form.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/processes/auth/components/login-form/login-form.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/processes/auth/components/login-form/login-form.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/processes/auth/service/auth.service.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/processes/auth/service/auth.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/src/styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/src/test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/widgets/header/header.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/widgets/header/header.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/widgets/header/header.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/widgets/header/header.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/widgets/header/header.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/tsconfig.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="package.json" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/frontend/src/screens/auth/Auth.tsx" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2EFhnKLjX8Ql67hJScpzsOlPafT" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.format.on.save.advertiser.fired&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/vladstarshinov/Projects/mern-shop-app/dashboard&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/vladstarshinov/Projects/mern-shop-app/frontend/node_modules/prettier&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/IntelliJ IDEA.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mongo&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/dashboard" />
+      <recent name="$PROJECT_DIR$/dashboard/src/shared/ui" />
+      <recent name="$PROJECT_DIR$/dashboard/src/app/core/shared/services" />
+      <recent name="$PROJECT_DIR$/dashboard/src/app/core" />
+      <recent name="$PROJECT_DIR$/dashboard/src/pages" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/dashboard/src/app/core/shared/services/persistance" />
+      <recent name="$PROJECT_DIR$/dashboard/src/processes/auth/service" />
+      <recent name="$PROJECT_DIR$/dashboard/src/widgets" />
+      <recent name="$PROJECT_DIR$/dashboard/src" />
+      <recent name="$PROJECT_DIR$/frontend/src/app/store/utils" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="mern-shop-app" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <kind value="FILE" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+      <module name="mern-shop-app" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="mern-shop-app" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="mern-shop-app" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="76d172d4-4753-4dba-b42a-cfdfc110222f" name="Changes" comment="" />
+      <created>1662197405681</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1662197405681</updated>
+      <workItem from="1662197408894" duration="811000" />
+      <workItem from="1662198286071" duration="878000" />
+      <workItem from="1662199224105" duration="837000" />
+      <workItem from="1672609269240" duration="10766000" />
+      <workItem from="1672649934015" duration="14816000" />
+      <workItem from="1672673475806" duration="19232000" />
+      <workItem from="1672746745858" duration="5309000" />
+      <workItem from="1672773662547" duration="3153000" />
+      <workItem from="1672785452369" duration="976000" />
+      <workItem from="1672828097416" duration="28099000" />
+      <workItem from="1672863797018" duration="7840000" />
+      <workItem from="1672871658862" duration="158000" />
+      <workItem from="1672917712385" duration="1292000" />
+      <workItem from="1672922211733" duration="613000" />
+      <workItem from="1672936000549" duration="19430000" />
+      <workItem from="1672998617752" duration="2787000" />
+      <workItem from="1673003992564" duration="3071000" />
+      <workItem from="1673007599588" duration="1232000" />
+      <workItem from="1673020273079" duration="1101000" />
+      <workItem from="1673021403246" duration="1461000" />
+      <workItem from="1673034992814" duration="3406000" />
+      <workItem from="1673039695074" duration="5963000" />
+      <workItem from="1673094649064" duration="308000" />
+      <workItem from="1673094961475" duration="2133000" />
+      <workItem from="1673109540611" duration="538000" />
+      <workItem from="1673110119923" duration="215000" />
+      <workItem from="1673110526608" duration="3564000" />
+      <workItem from="1673130106841" duration="4625000" />
+      <workItem from="1673135085446" duration="777000" />
+      <workItem from="1673169653026" duration="13643000" />
+      <workItem from="1673203938380" duration="3992000" />
+      <workItem from="1673208031763" duration="3338000" />
+      <workItem from="1673287052413" duration="623000" />
+      <workItem from="1673291958383" duration="4281000" />
+      <workItem from="1673377371082" duration="13354000" />
+      <workItem from="1673390778183" duration="60000" />
+      <workItem from="1673552880446" duration="5974000" />
+      <workItem from="1673619514710" duration="1000" />
+      <workItem from="1673627387363" duration="10345000" />
+      <workItem from="1673639893792" duration="24000" />
+      <workItem from="1673647342148" duration="5492000" />
+      <workItem from="1673696403254" duration="4374000" />
+      <workItem from="1673707864581" duration="22350000" />
+      <workItem from="1673767708646" duration="21245000" />
+      <workItem from="1673904042115" duration="144000" />
+      <workItem from="1674409412650" duration="10714000" />
+      <workItem from="1674423809984" duration="1804000" />
+      <workItem from="1674590742933" duration="644000" />
+      <workItem from="1674677125232" duration="4947000" />
+      <workItem from="1675029542386" duration="672000" />
+      <workItem from="1675426443112" duration="6401000" />
+      <workItem from="1675453730726" duration="7140000" />
+      <workItem from="1675514796319" duration="1770000" />
+      <workItem from="1675529283265" duration="2579000" />
+      <workItem from="1675532072826" duration="620000" />
+      <workItem from="1675534921221" duration="8173000" />
+      <workItem from="1675600004798" duration="3681000" />
+      <workItem from="1675603720134" duration="11804000" />
+      <workItem from="1675620268044" duration="8118000" />
+      <workItem from="1675630736015" duration="938000" />
+      <workItem from="1675707851712" duration="6004000" />
+      <workItem from="1675714468715" duration="1580000" />
+      <workItem from="1675970065904" duration="2189000" />
+      <workItem from="1676039334204" duration="596000" />
+      <workItem from="1676043818314" duration="9000" />
+      <workItem from="1676105961885" duration="5677000" />
+      <workItem from="1676118495011" duration="8924000" />
+      <workItem from="1676131878630" duration="38000" />
+      <workItem from="1676137774426" duration="8836000" />
+      <workItem from="1676150625587" duration="2097000" />
+      <workItem from="1676209793285" duration="12931000" />
+      <workItem from="1676278954014" duration="104000" />
+      <workItem from="1676308609627" duration="8502000" />
+      <workItem from="1676390474363" duration="4468000" />
+      <workItem from="1676397047493" duration="57000" />
+      <workItem from="1676397185881" duration="59000" />
+      <workItem from="1676402158912" duration="6454000" />
+      <workItem from="1676484009024" duration="1143000" />
+      <workItem from="1676493845851" duration="4287000" />
+      <workItem from="1676577459440" duration="1038000" />
+      <workItem from="1676707327142" duration="4392000" />
+      <workItem from="1676742413982" duration="318000" />
+      <workItem from="1676742872710" duration="10752000" />
+      <workItem from="1676754392481" duration="388000" />
+      <workItem from="1676796840258" duration="7333000" />
+      <workItem from="1676812580262" duration="2496000" />
+      <workItem from="1676827757475" duration="4780000" />
+      <workItem from="1676832646246" duration="917000" />
+      <workItem from="1676833568380" duration="381000" />
+      <workItem from="1676834045120" duration="166000" />
+      <workItem from="1676834236776" duration="258000" />
+      <workItem from="1676834516183" duration="453000" />
+      <workItem from="1676838088908" duration="3375000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="VgoProject">
+    <settings-migrated>true</settings-migrated>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
