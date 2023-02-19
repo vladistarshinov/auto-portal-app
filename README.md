@@ -49,6 +49,7 @@
 ## Стек технологий/библиотек (Dashboard)
     * Angular
     * Typescript
+    * SCSS
     * Tailwind
     * Rx.js
     * Axios
