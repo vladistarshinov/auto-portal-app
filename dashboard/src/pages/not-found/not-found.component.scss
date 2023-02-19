@@ -1,0 +1,37 @@
+.not-found {
+  @apply flex-center-center flex-col m-8 gap-3;
+  min-height: 70vh;
+
+  &__img {
+    width: 130px;
+  }
+
+  &__title {
+    @apply font-normal text-sm leading-4 flex-none grow-0;
+    color: #A1A5B7;
+    order: 2;
+  }
+
+  &__desc {
+    @apply font-extrabold text-lg leading-10 flex-none grow-0;
+    color: #50546B;
+    order: 2;
+  }
+
+  &__desc2 {
+    @apply font-normal text-sm leading-4 flex-none grow-0;
+    color: #50546B;
+    order: 3;
+  }
+
+  &__links {
+    @apply flex-none inline-flex justify-around gap-4;
+    list-style: none;
+    order: 4;
+  }
+
+  &__link {
+    @apply cursor-pointer font-normal text-sm leading-4;
+    color: #735CFF;
+  }
+}
