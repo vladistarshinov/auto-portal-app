@@ -1,14 +1,20 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
+type IPayloadToastData = {
+  status: 'success' | 'error' | 'info';
+  summary: string;
+  detail: string;
+} | null;
+
 @Injectable({
   providedIn: 'root'
 })
 export class ToastService {
-  isHasToast$ = new BehaviorSubject<{ status: 'success' | 'error', summary: string, detail: string } | null>(null);
+  isHasToast$ = new BehaviorSubject<IPayloadToastData>(null);
   constructor() { }
 
-  showToastr(data: { status: 'success' | 'error', summary: string, detail: string }): void {
+  showToastr(data: IPayloadToastData): void {
     this.isHasToast$.next(data);
   }
 }

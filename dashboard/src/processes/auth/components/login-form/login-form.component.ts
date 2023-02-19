@@ -31,7 +31,7 @@ export class LoginFormComponent implements OnInit {
     console.log(this.loginForm.value)
     this.toastService.showToastr({
       status: 'success',
-      summary: 'Cообшение',
+      summary: 'Cообщение',
       detail: 'Авторизация прошла успешно',
     });
   }
