@@ -1,13 +1,16 @@
 .wrapper {
   @apply relative inline-flex;
 
-  .logo__btn {
-    //@apply shadow-icon;
+  > .logo__btn {
+    @apply
+      shadow-icon;
+    width: 40px;
+    height: 40px;
   }
 
   .form {
     @apply p-4 absolute right-2 w-60 z-20 rounded-lg;
-    top: calc(100% + 1.4rem);
+    top: calc(100% + 1rem);
     background-color: #dbe0f0;
 
     &-item {
@@ -29,10 +32,20 @@
         @apply absolute -bottom-4 left-0 w-full text-primary;
         font-size: 0.75rem;
       }
+    }
 
-      > .icon {
-        @apply absolute top-2 left-2 text-stone-600 text-lg;
-      }
+    > .button {
+      @apply
+        border-none
+        outline-0
+        cursor-pointer
+        bg-white
+        rounded-full
+        px-3
+        flex-center-center
+        text-xs;
+      box-shadow: 0 3px 6px rgba(47, 84, 171, 0.1);
+      color: #353538;
     }
   }
 }
