@@ -63,6 +63,22 @@ export class AuthService {
     }
   }
 
+  public async signInAsAdmin(dto: SignInDto): Promise<UserResponse> {
+    const user = await this.validateUser(dto)
+    const tokens = await this.createJwtTokens(user.email)
+    if (!user.isAdmin) throw new BadRequestException('У вас нет прав администратора!')
+
+    return {
+      user: {
+        email: user.email,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        isAdmin: user.isAdmin,
+      },
+      ...tokens
+    }
+  }
+
   public async getNewTokens({refreshToken}: RefreshTokenDto): Promise<UserResponse> {
     if (!refreshToken) throw new UnauthorizedException(AuthErrorConstants.LOGIN)
 

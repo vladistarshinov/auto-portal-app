@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="76d172d4-4753-4dba-b42a-cfdfc110222f" name="Changes" comment="" />
+    <list default="true" id="76d172d4-4753-4dba-b42a-cfdfc110222f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/.vscode/extensions.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/.vscode/launch.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/.vscode/tasks.json" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -219,7 +224,8 @@
       <workItem from="1676834236776" duration="258000" />
       <workItem from="1676834516183" duration="453000" />
       <workItem from="1676838088908" duration="3759000" />
-      <workItem from="1676841860211" duration="176000" />
+      <workItem from="1676841860211" duration="406000" />
+      <workItem from="1676965963470" duration="2708000" />
     </task>
     <servers />
   </component>

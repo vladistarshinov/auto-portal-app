@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { PersistanceService } from 'src/app/core/shared/services/persistance/persistence.service';
+import { PersistanceService } from 'src/app/core/shared/services/persistance/persistance.service';
+import { IAuthResponse, ILoginDto } from './auth.interface';
+import { loginUrl } from 'src/shared/api/api.config';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +23,9 @@ export class AuthService {
 
   public hasToken(): boolean {
     return this.persistanceService.get('token');
+  }
+
+  public login(payload: ILoginDto): Observable<IAuthResponse> {
+    return this.http.post<IAuthResponse>(loginUrl, payload);
   }
 }

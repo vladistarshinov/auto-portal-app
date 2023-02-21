@@ -9,7 +9,10 @@ import { ToastService } from './core/shared/services/toast/toast.service';
 })
 export class AppComponent {
   title = 'dashboard';
-  constructor(private toastr: ToastrService, private toastService: ToastService) {
+  constructor(
+    private readonly toastr: ToastrService,
+    private readonly toastService: ToastService
+  ) {
     this.toastService.isHasToast$.subscribe((data) => {
       this.toastr[data!.status](data!.summary, data!.detail, {
         closeButton: true,
