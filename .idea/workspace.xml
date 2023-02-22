@@ -48,7 +48,7 @@
     "WebServerToolWindowFactoryState": "false",
     "dart.analysis.tool.window.visible": "false",
     "go.import.settings.migrated": "true",
-    "last_opened_file_path": "/Users/vladstarshinov/Projects/mern-shop-app",
+    "last_opened_file_path": "/Users/vladstarshinov/Projects/mern-shop-app/frontend/public/static",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
@@ -73,11 +73,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/public/static" />
+      <recent name="$PROJECT_DIR$/frontend/src/app/assets/images/home" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/dashboard" />
       <recent name="$PROJECT_DIR$/dashboard/src/shared/ui" />
-      <recent name="$PROJECT_DIR$/dashboard/src/app/core/shared/services" />
-      <recent name="$PROJECT_DIR$/dashboard/src/app/core" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/dashboard/src/app/core/shared/services/persistance" />
@@ -225,7 +225,8 @@
       <workItem from="1676841860211" duration="406000" />
       <workItem from="1676965963470" duration="2708000" />
       <workItem from="1676997747166" duration="640000" />
-      <workItem from="1677078201670" duration="1568000" />
+      <workItem from="1677078201670" duration="1681000" />
+      <workItem from="1677086954380" duration="10690000" />
     </task>
     <servers />
   </component>

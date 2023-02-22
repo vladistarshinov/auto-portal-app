@@ -15,14 +15,22 @@ const CategoryBlockList: FC<{homeCategoryBlocks: IHomeCategoryBlockContent[]}> =
 					<CardContent sx={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-end' }}>
 						<Box sx={{ width: '380px', mt: '55px', ml: '55px' }}>
 							<h3>{mainCategory?.attributes.title}</h3>
+							<Box sx={{
+								width: "5rem",
+								height: "0.25rem",
+								marginBottom: "1.25rem",
+								background: "#E2B979",
+								marginLeft: "auto",
+								marginRight: "auto"
+							}}></Box>
 							<p>{mainCategory?.attributes.desc}</p>
 						</Box>
-						<Box sx={{ width: '445px', height: '220px', position: 'relative' }}>
+						<Box sx={{ width: '325px', height: '220px', position: 'relative' }}>
 							<Image
 								layout='fill'
 								draggable={false}
 								priority
-								src='/static/card_car.png'
+								src='/static/card_car1.png'
 								alt=''
 							/>
 						</Box>
@@ -30,8 +38,16 @@ const CategoryBlockList: FC<{homeCategoryBlocks: IHomeCategoryBlockContent[]}> =
 				</Card>
 				{otherCategories.map((c: IHomeCategoryBlockContent) => (
 					<Card sx={{ width: '420px', height: '340px' }} key={c.id}>
-						<CardContent sx={{ margin: '55px 10px' }}>
+						<CardContent sx={{ margin: '55px 20px', display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
 							<h3>{c.attributes.title}</h3>
+							<Box sx={{
+								width: "5rem",
+								height: "0.25rem",
+								marginBottom: "1.25rem",
+								background: "#E2B979",
+								marginLeft: "auto",
+								marginRight: "auto"
+							}}></Box>
 							<p>{c.attributes.desc}.</p>
 						</CardContent>
 					</Card>

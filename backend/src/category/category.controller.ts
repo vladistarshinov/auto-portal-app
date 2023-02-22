@@ -11,7 +11,7 @@ export class CategoryController {
     constructor(private readonly categoryService: CategoryService) {}
 
     @Get()
-    public async getCategories(
+    public getCategories(
         @Query('search') searchTerm?: string,
         @Query('sort') sort?: string
     ) {
@@ -19,14 +19,14 @@ export class CategoryController {
     }
 
     @Get(':slug')
-    public async getCategoryBySlug(@Param('slug') slug: string): Promise<Category> {
+    public getCategoryBySlug(@Param('slug') slug: string): Promise<Category> {
         return this.categoryService.getBySlug(slug)
     }
 
     @HttpCode(200)
     @Auth('admin')
     @Post()
-    public async createCategory(@Body() dto: CategoryDto): Promise<Category> {
+    public createCategory(@Body() dto: CategoryDto): Promise<Category> {
         return this.categoryService.create(dto)
     }
 
@@ -34,7 +34,7 @@ export class CategoryController {
     @HttpCode(200)
     @Auth('admin')
     @Put(':id')
-    public async updateCategory(
+    public updateCategory(
         @Param('id', IdValidationPipe) id: string,
         @Body() dto: CategoryDto
     ): Promise<Category> {
@@ -44,7 +44,7 @@ export class CategoryController {
     @HttpCode(200)
     @Auth('admin')
     @Delete(':id')
-    public async deleteCategory(@Param('id', IdValidationPipe) id: string): Promise<Category> {
+    public deleteCategory(@Param('id', IdValidationPipe) id: string): Promise<Category> {
         return this.categoryService.delete(id)
     }
 }

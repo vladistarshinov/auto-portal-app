@@ -13,7 +13,7 @@ export class ReviewController {
 
     @Auth()
     @Get(':productId')
-    public async getProductUserReview(
+    public getProductUserReview(
         @Param('productId', IdValidationPipe) productId: Types.ObjectId,
         @User('id') id: Types.ObjectId
     ) {
@@ -22,7 +22,7 @@ export class ReviewController {
 
     @Auth()
     @Get('by-product/:productId')
-    public async getReviewsByProduct(
+    public getReviewsByProduct(
         @Param('productId', IdValidationPipe) productId: Types.ObjectId,
     ) {
         return this.reviewService.getByProduct(productId)
@@ -31,14 +31,14 @@ export class ReviewController {
     @Auth()
     @HttpCode(200)
     @Post()
-    public async setReviewByProduct(@User('id') userId: Types.ObjectId, @Body() dto: SetReviewDto) {
+    public setReviewByProduct(@User('id') userId: Types.ObjectId, @Body() dto: SetReviewDto) {
         return this.reviewService.create(userId, dto)
     }
 
     @Auth()
     @HttpCode(200)
     @Delete(':reviewId')
-    public async deleteReview(
+    public deleteReview(
         @User('id') userId: Types.ObjectId,
         @Param('reviewId', IdValidationPipe) reviewId: Types.ObjectId,
         @Body() { productId }: { productId: Types.ObjectId }
@@ -49,7 +49,7 @@ export class ReviewController {
     @Auth('admin')
     @HttpCode(200)
     @Delete(':reviewId/admin')
-    public async deleteReviewByAdmin(
+    public deleteReviewByAdmin(
         @Param('reviewId', IdValidationPipe) reviewId: Types.ObjectId,
         @Body() { productId }: { productId: Types.ObjectId }
     ): Promise<void> {

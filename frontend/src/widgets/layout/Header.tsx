@@ -76,6 +76,7 @@ const Header: FC = () => {
 					Каталог
 					<ArrowDropDownIcon />
 				</Button>
+				<Link sx={{ textDecoration: 'none', color: '#000' }} href="/blog">Новости и акции</Link>
 				<Menu
 					id="basic-menu"
 					anchorEl={anchorCategoryEl}
@@ -85,9 +86,10 @@ const Header: FC = () => {
 						"aria-labelledby": "basic-button",
 					}}
 				>
-					<MenuItem onClick={handleCategoryClose}>Ноутбуки</MenuItem>
-					<MenuItem onClick={handleCategoryClose}>Телефоны</MenuItem>
-					<MenuItem onClick={handleCategoryClose}>Разное</MenuItem>
+					<MenuItem onClick={handleCategoryClose}>Новые автомобили</MenuItem>
+					<MenuItem onClick={handleCategoryClose}>Автомобили с пробегом</MenuItem>
+					<MenuItem onClick={handleCategoryClose}>Автозапчасти</MenuItem>
+					<MenuItem onClick={handleCategoryClose}>Трейлеры</MenuItem>
 				</Menu>
 				<CartIconButton />
 				<HeaderMenu />

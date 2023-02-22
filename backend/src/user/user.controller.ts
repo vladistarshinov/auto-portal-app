@@ -12,7 +12,7 @@ export class UserController {
 
     @Auth()
     @Get('profile')
-    public async getProfile(@User('_id') _id: string): Promise<UserDocument> {
+    public getProfile(@User('_id') _id: string): Promise<UserDocument> {
         return this.userService.getById(_id)
     }
 
@@ -20,7 +20,7 @@ export class UserController {
     @HttpCode(200)
     @Auth()
     @Patch('profile')
-    public async updateProfile(
+    public updateProfile(
         @User('_id') _id: string,
         @Body() dto: UpdateUserDto
     ): Promise<UserDocument> {
@@ -29,7 +29,7 @@ export class UserController {
 
     @Auth('admin')
     @Get()
-    public async getUsers(@Query('searchTerm') searchTerm?: string) {
+    public getUsers(@Query('searchTerm') searchTerm?: string) {
         return this.userService.getAll(searchTerm)
     }
 
@@ -37,7 +37,7 @@ export class UserController {
     @HttpCode(200)
     @Auth('admin')
     @Patch(':id')
-    public async updateUser(
+    public updateUser(
         @Param('id', IdValidationPipe) id: string,
         @Body() dto: UpdateUserDto
     ): Promise<UserDocument> {
@@ -47,7 +47,7 @@ export class UserController {
     @HttpCode(200)
     @Auth('admin')
     @Delete(':id')
-    public async deleteUser(
+    public deleteUser(
         @Param('id', IdValidationPipe) id: string
     ): Promise<UserDocument> {
         return this.userService.delete(id)

@@ -13,7 +13,7 @@ export class OrderController {
 
     @Auth()
     @Post()
-    public async createOrder(
+    public createOrder(
         @User('id') id: Types.ObjectId,
         @Body() dto: CreateOrderDto
     ): Promise<OrderDocument> {
@@ -21,7 +21,7 @@ export class OrderController {
     }
 
     @Get()
-    public async getOrders(
+    public getOrders(
         @Query('page') page?: number,
         @Query('limit') limit?: number,
         @Query('search') searchTerm?: string,
@@ -32,7 +32,7 @@ export class OrderController {
 
     @Auth()
     @Get('my')
-    public async getMyOrders(
+    public getMyOrders(
         @User('id') id: Types.ObjectId,
         @Query('page') page?: number,
         @Query('limit') limit?: number,
@@ -43,17 +43,17 @@ export class OrderController {
     }
 
     @Get(':id')
-    public async getOrderById(@Param('id', IdValidationPipe) id: Types.ObjectId,) {
+    public getOrderById(@Param('id', IdValidationPipe) id: Types.ObjectId,) {
         return this.orderService.getById(id)
     }
 
     @Patch(':id/pay')
-    public async updatePayingStatus(@Param('id') id: Types.ObjectId, @Body() dto: any) {
+    public updatePayingStatus(@Param('id') id: Types.ObjectId, @Body() dto: any) {
         return this.orderService.updatePayingStatus(id, dto)
     }
 
     @Patch(':id/deliver')
-    public async updateDeliveringStatus(@Param('id') id: Types.ObjectId) {
+    public updateDeliveringStatus(@Param('id') id: Types.ObjectId) {
         return this.orderService.updateDeliveringStatus(id)
     }
 }

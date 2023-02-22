@@ -17,13 +17,13 @@ export class PaymentController {
     @UsePipes(new ValidationPipe())
     @HttpCode(200)
     @Post()
-    async createPayment(@Body() dto: PaymentDto) {
+    public createPayment(@Body() dto: PaymentDto) {
         return this.paymentService.payment(dto)
     }
 
     @HttpCode(200)
     @Post('status')
-    async getPaymentStatus(@Body() dto: PaymentStatusDto) {
+    public getPaymentStatus(@Body() dto: PaymentStatusDto) {
         return this.paymentService.paymentStatus(dto)
     }
 }

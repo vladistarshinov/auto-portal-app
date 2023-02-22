@@ -12,50 +12,50 @@ export class ProductController {
     constructor(private readonly productService: ProductService) {}
 
     @Get()
-    public async getProducts(
+    public getProducts(
         @Query('page') page?: number,
         @Query('limit') limit?: number,
         @Query('search') searchTerm?: string,
         @Query('sort') sort?: string
     ): Promise<AllProductResponse> {
-        return await this.productService.getAll(page, limit, searchTerm, sort)
+        return this.productService.getAll(page, limit, searchTerm, sort)
     }
 
     @Get('top')
-    public async getTopProducts(): Promise<ProductDocument[]> {
-        return await this.productService.getTop()
+    public getTopProducts(): Promise<ProductDocument[]> {
+        return this.productService.getTop()
     }
 
     @Get(':id')
-    public async getProductById(
+    public getProductById(
         @Param('id', IdValidationPipe) id: Types.ObjectId
     ): Promise<Omit<ProductDocument, 'isSendTelegram | __v'>> {
-        return await this.productService.getById(id)
+        return this.productService.getById(id)
     }
 
     @Get('by-slug/:slug')
-    public async getProduct(
+    public getProduct(
       @Param('slug') slug: string
     ): Promise<Omit<ProductDocument, 'isSendTelegram | __v'>> {
-        return await this.productService.getBySlug(slug)
+        return this.productService.getBySlug(slug)
     }
 
     @Get('by-category/:categoryId')
-    public async getProductsByCategory(
+    public getProductsByCategory(
         @Param('categoryId', IdValidationPipe) categoryId: Types.ObjectId
     ): Promise<ProductDocument[]> {
-        return await this.productService.getByCategory(categoryId)
+        return this.productService.getByCategory(categoryId)
     }
 
     @Post()
-    public async createProduct(
+    public createProduct(
         @Body() dto: CreateProductDto
     ): Promise<ProductDocument> {
         return this.productService.create(dto)
     }
 
     @Patch(':id')
-    public async updateProduct(
+    public updateProduct(
         @Param('id', IdValidationPipe) id: string,
         @Body() dto: UpdateProductDto
     ): Promise<ProductDocument> {
@@ -63,7 +63,7 @@ export class ProductController {
     }
 
     @Delete(':id')
-    public async deleteProduct(
+    public deleteProduct(
         @Param('id', IdValidationPipe) id: string
     ): Promise<void> {
         return this.productService.delete(id)
