@@ -8,17 +8,19 @@ import {
     UrlTree,
 } from '@angular/router';
 import { Observable, of, Subject } from 'rxjs';
-import { AuthService } from 'src/processes/auth/service/auth.service';
-import { PersistanceService } from '../shared/services/persistance/persistence.service';
+
+import { AuthService } from '@/processes/auth/service/auth.service';
+import { PersistanceService } from '../shared/services/persistance/persistance.service';
+
 
 @Injectable({
     providedIn: 'root',
 })
 export class AuthGuard implements CanActivate, CanDeactivate<unknown> {
     constructor(
-        private authService: AuthService,
-        private router: Router,
-        private persistenceService: PersistanceService,
+        private readonly authService: AuthService,
+        private readonly router: Router,
+        private readonly persistenceService: PersistanceService,
     ) {}
 
     canActivate(
@@ -26,7 +28,7 @@ export class AuthGuard implements CanActivate, CanDeactivate<unknown> {
         state: RouterStateSnapshot,
     ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
         if (!this.authService.hasToken()) {
-            this.router.navigate(['403'], {skipLocationChange: true});
+            this.router.navigate(['403'], { skipLocationChange: true });
             return of(false);
         }
         return of(true);

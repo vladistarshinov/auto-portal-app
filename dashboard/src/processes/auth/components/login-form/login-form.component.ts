@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { PersistanceService } from 'src/app/core/shared/services/persistance/persistance.service';
-import {finalize} from 'rxjs'
-import { ToastService } from 'src/app/core/shared/services/toast/toast.service';
+import { finalize } from 'rxjs';
+
+import { PersistanceService } from '@/app/core/shared/services/persistance/persistance.service';
+import { ToastService } from '@/app/core/shared/services/toast/toast.service';
 import { AuthService } from '../../service/auth.service';
 import { IAuthResponse } from '../../service/auth.interface';
 
@@ -33,7 +34,7 @@ export class LoginFormComponent implements OnInit {
   }
 
 
-  public handleSubmit() {
+  public handleSubmit(): void {
     this.isLoading = true
     this.authService
       .login(this.loginForm.value)
@@ -45,9 +46,11 @@ export class LoginFormComponent implements OnInit {
             firstName: data?.user?.firstName,
             lastName: data?.user?.lastName
           });
+
           this.persistanceService.set('accessToken', {
             accessToken: data?.accessToken
           });
+
           this.isShow = false;
           this.toastService.showToastr({
             status: 'success',

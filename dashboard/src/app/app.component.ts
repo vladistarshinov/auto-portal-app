@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+
 import { ToastService } from './core/shared/services/toast/toast.service';
+import { IPayloadToastData } from './core/shared/services/toast/toast.type';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +15,7 @@ export class AppComponent {
     private readonly toastr: ToastrService,
     private readonly toastService: ToastService
   ) {
-    this.toastService.isHasToast$.subscribe((data) => {
+    this.toastService.isHasToast$.subscribe((data: IPayloadToastData) => {
       this.toastr[data!.status](data!.summary, data!.detail, {
         closeButton: true,
         timeOut: 15000

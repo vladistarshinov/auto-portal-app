@@ -6,7 +6,7 @@ export class PersistanceService {
     /**
      *  Добавление данных в localStorage в формате JSON
      */
-    set(key: string, data: any): void {
+    public set(key: string, data: any): void {
         return key === 'token'
           ? localStorage.setItem(key, data)
           : localStorage.setItem(key, JSON.stringify(data));
@@ -15,14 +15,14 @@ export class PersistanceService {
     /**
      *  Удаление данных по ключу из localStorage
      */
-    remove(key: string): void {
+    public remove(key: string): void {
         return localStorage.removeItem(key);
     }
 
     /**
      *  Извлечение данных по ключу из localStorage
      */
-    get<T>(key: string): T {
+    public get<T>(key: string): T {
         return key === 'token' ? localStorage.getItem(key) : localStorage.getItem(key) ? JSON.parse(localStorage.getItem(key)!) : null;
     }
 }
