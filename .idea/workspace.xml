@@ -3,6 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="76d172d4-4753-4dba-b42a-cfdfc110222f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/static/card_car.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/static/card_car1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/assets/images/home/card_car.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/shared/api/types/strapi-content.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/api/types/strapi-content.types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/shared/configs/strapi-api.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/shared/configs/strapi-api.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/widgets/home/category-block-list/CategoryBlockList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/widgets/home/category-block-list/CategoryBlockList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/strapi-cms-server/src/api/article/content-types/article/schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/strapi-cms-server/src/api/article/content-types/article/schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/strapi-cms-server/src/api/promotion/content-types/promotion/schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/strapi-cms-server/src/api/promotion/content-types/promotion/schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/strapi-cms-server/src/api/tag/content-types/tag/schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/strapi-cms-server/src/api/tag/content-types/tag/schema.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +60,7 @@
     "WebServerToolWindowFactoryState": "false",
     "dart.analysis.tool.window.visible": "false",
     "go.import.settings.migrated": "true",
-    "last_opened_file_path": "/Users/vladstarshinov/Projects/mern-shop-app/frontend/public/static",
+    "last_opened_file_path": "/Users/vladstarshinov/Projects/mern-shop-app/frontend/public/static/icons",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
@@ -73,18 +85,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/public/static/icons" />
       <recent name="$PROJECT_DIR$/frontend/public/static" />
       <recent name="$PROJECT_DIR$/frontend/src/app/assets/images/home" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/dashboard" />
-      <recent name="$PROJECT_DIR$/dashboard/src/shared/ui" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/src/app/assets/images" />
       <recent name="$PROJECT_DIR$/dashboard/src/app/core/shared/services/persistance" />
       <recent name="$PROJECT_DIR$/dashboard/src/processes/auth/service" />
       <recent name="$PROJECT_DIR$/dashboard/src/widgets" />
       <recent name="$PROJECT_DIR$/dashboard/src" />
-      <recent name="$PROJECT_DIR$/frontend/src/app/store/utils" />
     </key>
   </component>
   <component name="RunManager">
@@ -226,7 +238,9 @@
       <workItem from="1676965963470" duration="2708000" />
       <workItem from="1676997747166" duration="640000" />
       <workItem from="1677078201670" duration="1681000" />
-      <workItem from="1677086954380" duration="10690000" />
+      <workItem from="1677086954380" duration="10992000" />
+      <workItem from="1677139754477" duration="9131000" />
+      <workItem from="1677159619117" duration="15740000" />
     </task>
     <servers />
   </component>

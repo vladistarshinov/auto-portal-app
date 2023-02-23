@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { Box, Card, CardContent, Container } from '@mui/material'
 
 import { IHomeCategoryBlockContent } from '@/shared/api/types/strapi-content.types'
+import { getStrapiMediaUrl } from '@/shared/configs/strapi-api.config'
 
 const CategoryBlockList: FC<{homeCategoryBlocks: IHomeCategoryBlockContent[]}> = ({homeCategoryBlocks}) => {
 	const mainCategory = homeCategoryBlocks.find((c: IHomeCategoryBlockContent) => c.attributes.isMain)
@@ -25,15 +26,18 @@ const CategoryBlockList: FC<{homeCategoryBlocks: IHomeCategoryBlockContent[]}> =
 							}}></Box>
 							<p>{mainCategory?.attributes.desc}</p>
 						</Box>
-						<Box sx={{ width: '325px', height: '220px', position: 'relative' }}>
-							<Image
-								layout='fill'
-								draggable={false}
-								priority
-								src='/static/card_car1.png'
-								alt=''
-							/>
-						</Box>
+						<Box
+							component="img"
+							sx={{
+								ml: 5,
+								height: 200,
+								maxWidth: 300,
+								width: "100%",
+							}}
+							draggable="false"
+							src={getStrapiMediaUrl(mainCategory?.attributes.media?.data.attributes.url)}
+							alt=''
+						/>
 					</CardContent>
 				</Card>
 				{otherCategories.map((c: IHomeCategoryBlockContent) => (

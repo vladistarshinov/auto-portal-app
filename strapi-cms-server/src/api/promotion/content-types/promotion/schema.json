@@ -21,7 +21,7 @@
       "targetField": "title",
       "required": true
     },
-    "desc": {
+    "body": {
       "type": "richtext",
       "required": true,
       "minLength": 10
@@ -44,6 +44,20 @@
     "is_top": {
       "type": "boolean",
       "default": false
+    },
+    "tag": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::tag.tag",
+      "inversedBy": "promotions"
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
     }
   }
 }

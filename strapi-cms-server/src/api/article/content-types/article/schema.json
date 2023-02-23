@@ -38,9 +38,9 @@
       "type": "boolean",
       "required": true
     },
-    "tag": {
+    "tags": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::tag.tag",
       "inversedBy": "articles"
     },
