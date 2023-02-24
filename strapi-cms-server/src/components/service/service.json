@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_service_services",
+  "info": {
+    "displayName": "service",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": false
+    },
+    "icon": {
+      "type": "string",
+      "required": true
+    },
+    "desc": {
+      "type": "richtext",
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

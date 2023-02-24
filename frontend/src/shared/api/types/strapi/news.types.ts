@@ -1,10 +1,10 @@
-import { IBase, IUid } from "../strapi-content.types"
+import { IBase, IMediaContent, IUid } from "../strapi-content.types"
 
 interface IPromotionAttributes extends IBase {
 	title: string
 	body: string
 	image: {
-		data: any | null
+		data: IMediaContent | null
 	}
 	is_top: boolean
 	slug: string
@@ -28,7 +28,7 @@ interface IArticleAttributes extends IBase {
 	title: string
 	body: string
 	image: {
-		data: any | null
+		data: IMediaContent | null
 	}
 	is_top: boolean
 	slug: string

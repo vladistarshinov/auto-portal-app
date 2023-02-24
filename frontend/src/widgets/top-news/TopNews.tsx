@@ -13,7 +13,7 @@ interface ITopNews {
 	topPromotions: IPromotionContent[]
 }
 
-const TopNewsCarousel: FC<ITopNews> = ({topArticles, topPromotions}) => {
+const TopNews: FC<ITopNews> = ({topArticles, topPromotions}) => {
 	return (
 		<>
 			<Box sx={{ display: 'flex', justifyContent: 'center', mt: '1rem' }}>
@@ -30,4 +30,4 @@ const TopNewsCarousel: FC<ITopNews> = ({topArticles, topPromotions}) => {
 	)
 }
 
-export default TopNewsCarousel
+export default TopNews

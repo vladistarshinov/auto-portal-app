@@ -88,7 +88,9 @@ const Header: FC = () => {
 				>
 					<MenuItem onClick={handleCategoryClose}>Новые автомобили</MenuItem>
 					<MenuItem onClick={handleCategoryClose}>Автомобили с пробегом</MenuItem>
-					<MenuItem onClick={handleCategoryClose}>Автозапчасти</MenuItem>
+					<MenuItem onClick={handleCategoryClose}>
+						<Link sx={{ textDecoration: 'none', color: '#000' }} href='/autoparts'>Автозапчасти</Link>
+					</MenuItem>
 					<MenuItem onClick={handleCategoryClose}>Трейлеры</MenuItem>
 				</Menu>
 				<CartIconButton />

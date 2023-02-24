@@ -2,12 +2,11 @@ import { GetStaticProps, NextPage } from 'next'
 import qs from 'qs'
 
 import HomeScreen from '@/screens/home/Home'
-import { IProduct, IProductsResponse } from '@/shared/api/types/product.types'
-import { ProductService } from '@/entities/product/model/product.service'
 import { axiosStrapiClassic } from '@/shared/api/interceptors'
 import {
 	getArticlesUrl,
 	getHomeCategoryBlockUrl,
+	getHomeServiceBlockUrl,
 	getPromotionsUrl
 } from '@/shared/configs/strapi-api.config'
 import {
@@ -20,28 +19,30 @@ import {
 	IPromotionContent,
 	IPromotionResponse
 } from '@/shared/api/types/strapi/news.types'
+import {
+	IHomeServiceBlockContent,
+	IHomeServiceBlockResponse
+} from '@/shared/api/types/strapi/home-service-block.types'
 
 interface IHomePage {
 	homeCategoryBlocks: IHomeCategoryBlockContent[]
-	products: IProductsResponse
-	topProducts: IProduct[]
 	topArticles: IArticleContent[]
 	topPromotions: IPromotionContent[]
+	homeServiceBlock: IHomeServiceBlockContent
 }
 
-const HomePage: NextPage<IHomePage> = ({ homeCategoryBlocks, products, topProducts, topArticles, topPromotions }) => {
+const HomePage: NextPage<IHomePage> = ({ homeServiceBlock, homeCategoryBlocks, topArticles, topPromotions }) => {
 	return <HomeScreen
 		homeCategoryBlocks={homeCategoryBlocks}
-		products={products}
-		topProducts={topProducts}
 		topArticles={topArticles}
 		topPromotions={topPromotions}
+		homeServiceBlock={homeServiceBlock}
 	/>
 }
 
 export const getStaticProps: GetStaticProps = async () => {
 	try {
-		const queryC = qs.stringify(
+		const queryMedia = qs.stringify(
 			{
 				populate: ['media', 'coverImage']
 			},
@@ -49,7 +50,7 @@ export const getStaticProps: GetStaticProps = async () => {
 				encodeValuesOnly: true,
 			}
 		);
-		const { data: { data: homeCategoryBlocks } } = await axiosStrapiClassic.get<IHomeCategoryBlockResponse>(getHomeCategoryBlockUrl() + `?${queryC}`)
+		const { data: { data: homeCategoryBlocks } } = await axiosStrapiClassic.get<IHomeCategoryBlockResponse>(getHomeCategoryBlockUrl() + `?${queryMedia}`)
 		const query = qs.stringify(
 			{
 				filters: {
@@ -63,17 +64,23 @@ export const getStaticProps: GetStaticProps = async () => {
 				encodeValuesOnly: true,
 			}
 		);
+		const queryService = qs.stringify(
+			{
+				populate: ['services', 'image', 'backgroundImages', 'coverImage']
+			},
+			{
+				encodeValuesOnly: true,
+			}
+		);
 		const { data: { data: topArticles } } = await axiosStrapiClassic.get<IArticleResponse>(getArticlesUrl() + `?${query}`)
 		const { data: { data: topPromotions } } = await axiosStrapiClassic.get<IPromotionResponse>(getPromotionsUrl() + `?${query}`)
-		const { data: products } = await ProductService.getProducts()
-		const { data: topProducts } = await ProductService.getTopProducts()
+		const { data: { data: homeServiceBlock } } = await axiosStrapiClassic.get<IHomeServiceBlockResponse>(getHomeServiceBlockUrl() + `?${queryService}`)
 		return {
 			props: {
 				homeCategoryBlocks,
-				products,
-				topProducts,
 				topArticles,
-				topPromotions
+				topPromotions,
+				homeServiceBlock
 			}
 		}
 	} catch (error) {
