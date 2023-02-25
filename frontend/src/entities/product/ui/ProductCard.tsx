@@ -56,7 +56,7 @@ const ProductCard: FC<{ product: IProduct }> = ({ product }) => {
 				</Box>
 				<Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '1rem' }}>
 					<Typography variant="h6" sx={{ textDecoration: 'line-through' }}>
-						{product.oldPrice} RUB
+						{product.oldPrice}₽
 					</Typography>
 					<Typography variant="h5">{product.price} RUB</Typography>
 				</Box>

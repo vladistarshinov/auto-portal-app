@@ -3,6 +3,7 @@ import Link from "next/link"
 import {
 	Box,
 	Button,
+	Container,
 	FormControl,
 	Grid,
 	IconButton,
@@ -24,7 +25,7 @@ const Reviews: FC<{productId: string, product: any}> = ({ productId, product }) 
 	const user = useAuth()
 
 	return (
-		<Box sx={{ marginTop: "2rem" }}>
+		<Container maxWidth='xl' sx={{ marginTop: "2rem" }}>
 			<Grid md={9}>
 				<Typography variant="h5" sx={{ padding: "1rem 0" }}>
 					Отзывы{" "}
@@ -66,7 +67,7 @@ const Reviews: FC<{productId: string, product: any}> = ({ productId, product }) 
 					</ListItem>
 				</List>
 			</Grid>
-		</Box>
+		</Container>
 	)
 }
 

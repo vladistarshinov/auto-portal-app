@@ -49,7 +49,7 @@ const Cart = () => {
 									sx={{ display: "flex", justifyContent: "flex-end" }}
 									variant="h5"
 								>
-									${total}
+									{total}₽
 								</Typography>
 								<Button
 									variant="outlined"

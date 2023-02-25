@@ -2,7 +2,7 @@ import { FC } from "react"
 import { useRouter } from "next/router"
 import Link from "next/link"
 import styled from "@emotion/styled"
-import { Box, Button, Card, CardContent, Grid, IconButton, Typography } from "@mui/material"
+import { Box, Button, Card, CardContent, Container, Grid, IconButton, Typography } from "@mui/material"
 import DeleteIcon from '@mui/icons-material/Delete';
 
 import BreadCrumbs from "@/shared/ui/breadcrumbs/Breadcrumbs";
@@ -12,7 +12,7 @@ import Cart from "@/entities/cart/ui/Cart";
 const CartScreen: FC = () => {
 
 	return (
-		<Box marginX={4}>
+		<Container maxWidth='xl' sx={{ mt: '3rem' }}>
 			<BreadCrumbs
 				navElements={[{ title: "Каталог" }, { title: "Корзина", url: "/cart" }]}
 			/>
@@ -20,7 +20,7 @@ const CartScreen: FC = () => {
 				Корзина
 			</Typography>
 			<Cart />
-		</Box>
+		</Container>
 	)
 }
 
