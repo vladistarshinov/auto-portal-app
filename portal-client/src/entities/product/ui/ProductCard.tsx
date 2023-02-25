@@ -39,7 +39,7 @@ const ProductCard: FC<{ product: IProduct }> = ({ product }) => {
 				}}
 			>
 				<Typography
-					sx={{ textAlign: "center" }}
+					sx={{ textAlign: "center", fontSize: '20px' }}
 					variant="h5"
 					color="text.muted"
 				>

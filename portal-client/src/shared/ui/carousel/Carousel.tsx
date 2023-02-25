@@ -1,6 +1,6 @@
 import { FC, useState } from "react"
-import SwipeableViews from "react-swipeable-views";
-import { autoPlay } from "react-swipeable-views-utils";
+import SwipeableViews from "react-swipeable-views"
+import { autoPlay } from "react-swipeable-views-utils"
 import { useTheme } from "@mui/material/styles"
 import {
 	Box,
@@ -15,7 +15,7 @@ import {
 	KeyboardArrowRight
 } from '@mui/icons-material'
 
-import { IProduct } from "@/shared/api/types/product.types";
+import { IProduct } from "@/shared/api/types/product.types"
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews)
 
@@ -58,7 +58,7 @@ const Carousel: FC<{ products: IProduct[] }> = ({ products }) => {
 				}}
 			>
 				<Typography variant="h6">{products[activeStep]?.title}</Typography>
-				<Typography variant="h5">{products[activeStep]?.price} $</Typography>
+				<Typography variant="h5">{products[activeStep]?.price} Р</Typography>
 			</Paper>
 			<AutoPlaySwipeableViews
 				axis={theme.direction === "rtl" ? "x-reverse" : "x"}

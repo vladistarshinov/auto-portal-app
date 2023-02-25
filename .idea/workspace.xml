@@ -24,7 +24,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/frontend/src/screens/auth/Auth.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/portal-client/src/screens/auth/Auth.tsx" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -233,7 +233,7 @@
       <workItem from="1677226756647" duration="3596000" />
       <workItem from="1677244751871" duration="18037000" />
       <workItem from="1677271223629" duration="389000" />
-      <workItem from="1677309564691" duration="21232000" />
+      <workItem from="1677309564691" duration="25860000" />
     </task>
     <servers />
   </component>
