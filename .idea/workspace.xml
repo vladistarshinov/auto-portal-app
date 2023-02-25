@@ -4,7 +4,6 @@
     <list default="true" id="76d172d4-4753-4dba-b42a-cfdfc110222f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/screens/home/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/screens/home/Home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/widgets/top-news/TopNews.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/widgets/top-news/TopNews.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -232,7 +231,9 @@
       <workItem from="1677139754477" duration="9131000" />
       <workItem from="1677159619117" duration="26029000" />
       <workItem from="1677226756647" duration="3596000" />
-      <workItem from="1677244751871" duration="17284000" />
+      <workItem from="1677244751871" duration="18037000" />
+      <workItem from="1677271223629" duration="389000" />
+      <workItem from="1677309564691" duration="12996000" />
     </task>
     <servers />
   </component>

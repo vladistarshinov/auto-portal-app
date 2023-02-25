@@ -16,7 +16,7 @@ interface ITopNews {
 const TopNews: FC<ITopNews> = ({topArticles, topPromotions}) => {
 	return (
 		<>
-			<Box sx={{ display: 'flex', justifyContent: 'center', mt: '1rem' }}>
+			<Box sx={{ display: 'flex', justifyContent: 'center', mt: '5rem' }}>
 				<Heading title='Новости и акции'></Heading>
 			</Box>
 			<Box

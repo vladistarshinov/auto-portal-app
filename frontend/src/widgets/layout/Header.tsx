@@ -76,7 +76,7 @@ const Header: FC = () => {
 					Каталог
 					<ArrowDropDownIcon />
 				</Button>
-				<Link sx={{ textDecoration: 'none', color: '#000' }} href="/blog">Новости и акции</Link>
+				<Link sx={{ textDecoration: 'none', color: '#000' }} href="/news">Новости и акции</Link>
 				<Menu
 					id="basic-menu"
 					anchorEl={anchorCategoryEl}

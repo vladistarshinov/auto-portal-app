@@ -25,11 +25,11 @@ const HomeScreen: FC<IHomeScreen> = ({
 	return (
 		<>
 			<CategoryBlockList content={homeCategoryBlocks} />
+			<ServiceBlockList content={homeServiceBlock} />
+			<TopNews topArticles={topArticles} topPromotions={topPromotions} />
 			<PickupCarForm
 				imageUrl={homeServiceBlock.attributes.backgroundImages?.data[0].attributes.url}
 			/>
-			<TopNews topArticles={topArticles} topPromotions={topPromotions} />
-			<ServiceBlockList content={homeServiceBlock} />
 		</>
 	)
 }

@@ -54,7 +54,8 @@ const PickupCarForm: FC<{imageUrl: string}> = ({imageUrl}) => {
 				width: '100%',
 				position: 'relative',
 				borderRadius: '8px',
-				mt: '2rem'
+				mt: '5rem',
+				mb: '5rem'
 			}}
 		>
 			<Box

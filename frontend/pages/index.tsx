@@ -15,14 +15,13 @@ import {
 } from '@/shared/api/types/strapi-content.types'
 import {
 	IArticleContent,
-	IArticleResponse,
 	IPromotionContent,
-	IPromotionResponse
 } from '@/shared/api/types/strapi/news.types'
 import {
 	IHomeServiceBlockContent,
 	IHomeServiceBlockResponse
 } from '@/shared/api/types/strapi/home-service-block.types'
+import { NewsService } from '@/entities/news/model/news.service'
 
 interface IHomePage {
 	homeCategoryBlocks: IHomeCategoryBlockContent[]
@@ -51,19 +50,6 @@ export const getStaticProps: GetStaticProps = async () => {
 			}
 		);
 		const { data: { data: homeCategoryBlocks } } = await axiosStrapiClassic.get<IHomeCategoryBlockResponse>(getHomeCategoryBlockUrl() + `?${queryMedia}`)
-		const query = qs.stringify(
-			{
-				filters: {
-					is_top: {
-						$eq: true,
-					},
-				},
-				populate: ['image', 'coverImage', 'tag', 'tags']
-			},
-			{
-				encodeValuesOnly: true,
-			}
-		);
 		const queryService = qs.stringify(
 			{
 				populate: ['services', 'image', 'backgroundImages', 'coverImage']
@@ -72,8 +58,8 @@ export const getStaticProps: GetStaticProps = async () => {
 				encodeValuesOnly: true,
 			}
 		);
-		const { data: { data: topArticles } } = await axiosStrapiClassic.get<IArticleResponse>(getArticlesUrl() + `?${query}`)
-		const { data: { data: topPromotions } } = await axiosStrapiClassic.get<IPromotionResponse>(getPromotionsUrl() + `?${query}`)
+		const topArticles = await NewsService.getTopArticles()
+		const topPromotions = await NewsService.getTopPromotions()
 		const { data: { data: homeServiceBlock } } = await axiosStrapiClassic.get<IHomeServiceBlockResponse>(getHomeServiceBlockUrl() + `?${queryService}`)
 		return {
 			props: {

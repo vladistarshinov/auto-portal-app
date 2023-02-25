@@ -16,7 +16,7 @@ const ServiceBlockList: FC<{content: IHomeServiceBlockContent}> = ({content}) =>
 				sx={{
 					display: 'flex',
 					justifyContent: 'center',
-					mt: '1rem'
+					mt: '5rem'
 				}}
 			>
 				<Heading title='Сервисное обслуживание'></Heading>
@@ -65,7 +65,7 @@ const ServiceBlockList: FC<{content: IHomeServiceBlockContent}> = ({content}) =>
 												display: 'inline-flex',
 												alignItems: 'center',
 												textDecoration: 'none',
-												color: '#E2B979'
+												color: '#79726c'
 											}}
 											href={service.url}
 										>

@@ -16,7 +16,7 @@ const CategoryBlockList: FC<{content: IHomeCategoryBlockContent[]}> = ({content}
 				justifyContent='center'
 				flexWrap='wrap'
 				gap={2}
-				sx={{ mt: 3 }}
+				sx={{ mt: '3rem' }}
 			>
 				<Card sx={{ width: '860px', height: '340px' }}>
 					<CardContent
