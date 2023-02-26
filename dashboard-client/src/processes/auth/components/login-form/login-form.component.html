@@ -11,7 +11,7 @@
       </defs>
     </svg>
   </button>
-  <form class='form' [formGroup]='loginForm' (ngSubmit)="handleSubmit()" *ngIf="isShow">
+  <form class='form' [formGroup]='loginForm' (ngSubmit)="handleSubmit()" *ngIf="isShow && !this.isLoggedIn$.value">
     <div class='form-item'>
       <input class='form-item__input' type='text' formControlName="email" placeholder='Введите логин' />
       <label class='form-item__error'>{{

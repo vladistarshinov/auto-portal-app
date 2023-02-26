@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { finalize } from 'rxjs';
+import { BehaviorSubject, finalize } from 'rxjs';
 
 import { PersistanceService } from '@/app/core/shared/services/persistance/persistance.service';
 import { ToastService } from '@/app/core/shared/services/toast/toast.service';
@@ -16,6 +16,8 @@ export class LoginFormComponent implements OnInit {
   public isShow: boolean = false;
   public loginForm!: FormGroup;
   public isLoading: boolean = false;
+  public isLoggedIn$ = new BehaviorSubject<boolean>(false);
+
   constructor(
     private readonly authService: AuthService,
     private readonly persistanceService: PersistanceService,
@@ -27,6 +29,14 @@ export class LoginFormComponent implements OnInit {
       email: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required, Validators.pattern(/^.*(?=.{6,}).*$/)]),
     });
+  }
+
+  ngDoCheck(): void {
+    if (this.authService.hasToken())
+      this.isLoggedIn$.next(true);
+    else
+      this.isLoggedIn$.next(false);
+    console.log(this.isLoggedIn$.value);
   }
 
   public handleShow(): void {

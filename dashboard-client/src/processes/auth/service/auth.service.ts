@@ -23,7 +23,7 @@ export class AuthService {
   }
 
   public hasToken(): boolean {
-    return this.persistanceService.get('token');
+    return this.persistanceService.get('accessToken');
   }
 
   public login(payload: ILoginDto): Observable<IAuthResponse> {
