@@ -1,11 +1,15 @@
-import {BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
+import {BadRequestException, Injectable, NotFoundException } from '@nestjs/common'
+import { InjectModel } from '@nestjs/mongoose'
+import { DtoConstants } from 'common/constants/dto.constants'
+import { OrderErrorConstants } from 'common/constants/error.constants'
+import { convertArrToStr } from 'common/utils/convert-arr-to-str'
+import { toCaseCount } from 'common/utils/to-case-count';
 import { Model, Types } from 'mongoose';
-import { PaymentService } from 'src/payment/payment.service';
-import { ProductService } from 'src/product/product.service';
-import { TelegramService } from 'src/telegram/telegram.service';
-import { CreateOrderDto } from './dto/create-order.dto';
-import { Order, OrderDocument } from './schema/order.schema';
+import { PaymentService } from 'src/payment/payment.service'
+import { ProductService } from 'src/product/product.service'
+import { TelegramService } from 'src/telegram/telegram.service'
+import { CreateOrderDto } from './dto/create-order.dto'
+import { Order, OrderDocument } from './schema/order.schema'
 
 @Injectable()
 export class OrderService {
@@ -29,7 +33,7 @@ export class OrderService {
         } = dto
 
         if (orderItems && orderItems.length === 0) {
-            throw new BadRequestException("Нет товаров для заказа")
+            throw new BadRequestException(OrderErrorConstants.ORDER_LENGTH_0)
         } else {
 
             let res = []
@@ -39,7 +43,7 @@ export class OrderService {
             }))
 
             if (res.filter(r => r.error).length > 0) {
-                throw new BadRequestException(`Количество товар${res.filter(r => r.error).length > 1 ? 'ов' : 'а'} ${res.filter(r => r.error).map(r => r.title).join(', ')} меньше запрашиваемого`)
+                throw new BadRequestException(toCaseCount(res) + ` ${convertArrToStr(res)} ` + OrderErrorConstants.LESS_THAN)
             }
 
             await Promise.all(orderItems.map(async (item, idx) => {
@@ -167,7 +171,7 @@ export class OrderService {
           .select('-__v')
 
         if (!order) {
-            throw new NotFoundException(`Заказ ${id} не найден`)
+            throw new NotFoundException(OrderErrorConstants.NOT_FOUND)
         }
 
         return order
@@ -184,7 +188,7 @@ export class OrderService {
 
             return await order.save()
         } else {
-            throw new NotFoundException(`Заказ ${id} не найден`)
+            throw new NotFoundException(OrderErrorConstants.NOT_FOUND)
         }
     }
 
@@ -197,7 +201,7 @@ export class OrderService {
 
             return await order.save()
         } else {
-            throw new Error(`Заказ ${id} не найден`)
+            throw new NotFoundException(OrderErrorConstants.NOT_FOUND)
         }
     }
 
@@ -213,12 +217,12 @@ export class OrderService {
                 inline_keyboard: [
                     [
                         {
-                            url: 'https://okko.tv/movie/free-guy',
-                            text: '🍿 Go to watch',
+                            url: '123',
+                            text: '123',
                         },
                     ],
                 ],
             },
-        });
+        })
     }
 }

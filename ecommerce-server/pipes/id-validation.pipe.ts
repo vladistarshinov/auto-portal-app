@@ -1,6 +1,6 @@
-import {ArgumentMetadata, BadRequestException, PipeTransform } from "@nestjs/common";
-import { DtoConstants } from "common/constants/dto.constants";
-import { Types } from "mongoose";
+import {ArgumentMetadata, BadRequestException, PipeTransform } from "@nestjs/common"
+import { DtoConstants } from "common/constants/dto.constants"
+import { Types } from "mongoose"
 
 export class IdValidationPipe implements PipeTransform {
     public transform(value: string, meta: ArgumentMetadata) {

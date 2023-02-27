@@ -14,6 +14,7 @@ import { OrderModule } from './order/order.module';
 import { TelegramModule } from './telegram/telegram.module';
 import { getTelegramConfig } from 'config/telegram.config'
 import { PaymentModule } from './payment/payment.module';
+import { AutoModule } from './auto/auto.module';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { PaymentModule } from './payment/payment.module';
       useFactory: getTelegramConfig,
     }),
     PaymentModule,
+    AutoModule,
   ],
   controllers: [AppController],
   providers: [AppService],

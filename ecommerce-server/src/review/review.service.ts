@@ -1,5 +1,7 @@
 import {BadRequestException, Injectable, NotFoundException } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
+import { DtoConstants } from 'common/constants/dto.constants'
+import { ReviewErrorConstants } from 'common/constants/error.constants'
 import { Model, Types } from 'mongoose'
 import { ProductService } from 'src/product/product.service'
 import { SetReviewDto } from './dto/set-review.dto'
@@ -38,7 +40,7 @@ export class ReviewService {
     public async create(userId: Types.ObjectId, dto: SetReviewDto) {
         const { productId, rating, description } = dto
         const review = await this.reviewModel.findOne({ product: productId, user: userId })
-        if (review) throw new BadRequestException('Харе тут спамить')
+        if (review) throw new BadRequestException(ReviewErrorConstants.MORE_ONE)
         const newRating = await this.reviewModel
             .findOneAndUpdate(
                 { product: productId, user: userId },
@@ -54,9 +56,9 @@ export class ReviewService {
 
     public async delete(userId: Types.ObjectId, productId: Types.ObjectId, reviewId: Types.ObjectId): Promise<void> {
         const review = await this.reviewModel.findOne({ _id: reviewId, user: userId })
-        if (!userId) throw new BadRequestException('Пожалуйста, авторизуйтесь')
-        if (!productId) throw new BadRequestException('Не понимаю, у какого продукта удалять коммент')
-        if (!review) throw new NotFoundException('У вас нет возможности удалить комментарий')
+        if (!userId) throw new BadRequestException(ReviewErrorConstants.IS_AUTH)
+        if (!productId) throw new BadRequestException(ReviewErrorConstants.PRODUCT_ID)
+        if (!review) throw new NotFoundException(ReviewErrorConstants.DONT_REMOVE)
         else {
             await this.reviewModel.findByIdAndDelete(reviewId).exec()
             const averageRating = await this.averageRatingByProduct(productId)
@@ -64,8 +66,8 @@ export class ReviewService {
         }
     }
 
-    public async deleteByAdmin( productId: Types.ObjectId, reviewId: Types.ObjectId) {
-        if (!productId) throw new BadRequestException('Не понимаю, у какого продукта удалять коммент')
+    public async deleteByAdmin( productId: Types.ObjectId, reviewId: Types.ObjectId): Promise<void> {
+        if (!productId) throw new BadRequestException(ReviewErrorConstants.PRODUCT_ID)
         await this.reviewModel.findByIdAndDelete(reviewId).exec()
         const averageRating = await this.averageRatingByProduct(productId)
         await this.productModel.updateRating(productId, averageRating, 'D', reviewId)

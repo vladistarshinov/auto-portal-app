@@ -9,6 +9,7 @@ import { SignInDto } from './dto/sign-in.dto'
 import { JwtService } from '@nestjs/jwt'
 import { JwtTokensResponse, UserResponse } from './types/user.response'
 import { RefreshTokenDto } from './dto/refresh-token.dto'
+import { DtoConstants } from 'common/constants/dto.constants'
 @Injectable()
 export class AuthService {
   constructor(
@@ -66,7 +67,7 @@ export class AuthService {
   public async signInAsAdmin(dto: SignInDto): Promise<UserResponse> {
     const user = await this.validateUser(dto)
     const tokens = await this.createJwtTokens(user.email)
-    if (!user.isAdmin) throw new BadRequestException('У вас нет прав администратора!')
+    if (!user.isAdmin) throw new BadRequestException(DtoConstants.NO_RIGHT)
 
     return {
       user: {

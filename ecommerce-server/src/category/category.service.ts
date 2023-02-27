@@ -1,5 +1,6 @@
 import {BadRequestException, Injectable, NotFoundException } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
+import { CategoryErrorConstants } from 'common/constants/error.constants'
 import { Model } from 'mongoose'
 import { CategoryDto } from './dto/category.dto'
 import {Category, CategoryDocument } from './schema/category.schema'
@@ -55,20 +56,20 @@ export class CategoryService {
 
     public async getBySlug(slug: string): Promise<Category> {
         const category = await this.categoryModel.findOne({ slug }).exec()
-        if (!category) throw new NotFoundException('Category is not found')
+        if (!category) throw new NotFoundException(CategoryErrorConstants.NOT_FOUND)
         return category
     }
 
     public async getById(_id: string): Promise<Category> {
         const category = await this.categoryModel.findById(_id)
-        if (!category) throw new NotFoundException('Такая категория уже существует')
+        if (!category) throw new NotFoundException(CategoryErrorConstants.IS_EXIST)
         return category
     }
 
     public async create(dto: CategoryDto) {
         const category = await this.findByTitle(dto.title)
         if (category)
-            throw new BadRequestException('Такая категория уже существует')
+            throw new BadRequestException(CategoryErrorConstants.IS_EXIST)
 
         const newCategory = new this.categoryModel({
             title: dto.title,
@@ -85,7 +86,7 @@ export class CategoryService {
         const category = await this.categoryModel.findById(_id)
         const sameCategory = await this.categoryModel.findOne({title: dto.title})
         if (sameCategory && String(_id) !== String(sameCategory._id))
-            throw new NotFoundException('Такая категория уже существует')
+            throw new NotFoundException(CategoryErrorConstants.IS_EXIST)
 
         category.title = dto.title
         category.slug = dto.slug
@@ -96,7 +97,7 @@ export class CategoryService {
     }
 
     public async delete(id: string): Promise<Category> {
-        return this.categoryModel.findByIdAndDelete(id).exec()
+        return await this.categoryModel.findByIdAndDelete(id).exec()
     }
 
     private async findByTitle(title: string): Promise<Category> {

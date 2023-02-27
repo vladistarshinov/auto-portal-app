@@ -1,5 +1,6 @@
 import {BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
+import { ProductErrorConstants } from 'common/constants/error.constants';
 import { Model, Types } from 'mongoose';
 import { ReviewService } from 'src/review/review.service';
 import { CreateProductDto } from './dto/create-product.dto';
@@ -102,7 +103,7 @@ export class ProductService {
               })
               .select('-isSendTelegram -__v')
         //const reviews = await this.reviewService.getByProduct(id)
-        if (!product) throw new NotFoundException('Товар не найден')
+        if (!product) throw new NotFoundException(ProductErrorConstants.NOT_FOUND)
         //reviews: reviews
         return product
     }
@@ -126,7 +127,7 @@ export class ProductService {
           .select('-isSendTelegram -__v')
           .exec();
         //const reviews = await this.reviewService.getByProduct(id)
-        if (!product) throw new NotFoundException('Товар не найден')
+        if (!product) throw new NotFoundException(ProductErrorConstants.NOT_FOUND)
         //reviews: reviews
         return product
     }
@@ -134,7 +135,7 @@ export class ProductService {
     public async getByCategory(categoryId: Types.ObjectId): Promise<ProductDocument[]> {
         const products = await this.productModel
             .find({ category: categoryId })
-        if (!products) throw new NotFoundException('Products is not found');
+        if (!products) throw new NotFoundException(ProductErrorConstants.NOT_FOUND);
         return products
     }
 

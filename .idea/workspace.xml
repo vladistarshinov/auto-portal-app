@@ -3,11 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="76d172d4-4753-4dba-b42a-cfdfc110222f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard-client/src/processes/auth/components/login-form/login-form.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/processes/auth/components/login-form/login-form.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard-client/src/processes/auth/components/login-form/login-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/processes/auth/components/login-form/login-form.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard-client/src/processes/auth/service/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/processes/auth/service/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard-client/src/shared/api/api.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/shared/api/api.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard-client/src/widgets/header/header.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/widgets/header/header.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce-server/common/constants/dto.constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/common/constants/dto.constants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce-server/common/constants/error.constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/common/constants/error.constants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce-server/pipes/id-validation.pipe.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/pipes/id-validation.pipe.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce-server/src/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/src/auth/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce-server/src/category/category.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/src/category/category.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce-server/src/order/order.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/src/order/order.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce-server/src/order/order.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/src/order/order.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce-server/src/product/product.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/src/product/product.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce-server/src/review/review.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/src/review/review.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,11 +89,11 @@
       <recent name="$PROJECT_DIR$/dashboard" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ecommerce-server/src/auto/tests" />
       <recent name="$PROJECT_DIR$/frontend/src/app/assets/images" />
       <recent name="$PROJECT_DIR$/dashboard/src/app/core/shared/services/persistance" />
       <recent name="$PROJECT_DIR$/dashboard/src/processes/auth/service" />
       <recent name="$PROJECT_DIR$/dashboard/src/widgets" />
-      <recent name="$PROJECT_DIR$/dashboard/src" />
     </key>
   </component>
   <component name="RunManager">
@@ -238,7 +242,9 @@
       <workItem from="1677244751871" duration="18037000" />
       <workItem from="1677271223629" duration="389000" />
       <workItem from="1677309564691" duration="28103000" />
-      <workItem from="1677418018517" duration="2726000" />
+      <workItem from="1677418018517" duration="7074000" />
+      <workItem from="1677438137676" duration="3909000" />
+      <workItem from="1677522820591" duration="2443000" />
     </task>
     <servers />
   </component>
