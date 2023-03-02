@@ -9,7 +9,16 @@ export class Auto {
 	title: string
 
 	@Prop()
+	brand: string
+
+	@Prop()
 	slug: string
+
+	@Prop()
+	imageUrl: string
+
+	@Prop()
+	videoUrl: string
 
 	@Prop({ unique: true })
 	vin: string
@@ -18,7 +27,10 @@ export class Auto {
 	year: number
 
 	@Prop()
-	isStock: number
+	countInStock: number
+
+	@Prop()
+	countOfViews: number
 
 	@Prop()
 	transmission: string
@@ -40,6 +52,15 @@ export class Auto {
 
 	@Prop()
 	color: string
+
+	@Prop()
+	oldPrice: string
+
+	@Prop()
+	price: string
+
+	@Prop()
+	isSendTelegram: string
 }
 
 export const AutoSchema = SchemaFactory.createForClass(Auto)

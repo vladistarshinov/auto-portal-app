@@ -1,3 +1,9 @@
+export enum AutoErrorConstants {
+    IS_EXIST = 'Данный автомобиль уже существует',
+    NOT_FOUND_BRAND = 'Нет такого бренда авто',
+    NOT_FOUND = 'Автомобиль не обнаружен!'
+}
+
 export enum ProductErrorConstants {
     NOT_FOUND = 'Товар не найден'
 }

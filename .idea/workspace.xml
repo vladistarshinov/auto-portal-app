@@ -3,15 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="76d172d4-4753-4dba-b42a-cfdfc110222f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecommerce-server/common/constants/dto.constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/common/constants/dto.constants.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecommerce-server/common/constants/error.constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/common/constants/error.constants.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecommerce-server/pipes/id-validation.pipe.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/pipes/id-validation.pipe.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecommerce-server/src/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/src/auth/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecommerce-server/src/category/category.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/src/category/category.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecommerce-server/src/order/order.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/src/order/order.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecommerce-server/src/order/order.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/src/order/order.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecommerce-server/src/product/product.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/src/product/product.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecommerce-server/src/review/review.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/src/review/review.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce-server/src/auto/auto.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/src/auto/auto.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce-server/src/auto/auto.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/src/auto/auto.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce-server/src/auto/schema/auto.schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/src/auto/schema/auto.schema.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,7 +238,10 @@
       <workItem from="1677309564691" duration="28103000" />
       <workItem from="1677418018517" duration="7074000" />
       <workItem from="1677438137676" duration="3909000" />
-      <workItem from="1677522820591" duration="2443000" />
+      <workItem from="1677522820591" duration="3346000" />
+      <workItem from="1677693099705" duration="3810000" />
+      <workItem from="1677706471353" duration="334000" />
+      <workItem from="1677785345426" duration="618000" />
     </task>
     <servers />
   </component>

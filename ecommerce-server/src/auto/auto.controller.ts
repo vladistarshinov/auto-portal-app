@@ -16,11 +16,11 @@ export class AutoController {
 		return this.autoService.getAll(page, limit, searchTerm, sort)
 	}
 
-	@Get('by-slug/:slug')
+	@Get('by-brand/:brand')
 	public getAuto(
-		@Param('slug') slug: string
+		@Param('brand') brand: string
 	): Promise<any> {
-		return this.autoService.getBySlug(slug)
+		return this.autoService.getByBrand(brand)
 	}
 
 	@Post()
