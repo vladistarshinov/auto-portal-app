@@ -2,6 +2,7 @@ import { BadRequestException, Injectable, NotFoundException } from '@nestjs/comm
 import { InjectModel } from '@nestjs/mongoose';
 import { AutoErrorConstants } from 'common/constants/error.constants';
 import { Model } from 'mongoose';
+import { AutoCharacteristicService } from 'src/auto-characteristic/auto-characteristic.service';
 import { Auto, AutoDocument } from './schema/auto.schema';
 
 @Injectable()
@@ -9,6 +10,7 @@ export class AutoService {
 	constructor(
 		@InjectModel(Auto.name)
 		private readonly autoModel: Model<AutoDocument>,
+		private readonly autoCharacteristicService: AutoCharacteristicService
 	) {}
 
 	public async getAll(
@@ -115,6 +117,9 @@ export class AutoService {
 	}
 
 	public async delete(_id: string): Promise<void> {
+		const auto = await this.autoModel.findById(_id)
+		//const autoCharId = auto.characteristics
+		//await this.autoCharacteristicService.delete(autoCharId)
 		await this.autoModel.findByIdAndDelete(_id).exec()
 	}
 
@@ -122,6 +127,18 @@ export class AutoService {
 		const auto = await this.autoModel
 			.find({ brand })
 		if (!auto) throw new NotFoundException(AutoErrorConstants.NOT_FOUND_BRAND);
+		return auto
+	}
+
+	public async getBySlug(slug: string): Promise<any> {
+		const auto = await this.autoModel.findOne({ slug })
+			.populate({
+				path: 'characteristics',
+				select: '-__v -createdAt -updatedAt -_id'
+			})
+			.select('-__v')
+			.exec();
+		if (!auto) throw new NotFoundException(AutoErrorConstants.NOT_FOUND)
 		return auto
 	}
 

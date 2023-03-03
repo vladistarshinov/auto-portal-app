@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose"
-import { HydratedDocument } from "mongoose"
+import { HydratedDocument, Types } from "mongoose"
+import { AutoCharacteristic } from "src/auto-characteristic/schema/auto-characteristic.schema"
 
 export type AutoDocument = HydratedDocument<Auto>
 
@@ -61,6 +62,9 @@ export class Auto {
 
 	@Prop()
 	isSendTelegram: string
+
+	@Prop({ type: Types.ObjectId, ref: 'AutoCharacteristic' })
+	characteristics: AutoCharacteristic
 }
 
 export const AutoSchema = SchemaFactory.createForClass(Auto)

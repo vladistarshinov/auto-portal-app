@@ -2,7 +2,7 @@ import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestj
 import { IdValidationPipe } from 'pipes/id-validation.pipe';
 import { AutoService } from './auto.service';
 
-@Controller('auto')
+@Controller('autos')
 export class AutoController {
 	constructor(private readonly autoService: AutoService) {}
 
@@ -17,11 +17,19 @@ export class AutoController {
 	}
 
 	@Get('by-brand/:brand')
-	public getAuto(
+	public getAutosByBrand(
 		@Param('brand') brand: string
-	): Promise<any> {
+	): Promise<any[]> {
 		return this.autoService.getByBrand(brand)
 	}
+
+	@Get(':slug')
+	public getAutoBySlug(
+		@Param('slug') slug: string
+	): Promise<any> {
+		return this.autoService.getBySlug(slug)
+	}
+
 
 	@Post()
 	public createAuto(

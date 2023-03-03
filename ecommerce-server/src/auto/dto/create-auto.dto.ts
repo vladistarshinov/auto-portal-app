@@ -27,13 +27,22 @@ export class CreateAutoDto {
 	@IsNumber()
 	countInStock: number
 
+	@IsNumber()
+	countOfViews: number
+
 	@IsString()
 	transmission: string
 
-	@IsString()
-	engine: string
+	@IsNumber()
+	mileage: number
 
 	@IsString()
+	engineType: string
+
+	@IsNumber()
+	enginePower: string
+
+	@IsNumber()
 	engineVolume: string
 
 	@IsString()
@@ -43,10 +52,10 @@ export class CreateAutoDto {
 	bodyType: string
 
 	@IsString()
-	power: string
+	color: string
 
 	@IsString()
-	color: string
+	steering: string
 
 	@IsOptional()
 	@IsNumber()

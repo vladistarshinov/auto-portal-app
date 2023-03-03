@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="76d172d4-4753-4dba-b42a-cfdfc110222f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce-server/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/src/app.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ecommerce-server/src/auto/auto.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/src/auto/auto.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ecommerce-server/src/auto/auto.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/src/auto/auto.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce-server/src/auto/dto/create-auto.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/src/auto/dto/create-auto.dto.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ecommerce-server/src/auto/schema/auto.schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/src/auto/schema/auto.schema.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -83,11 +85,11 @@
       <recent name="$PROJECT_DIR$/dashboard" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ecommerce-server/src/auto-characteristic/tests" />
       <recent name="$PROJECT_DIR$/ecommerce-server/src/auto/tests" />
       <recent name="$PROJECT_DIR$/frontend/src/app/assets/images" />
       <recent name="$PROJECT_DIR$/dashboard/src/app/core/shared/services/persistance" />
       <recent name="$PROJECT_DIR$/dashboard/src/processes/auth/service" />
-      <recent name="$PROJECT_DIR$/dashboard/src/widgets" />
     </key>
   </component>
   <component name="RunManager">
@@ -241,7 +243,10 @@
       <workItem from="1677522820591" duration="3346000" />
       <workItem from="1677693099705" duration="3810000" />
       <workItem from="1677706471353" duration="334000" />
-      <workItem from="1677785345426" duration="618000" />
+      <workItem from="1677785345426" duration="833000" />
+      <workItem from="1677827299842" duration="366000" />
+      <workItem from="1677846857461" duration="9683000" />
+      <workItem from="1677872949333" duration="1459000" />
     </task>
     <servers />
   </component>

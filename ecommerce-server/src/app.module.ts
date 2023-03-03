@@ -15,6 +15,7 @@ import { TelegramModule } from './telegram/telegram.module';
 import { getTelegramConfig } from 'config/telegram.config'
 import { PaymentModule } from './payment/payment.module';
 import { AutoModule } from './auto/auto.module';
+import { AutoCharacteristicModule } from './auto-characteristic/auto-characteristic.module';
 
 @Module({
   imports: [
@@ -38,6 +39,7 @@ import { AutoModule } from './auto/auto.module';
     }),
     PaymentModule,
     AutoModule,
+    AutoCharacteristicModule,
   ],
   controllers: [AppController],
   providers: [AppService],
