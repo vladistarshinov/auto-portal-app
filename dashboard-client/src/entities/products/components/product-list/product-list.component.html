@@ -1,0 +1,9 @@
+<div
+  *ngFor="let card of products | paginate: {
+      itemsPerPage: rows,
+      currentPage: currentPage,
+      totalItems: meta?.total
+  }"
+>
+  <app-product-card></app-product-card>
+</div>

@@ -62,7 +62,7 @@ export class ProductService {
             }
         }
 
-        const res = await this.productModel
+        const data = await this.productModel
             .find(searchTermOptions)
             .select('-updatedAt -__v')
             .sort(sortOptions)
@@ -72,7 +72,7 @@ export class ProductService {
 
         const count = await this.productModel.count()
         return {
-            res,
+            data,
             total: count,
             current_page: Number(page) + 1,
             from: 1,

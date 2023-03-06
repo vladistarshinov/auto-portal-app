@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { PersistanceService } from './core/shared/services/persistance/persistance.service';
 import { PagesRoutingModule } from '@/pages/pages-routing.module';
 import { HeaderModule } from '@/widgets/header/header.module';
+import { ToastService } from './core/shared/services/toast/toast.service';
+import { LayoutModule } from '@/widgets/layout/layout.module';
 
 @NgModule({
   declarations: [
@@ -17,11 +19,15 @@ import { HeaderModule } from '@/widgets/header/header.module';
     BrowserModule,
     PagesRoutingModule,
     HeaderModule,
+    LayoutModule,
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
   ],
-  providers: [PersistanceService],
+  providers: [
+    PersistanceService,
+    ToastService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

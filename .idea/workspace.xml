@@ -3,11 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="76d172d4-4753-4dba-b42a-cfdfc110222f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecommerce-server/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/src/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecommerce-server/src/auto/auto.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/src/auto/auto.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecommerce-server/src/auto/auto.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/src/auto/auto.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecommerce-server/src/auto/dto/create-auto.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/src/auto/dto/create-auto.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecommerce-server/src/auto/schema/auto.schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/src/auto/schema/auto.schema.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/src/pages/home-page/home-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/pages/home-page/home-page.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/src/pages/home-page/home-page.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/pages/home-page/home-page.module.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +51,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/vladstarshinov/Projects/mern-shop-app/frontend/public/static/icons&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/vladstarshinov/Projects/mern-shop-app/dashboard-client/src&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -78,11 +76,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/dashboard-client/src" />
       <recent name="$PROJECT_DIR$/frontend/public/static/icons" />
       <recent name="$PROJECT_DIR$/frontend/public/static" />
       <recent name="$PROJECT_DIR$/frontend/src/app/assets/images/home" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/dashboard" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/ecommerce-server/src/auto-characteristic/tests" />
@@ -246,7 +244,11 @@
       <workItem from="1677785345426" duration="833000" />
       <workItem from="1677827299842" duration="366000" />
       <workItem from="1677846857461" duration="9683000" />
-      <workItem from="1677872949333" duration="1459000" />
+      <workItem from="1677872949333" duration="2800000" />
+      <workItem from="1677920978664" duration="11482000" />
+      <workItem from="1678124705932" duration="1562000" />
+      <workItem from="1678126304844" duration="3281000" />
+      <workItem from="1678133930199" duration="8783000" />
     </task>
     <servers />
   </component>
