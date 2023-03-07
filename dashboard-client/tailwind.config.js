@@ -19,6 +19,29 @@ module.exports = {
       '6xl': '4.25rem',
       '7xl': '5.5rem'
     },
+    keyframes: {
+      animationOpacity: {
+        from: { opacity: 0.2 },
+        to: { opacity: 1 }
+      },
+      scaleIn: {
+        '0%': {
+          opacity: 0,
+          transform: 'scale(0.9)'
+        },
+        '50%': {
+          opacity: 0.3
+        },
+        '100%': {
+          opacity: 1,
+          transform: 'scale(1)'
+        }
+      }
+    },
+    animation: {
+      opacity: 'animationOpacity .5s ease-in-out',
+      scaleIn: 'scaleIn .35s ease-in-out'
+    },
     extend: {
       colors: {
         primary: '#5F3DF7'

@@ -63,7 +63,7 @@ export class AutoService {
 			}
 		}
 
-		const res = await this.autoModel
+		const data = await this.autoModel
 			.find(searchTermOptions)
 			.select('-updatedAt -__v')
 			.sort(sortOptions)
@@ -73,7 +73,7 @@ export class AutoService {
 
 		const count = await this.autoModel.count()
 		return {
-			res,
+			data,
 			total: count,
 			current_page: Number(page) + 1,
 			from: 1,
