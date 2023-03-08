@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { AutoErrorConstants } from 'common/constants/error.constants';
 import { Model } from 'mongoose';
 import { AutoCharacteristicService } from 'src/auto-characteristic/auto-characteristic.service';
+import { FiltersDto } from './dto/filters.dto';
 import { Auto, AutoDocument } from './schema/auto.schema';
 
 @Injectable()
@@ -14,24 +15,20 @@ export class AutoService {
 	) {}
 
 	public async getAll(
-		page: number = 0,
+		page: number = 1,
 		limitOfPages?: number,
 		searchTerm?: string,
-		sort?: string
+		sort?: string,
+		filters?: FiltersDto
 	):  Promise<any> {
 		let searchTermOptions = {}
+		let filterOptions = {}
 		let sortOptions = {}
 		if (searchTerm) {
 			searchTermOptions = {
-				$or: [
+				$and: [
 					{
 						title: new RegExp(searchTerm, 'i')
-					},
-					{
-						slug: new RegExp(searchTerm, 'i')
-					},
-					{
-						vin: new RegExp(searchTerm, 'i')
 					},
 					{
 						year: new RegExp(searchTerm, 'i')
@@ -39,6 +36,23 @@ export class AutoService {
 				]
 			}
 		}
+
+		if (Object.keys(filters).length) {
+			if (filters.hasOwnProperty('price')) {
+				filterOptions['price'] = {
+					"$gte": filters['price'].split(',')[0],
+					"$lt": filters['price'].split(',')[1],
+				}
+			}
+			if (filters.hasOwnProperty('brand')) {
+				let brands = filters['brand'].split(',')
+				filterOptions['brand'] = [...brands]
+			}
+			if (filters.hasOwnProperty('color')) {
+				filterOptions['color'] = { $eq: filters['color']  }
+			}
+		}
+
 		if (sort !== undefined && sort.includes('createdAt')) {
 			if (sort[0] === '-')
 				sortOptions = {
@@ -48,14 +62,14 @@ export class AutoService {
 				sortOptions = {
 					createdAt: 'asc'
 				}
-		} else if (sort !== undefined && sort.includes('year')) {
+		} else if (sort !== undefined && sort.includes('price')) {
 			if (sort[0] === '-')
 				sortOptions = {
-					year: 'desc'
+					price: 'desc'
 				}
 			else
 				sortOptions = {
-					year: 'asc'
+					price: 'asc'
 				}
 		} else {
 			sortOptions = {
@@ -64,10 +78,14 @@ export class AutoService {
 		}
 
 		const data = await this.autoModel
-			.find(searchTermOptions)
+			.find({...searchTermOptions, ...filterOptions})
 			.select('-updatedAt -__v')
 			.sort(sortOptions)
-			.skip(page)
+			.populate({
+				path: 'characteristics',
+				select: '-__v -createdAt -updatedAt -_id',
+			})
+			.skip((page - 1) * limitOfPages)
 			.limit(limitOfPages)
 			.exec()
 
@@ -75,7 +93,8 @@ export class AutoService {
 		return {
 			data,
 			total: count,
-			current_page: Number(page) + 1,
+			current_page: +page,
+			per_page: +limitOfPages,
 			from: 1,
 			to: Math.floor(count / limitOfPages)
 		}

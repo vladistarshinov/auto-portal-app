@@ -94,11 +94,11 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/portal-client/src/features/filter-cars-by-brand/ui" />
       <recent name="$PROJECT_DIR$/ecommerce-server/src/auto-characteristic/tests" />
       <recent name="$PROJECT_DIR$/ecommerce-server/src/auto/tests" />
       <recent name="$PROJECT_DIR$/frontend/src/app/assets/images" />
       <recent name="$PROJECT_DIR$/dashboard/src/app/core/shared/services/persistance" />
-      <recent name="$PROJECT_DIR$/dashboard/src/processes/auth/service" />
     </key>
   </component>
   <component name="RunManager">
@@ -265,7 +265,7 @@
       <workItem from="1678219374102" duration="5400000" />
       <workItem from="1678267900729" duration="645000" />
       <workItem from="1678288745310" duration="2897000" />
-      <workItem from="1678291883032" duration="1556000" />
+      <workItem from="1678291883032" duration="20224000" />
     </task>
     <servers />
   </component>

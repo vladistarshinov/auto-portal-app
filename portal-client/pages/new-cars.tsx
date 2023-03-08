@@ -16,7 +16,7 @@ const NewCarsPage: NextPage<INewCarsPage> = ({ cars }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
 	try {
-		const { data: cars } = await AutoService.getAll()
+		const { data: cars } = await AutoService.getAll(1, 4)
 		return {
 			props: {
 				cars,

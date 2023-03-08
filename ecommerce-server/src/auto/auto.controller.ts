@@ -1,6 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
 import { IdValidationPipe } from 'pipes/id-validation.pipe';
 import { AutoService } from './auto.service';
+import { FiltersDto } from './dto/filters.dto';
 
 @Controller('autos')
 export class AutoController {
@@ -11,9 +12,10 @@ export class AutoController {
 		@Query('page') page?: number,
 		@Query('limit') limit?: number,
 		@Query('search') searchTerm?: string,
-		@Query('sort') sort?: string
+		@Query('sort') sort?: string,
+		@Body() filters?: FiltersDto
 	): Promise<any> {
-		return this.autoService.getAll(page, limit, searchTerm, sort)
+		return this.autoService.getAll(page, limit, searchTerm, sort, filters)
 	}
 
 	@Get('by-brand/:brand')
