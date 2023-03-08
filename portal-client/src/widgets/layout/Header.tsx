@@ -86,7 +86,9 @@ const Header: FC = () => {
 						"aria-labelledby": "basic-button",
 					}}
 				>
-					<MenuItem onClick={handleCategoryClose}>Новые автомобили</MenuItem>
+					<MenuItem onClick={handleCategoryClose}>
+						<Link sx={{ textDecoration: 'none', color: '#000' }} href='/new-cars'>Новые автомобили</Link>
+					</MenuItem>
 					<MenuItem onClick={handleCategoryClose}>Автомобили с пробегом</MenuItem>
 					<MenuItem onClick={handleCategoryClose}>
 						<Link sx={{ textDecoration: 'none', color: '#000' }} href='/autoparts'>Автозапчасти</Link>

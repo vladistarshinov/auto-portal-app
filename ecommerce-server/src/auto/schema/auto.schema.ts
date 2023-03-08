@@ -12,20 +12,14 @@ export class Auto {
 	@Prop()
 	brand: string
 
-	@Prop()
+	@Prop({ unique: true })
 	slug: string
 
 	@Prop()
 	imageUrl: string
 
 	@Prop()
-	videoUrl: string
-
-	@Prop({ unique: true })
-	vin: string
-
-	@Prop()
-	year: number
+	videoUrl?: string
 
 	@Prop()
 	countInStock: number
@@ -34,34 +28,16 @@ export class Auto {
 	countOfViews: number
 
 	@Prop()
-	transmission: string
-
-	@Prop()
-	engine: string
-
-	@Prop()
-	engineVolume: string
-
-	@Prop()
-	driveUnit: string
-
-	@Prop()
-	bodyType: string
-
-	@Prop()
-	power: string
-
-	@Prop()
 	color: string
 
 	@Prop()
-	oldPrice: string
+	oldPrice: number
 
 	@Prop()
-	price: string
+	price: number
 
 	@Prop()
-	isSendTelegram: string
+	isSendTelegram: boolean
 
 	@Prop({ type: Types.ObjectId, ref: 'AutoCharacteristic' })
 	characteristics: AutoCharacteristic

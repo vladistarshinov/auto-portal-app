@@ -1,7 +1,7 @@
 import { IUserResponse } from "@/shared/types/user.types"
 
 export type IProductsResponse = IMeta & {
-	res: IProduct[]
+	data: IProduct[]
 }
 
 export interface IProduct {

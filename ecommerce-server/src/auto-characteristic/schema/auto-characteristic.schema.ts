@@ -6,7 +6,7 @@ export type AutoCharacteristicDocument = HydratedDocument<AutoCharacteristic>
 @Schema({ timestamps: true })
 export class AutoCharacteristic {
 
-	@Prop({ unique: true })
+	@Prop()
 	vin: string
 
 	@Prop()

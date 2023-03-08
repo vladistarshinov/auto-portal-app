@@ -17,7 +17,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 	try {
 		const { data: products } = await ProductService.getProducts()
 
-		const paths = products.res.map((product: IProduct) => ({
+		const paths = products.data.map((product: IProduct) => ({
 			params: { slug: product.slug },
 		}))
 

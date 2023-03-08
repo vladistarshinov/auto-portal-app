@@ -9,13 +9,14 @@ import ProductCard from "@/entities/product/ui/ProductCard"
 import { IProduct, IProductsResponse } from "@/shared/api/types/product.types"
 
 const ProductList: FC<{products: IProductsResponse}> = ({ products }) => {
+	console.log(products);
 	return (
 		<>
 			<Box sx={{ display: 'flex', justifyContent: 'center', mt: '1rem' }}>
 				<Heading title='Все товары'></Heading>
 			</Box>
 			<Box>
-				{products?.res?.map((product: IProduct) => (
+				{products?.data?.map((product: IProduct) => (
 					<Grid
 						item
 						display="inline-grid"

@@ -88,8 +88,8 @@ export class AutoService {
 			throw new BadRequestException(AutoErrorConstants.IS_EXIST)
 
 		const newAuto = new this.autoModel(dto)
-
 		return newAuto.save()
+
 	}
 
 	public async update(_id: string, dto: any) {
@@ -98,19 +98,11 @@ export class AutoService {
 		if (dto.title) auto.title = dto.title
 		if (dto.brand) auto.brand = dto.brand
 		if (dto.slug) auto.slug = dto.slug
-		if (dto.vin) auto.vin = dto.vin
-		if (dto.year) auto.year = dto.year
 		if (dto.imageUrl) auto.imageUrl = dto.imageUrl
 		if (dto.videoUrl) auto.videoUrl = dto.videoUrl
-		if (dto.transmission) auto.transmission = dto.transmission
-		if (dto.engine) auto.engine = dto.engine
-		if (dto.engineVolume) auto.engineVolume = dto.engineVolume
-		if (dto.driveUnit) auto.driveUnit = dto.driveUnit
 		if (dto.oldPrice) auto.oldPrice = dto.oldPrice
 		if (dto.price) auto.price = dto.price
 		if (dto.countInStock) auto.countInStock = dto.countInStock
-		if (dto.bodyType) auto.bodyType = dto.bodyType
-		if (dto.power) auto.power = dto.power
 		if (dto.color) auto.color = dto.color
 
 		return await auto.save()
@@ -142,11 +134,15 @@ export class AutoService {
 		return auto
 	}
 
+	public async getBrands(): Promise<any[]> {
+		return await this.autoModel.find().distinct('brand').exec();
+	}
+
 	private async findBySlug(slug: string): Promise<any> {
 		const auto = await this.autoModel.findOne({ slug })
 			.select('-__v')
 			.exec();
-		if (!auto) throw new NotFoundException(AutoErrorConstants.NOT_FOUND)
+		if (auto) throw new NotFoundException(AutoErrorConstants.NOT_FOUND)
 		return auto
 	}
 }

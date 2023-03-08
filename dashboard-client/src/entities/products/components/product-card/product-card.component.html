@@ -1,22 +1,21 @@
-<div className='animate-scaleIn'>
-  <div className='bg-white rounded-xl relative overflow-hidden'>
-    <div className='absolute top-2 right-3 z-10'>
-    </div>
+<div class='animate-scaleIn'>
+  <div class='bg-white rounded-xl relative overflow-hidden'>
+    <div class='absolute top-2 right-3 z-10'></div>
     <a>
-    <img
-      class='img'
-      [src]='getImageUrl(product.imageUrl)'
-      [alt]='product.name'
-    />
+      <img
+        class='img'
+        [src]='getImageUrl(product.imageUrl)'
+        [alt]='product.name'
+      />
     </a>
   </div>
   <a>
-  <h3 className='mt-2 font-semibold'>{{product.title}}</h3>
+    <h3 class='mt-2 font-semibold'>{{product.title}}</h3>
   </a>
   <a
-    className='text-aqua text-xs mb-2'
+    class='text-aqua text-xs mb-2'
   >
   {{product.brand}}
   </a>
-  <div className='text-xl font-semibold'>{{product.price}}</div>
+  <div class='text-lg font-semibold'>{{product.price}}</div>
 </div>

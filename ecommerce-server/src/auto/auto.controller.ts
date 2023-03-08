@@ -23,6 +23,11 @@ export class AutoController {
 		return this.autoService.getByBrand(brand)
 	}
 
+	@Get('brands')
+	public getAutoBrands(): Promise<any[]> {
+		return this.autoService.getBrands()
+	}
+
 	@Get(':slug')
 	public getAutoBySlug(
 		@Param('slug') slug: string

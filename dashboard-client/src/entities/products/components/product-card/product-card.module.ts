@@ -3,13 +3,12 @@ import { CommonModule } from '@angular/common';
 import { ProductCardComponent } from './product-card.component';
 
 
-
 @NgModule({
   declarations: [
     ProductCardComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   exports: [
     ProductCardComponent
