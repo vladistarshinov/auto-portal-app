@@ -13,12 +13,13 @@ interface INewCarsPage {
 }
 
 const NewCarsPage: NextPage<INewCarsPage> = ({ cars, autoBrands }) => {
+	console.log(cars, autoBrands);
 	return <NewCarsScreen cars={cars} autoBrands={autoBrands}	/>
 }
 
 export const getStaticProps: GetStaticProps = async () => {
 	try {
-		const { data: cars } = await AutoService.getAll(1, 2)
+		const { data: cars } = await AutoService.getAll(1, 4)
 		const { data: autoBrands } = await AutoBrandService.getAll()
 		return {
 			props: {

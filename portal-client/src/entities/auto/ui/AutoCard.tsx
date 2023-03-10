@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import Image from 'next/image'
-import { Box, Card, CardActions, CardContent, Link, Typography } from '@mui/material'
+import { Box, Button, Card, CardActions, CardContent, Link, Typography } from '@mui/material'
 import { genEndOfNoun } from '@/shared/libs/gen-end-of-noun'
 import { motion } from 'framer-motion'
 
@@ -40,15 +40,33 @@ const AutoCard: FC<{car: any}> = ({car}) => {
 				</CardContent>
 				<CardActions sx={{ flexDirection: "column" }} disableSpacing>
 					<Box display="inline-flex" alignItems="center">
-						<Typography sx={{ ml: 2 }} variant="body2">
-							{car.countInStock ? 'В наличии' : ''}
-						</Typography>
+							<Typography sx={{ ml: 2 }} variant="body1">
+								{car.characteristics.mileage} км,
+								{car.characteristics.year} г.в.,
+								{car.characteristics.transmission},
+								{car.characteristics.engineType},
+								{car.characteristics.enginePower} л.с.
+							</Typography>
 					</Box>
-					<Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '1rem' }}>
-						<Typography variant="h6" sx={{ textDecoration: 'line-through' }}>
-							{car.oldPrice}₽
-						</Typography>
-						<Typography variant="h5">{car.price} RUB</Typography>
+					<Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: '1rem', mt: 2 }}>
+						<Box>
+							<Typography variant="h5">{car.price} ₽</Typography>
+						</Box>
+						<Box>
+							<Typography variant="h6" sx={{ textDecoration: 'line-through' }}>
+								{car.oldPrice} ₽
+							</Typography>
+						</Box>
+					</Box>
+					<Box>
+						<Button
+							sx={{ mt: 2, mb: 1 }}
+							variant="outlined"
+							color="inherit"
+							onClick={() => {}}
+						>
+							Оставить заявку
+						</Button>
 					</Box>
 				</CardActions>
 			</Card>
