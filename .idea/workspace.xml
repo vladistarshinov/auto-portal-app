@@ -3,20 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="76d172d4-4753-4dba-b42a-cfdfc110222f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard-client/src/entities/products/components/product-card/product-card.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/entities/products/components/product-card/product-card.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard-client/src/entities/products/components/product-card/product-card.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/entities/products/components/product-card/product-card.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard-client/src/entities/products/components/product-card/product-card.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/entities/products/components/product-card/product-card.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard-client/src/entities/products/components/product-list/product-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/entities/products/components/product-list/product-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard-client/src/widgets/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/widgets/home/home.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecommerce-server/src/auto-characteristic/schema/auto-characteristic.schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/src/auto-characteristic/schema/auto-characteristic.schema.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecommerce-server/src/auto/auto.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/src/auto/auto.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ecommerce-server/src/auto/auto.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/src/auto/auto.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecommerce-server/src/auto/schema/auto.schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/src/auto/schema/auto.schema.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/portal-client/pages/products/[slug].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/pages/products/[slug].tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/portal-client/src/shared/api/types/product.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/api/types/product.types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/portal-client/src/shared/configs/api.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/configs/api.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/portal-client/src/widgets/layout/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/widgets/layout/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/portal-client/src/widgets/product-list/ProductList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/widgets/product-list/ProductList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client/pages/new-cars.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/pages/new-cars.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client/src/entities/auto/model/auto.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/entities/auto/model/auto.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client/src/features/filter-cars-by-brand/model/auto-brand.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/features/filter-cars-by-brand/model/auto-brand.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client/src/features/filter-cars-by-brand/ui/FilterCarsByBrandModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/features/filter-cars-by-brand/ui/FilterCarsByBrandModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client/src/screens/new-cars/NewCarsScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/screens/new-cars/NewCarsScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client/src/widgets/auto-list/AutoList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/widgets/auto-list/AutoList.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,9 +28,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/portal-client/src/screens/auth/Auth.tsx" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -62,7 +52,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/vladstarshinov/Projects/mern-shop-app/dashboard-client/src&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/vladstarshinov/Projects/mern-shop-app/ecommerce-server&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -87,11 +77,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ecommerce-server" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/dashboard-client/src" />
       <recent name="$PROJECT_DIR$/frontend/public/static/icons" />
       <recent name="$PROJECT_DIR$/frontend/public/static" />
-      <recent name="$PROJECT_DIR$/frontend/src/app/assets/images/home" />
-      <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/portal-client/src/features/filter-cars-by-brand/ui" />
@@ -100,40 +90,6 @@
       <recent name="$PROJECT_DIR$/frontend/src/app/assets/images" />
       <recent name="$PROJECT_DIR$/dashboard/src/app/core/shared/services/persistance" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
-      <module name="mern-shop-app" />
-      <working_directory value="$PROJECT_DIR$" />
-      <go_parameters value="-i" />
-      <kind value="FILE" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
-      <module name="mern-shop-app" />
-      <working_directory value="$PROJECT_DIR$" />
-      <go_parameters value="-i" />
-      <kind value="DIRECTORY" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="mern-shop-app" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="mern-shop-app" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -265,7 +221,14 @@
       <workItem from="1678219374102" duration="5400000" />
       <workItem from="1678267900729" duration="645000" />
       <workItem from="1678288745310" duration="2897000" />
-      <workItem from="1678291883032" duration="20224000" />
+      <workItem from="1678291883032" duration="22091000" />
+      <workItem from="1678349631044" duration="3990000" />
+      <workItem from="1678361734260" duration="1222000" />
+      <workItem from="1678362996419" duration="5200000" />
+      <workItem from="1678370265471" duration="5011000" />
+      <workItem from="1678385715078" duration="3000" />
+      <workItem from="1678386066522" duration="3322000" />
+      <workItem from="1678447682155" duration="453000" />
     </task>
     <servers />
   </component>

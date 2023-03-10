@@ -15,7 +15,7 @@ export class AutoService {
 	) {}
 
 	public async getAll(
-		page: number = 1,
+		page?: number,
 		limitOfPages?: number,
 		searchTerm?: string,
 		sort?: string,
@@ -78,7 +78,7 @@ export class AutoService {
 		}
 
 		const data = await this.autoModel
-			.find({...searchTermOptions, ...filterOptions})
+			.find(searchTermOptions)
 			.select('-updatedAt -__v')
 			.sort(sortOptions)
 			.populate({

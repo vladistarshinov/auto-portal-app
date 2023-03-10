@@ -11,9 +11,6 @@ export const AutoService = {
 					limit,
 					search: searchTerm,
 					sort
-				},
-				data: {
-
 				}
 			}
 		)

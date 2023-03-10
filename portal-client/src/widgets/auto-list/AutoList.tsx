@@ -1,39 +1,55 @@
-import { FC, useState } from "react"
+import { useQuery } from '@tanstack/react-query'
+import { FC, useState, useMemo } from "react"
 import { motion } from 'framer-motion'
-import { useQuery } from "@tanstack/react-query"
 import { Box, Button, Chip, Grid, Pagination, Skeleton, Stack } from "@mui/material"
 
 import { AutoService } from "@/entities/auto/model/auto.service"
 import { EnumAutoSort } from "@/entities/auto/model/auto.types"
 import AutoCard from "@/entities/auto/ui/AutoCard"
 import SortSelectDropdown from "@/shared/ui/sort-select-input/SortSelectInput"
+import { AutoBrandService } from "@/features/filter-cars-by-brand/model/auto-brand.service"
 
-const AutoList: FC<{cars: any}> = ({cars}) => {
+const AutoList: FC<{cars: any, autoBrands: any}> = ({cars, autoBrands}) => {
 	const [page, setPage] = useState(1)
-	const [limit, setLimit] = useState(4)
+	const [limit, setLimit] = useState(2)
 	const [searchTerm, setSearchTerm] = useState('')
+	const [filters, setFilters] = useState<any>(undefined)
 
 	const [sortType, setSortType] = useState<EnumAutoSort>(
 		EnumAutoSort.NEW
 	)
 
-	const { data: { data: res }, isLoading } = useQuery(
-		['products', sortType, page],
+	const { data: {data: autoList}, isLoading } = useQuery(
+		['autos', page, sortType],
 		() =>
 			AutoService.getAll(page, limit, searchTerm, sortType),
 		{
 			initialData: cars,
 			keepPreviousData: true
 		}
+)
+
+	const { data: brands, isLoading: isBrandLoading } = useQuery(
+		['auto-brands'],
+		() =>
+			AutoBrandService.getAll(),
+		{
+			initialData: autoBrands,
+			keepPreviousData: true
+		}
 	)
 
+	const handleClick = (brand: string) => {
+		setFilters({...filters, brand: brand})
+	}
 
 	return (
 		<>
 			<Box display='flex' alignItems='center' justifyContent='space-between' gap={2}>
 				<Stack direction="row" alignItems='center' spacing={2}>
-					<Chip label="Volkswagen"  />
-					<Chip label="Clickable" variant="outlined"  />
+					{brands?.data?.map((brand: string, idx: number) => (
+						<Chip key={idx} label={brand} clickable onClick={() => handleClick(brand)}  />
+					))}
 					<small>+ Показать еще</small>
 				</Stack>
 				<SortSelectDropdown sortType={sortType} setSortType={setSortType} />
@@ -46,7 +62,7 @@ const AutoList: FC<{cars: any}> = ({cars}) => {
 				</Box>
 				) : (
 				<motion.div layout>
-					{res?.data?.map((car: any) => (
+					{autoList?.data?.map((car: any) => (
 						<Grid
 							item
 							display="inline-grid"
@@ -63,10 +79,10 @@ const AutoList: FC<{cars: any}> = ({cars}) => {
 					))}
 				</motion.div>
 			)}
-			{res?.total > res?.per_page && (
+			{autoList?.total > autoList?.per_page && (
 				<Stack display='flex' justifyContent='center' spacing={2}>
 					<Pagination
-						count={Math.ceil(res?.total / res?.per_page)}
+						count={Math.ceil(autoList?.total / autoList?.per_page)}
 						page={page}
 						onChange={(e: React.ChangeEvent<unknown>, value: number) => setPage(value)}
 					/>

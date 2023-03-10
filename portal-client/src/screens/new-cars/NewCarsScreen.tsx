@@ -4,14 +4,14 @@ import AutoList from '@/widgets/auto-list/AutoList'
 import { Box, Chip, Container, Grid, Stack } from '@mui/material'
 import { FC } from 'react'
 
-const NewCarsScreen: FC<{cars: any}> = ({cars}) => {
+const NewCarsScreen: FC<{cars: any, autoBrands: any}> = ({cars, autoBrands}) => {
 
 	return (
 		<Container maxWidth="xl">
 			<Box sx={{ display: 'flex', justifyContent: 'center', mt: '1rem' }}>
 				<Heading title='Все новые автомобили'></Heading>
 			</Box>
-			<AutoList cars={cars} />
+			<AutoList cars={cars} autoBrands={autoBrands} />
 		</Container>
 	)
 }
