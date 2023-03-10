@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="76d172d4-4753-4dba-b42a-cfdfc110222f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/portal-client/src/entities/auto/model/auto.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/entities/auto/model/auto.types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client/src/shared/api/types/product.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/api/types/product.types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/portal-client/src/widgets/auto-list/AutoList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/widgets/auto-list/AutoList.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -224,7 +224,9 @@
       <workItem from="1678385715078" duration="3000" />
       <workItem from="1678386066522" duration="3322000" />
       <workItem from="1678447682155" duration="9736000" />
-      <workItem from="1678471470829" duration="5524000" />
+      <workItem from="1678471470829" duration="8059000" />
+      <workItem from="1678482890103" duration="1759000" />
+      <workItem from="1678484662849" duration="418000" />
     </task>
     <servers />
   </component>

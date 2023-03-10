@@ -8,7 +8,7 @@ export const useAutoListQuery = (
 	limit: number,
 	searchTerm: string,
 	sortType: EnumAutoSort,
-	filters: FiltersDto,
+	filters: FiltersDto | undefined,
 	cars: any
 ) => {
 	const { data: { data: autoList }, isLoading } = useQuery(
