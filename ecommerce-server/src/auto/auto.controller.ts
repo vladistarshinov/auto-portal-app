@@ -7,7 +7,7 @@ import { FiltersDto } from './dto/filters.dto';
 export class AutoController {
 	constructor(private readonly autoService: AutoService) {}
 
-	@Get()
+	@Post()
 	public getAutos(
 		@Query('page') page?: number,
 		@Query('limit') limit?: number,
@@ -17,6 +17,7 @@ export class AutoController {
 	): Promise<any> {
 		return this.autoService.getAll(page, limit, searchTerm, sort, filters)
 	}
+
 
 	@Get('by-brand/:brand')
 	public getAutosByBrand(

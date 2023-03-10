@@ -2,6 +2,7 @@ import { BadRequestException, Injectable, NotFoundException } from '@nestjs/comm
 import { InjectModel } from '@nestjs/mongoose';
 import { AutoErrorConstants } from 'common/constants/error.constants';
 import { Model } from 'mongoose';
+import qs, { ParsedQs } from 'qs';
 import { AutoCharacteristicService } from 'src/auto-characteristic/auto-characteristic.service';
 import { FiltersDto } from './dto/filters.dto';
 import { Auto, AutoDocument } from './schema/auto.schema';
@@ -21,6 +22,7 @@ export class AutoService {
 		sort?: string,
 		filters?: FiltersDto
 	):  Promise<any> {
+		let newFilters = filters
 		let searchTermOptions = {}
 		let filterOptions = {}
 		let sortOptions = {}
@@ -37,19 +39,19 @@ export class AutoService {
 			}
 		}
 
-		if (Object.keys(filters).length) {
-			if (filters.hasOwnProperty('price')) {
+		if (filters && Object.keys(newFilters).length) {
+			if (newFilters.hasOwnProperty('price')) {
 				filterOptions['price'] = {
-					"$gte": filters['price'].split(',')[0],
-					"$lt": filters['price'].split(',')[1],
+					"$gte": String(newFilters['price']).split(',')[0],
+					"$lt": String(newFilters['price']).split(',')[1],
 				}
 			}
-			if (filters.hasOwnProperty('brand')) {
-				let brands = filters['brand'].split(',')
+			if (newFilters.hasOwnProperty('brand')) {
+				let brands = String(newFilters['brand']).split(',')
 				filterOptions['brand'] = [...brands]
 			}
-			if (filters.hasOwnProperty('color')) {
-				filterOptions['color'] = { $eq: filters['color']  }
+			if (newFilters.hasOwnProperty('color')) {
+				filterOptions['color'] = { $eq: newFilters['color']  }
 			}
 		}
 
@@ -78,7 +80,7 @@ export class AutoService {
 		}
 
 		const data = await this.autoModel
-			.find(searchTermOptions)
+			.find({...searchTermOptions, ...filterOptions})
 			.select('-updatedAt -__v')
 			.sort(sortOptions)
 			.populate({

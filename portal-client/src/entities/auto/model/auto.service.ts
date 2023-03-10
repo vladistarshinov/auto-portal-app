@@ -4,15 +4,17 @@ import { FiltersDto } from "./filters.dto"
 
 export const AutoService = {
 	async getAll(page?: number, limit?: number, searchTerm?: string, sort?: string, filters?: FiltersDto) {
-		const res = await instance.get<any>(
-			getAutosUrl(''), {
+		const res = await instance.post<any>(
+			getAutosUrl(''),
+			filters,
+			{
 				params: {
 					page,
 					limit,
 					search: searchTerm,
-					sort
+					sort,
 				}
-			}
+			},
 		)
 		return res
 	},

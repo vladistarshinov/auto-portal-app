@@ -1,13 +1,13 @@
 export enum EnumAutoSort {
-	PRICE_ASC = 'price',
-	PRICE_DESC= '-price',
+	NEW = '-createdAt',
 	OLD = 'createdAt',
-	NEW = '-createdAt'
+	PRICE_ASC = 'price',
+	PRICE_DESC= '-price'
 }
 
 export enum EnumAutoSortTitle {
-	PRICE_ASC = 'По возрастанию цены',
-	PRICE_DESC= 'По убыванию цены',
+	NEW = 'Сначала новые',
 	OLD = 'Сначала старые',
-	NEW = 'Сначала новые'
+	PRICE_ASC = 'По возрастанию цены',
+	PRICE_DESC= 'По убыванию цены'
 }
