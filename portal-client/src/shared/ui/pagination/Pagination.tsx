@@ -1,7 +1,6 @@
 import { ChangeEvent, Dispatch, FC, SetStateAction } from "react"
 import {Stack, Pagination } from "@mui/material"
-
-import { IMeta } from "@/shared/api/types/product.types"
+import { IMeta } from "@/shared/api/types/meta.types"
 
 interface IPagination<T> {
 	list: T

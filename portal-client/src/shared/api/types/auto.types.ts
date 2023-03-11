@@ -1,3 +1,5 @@
+import { IMeta } from "./meta.types"
+
 export type IAutoResponse = IMeta & {
 	data: IAuto[]
 }
@@ -11,17 +13,20 @@ export interface IAuto {
 	brand: string
 	oldPrice: number
 	price: number
-	countInStock: number
-	countOfViews: number
 	isSendTelegram: boolean
 	createdAt: string
-	countOfReviews: number
-	characteristics: string
+	characteristics: IAutoCharacteristics
 }
 
-export interface IMeta {
-	total: number
-	current_page: number
-	from: number
-	to: number
+export interface IAutoCharacteristics {
+	bodyType: string
+	driveUnit: string
+	enginePower: string
+	engineType: string
+	engineVolume: string
+	mileage: number
+	steering: string
+	transmission: string
+	vin: string
+	year: number
 }

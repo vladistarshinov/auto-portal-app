@@ -1,4 +1,5 @@
 import { IUserResponse } from "@/shared/types/user.types"
+import { IMeta } from "./meta.types"
 
 export type IProductsResponse = IMeta & {
 	data: IProduct[]
@@ -22,14 +23,6 @@ export interface IProduct {
 	slug: string
 	category: string
 	reviews: string[]
-}
-
-export interface IMeta {
-	total: number
-	current_page: number
-	per_page: number
-	from: number
-	to: number
 }
 
 export interface ICategory {

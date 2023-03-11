@@ -13,8 +13,9 @@ import LimitOnPagePlugin from '@/shared/ui/limit-on-page-plugin/LimitOnPagePlugi
 import PaginationWrapper from '@/shared/ui/pagination/Pagination'
 import AutoBrands from '@/entities/auto-brands/AutoBrands'
 import { FiltersDto } from '@/entities/auto/model/filters.dto'
+import { IAuto, IAutoResponse } from "@/shared/api/types/auto.types"
 
-const AutoList: FC<{cars: any, autoBrands: any}> = ({cars, autoBrands}) => {
+const AutoList: FC<{cars: IAutoResponse, autoBrands: string[]}> = ({cars, autoBrands}) => {
 	const [page, setPage] = useState(1)
 	const [limit, setLimit] = useState(4)
 	const [searchTerm, setSearchTerm] = useState('')
@@ -41,22 +42,24 @@ const AutoList: FC<{cars: any, autoBrands: any}> = ({cars, autoBrands}) => {
 					setLimit={setLimit}
 				/>
 
-				<LimitOnPagePlugin limits={[2, 4]} limit={limit} setLimit={setLimit} />
+				<Box display='flex' alignItems='center' justifyContent='space-between' gap={2}>
+					<LimitOnPagePlugin limits={[4, 8]} limit={limit} setLimit={setLimit} />
 
-				<IconButton aria-label="filter" size="small"
-					onClick={() => setFilters(undefined)}
-				>
-					<FilterAltOffIcon />
-				</IconButton>
+					<SortSelectDropdown
+						sortType={sortType}
+						setSortType={setSortType}
+					/>
 
-				<SortSelectDropdown
-					sortType={sortType}
-					setSortType={setSortType}
-				/>
+					<IconButton aria-label="filter" size="small"
+											onClick={() => setFilters(undefined)}
+					>
+						<FilterAltOffIcon />
+					</IconButton>
+				</Box>
 			</Box>
 
 			<motion.div layout>
-				{autoList?.data?.map((car: any) => (
+				{autoList?.data?.map((car: IAuto) => (
 					<Grid
 						item
 						display="inline-grid"

@@ -40,7 +40,7 @@ const AutoBrands: FC<IAutoBrands> = ({
 					clickable
 					onClick={() => handleClick(brand)}  />
 			))}
-			<small>+ Показать еще</small>
+			{brands && brands?.length > 5 && <small>+ Показать еще</small>}
 		</Stack>
 	)
 }

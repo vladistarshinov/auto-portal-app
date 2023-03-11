@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query"
 import { AutoBrandService } from "./auto-brand.service"
 
 export const useAutoBrandsQuery = (
-	autoBrands: any
+	autoBrands: string[] | any
 ) => {
 	const { data: { data: brands }, isLoading: isBrandLoading } = useQuery(
 		['auto-brands'],

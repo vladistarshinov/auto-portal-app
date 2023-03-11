@@ -6,14 +6,14 @@ import AutoPartsScreen from '@/screens/autoparts/AutoParts'
 import { AutoService } from '@/entities/auto/model/auto.service'
 import NewCarsScreen from '@/screens/new-cars/NewCarsScreen'
 import { AutoBrandService } from '@/features/filter-cars-by-brand/model/auto-brand.service'
+import { IAutoResponse } from '@/shared/api/types/auto.types'
 
 interface INewCarsPage {
-	cars: any
-	autoBrands: any
+	cars: IAutoResponse
+	autoBrands: string[]
 }
 
 const NewCarsPage: NextPage<INewCarsPage> = ({ cars, autoBrands }) => {
-	console.log(cars, autoBrands);
 	return <NewCarsScreen cars={cars} autoBrands={autoBrands}	/>
 }
 

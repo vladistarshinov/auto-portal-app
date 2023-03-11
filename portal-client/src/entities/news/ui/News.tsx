@@ -1,7 +1,8 @@
 import { FC, useState } from 'react'
-
+import { motion } from 'framer-motion'
 import { Box, Button, ButtonGroup } from '@mui/material'
 import NewsCard from '@/shared/ui/news-card/NewsCard'
+
 import { filterHelper, IFilterHelper } from '../lib/filter.helper'
 import { IArticleContent, IPromotionContent } from '@/shared/api/types/strapi/news.types'
 
@@ -42,17 +43,19 @@ const News: FC<INews> = ({articles, promotions}) => {
 					>{f.title}</Button>
 				))}
 			</ButtonGroup>
-			<Box mt={4} display='inline-flex' alignItems='center' gap={3}>
-				{filter === 'all' && content.map((data: IArticleContent | IPromotionContent) => (
-					<NewsCard key={data.attributes.slug} content={data} />
-				))}
-				{filter === 'news' && articles.map((data: IArticleContent) => (
-					<NewsCard key={data.attributes.slug} content={data} />
-				))}
-				{filter === 'promotions' && promotions.map((data: IPromotionContent) => (
-					<NewsCard key={data.attributes.slug} content={data} />
-				))}
-			</Box>
+			<motion.div layout>
+				<Box mt={4} display='inline-flex' alignItems='center' gap={3}>
+					{filter === 'all' && content.map((data: IArticleContent | IPromotionContent) => (
+						<NewsCard key={data.attributes.slug} content={data} />
+					))}
+					{filter === 'news' && articles.map((data: IArticleContent) => (
+						<NewsCard key={data.attributes.slug} content={data} />
+					))}
+					{filter === 'promotions' && promotions.map((data: IPromotionContent) => (
+						<NewsCard key={data.attributes.slug} content={data} />
+					))}
+				</Box>
+			</motion.div>
 		</Box>
 	)
 }

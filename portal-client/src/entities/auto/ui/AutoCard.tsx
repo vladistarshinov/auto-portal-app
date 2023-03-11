@@ -3,8 +3,9 @@ import Image from 'next/image'
 import { Box, Button, Card, CardActions, CardContent, Link, Typography } from '@mui/material'
 import { genEndOfNoun } from '@/shared/libs/gen-end-of-noun'
 import { motion } from 'framer-motion'
+import { IAuto } from '@/shared/api/types/auto.types'
 
-const AutoCard: FC<{car: any}> = ({car}) => {
+const AutoCard: FC<{car: IAuto}> = ({car}) => {
 	return (
 		<motion.div
 			layout

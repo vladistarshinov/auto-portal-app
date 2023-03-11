@@ -13,6 +13,7 @@ const LimitOnPagePlugin: FC<ILimitOnPage> = ({limits, limit, setLimit}) => {
 			<Typography>Показывать по:</Typography>
 			{limits.map((l: number) => (
 				<Button
+					key={l}
 					sx={{
 						background: limit === l ? '#e0e0e0' : '',
 						border: 'transparent'

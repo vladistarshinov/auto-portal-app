@@ -1,10 +1,11 @@
 import AutoCard from '@/entities/auto/ui/AutoCard'
+import { IAutoResponse } from '@/shared/api/types/auto.types'
 import Heading from '@/shared/ui/heading/Heading'
 import AutoList from '@/widgets/auto-list/AutoList'
 import { Box, Chip, Container, Grid, Stack } from '@mui/material'
 import { FC } from 'react'
 
-const NewCarsScreen: FC<{cars: any, autoBrands: any}> = ({cars, autoBrands}) => {
+const NewCarsScreen: FC<{cars: IAutoResponse, autoBrands: string[]}> = ({cars, autoBrands}) => {
 
 	return (
 		<Container maxWidth="xl">
