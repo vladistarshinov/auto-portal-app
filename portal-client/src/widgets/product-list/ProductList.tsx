@@ -1,22 +1,53 @@
-import { FC } from "react"
+import { FC, useState } from "react"
+import { motion } from "framer-motion"
 import {
 	Box,
-	Grid
+	Grid,
+	IconButton
 } from "@mui/material"
+import FilterAltOffIcon from '@mui/icons-material/FilterAltOff'
 
-import Heading from "@/shared/ui/heading/Heading"
 import ProductCard from "@/entities/product/ui/ProductCard"
 import { IProduct, IProductsResponse } from "@/shared/api/types/product.types"
+import { EnumAutoSort } from "@/entities/auto/model/auto.types"
+import LimitOnPagePlugin from "@/shared/ui/limit-on-page-plugin/LimitOnPagePlugin"
+import SortSelectDropdown from "@/shared/ui/sort-select-input/SortSelectInput"
+import { useAutoPartsQuery } from "@/entities/product/model/useAutoPartsQuery"
+import PaginationWrapper from "@/shared/ui/pagination/Pagination"
 
 const ProductList: FC<{products: IProductsResponse}> = ({ products }) => {
-	console.log(products);
+	const [page, setPage] = useState(1)
+	const [limit, setLimit] = useState(4)
+	const [searchTerm, setSearchTerm] = useState('')
+	const [filters, setFilters] = useState<any>(undefined)
+
+	const [sortType, setSortType] = useState<EnumAutoSort>(
+		EnumAutoSort.NEW
+	)
+
+	const {productList, isLoading} = useAutoPartsQuery(page, limit, searchTerm, sortType, filters, products)
+
 	return (
 		<>
-			<Box sx={{ display: 'flex', justifyContent: 'center', mt: '1rem' }}>
-				<Heading title='Все товары'></Heading>
+			<Box display='flex' alignItems='center' justifyContent='space-between' gap={2}>
+				<Box>Фильтры</Box>
+				<Box display='flex' alignItems='center' justifyContent='space-between' gap={2}>
+					<LimitOnPagePlugin limits={[4, 8]} limit={limit} setLimit={setLimit} />
+
+					<SortSelectDropdown
+						sortType={sortType}
+						setSortType={setSortType}
+					/>
+
+					<IconButton aria-label="filter" size="small"
+											onClick={() => setFilters(undefined)}
+					>
+						<FilterAltOffIcon />
+					</IconButton>
+				</Box>
 			</Box>
-			<Box>
-				{products?.data?.map((product: IProduct) => (
+			<motion.div layout>
+				{productList?.data?.map((product: IProduct) => (
 					<Grid
 						item
 						display="inline-grid"
@@ -32,7 +63,13 @@ const ProductList: FC<{products: IProductsResponse}> = ({ products }) => {
 						<ProductCard product={product} />
 					</Grid>
 				))}
-			</Box>
+			</motion.div>
+
+			<PaginationWrapper<typeof productList>
+				list={productList}
+				page={page}
+				setPage={setPage}
+			/>
 		</>
 	)
 }

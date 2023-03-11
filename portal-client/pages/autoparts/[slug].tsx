@@ -15,7 +15,7 @@ const ProductPage: NextAuthPage<{ product: IProductDetailResponse | undefined }>
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	try {
-		const { data: products } = await ProductService.getProducts()
+		const { data: products } = await ProductService.getAll()
 
 		const paths = products.data.map((product: IProduct) => ({
 			params: { slug: product.slug },

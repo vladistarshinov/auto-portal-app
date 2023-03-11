@@ -16,10 +16,11 @@ export class ProductService {
     ) {}
 
     public async getAll(
-        page: number = 0,
+        page?: number,
         limitOfPages?: number,
         searchTerm?: string,
-        sort?: string
+        sort?: string,
+        filters?: any
     ):  Promise<AllProductResponse> {
         let searchTermOptions = {}
         let sortOptions = {}
@@ -47,14 +48,14 @@ export class ProductService {
                 sortOptions = {
                     createdAt: 'asc'
                 }
-        } else if (sort !== undefined && sort.includes('title')) {
+        } else if (sort !== undefined && sort.includes('price')) {
             if (sort[0] === '-')
                 sortOptions = {
-                    title: 'desc'
+                    price: 'desc'
                 }
             else
                 sortOptions = {
-                    title: 'asc'
+                    price: 'asc'
                 }
         } else {
             sortOptions = {
@@ -65,8 +66,12 @@ export class ProductService {
         const data = await this.productModel
             .find(searchTermOptions)
             .select('-updatedAt -__v')
+            .populate({
+              path: 'category',
+              select: '-_id title',
+            })
             .sort(sortOptions)
-            .skip(page)
+            .skip((page - 1) * limitOfPages)
             .limit(limitOfPages)
             .exec()
 
@@ -74,7 +79,8 @@ export class ProductService {
         return {
             data,
             total: count,
-            current_page: Number(page) + 1,
+            current_page: +page,
+            per_page: +limitOfPages,
             from: 1,
             to: Math.floor(count / limitOfPages)
         }

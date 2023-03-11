@@ -14,7 +14,7 @@ const NewsScreen: FC<INewsScreen> = ({articles, promotions}) => {
 	return (
 		<Container maxWidth="xl">
 			<BreadCrumbs
-				navElements={[{ title: "Главная" }, { title: "Корзина", url: "/cart" }]}
+				navElements={[{ title: "Главная", url: "/" }, { title: "Новости и акции" }]}
 			/>
 			<Typography variant="h4" style={{ padding: "1rem 0" }}>
 				Новости и акции

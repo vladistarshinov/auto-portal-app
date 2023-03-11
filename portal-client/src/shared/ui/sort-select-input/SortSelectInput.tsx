@@ -8,7 +8,7 @@ interface ISortSelectDropdown {
 	setSortType: Dispatch<SetStateAction<EnumAutoSort>>
 }
 
-const SortSelectDropdown: FC<ISortSelectDropdown> = ({ setSortType, sortType }) => {
+const SortSelectDropdown: FC<ISortSelectDropdown> = ({ sortType, setSortType }) => {
 	return (
 		<Box>
 			<Select

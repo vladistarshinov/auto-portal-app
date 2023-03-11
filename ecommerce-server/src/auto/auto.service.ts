@@ -75,7 +75,7 @@ export class AutoService {
 				}
 		} else {
 			sortOptions = {
-				year: 'desc'
+				createdAt: 'desc'
 			}
 		}
 

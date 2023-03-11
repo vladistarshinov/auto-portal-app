@@ -26,6 +26,7 @@ import ProductDetail from "@/entities/product/ui/ProductDetail"
 import ReviewList from "@/widgets/review-list/ReviewList"
 import { useAuth } from "@/processes/auth/model/hooks/useAuth"
 import { useCart } from "@/entities/cart/model/useCart"
+import BreadCrumbs from "@/shared/ui/breadcrumbs/Breadcrumbs"
 
 const ProductScreen: FC<{ product: IProductDetailResponse }> = ({product}) => {
 	const {user} = useAuth()
@@ -34,7 +35,14 @@ const ProductScreen: FC<{ product: IProductDetailResponse }> = ({product}) => {
 	})
 
 	return (
-		<Box sx={{ mx: 5 }}>
+		<Box sx={{ mx: 5, mt: '1rem' }}>
+			<BreadCrumbs
+				navElements={[
+					{ title: "Главная", url: '/' },
+					{ title: "Каталог автозапчастей", url: '/autoparts' },
+					{ title: product?.title }
+				]}
+			/>
 			<ProductDetail product={product} />
 			<ReviewList product={product} />
 		</Box>

@@ -11,14 +11,15 @@ import {Product, ProductDocument } from './schema/product.schema';
 export class ProductController {
     constructor(private readonly productService: ProductService) {}
 
-    @Get()
+    @Post()
     public getProducts(
         @Query('page') page?: number,
         @Query('limit') limit?: number,
         @Query('search') searchTerm?: string,
-        @Query('sort') sort?: string
+        @Query('sort') sort?: string,
+        @Body() filters?: any
     ): Promise<AllProductResponse> {
-        return this.productService.getAll(page, limit, searchTerm, sort)
+        return this.productService.getAll(page, limit, searchTerm, sort, filters)
     }
 
     @Get('top')

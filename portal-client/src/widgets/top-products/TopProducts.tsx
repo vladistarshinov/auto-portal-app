@@ -10,7 +10,7 @@ const TopProductsCarousel: FC<{ products: IProduct[] }> = ({products}) => {
 
 	return (
 		<>
-			<Box sx={{ display: 'flex', justifyContent: 'center', mt: '1rem' }}>
+			<Box sx={{ display: 'flex', justifyContent: 'center' }}>
 				<Heading title='Топ популярных'></Heading>
 			</Box>
 			<Box
