@@ -1,21 +1,15 @@
+import { AutoService } from '@/entities/auto/model/auto.service';
+import { ProductService } from '@/entities/products/model/product.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProductService } from '../../entities/products/model/product.service';
-
-export interface IMetaData {
-  total: number;
-  current_page: number;
-  per_page: number;
-  from: number;
-  to: number;
-}
+import { IMetaData } from '../product-list/product-list.component';
 
 @Component({
-  selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.scss']
+  selector: 'app-auto-list',
+  templateUrl: './auto-list.component.html',
+  styleUrls: ['./auto-list.component.scss']
 })
-export class ProductListComponent implements OnInit {
+export class AutoListComponent implements OnInit {
   public products: any[] = [];
   public meta!: IMetaData;
   public loading: boolean = false;
@@ -27,14 +21,12 @@ export class ProductListComponent implements OnInit {
     'Наименование',
     'Категория',
     'Бренд',
-    'Рейтинг',
     'Дата создания'
   ];
   columns: string[] = [
     'title',
     'category',
     'brand',
-    'rating',
     'createdAt',
   ];
   public sortSettings: { title: string, slug: string }[] = [
@@ -57,22 +49,22 @@ export class ProductListComponent implements OnInit {
   ];
   public pageLimits: number[]= [1, 2, 4];
   constructor(
-    private readonly productService: ProductService,
+    private readonly autoService: AutoService,
     private readonly router: Router
   ) { }
 
   ngOnInit(): void {
-    this.getProducts();
+    this.getAutoList();
   }
 
   ngDoCheck(): void {
     console.log(this.sortType);
   }
 
-  public getProducts(): void {
+  public getAutoList(): void {
     this.loading = true;
-    this.productService
-      .getProducts(this.currentPage, this.rows, this.sortType)
+    this.autoService
+      .getAll(this.currentPage, this.rows, this.sortType)
       .subscribe((res: any) => {
         console.log(res);
         this.products = res.data;
@@ -98,8 +90,8 @@ export class ProductListComponent implements OnInit {
 
   public paginate(page: number): void {
     this.currentPage = page;
-    this.getProducts();
-    this.router.navigate([`/autoparts`], {
+    this.getAutoList();
+    this.router.navigate([`/auto-list`], {
       queryParams: {page: this.currentPage},
       queryParamsHandling: 'merge',
     });
@@ -107,16 +99,16 @@ export class ProductListComponent implements OnInit {
 
   public onChange(value: number): void {
     this.rows = value;
-    this.router.navigate([`/autoparts`], {
+    this.router.navigate([`/auto-list`], {
       queryParams: {rows: this.rows},
       queryParamsHandling: 'merge',
     });
-    this.getProducts();
+    this.getAutoList();
   }
 
   public handleSort(): void {
-    this.getProducts();
-    this.router.navigate([`/autoparts`], {
+    this.getAutoList();
+    this.router.navigate([`/auto-list`], {
       queryParams: {rows: this.rows},
       queryParamsHandling: 'merge',
     });

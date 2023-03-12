@@ -28,10 +28,10 @@ export class PaginationComponent implements OnInit {
   }
 
   get element(): string {
-    if (this.title === 'autolist')
+    if (this.title === 'autoparts')
       return 'автозапчастей';
     else
-      return 'cистем';
+      return 'автомобилей';
 
   }
 

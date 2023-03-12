@@ -1,0 +1,58 @@
+<div class='animate-scaleIn card-wrapper mt-4'>
+  <div class='bg-white  relative overflow-hidden'>
+    <div class='absolute top-2 right-3 z-10'></div>
+    <img
+      class='img'
+      [src]='getImageUrl(auto.imageUrl)'
+      [alt]='auto.title'
+    />
+  </div>
+  <div class='px-1'>
+    <a>
+      <h3 class='mt-2 text-sm text-center text-truncate'>{{auto.title}}</h3>
+    </a>
+    <div class='flex items-center justify-center gap-2'>
+      <a
+        class='text-aqua text-xs'
+      >
+        {{auto.characteristics.mileage}} км
+      </a>
+      <span class='mb-3'>.</span>
+      <a
+        class='text-aqua text-xs'
+      >
+        {{auto.characteristics.engineType}}
+      </a>
+      <span class='mb-3'>.</span>
+      <a
+        class='text-aqua text-xs'
+      >
+        {{auto.characteristics.enginePower}} л.c.
+      </a>
+    </div>
+    <div class='flex items-center justify-center gap-2'>
+      <a
+        class='text-aqua text-xs'
+      >
+        {{auto.characteristics.mileage}} км
+      </a>
+      <span class='mb-3'>.</span>
+      <a
+        class='text-aqua text-xs'
+      >
+        {{auto.characteristics.engineType}}
+      </a>
+      <span class='mb-3'>.</span>
+      <a
+        class='text-aqua text-xs'
+      >
+        {{auto.characteristics.enginePower}} л.c.
+      </a>
+    </div>
+  </div>
+  <div class='flex items-end justify-center gap-2'>
+    <div class='text-sm font-semibold line-through'>{{auto.oldPrice}}₽</div>
+    <div class='text-md font-semibold'>{{auto.price}}₽</div>
+  </div>
+</div>
+

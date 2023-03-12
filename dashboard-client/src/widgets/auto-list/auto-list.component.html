@@ -1,0 +1,144 @@
+<div class='catalog'>
+  <div class="flex items-center justify-between mb-1">
+    <div class="flex items-center flex-column gap-2">
+      <small>Бренды</small>
+      <div *ngIf="!loading" class="inline-flex items-center flex-wrap gap-3">
+        <div
+          class="[word-wrap: break-word] my-[5px] mr-4 flex h-[32px] cursor-pointer items-center justify-between rounded-[16px] bg-[#eceff1] py-0 px-[12px] text-[13px] font-normal normal-case leading-loose text-[#4f4f4f] shadow-none transition-[opacity] duration-300 ease-linear hover:!shadow-none active:bg-[#cacfd1] dark:bg-neutral-600 dark:text-neutral-200">
+          Text
+        </div>
+        <small class="more-tag"><small>+ еще</small></small>
+      </div>
+    </div>
+    <div class="flex flex-column">
+
+      <div class="inline-flex align-items-center mt-2 gap-2">
+        <div class="flex flex-column items-center justify-content-center gap-2">
+          <small>Cортировать</small>
+          <div class="flex justify-center">
+            <div class="xl:w-96">
+              <select
+                class='py-1 px-2 bg-white border-gray rounded-lg text-sm'
+                [name]="sortType"
+                [(ngModel)]="sortType"
+                (change)='handleSort()'
+              >
+                <option
+                  *ngFor="let setting of sortSettings"
+                  [value]="setting.slug"
+                >
+                  {{setting.title}}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="inline-flex items-center justify-center gap-4">
+          <button
+            type="button"
+            class="border-1"
+            (click)="handleChangeMode('card')"
+            [ngClass]="mode === 'card' ? 'active' : ''"
+          >
+            <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="14" height="14" rx="2" stroke="#A1A5B7" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M8 14.5L8 1.5" stroke="#A1A5B7" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="border-1"
+            (click)="handleChangeMode('table')"
+            [ngClass]="mode === 'table' ? 'active' : ''"
+          >
+            <svg width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="14" height="14" rx="2" stroke="#A1A5B7" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M8 14.5L8 1.5" stroke="#A1A5B7" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button
+            styleClass="p-button-outlined p-button-primary"
+          >
+            <svg width="20" height="26" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M0.574675 0.737134C0.665778 0.589726 0.826712 0.5 1 0.5H13C13.1733 0.5 13.3342 0.589726 13.4253 0.737134C13.5164 0.884543 13.5247 1.06861 13.4472 1.22361L9.5 9.11803V15C9.5 15.1733 9.41027 15.3342 9.26287 15.4253C9.11546 15.5164 8.93139 15.5247 8.77639 15.4472L4.77639 13.4472C4.607 13.3625 4.5 13.1894 4.5 13V9.11803L0.552787 1.22361C0.47529 1.06861 0.483572 0.884543 0.574675 0.737134ZM1.80902 1.5L5.44721 8.77639C5.48193 8.84582 5.5 8.92238 5.5 9V12.691L8.5 14.191V9C8.5 8.92238 8.51807 8.84582 8.55279 8.77639L12.191 1.5H1.80902ZM10.6464 10.6464C10.8417 10.4512 11.1583 10.4512 11.3536 10.6464L13 12.2929L14.6464 10.6464C14.8417 10.4512 15.1583 10.4512 15.3536 10.6464C15.5488 10.8417 15.5488 11.1583 15.3536 11.3536L13.7071 13L15.3536 14.6464C15.5488 14.8417 15.5488 15.1583 15.3536 15.3536C15.1583 15.5488 14.8417 15.5488 14.6464 15.3536L13 13.7071L11.3536 15.3536C11.1583 15.5488 10.8417 15.5488 10.6464 15.3536C10.4512 15.1583 10.4512 14.8417 10.6464 14.6464L12.2929 13L10.6464 11.3536C10.4512 11.1583 10.4512 10.8417 10.6464 10.6464Z" fill="#8D91A4"/>
+            </svg>
+          </button>
+          <button
+            type="button"
+          >
+            <svg width="30" height="36" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M6.24118 4.73713C6.33228 4.58973 6.49322 4.5 6.6665 4.5H18.6665C18.8398 4.5 19.0007 4.58973 19.0918 4.73713C19.1829 4.88454 19.1912 5.06861 19.1137 5.22361L15.1665 13.118V19C15.1665 19.1733 15.0768 19.3342 14.9294 19.4253C14.782 19.5164 14.5979 19.5247 14.4429 19.4472L10.4429 17.4472C10.2735 17.3625 10.1665 17.1894 10.1665 17V13.118L6.21929 5.22361C6.14179 5.06861 6.15008 4.88454 6.24118 4.73713ZM7.47552 5.5L11.1137 12.7764C11.1484 12.8458 11.1665 12.9224 11.1665 13V16.691L14.1665 18.191V13C14.1665 12.9224 14.1846 12.8458 14.2193 12.7764L17.8575 5.5H7.47552Z" fill="#6c757d"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="mode === 'card'" class='grid grid-cols-4 gap-10 mt-2'>
+    <ng-container *ngFor="let card of products | paginate: {
+      itemsPerPage: rows,
+      currentPage: currentPage,
+      totalItems: meta?.total
+  }"
+    >
+      <app-auto-card [auto]='card'></app-auto-card>
+    </ng-container>
+  </div>
+  <div *ngIf="mode === 'table'" class='mt-2'>
+    <table>
+      <thead>
+      <tr>
+        <td *ngFor="let column of columnTitles; index as i">
+          <div class="table-head">
+            <h5>{{column}}</h5>
+          </div>
+        </td>
+      </tr>
+      </thead>
+      <tbody *ngIf="products.length">
+      <tr
+        class='text-sm'
+        *ngFor="let card of products | paginate: {
+              itemsPerPage: rows,
+              currentPage: currentPage,
+              totalItems: meta?.total
+          }"
+        style="cursor: pointer"
+      >
+        <td *ngFor="let column of columns">
+          <div *ngIf="column === 'title'" class="ml-2">
+            <div class="text-truncate">{{card['title']}}</div>
+          </div>
+          <span *ngIf="column === 'category'" class="ml-2">
+                {{card[column].title}}
+            </span>
+          <span *ngIf="column === 'brand'" class="ml-2">
+                {{card[column]}}
+            </span>
+          <span *ngIf="column === 'rating'" class="ml-2 flex items-center gap-2">
+               <svg width="20" height="20" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.195 14.4931C12.0748 14.4936 11.9562 14.4654 11.8493 14.4107L8.01607 12.4091L4.18288 14.4107C4.05841 14.476 3.91807 14.5051 3.77782 14.4948C3.63757 14.4845 3.50303 14.4351 3.3895 14.3524C3.27597 14.2696 3.18801 14.1567 3.1356 14.0265C3.08319 13.8964 3.06845 13.7542 3.09305 13.6161L3.84466 9.39557L0.748038 6.39699C0.651424 6.30083 0.582888 6.18024 0.549785 6.04818C0.516681 5.91611 0.52026 5.77754 0.560136 5.64735C0.603699 5.51411 0.683833 5.39573 0.791443 5.30563C0.899054 5.21552 1.02983 5.15731 1.16894 5.13759L5.45309 4.51538L7.33962 0.669708C7.40117 0.542965 7.49726 0.436076 7.6169 0.361285C7.73654 0.286494 7.87488 0.246826 8.01607 0.246826C8.15726 0.246826 8.2956 0.286494 8.41524 0.361285C8.53487 0.436076 8.63097 0.542965 8.69251 0.669708L10.6016 4.50789L14.8857 5.13009C15.0249 5.14981 15.1556 5.20803 15.2632 5.29813C15.3709 5.38823 15.451 5.50662 15.4946 5.63985C15.5344 5.77004 15.538 5.90861 15.5049 6.04068C15.4718 6.17275 15.4033 6.29333 15.3067 6.38949L12.21 9.38807L12.9616 13.6086C12.9885 13.7491 12.9744 13.8944 12.9211 14.0272C12.8679 14.16 12.7776 14.2749 12.661 14.3582C12.5249 14.4533 12.361 14.5008 12.195 14.4931ZM8.01607 10.8199C8.13655 10.8169 8.25574 10.8453 8.36181 10.9024L11.1954 12.4016L10.6542 9.24564C10.6332 9.12513 10.6421 9.00133 10.6801 8.88504C10.7181 8.76875 10.784 8.66349 10.8722 8.57845L13.127 6.382L9.97025 5.91722C9.85449 5.89397 9.74585 5.84385 9.65313 5.77091C9.56042 5.69798 9.48624 5.60428 9.43661 5.49742L8.01607 2.68625L6.59553 5.49742C6.54115 5.60514 6.46152 5.69819 6.36338 5.76867C6.26524 5.83914 6.15151 5.88496 6.03183 5.90223L2.87508 6.367L5.1299 8.56346C5.21805 8.6485 5.28399 8.75375 5.32199 8.87005C5.35998 8.98634 5.36886 9.11014 5.34787 9.23065L4.80671 12.3492L7.64027 10.8499C7.76033 10.8054 7.89043 10.795 8.01607 10.8199Z" fill="#495057"/>
+               </svg>
+            {{card[column]}}
+            </span>
+          <span *ngIf="column === 'createdAt'" class="ml-2">
+                {{card[column] | date: 'dd.MM.yyyy'}}
+            </span>
+        </td>
+      </tr>
+      </tbody>
+
+    </table>
+  </div>
+  <div>
+    <app-pagination
+      [pageLimits]="pageLimits"
+      [limit]="rows"
+      [meta]="meta"
+      title="auto-list"
+      (pageChange)="paginate($event)"
+      (limitChange)="onChange($event)"
+      *ngIf="!loading"
+    ></app-pagination>
+  </div>
+</div>
