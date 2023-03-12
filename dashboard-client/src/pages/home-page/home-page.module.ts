@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomePageComponent } from './home-page.component';
 import { HomeModule } from '@/widgets/home/home.module';
+import { ProductListModule } from '@/widgets/product-list/product-list.module';
 
 
 
@@ -11,7 +12,8 @@ import { HomeModule } from '@/widgets/home/home.module';
   ],
   imports: [
     CommonModule,
-    HomeModule
+    HomeModule,
+    ProductListModule
   ],
 })
 export class HomePageModule { }

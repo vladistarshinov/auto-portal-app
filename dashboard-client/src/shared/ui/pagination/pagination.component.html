@@ -1,0 +1,25 @@
+<div class="pagination">
+  <div class="flex align-items-center gap-3">
+    <div class="pagination-text">Элементов на странице</div>
+    <div class="flex justify-center">
+      <div class="xl:w-96">
+        <select
+          class='py-1 px-2 bg-white border-gray rounded-lg text-sm'
+          [(ngModel)]="limit"
+          (change)='handleLimitChange()'
+        >
+          <option
+            *ngFor="let pageLimit of pageLimits"
+            [value]="pageLimit"
+          >
+            {{pageLimit}}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="inline-flex items-center">
+    <p class="color-grey">Показаны от {{meta.from}} до {{meta.to}} из {{meta.total}} {{element}}</p>
+    <pagination-controls class="my-pagination"  previousLabel="Назад" nextLabel="Вперед" (pageChange)="handlePaginate($event)"></pagination-controls>
+  </div>
+</div>

@@ -2,8 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76d172d4-4753-4dba-b42a-cfdfc110222f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/dashboard-client/src/shared/ui/pagination/pagination.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dashboard-client/src/shared/ui/pagination/pagination.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dashboard-client/src/shared/ui/pagination/pagination.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dashboard-client/src/shared/ui/pagination/pagination.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dashboard-client/src/shared/ui/pagination/pagination.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/portal-client/src/shared/ui/limit-on-page-plugin/LimitOnPagePlugin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/ui/limit-on-page-plugin/LimitOnPagePlugin.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/src/entities/products/components/product-card/product-card.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/entities/products/components/product-card/product-card.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/src/entities/products/components/product-card/product-card.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/entities/products/components/product-card/product-card.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/src/entities/products/components/product-card/product-card.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/entities/products/components/product-card/product-card.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/src/entities/products/components/product-list/product-list.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/src/entities/products/components/product-list/product-list.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/src/entities/products/components/product-list/product-list.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/src/entities/products/components/product-list/product-list.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/src/entities/products/components/product-list/product-list.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/src/entities/products/model/product.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/entities/products/model/product.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/src/entities/products/products.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/entities/products/products.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/src/pages/home-page/home-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/pages/home-page/home-page.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/src/pages/home-page/home-page.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/pages/home-page/home-page.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/src/pages/home-page/home-page.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/pages/home-page/home-page.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/src/processes/auth/components/login-form/login-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/processes/auth/components/login-form/login-form.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/src/widgets/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/widgets/home/home.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/src/widgets/home/home.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/widgets/home/home.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/src/widgets/home/home.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/widgets/home/home.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce-server/src/product/product.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce-server/src/product/product.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,11 +103,11 @@
       <recent name="$PROJECT_DIR$/frontend/public/static" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/dashboard-client/src/widgets" />
       <recent name="$PROJECT_DIR$/portal-client/src/features/filter-cars-by-brand/ui" />
       <recent name="$PROJECT_DIR$/ecommerce-server/src/auto-characteristic/tests" />
       <recent name="$PROJECT_DIR$/ecommerce-server/src/auto/tests" />
       <recent name="$PROJECT_DIR$/frontend/src/app/assets/images" />
-      <recent name="$PROJECT_DIR$/dashboard/src/app/core/shared/services/persistance" />
     </key>
   </component>
   <component name="RunManager">
@@ -104,6 +129,19 @@
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
       <method v="2" />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="mern-shop-app" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="mern-shop-app" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -247,7 +285,11 @@
       <workItem from="1678471470829" duration="8059000" />
       <workItem from="1678482890103" duration="1759000" />
       <workItem from="1678484662849" duration="864000" />
-      <workItem from="1678529457825" duration="11606000" />
+      <workItem from="1678529457825" duration="22022000" />
+      <workItem from="1678605787094" duration="3198000" />
+      <workItem from="1678612270358" duration="1834000" />
+      <workItem from="1678617430156" duration="2359000" />
+      <workItem from="1678626852356" duration="4320000" />
     </task>
     <servers />
   </component>

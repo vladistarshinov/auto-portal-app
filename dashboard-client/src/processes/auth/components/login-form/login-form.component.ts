@@ -36,7 +36,7 @@ export class LoginFormComponent implements OnInit {
       this.isLoggedIn$.next(true);
     else
       this.isLoggedIn$.next(false);
-    console.log(this.isLoggedIn$.value);
+    //console.log(this.isLoggedIn$.value);
   }
 
   public handleShow(): void {

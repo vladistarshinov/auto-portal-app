@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
-import { ProductListModule } from '@/entities/products/components/product-list/product-list.module';
 
 
 
@@ -11,7 +10,6 @@ import { ProductListModule } from '@/entities/products/components/product-list/p
   ],
   imports: [
     CommonModule,
-    ProductListModule
   ],
   exports: [
     HomeComponent

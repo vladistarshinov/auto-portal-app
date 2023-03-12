@@ -1,4 +1,60 @@
 .img {
-  width: 250px;
-  height: 250px;
+  width: 150px;
+  height: 150px;
+}
+
+.rating {
+  > input {
+    font-size: 14px !important;
+  }
+}
+
+.w-200 {
+  width: 200px;
+}
+
+.card-wrapper {
+  background: rgba(128, 128, 128, 0.16);
+  padding: 10px;
+  border-radius: 10px;
+  height: 320px;
+}
+
+.text-truncate {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  flex: 1;
+  overflow: hidden;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: solid 1px #D6DBE7;
+  padding: 10px 3px;
+}
+
+th {
+  background: #F4F6FB;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #20222B;
+}
+
+td {
+  background: #FFF;
+  font-size: 14px;
+  line-height: 16px;
+  color: #20222B;
+}
+
+.table-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
 }

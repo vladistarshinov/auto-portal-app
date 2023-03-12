@@ -9,20 +9,17 @@ import * as qs from 'qs';
 })
 export class ProductService {
 
-  constructor(private readonly http: HttpClient,) { }
+  constructor(private readonly http: HttpClient) { }
 
-  public getProducts(page: number, rows: number): Observable<any> {
+  public getProducts(page: number, rows: number, sort?: string): Observable<any> {
     let params: HttpParams = new HttpParams({
       fromString: qs.stringify({
-        page: page - 1,
+        page,
         limit: rows,
-        search: '',
-        sort: ''
+        sort,
       }),
     })
-    return this.http.get<any>(getProductsUrl, {
-      params,
-    });
+    return this.http.post<any>(getProductsUrl, { params });
   }
 
 }

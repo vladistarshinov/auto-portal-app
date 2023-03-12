@@ -1,0 +1,9 @@
+.catalog {
+  @apply flex-wrap gap-8;
+}
+
+.more-tag {
+  cursor: pointer;
+  color: #337EFF;
+  text-decoration: underline #337EFF;
+}

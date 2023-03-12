@@ -1,0 +1,51 @@
+
+.pagination-text {
+  color: #777B92;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 16px;
+  margin-top: 0.5rem;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  position: fixed;
+  bottom: 0;
+  padding-left: 15px;
+  padding-right: 10px;
+  //border-top: 1px solid #DEE1EB;
+  transition: 0.5s all;
+}
+
+.my-pagination ::ng-deep .ngx-pagination {
+  border-radius: 2px;
+  text-align: center;
+  margin-top: 15px;
+  margin-left: 20px;
+  padding: 0;
+
+  > li:not(:first-child):not(:last-child) {
+    width: 30px;
+    height: 35px;
+
+  }
+}
+
+:host ::ng-deep  .ngx-pagination .pagination-previous,
+:host ::ng-deep  .ngx-pagination .pagination-next,
+:host ::ng-deep  .ngx-pagination li {
+  font-size: 16px;
+}
+
+:host ::ng-deep  .ngx-pagination .current {
+  background: #D6E5FF !important;
+  color: #337EFF;
+}
+
+.color-grey {
+  color: #BFC6D7;
+  font-size: 16px;
+}
