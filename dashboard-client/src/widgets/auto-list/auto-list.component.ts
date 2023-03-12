@@ -17,16 +17,24 @@ export class AutoListComponent implements OnInit {
   public rows: number = 2;
   public mode: string = 'card';
   public sortType: string = '-createdAt';
-  columnTitles: string[] = [
+  public columnTitles: string[] = [
     'Наименование',
-    'Категория',
-    'Бренд',
+    'Пробег',
+    'Привод',
+    'Тип',
+    'Тип двигателя',
+    'Объем',
+    'Мощность',
     'Дата создания'
   ];
-  columns: string[] = [
+  public columns: string[] = [
     'title',
-    'category',
-    'brand',
+    'mileage',
+    'driveUnit',
+    'bodyType',
+    'engineType',
+    'engineVolume',
+    'enginePower',
     'createdAt',
   ];
   public sortSettings: { title: string, slug: string }[] = [
