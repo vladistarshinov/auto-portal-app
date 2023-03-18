@@ -1,0 +1,26 @@
+.img {
+  width: 100%;
+  height: 250px;
+}
+
+.rating {
+  > input {
+    @apply text-xs;
+  }
+}
+
+.w-200 {
+  width: 200px;
+}
+
+.card-wrapper {
+  position: relative;
+  width: 410px;
+  height: 350px;
+  background: #FFFFFF;
+  border: 1px solid #D6DBE7;
+  box-shadow: 0 2px 4px rgba(191, 198, 215, 0.5);
+  border-radius: 8px;
+  cursor: pointer;
+}
+

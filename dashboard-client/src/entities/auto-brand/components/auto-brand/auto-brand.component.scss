@@ -1,0 +1,24 @@
+.tag {
+  @apply
+    my-[5px]
+    cursor-pointer
+    rounded-[16px]
+    bg-[#D6E5FF]
+    py-0
+    px-[12px]
+    text-[14px]
+    font-normal
+    normal-case
+    leading-loose
+    text-[#4f4f4f]
+    shadow-none
+    transition-[opacity]
+    duration-300
+    ease-linear
+    hover:shadow-none
+    active:bg-[#cacfd1];
+}
+
+.active {
+  @apply bg-[#cacfd1];
+}

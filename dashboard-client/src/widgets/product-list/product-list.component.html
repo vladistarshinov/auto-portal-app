@@ -1,7 +1,6 @@
 <div class='catalog'>
   <div class="flex items-center justify-between mb-1">
     <div class="flex items-center flex-column gap-2">
-      <small>Бренды</small>
       <div *ngIf="!loading" class="inline-flex items-center flex-wrap gap-3">
         <small>
          Бренды
@@ -12,10 +11,12 @@
     <div class="flex flex-column">
 
         <div class="inline-flex align-items-center mt-2 gap-2">
+          <div class='input__wrapper'>
+            <input placeholder='Поиск...' (keyup)="onKeyUp($event)" />
+          </div>
           <div class="flex flex-column items-center justify-content-center gap-2">
-            <small>Cортировать</small>
             <div class="flex justify-center">
-              <div class="xl:w-96">
+              <div class="xl:w-96 select__wrapper">
                 <select
                   class='py-1 px-2 bg-white border-gray rounded-lg text-sm'
                   [name]="sortType"

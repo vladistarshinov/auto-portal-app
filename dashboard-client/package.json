@@ -18,6 +18,7 @@
     "@angular/platform-browser": "^14.2.0",
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
+    "ngx-owl-carousel-o": "^7.0.2",
     "ngx-pagination": "^6.0.3",
     "ngx-star-rating": "^2.1.0",
     "ngx-toastr": "^15.2.2",

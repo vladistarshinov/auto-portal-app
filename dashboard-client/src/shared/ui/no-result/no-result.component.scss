@@ -1,0 +1,17 @@
+.no-result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 110px;
+  width: 100%;
+  border: 1px solid #D6DBE7;
+  filter: drop-shadow(0px 2px 4px rgba(191, 198, 215, 0.5));
+  border-radius: 2px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #777B92;
+}

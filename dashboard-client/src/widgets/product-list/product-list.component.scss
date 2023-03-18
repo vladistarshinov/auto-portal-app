@@ -1,3 +1,5 @@
+@import 'src/styles';
+
 .catalog {
   @apply flex-wrap gap-8;
 }
@@ -43,4 +45,27 @@ td {
 
 .active {
   background: #D6E5FF !important;
+}
+
+.input__wrapper {
+  @apply relative block;
+
+  > input {
+    @apply p-2 w-full text-xs rounded-md overflow-hidden block bg-white;
+    @include shadow();
+
+    &::placeholder {
+      @apply text-gray-400 font-light;
+    }
+
+    &:focus-visible {
+      outline: none;
+    }
+  }
+}
+
+.select__wrapper {
+  > select {
+    @include shadow();
+  }
 }

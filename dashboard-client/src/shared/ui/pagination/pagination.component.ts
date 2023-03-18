@@ -1,4 +1,4 @@
-import { IMetaData } from '@/widgets/product-list/product-list.component';
+import { IMetaData } from '@/shared/types/meta.interface';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({

@@ -11,15 +11,27 @@ export class ProductService {
 
   constructor(private readonly http: HttpClient) { }
 
-  public getProducts(page: number, rows: number, sort?: string): Observable<any> {
+  public getProducts(
+    page: number,
+    rows: number,
+    sort?: string,
+    filters?: { column: string; value: string }[],
+    searchTerm?: string
+  ): Observable<any> {
+    let filterMap = filters?.reduce(
+      (obj: {}, item: { column: string; value: string }) =>
+        Object.assign(obj, { [item.column]: item.value }), {}
+    );
+
     let params: HttpParams = new HttpParams({
       fromString: qs.stringify({
         page,
         limit: rows,
         sort,
+        search: searchTerm
       }),
     })
-    return this.http.post<any>(getProductsUrl, { params });
+    return this.http.post<any>(getProductsUrl, filterMap, { params });
   }
 
 }

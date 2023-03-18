@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-auto-brand',
@@ -7,15 +7,18 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class AutoBrandComponent implements OnInit {
   @Input()
-  brand!: string;
+  public brand!: string;
+
+  @Output()
+  public brandSelect = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  public handleSelect() {
-
+  public handleSelect(brand: string) {
+    this.brandSelect.next(brand)
   }
 
 }

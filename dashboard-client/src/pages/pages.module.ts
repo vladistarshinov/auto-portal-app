@@ -6,6 +6,7 @@ import { AccessDeniedModule } from './access-denied/access-denied.module';
 import { HomePageModule } from './home-page/home-page.module';
 import { AutopartsPageModule } from './autoparts-page/autoparts-page.module';
 import { AutoListPageModule } from './auto-list-page/auto-list-page.module';
+import { NewsPageModule } from './news-page/news-page.module';
 
 @NgModule({
   declarations: [],
@@ -15,7 +16,8 @@ import { AutoListPageModule } from './auto-list-page/auto-list-page.module';
     AccessDeniedModule,
     HomePageModule,
     AutopartsPageModule,
-    AutoListPageModule
+    AutoListPageModule,
+    NewsPageModule
   ]
 })
 export class PagesModule { }

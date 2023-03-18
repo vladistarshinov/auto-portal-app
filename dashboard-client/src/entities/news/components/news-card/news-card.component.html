@@ -1,0 +1,13 @@
+<div class='card-wrapper mt-4'>
+  <div class='bg-white relative overflow-hidden'>
+    <div class='absolute top-2 right-3 z-10'></div>
+    <img
+      class='img'
+      [src]='getImageUrl(card?.attributes?.image?.data?.attributes?.url)'
+      [alt]='card.title'
+    />
+  </div>
+  <div class='flex flex-column justify-center gap-2'>
+    <div class='text-sm font-semibold'>{{card?.attributes?.title}}</div>
+  </div>
+</div>

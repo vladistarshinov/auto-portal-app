@@ -1,0 +1,18 @@
+:host ::ng-deep .owl-carousel {
+  position: relative;
+}
+
+:host ::ng-deep .owl-theme.owl-nav {
+  position: absolute;
+  top: 45%;
+  display: flex;
+  justify-content: center;
+  min-width: 100%;
+  z-index: 10000;
+}
+
+:host ::ng-deep .owl-theme .owl-nav [class*=owl-] {
+  font-size: 16px;
+  margin: 0px 48.5%;
+  background: transparent;
+}

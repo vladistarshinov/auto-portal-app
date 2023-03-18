@@ -1,14 +1,9 @@
+import { IMetaData } from '@/shared/types/meta.interface';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProductService } from '../../entities/products/model/product.service';
+import { Subject, debounceTime } from 'rxjs';
+import { ProductService } from '@/entities/products/model/product.service';
 
-export interface IMetaData {
-  total: number;
-  current_page: number;
-  per_page: number;
-  from: number;
-  to: number;
-}
 
 @Component({
   selector: 'app-product-list',
@@ -16,6 +11,7 @@ export interface IMetaData {
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
+  private searchTerm$: Subject<string> = new Subject();
   public products: any[] = [];
   public meta!: IMetaData;
   public loading: boolean = false;
@@ -63,18 +59,27 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProducts();
+    this.searchFieldValue();
   }
 
   ngDoCheck(): void {
     console.log(this.sortType);
   }
 
-  public getProducts(): void {
+  public searchFieldValue(): void {
+    this.searchTerm$.pipe(
+      debounceTime(750)
+    ).subscribe((searchTerm: string) => {
+      this.getProducts(searchTerm);
+    })
+  }
+
+
+  public getProducts(searchTerm?: string): void {
     this.loading = true;
     this.productService
-      .getProducts(this.currentPage, this.rows, this.sortType)
+      .getProducts(this.currentPage, this.rows, this.sortType, [], searchTerm)
       .subscribe((res: any) => {
-        console.log(res);
         this.products = res.data;
         this.meta = {
           total: res.total,
@@ -94,6 +99,10 @@ export class ProductListComponent implements OnInit {
 
   public handleSelect(event: any): void {
     this.sortType = event
+  }
+
+  public onKeyUp($event: any) {
+    this.searchTerm$.next($event.target.value);
   }
 
   public paginate(page: number): void {

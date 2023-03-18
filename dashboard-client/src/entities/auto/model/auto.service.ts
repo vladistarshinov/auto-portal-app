@@ -11,15 +11,27 @@ export class AutoService {
 
   constructor(private readonly http: HttpClient) { }
 
-  public getAll(page: number, rows: number, sort?: string): Observable<any> {
+  public getAll(
+    page: number,
+    rows: number,
+    sort?: string,
+    filters?: { column: string; value: string }[],
+    searchTerm?: string
+  ): Observable<any> {
+    let filterMap = filters?.reduce(
+      (obj: {}, item: { column: string; value: string }) =>
+        Object.assign(obj, { [item.column]: item.value }), {}
+    );
+
     let params: HttpParams = new HttpParams({
       fromString: qs.stringify({
         page,
         limit: rows,
         sort,
+        search: searchTerm
       }),
     })
-    console.log(params);
-    return this.http.post<any>(getAutosUrl, { params });
+
+    return this.http.post<any>(getAutosUrl, filterMap, { params });
   }
 }
