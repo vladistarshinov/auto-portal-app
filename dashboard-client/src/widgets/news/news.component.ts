@@ -1,4 +1,5 @@
 import { NewsService } from '@/entities/news/model/news.service';
+import { IArticleContent, IArticleResponse, IPromotionContent, IPromotionResponse } from '@/shared/api/types/news.types';
 import { Component, OnInit } from '@angular/core';
 import {OwlOptions, SlidesOutputData} from 'ngx-owl-carousel-o';
 import { zip } from 'rxjs';
@@ -9,15 +10,15 @@ import { zip } from 'rxjs';
   styleUrls: ['./news.component.scss']
 })
 export class NewsComponent implements OnInit {
-  public articleList = [];
-  public promotionList = [];
-  public newsList = [];
-  public customOptions: OwlOptions = {
+  public articleList: IArticleContent[] = [];
+  public promotionList: IPromotionContent[] = [];
+  public newsList: (IArticleContent | IPromotionContent)[] = [];
+  protected customOptions: OwlOptions = {
     loop: false,
     mouseDrag: true,
     touchDrag: true,
     pullDrag: false,
-    dots: false,
+    dots: true,
     navSpeed: 700,
     navText: [
       '<img src="../../assets/carousel-arrows/arrow-left-btn.svg" alt="" />',
@@ -26,18 +27,17 @@ export class NewsComponent implements OnInit {
     autoWidth: true,
     nav: true,
   };
-  public activeSlides!: SlidesOutputData;
+  protected activeSlides!: SlidesOutputData;
   constructor(private readonly newsService: NewsService) { }
 
   ngOnInit(): void {
     zip(
       this.newsService.getArticles(),
       this.newsService.getPromotions())
-      .subscribe((res: any) => {
+      .subscribe((res: [IArticleResponse, IPromotionResponse]) => {
         this.articleList = res[0].data;
         this.promotionList = res[1].data;
-        this.newsList = this.articleList.concat(this.promotionList).concat(this.articleList.concat(this.promotionList));
-        console.log(this.newsList);
+        this.newsList = [...this.articleList, ...this.promotionList];
       })
   }
 

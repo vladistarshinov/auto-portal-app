@@ -9,14 +9,11 @@
   }
 }
 
-.w-200 {
-  width: 200px;
-}
 
 .card-wrapper {
   position: relative;
   width: 410px;
-  height: 350px;
+  height: 400px;
   background: #FFFFFF;
   border: 1px solid #D6DBE7;
   box-shadow: 0 2px 4px rgba(191, 198, 215, 0.5);
@@ -24,3 +21,23 @@
   cursor: pointer;
 }
 
+.tag {
+  @apply
+  my-[5px]
+  cursor-pointer
+  rounded-[16px]
+  bg-[#D6E5FF]
+  py-0
+  px-[12px]
+  text-[14px]
+  font-normal
+  normal-case
+  leading-loose
+  text-[#4f4f4f]
+  shadow-none
+  transition-[opacity]
+  duration-300
+  ease-linear
+  hover:shadow-none
+  active:bg-[#cacfd1];
+}

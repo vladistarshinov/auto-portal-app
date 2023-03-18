@@ -2,8 +2,8 @@
   position: relative;
 }
 
-:host ::ng-deep .owl-theme.owl-nav {
-  position: absolute;
+:host ::ng-deep .owl-theme .owl-nav {
+  position: sticky;
   top: 45%;
   display: flex;
   justify-content: center;

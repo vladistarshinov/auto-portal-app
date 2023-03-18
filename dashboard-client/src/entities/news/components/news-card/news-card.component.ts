@@ -13,6 +13,10 @@ export class NewsCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  get type(): string {
+    return 'tags' in this.card.attributes ? 'Новость' : 'Акция';
+  }
+
   public getImageUrl(url: string): string {
     return 'http://localhost:1337' + url;
   }
