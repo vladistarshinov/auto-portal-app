@@ -3,10 +3,23 @@
   <component name="ChangeListManager">
     <list default="true" id="76d172d4-4753-4dba-b42a-cfdfc110222f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/src/entities/auto-brand/auto-brand.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/entities/auto-brand/auto-brand.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/src/entities/auto-brand/components/auto-brand/auto-brand.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/entities/auto-brand/components/auto-brand/auto-brand.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/src/entities/auto-brand/components/auto-brand/auto-brand.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/entities/auto-brand/components/auto-brand/auto-brand.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/src/entities/auto-brand/model/auto-brand.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/entities/auto-brand/model/auto-brand.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/src/entities/auto/components/auto-card/auto-card.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/entities/auto/components/auto-card/auto-card.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/src/entities/auto/components/auto-card/auto-card.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/entities/auto/components/auto-card/auto-card.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/src/entities/auto/model/auto.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/entities/auto/model/auto.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard-client/src/entities/products/components/product-card/product-card.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/entities/products/components/product-card/product-card.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard-client/src/widgets/product-list/product-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/widgets/product-list/product-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/src/entities/products/components/product-card/product-card.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/entities/products/components/product-card/product-card.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/src/widgets/auto-list/auto-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/widgets/auto-list/auto-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/src/widgets/auto-list/auto-list.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/widgets/auto-list/auto-list.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/src/widgets/auto-list/auto-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/widgets/auto-list/auto-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/src/widgets/auto-list/auto-list.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/widgets/auto-list/auto-list.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard-client/src/widgets/product-list/product-list.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/widgets/product-list/product-list.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard-client/src/widgets/product-list/product-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/src/widgets/product-list/product-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard-client/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard-client/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client/src/entities/product/model/useAutoPartsQuery.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/entities/product/model/useAutoPartsQuery.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client/src/widgets/product-list/ProductList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/widgets/product-list/ProductList.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,7 +282,11 @@
       <workItem from="1678617430156" duration="2359000" />
       <workItem from="1678626852356" duration="4450000" />
       <workItem from="1678635699531" duration="1691000" />
-      <workItem from="1678643126036" duration="6130000" />
+      <workItem from="1678643126036" duration="6780000" />
+      <workItem from="1678732384146" duration="2549000" />
+      <workItem from="1679126120517" duration="2791000" />
+      <workItem from="1679133525626" duration="1270000" />
+      <workItem from="1679135012607" duration="7090000" />
     </task>
     <servers />
   </component>

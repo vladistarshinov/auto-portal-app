@@ -1,6 +1,6 @@
-import { FC, useState } from "react"
+import { ChangeEvent, FC, useState } from "react"
 import { motion } from 'framer-motion'
-import { Box, Grid, IconButton } from "@mui/material"
+import { Box, Grid, IconButton, TextField } from "@mui/material"
 import FilterAltOffIcon from '@mui/icons-material/FilterAltOff'
 
 import { EnumAutoSort } from "@/entities/auto/model/auto.types"
@@ -14,6 +14,7 @@ import PaginationWrapper from '@/shared/ui/pagination/Pagination'
 import AutoBrands from '@/entities/auto-brands/AutoBrands'
 import { FiltersDto } from '@/entities/auto/model/filters.dto'
 import { IAuto, IAutoResponse } from "@/shared/api/types/auto.types"
+import { useDebounce } from "@/shared/hooks/useDebounce"
 
 const AutoList: FC<{cars: IAutoResponse, autoBrands: string[]}> = ({cars, autoBrands}) => {
 	const [page, setPage] = useState(1)
@@ -25,7 +26,9 @@ const AutoList: FC<{cars: IAutoResponse, autoBrands: string[]}> = ({cars, autoBr
 		EnumAutoSort.NEW
 	)
 
-	const {autoList, isLoading} = useAutoListQuery(page, limit, searchTerm, sortType, filters, cars)
+	const debouncedSearch = useDebounce<string>(searchTerm, 500)
+
+	const {autoList, isLoading} = useAutoListQuery(page, limit, debouncedSearch, sortType, filters, cars)
 
 	const {brands, isBrandLoading} = useAutoBrandsQuery(autoBrands)
 
@@ -42,7 +45,14 @@ const AutoList: FC<{cars: IAutoResponse, autoBrands: string[]}> = ({cars, autoBr
 					setLimit={setLimit}
 				/>
 
+				<TextField
+					placeholder="Поиск..."
+					value={searchTerm}
+					onChange={(e: ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
+				/>
+
 				<Box display='flex' alignItems='center' justifyContent='space-between' gap={2}>
+
 					<LimitOnPagePlugin limits={[4, 8]} limit={limit} setLimit={setLimit} />
 
 					<SortSelectDropdown

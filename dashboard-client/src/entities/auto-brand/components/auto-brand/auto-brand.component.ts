@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-auto-brand',
@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./auto-brand.component.scss']
 })
 export class AutoBrandComponent implements OnInit {
+  @Input()
+  brand!: string;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  public handleSelect() {
+
   }
 
 }

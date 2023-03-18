@@ -8,7 +8,7 @@ import { getProductsUrl } from "@/shared/configs/api.config"
 
 export const ProductService = {
 	async getAll(page?: number, limit?: number, searchTerm?: string, sort?: string, filters?: any) {
-		const res = await instance.post<IProductsResponse>(
+		const { data } = await instance.post<IProductsResponse>(
 			getProductsUrl(''),
 			filters,
 			{
@@ -20,7 +20,7 @@ export const ProductService = {
 				}
 			}
 		)
-		return res
+		return data
 	},
 
 	async getTopProducts() {

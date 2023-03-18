@@ -10,6 +10,9 @@ import { AutoBrandComponent } from './components/auto-brand/auto-brand.component
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    AutoBrandComponent
   ]
 })
 export class AutoBrandModule { }

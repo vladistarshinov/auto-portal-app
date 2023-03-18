@@ -2,13 +2,10 @@
   <div class="flex items-center justify-between mb-1">
     <div class="flex items-center flex-column gap-2">
       <small>Бренды</small>
-      <div *ngIf="!loading" class="inline-flex items-center flex-wrap gap-3">
-        <div
-          class="[word-wrap: break-word] my-[5px] mr-4 flex h-[32px] cursor-pointer items-center justify-between rounded-[16px] bg-[#eceff1] py-0 px-[12px] text-[13px] font-normal normal-case leading-loose text-[#4f4f4f] shadow-none transition-[opacity] duration-300 ease-linear hover:!shadow-none active:bg-[#cacfd1] dark:bg-neutral-600 dark:text-neutral-200">
-          Text
-        </div>
-        <small class="more-tag"><small>+ еще</small></small>
-      </div>
+     <ng-container *ngFor="let brand of brands; let index">
+       <app-auto-brand [brand]="brand"></app-auto-brand>
+     </ng-container>
+      <small class="more-tag"><small>+ еще</small></small>
     </div>
     <div class="flex flex-column">
 

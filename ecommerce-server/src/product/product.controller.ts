@@ -5,7 +5,7 @@ import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { AllProductResponse } from './product.interface';
 import { ProductService } from './product.service';
-import {Product, ProductDocument } from './schema/product.schema';
+import { Product, ProductDocument } from './schema/product.schema';
 
 @Controller('products')
 export class ProductController {

@@ -10,7 +10,7 @@ export class AutoBrandService {
 
   constructor(private readonly http: HttpClient) { }
 
-  public getAll(): Observable<any> {
-    return this.http.get<any>(getAutoBrandsUrl);
+  public getAll(): Observable<string[]> {
+    return this.http.get<string[]>(getAutoBrandsUrl);
   }
 }

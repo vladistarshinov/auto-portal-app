@@ -1,6 +1,8 @@
+import { useMemo } from 'react'
+import { useQuery } from "@tanstack/react-query"
+
 import { EnumAutoSort } from "@/entities/auto/model/auto.types"
 import { IProductsResponse } from "@/shared/api/types/product.types"
-import { useQuery } from "@tanstack/react-query"
 import { ProductService } from "./product.service"
 
 export const useAutoPartsQuery = (
@@ -9,17 +11,20 @@ export const useAutoPartsQuery = (
 	searchTerm: string,
 	sortType: EnumAutoSort,
 	filters: any | undefined,
-	products: IProductsResponse | any
+	data: IProductsResponse
 ) => {
-	const { data: { data: productList }, isLoading } = useQuery(
-		['autoparts', page, limit, sortType, filters],
+	const { data: productList, isLoading } = useQuery(
+		['autoparts', page, limit, sortType, searchTerm, filters],
 		() =>
 			ProductService.getAll(page, limit, searchTerm, sortType, filters),
 		{
-			initialData: products,
-			keepPreviousData: true
+			initialData: data,
+			keepPreviousData: true,
 		}
 	)
 
-	return { productList, isLoading }
+	return useMemo(
+		() => ({ productList, isLoading }),
+		[page, limit, searchTerm, sortType, filters]
+	)
 }

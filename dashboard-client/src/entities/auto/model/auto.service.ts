@@ -19,6 +19,7 @@ export class AutoService {
         sort,
       }),
     })
+    console.log(params);
     return this.http.post<any>(getAutosUrl, { params });
   }
 }

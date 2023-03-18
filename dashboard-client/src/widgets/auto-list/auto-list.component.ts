@@ -1,3 +1,4 @@
+import { AutoBrandService } from '@/entities/auto-brand/model/auto-brand.service';
 import { AutoService } from '@/entities/auto/model/auto.service';
 import { ProductService } from '@/entities/products/model/product.service';
 import { Component, OnInit } from '@angular/core';
@@ -56,21 +57,22 @@ export class AutoListComponent implements OnInit {
     }
   ];
   public pageLimits: number[]= [1, 2, 4];
+  public loadingBrands: boolean = false;
+  public brands: string[] = [];
   constructor(
     private readonly autoService: AutoService,
+    private readonly autoBrandService: AutoBrandService,
     private readonly router: Router
   ) { }
 
   ngOnInit(): void {
     this.getAutoList();
-  }
-
-  ngDoCheck(): void {
-    console.log(this.sortType);
+    this.getAutoBrands();
   }
 
   public getAutoList(): void {
     this.loading = true;
+    console.log(this.sortType);
     this.autoService
       .getAll(this.currentPage, this.rows, this.sortType)
       .subscribe((res: any) => {
@@ -84,6 +86,16 @@ export class AutoListComponent implements OnInit {
           to: res.to,
         };
         this.loading = false;
+      });
+  }
+
+  public getAutoBrands(): void {
+    this.loadingBrands = true;
+    this.autoBrandService
+      .getAll()
+      .subscribe((res: string[]) => {
+        this.brands = res;
+        this.loadingBrands = false;
       });
   }
 
@@ -117,7 +129,7 @@ export class AutoListComponent implements OnInit {
   public handleSort(): void {
     this.getAutoList();
     this.router.navigate([`/auto-list`], {
-      queryParams: {rows: this.rows},
+      queryParams: {sort: this.sortType},
       queryParamsHandling: 'merge',
     });
     //this.persistanceService.set('it_objects_page_mode', mode);

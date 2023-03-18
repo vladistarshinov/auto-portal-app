@@ -5,7 +5,7 @@ import { FiltersDto } from "./filters.dto"
 
 export const AutoService = {
 	async getAll(page?: number, limit?: number, searchTerm?: string, sort?: string, filters?: FiltersDto) {
-		const res = await instance.post<IAutoResponse>(
+		const { data } = await instance.post<IAutoResponse>(
 			getAutosUrl(''),
 			filters,
 			{
@@ -17,7 +17,7 @@ export const AutoService = {
 				}
 			},
 		)
-		return res
+		return data
 	},
 
 	async getDetail(slug: string) {

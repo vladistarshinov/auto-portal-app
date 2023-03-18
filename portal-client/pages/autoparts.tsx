@@ -18,7 +18,7 @@ const AutoPartsPage: NextPage<IHomePage> = ({ products, topProducts }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
 	try {
-		const { data: products } = await ProductService.getAll(1, 4)
+		const products = await ProductService.getAll(1, 4)
 		const { data: topProducts } = await ProductService.getTopProducts()
 		return {
 			props: {

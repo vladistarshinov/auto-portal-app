@@ -1,9 +1,10 @@
-import { FC, useState } from "react"
+import { ChangeEvent, FC, useState } from "react"
 import { motion } from "framer-motion"
 import {
 	Box,
 	Grid,
-	IconButton
+	IconButton,
+    TextField
 } from "@mui/material"
 import FilterAltOffIcon from '@mui/icons-material/FilterAltOff'
 
@@ -14,6 +15,7 @@ import LimitOnPagePlugin from "@/shared/ui/limit-on-page-plugin/LimitOnPagePlugi
 import SortSelectDropdown from "@/shared/ui/sort-select-input/SortSelectInput"
 import { useAutoPartsQuery } from "@/entities/product/model/useAutoPartsQuery"
 import PaginationWrapper from "@/shared/ui/pagination/Pagination"
+import { useDebounce } from "@/shared/hooks/useDebounce"
 
 const ProductList: FC<{products: IProductsResponse}> = ({ products }) => {
 	const [page, setPage] = useState(1)
@@ -25,14 +27,20 @@ const ProductList: FC<{products: IProductsResponse}> = ({ products }) => {
 		EnumAutoSort.NEW
 	)
 
-	const {productList, isLoading} = useAutoPartsQuery(page, limit, searchTerm, sortType, filters, products)
+	const debouncedSearch = useDebounce<string>(searchTerm, 500)
 
+	const {productList, isLoading} = useAutoPartsQuery(page, limit, debouncedSearch, sortType, filters, products)
 	return (
 		<>
 			<Box display='flex' alignItems='center' justifyContent='space-between' gap={2}>
 				<Box>Фильтры</Box>
+				<TextField
+					placeholder="Поиск..."
+					value={searchTerm}
+					onChange={(e: ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
+				/>
 				<Box display='flex' alignItems='center' justifyContent='space-between' gap={2}>
-					<LimitOnPagePlugin limits={[4, 8]} limit={limit} setLimit={setLimit} />
+					<LimitOnPagePlugin limits={[1, 2]} limit={limit} setLimit={setLimit} />
 
 					<SortSelectDropdown
 						sortType={sortType}

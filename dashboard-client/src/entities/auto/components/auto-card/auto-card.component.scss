@@ -5,7 +5,7 @@
 
 .rating {
   > input {
-    font-size: 14px !important;
+    @apply text-xs;
   }
 }
 
@@ -18,9 +18,3 @@
   height: 370px;
 }
 
-.text-truncate {
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  flex: 1;
-  overflow: hidden;
-}

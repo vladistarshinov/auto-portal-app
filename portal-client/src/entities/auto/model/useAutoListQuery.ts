@@ -1,5 +1,6 @@
 import { IAutoResponse } from "@/shared/api/types/auto.types";
 import { useQuery } from "@tanstack/react-query";
+import { useMemo } from "react";
 import { AutoService } from "./auto.service";
 import { EnumAutoSort } from "./auto.types";
 import { FiltersDto } from "./filters.dto";
@@ -10,17 +11,20 @@ export const useAutoListQuery = (
 	searchTerm: string,
 	sortType: EnumAutoSort,
 	filters: FiltersDto | undefined,
-	cars: IAutoResponse | any
+	cars: IAutoResponse
 ) => {
-	const { data: { data: autoList }, isLoading } = useQuery(
-		['autos', page, limit, sortType, filters],
+	const { data: autoList, isLoading } = useQuery(
+		['autos', page, limit, sortType, searchTerm, filters],
 		() =>
 			AutoService.getAll(page, limit, searchTerm, sortType, filters),
 		{
 			initialData: cars,
-			keepPreviousData: true
+			keepPreviousData: true,
 		}
 	)
 
-	return { autoList, isLoading }
+	return useMemo(
+		() => ({ autoList, isLoading }),
+		[page, limit, searchTerm, sortType, filters]
+	)
 }
