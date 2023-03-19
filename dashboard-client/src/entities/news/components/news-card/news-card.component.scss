@@ -13,7 +13,7 @@
 .card-wrapper {
   position: relative;
   width: 410px;
-  height: 400px;
+  height: 420px;
   background: #FFFFFF;
   border: 1px solid #D6DBE7;
   box-shadow: 0 2px 4px rgba(191, 198, 215, 0.5);
@@ -23,6 +23,7 @@
 
 .tag {
   @apply
+  h-[30px]
   my-[5px]
   cursor-pointer
   rounded-[16px]

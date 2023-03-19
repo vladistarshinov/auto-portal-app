@@ -1,3 +1,4 @@
+import { IArticleContent, IPromotionContent, ITagContent } from '@/shared/api/types/news.types';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class NewsCardComponent implements OnInit {
   @Input()
-  public card!: any;
+  public card: IArticleContent | IPromotionContent | any;
   constructor() { }
 
   ngOnInit(): void {
@@ -15,6 +16,12 @@ export class NewsCardComponent implements OnInit {
 
   get type(): string {
     return 'tags' in this.card.attributes ? 'Новость' : 'Акция';
+  }
+
+  get hashtags(): string {
+    return 'tags' in this.card.attributes
+      ? this.card?.attributes?.tags?.data?.map((h: ITagContent) => h.attributes.title).join(' ')
+      : this.card?.attributes?.tag?.data.attributes.title;
   }
 
   public getImageUrl(url: string): string {
