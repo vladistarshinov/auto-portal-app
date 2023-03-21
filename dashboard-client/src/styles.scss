@@ -36,29 +36,3 @@ a {
 .toast-message {
   font-size: 18px;
 }
-
-@mixin shadow($size: 'md', $isHover: true) {
-  @if $size == 'md' {
-    box-shadow: 0 4px 10px rgba(45, 8, 125, 0.2);
-    transition: box-shadow 0.4s ease-in-out;
-
-    @if ($isHover) {
-      &:hover,
-      &:focus {
-        box-shadow: 0 4px 16px rgba(45, 8, 125, 0.26);
-      }
-    }
-  }
-
-  @if $size == 'lg' {
-    box-shadow: 0 10px 20px rgba(37, 12, 171, 0.3);
-    transition: box-shadow 0.4s ease-in-out;
-
-    @if ($isHover) {
-      &:hover,
-      &:focus {
-        box-shadow: 0 10px 25px rgba(37, 12, 171, 0.35);
-      }
-    }
-  }
-}

@@ -10,7 +10,7 @@
     </div>
     <div class="flex flex-column">
 
-        <div class="inline-flex align-items-center mt-2 gap-2">
+        <div class="inline-flex items-center mt-2 gap-2">
           <div class='input__wrapper'>
             <input placeholder='Поиск...' (keyup)="onKeyUp($event)" />
           </div>
@@ -47,7 +47,7 @@
             </button>
             <button
               type="button"
-              class="border-1"
+              class="border-1 rotate-90"
               (click)="handleChangeMode('table')"
               [ngClass]="mode === 'table' ? 'active' : ''"
             >

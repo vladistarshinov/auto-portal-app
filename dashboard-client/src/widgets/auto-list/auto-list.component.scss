@@ -1,4 +1,4 @@
-@import 'src/styles';
+@import 'src/shared/styles/effects';
 
 .catalog {
   @apply flex-wrap gap-8;
@@ -51,7 +51,7 @@ td {
   @apply relative block;
 
   > input {
-    @apply p-2 w-full text-xs rounded-md overflow-hidden block bg-white;
+    @apply p-1 w-full text-xs rounded-md overflow-hidden block bg-white;
     @include shadow();
 
     &::placeholder {
