@@ -4,7 +4,9 @@ import { AutoErrorConstants } from 'common/constants/error.constants';
 import { Model } from 'mongoose';
 import qs, { ParsedQs } from 'qs';
 import { AutoCharacteristicService } from 'src/auto-characteristic/auto-characteristic.service';
+import { CreateAutoDto } from './dto/create-auto.dto';
 import { FiltersDto } from './dto/filters.dto';
+import { UpdateAutoDto } from './dto/update-auto.dto';
 import { Auto, AutoDocument } from './schema/auto.schema';
 
 @Injectable()
@@ -21,7 +23,7 @@ export class AutoService {
 		searchTerm?: string,
 		sort?: string,
 		filters?: FiltersDto
-	):  Promise<any> {
+	) {
 		let newFilters = filters
 		let searchTermOptions = {}
 		let filterOptions = {}
@@ -103,7 +105,7 @@ export class AutoService {
 	}
 
 
-	public async create(dto: any) {
+	public async create(dto: CreateAutoDto): Promise<Auto> {
 		const existAuto = await this.findBySlug(dto.slug)
 		if (existAuto)
 			throw new BadRequestException(AutoErrorConstants.IS_EXIST)
@@ -113,7 +115,7 @@ export class AutoService {
 
 	}
 
-	public async update(_id: string, dto: any) {
+	public async update(_id: string, dto: Partial<UpdateAutoDto>): Promise<Auto> {
 		const auto = await this.autoModel.findById(_id)
 
 		if (dto.title) auto.title = dto.title
@@ -143,7 +145,7 @@ export class AutoService {
 		return auto
 	}
 
-	public async getBySlug(slug: string): Promise<any> {
+	public async getBySlug(slug: string): Promise<Omit<Auto, '-__v' | '-createdAt' | '-updatedAt' | '-_id'>> {
 		const auto = await this.autoModel.findOne({ slug })
 			.populate({
 				path: 'characteristics',
@@ -155,7 +157,7 @@ export class AutoService {
 		return auto
 	}
 
-	public async getBrands(): Promise<any[]> {
+	public async getBrands(): Promise<string[]> {
 		return await this.autoModel.find().distinct('brand').exec();
 	}
 

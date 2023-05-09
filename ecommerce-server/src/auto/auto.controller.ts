@@ -1,7 +1,10 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
 import { IdValidationPipe } from 'pipes/id-validation.pipe';
 import { AutoService } from './auto.service';
+import { CreateAutoDto } from './dto/create-auto.dto';
 import { FiltersDto } from './dto/filters.dto';
+import { UpdateAutoDto } from './dto/update-auto.dto';
+import { Auto } from './schema/auto.schema';
 
 @Controller('autos')
 export class AutoController {
@@ -14,7 +17,7 @@ export class AutoController {
 		@Query('search') searchTerm?: string,
 		@Query('sort') sort?: string,
 		@Body() filters?: FiltersDto
-	): Promise<any> {
+	) {
 		return this.autoService.getAll(page, limit, searchTerm, sort, filters)
 	}
 
@@ -27,7 +30,7 @@ export class AutoController {
 	}
 
 	@Get('brands')
-	public getAutoBrands(): Promise<any[]> {
+	public getAutoBrands(): Promise<string[]> {
 		return this.autoService.getBrands()
 	}
 
@@ -41,16 +44,16 @@ export class AutoController {
 
 	@Post()
 	public createAuto(
-		@Body() dto: any
-	): Promise<any> {
+		@Body() dto: CreateAutoDto
+	): Promise<Auto> {
 		return this.autoService.create(dto)
 	}
 
 	@Patch(':id')
 	public updateAuto(
 		@Param('id', IdValidationPipe) id: string,
-		@Body() dto: any
-	): Promise<any> {
+		@Body() dto: Partial<UpdateAutoDto>
+	): Promise<Omit<Auto, '-__v' | '-createdAt' | '-updatedAt' | '-_id'>> {
 		return this.autoService.update(id, dto)
 	}
 
