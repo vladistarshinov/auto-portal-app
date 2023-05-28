@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="76d172d4-4753-4dba-b42a-cfdfc110222f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/services-server/maintenance.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services-server/vacancy.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services-server/go.sum" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services-server/pkg/handlers/vacancy.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services-server/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/services-server/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services-server/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/services-server/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services-server/vacancy.go" beforeDir="false" afterPath="$PROJECT_DIR$/services-server/vacancy.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -266,7 +267,10 @@
       <workItem from="1683740192116" duration="205000" />
       <workItem from="1683753456594" duration="2196000" />
       <workItem from="1683841235512" duration="291000" />
-      <workItem from="1683915865971" duration="151000" />
+      <workItem from="1683915865971" duration="3328000" />
+      <workItem from="1683934039798" duration="862000" />
+      <workItem from="1684098108011" duration="797000" />
+      <workItem from="1684262969786" duration="171000" />
     </task>
     <servers />
   </component>
