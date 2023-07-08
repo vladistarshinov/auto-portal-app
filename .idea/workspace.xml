@@ -5,29 +5,199 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="76d172d4-4753-4dba-b42a-cfdfc110222f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/portal-client/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portal-client/.eslintrc.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portal-client/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portal-client/.prettierrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portal-client/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portal-client/next.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portal-client/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portal-client/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portal-client/public/next.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portal-client/public/vercel.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portal-client/src/pages/_app.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portal-client/src/pages/_document.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portal-client/src/pages/api/hello.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portal-client/src/pages/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portal-client/src/shared/libs/createEmotionCache.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portal-client/src/styles/colors.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portal-client/src/styles/globals.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portal-client/src/styles/theme/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portal-client/src/widgets/home/Home.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portal-client/src/widgets/home/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portal-client/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portal-client/yarn.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/portal-client/src/shared/ui/heading/Heading.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/.env" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/.eslintrc.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/.prettierrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/next-env.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/next.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/pages/404.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/pages/404.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/pages/_app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/pages/auth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/pages/auth.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/pages/autoparts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/pages/autoparts.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/pages/autoparts/[slug].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/pages/autoparts/[slug].tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/pages/cart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/pages/cart.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/pages/new-cars.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/pages/new-cars.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/pages/news.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/pages/news.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/pages/orders/[id].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/pages/orders/[id].tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/pages/payment.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/pages/payment.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/pages/personal-area.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/pages/personal-area.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/pages/placeorder.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/pages/placeorder.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/pages/shipping.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/pages/shipping.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/public/vercel.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/app/assets/images/home/card_car1.png" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/app/assets/images/home/card_car1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/app/assets/images/icons/next-slide-icon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/app/assets/images/icons/next-slide-icon.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/app/assets/images/icons/prev-slide-icon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/app/assets/images/icons/prev-slide-icon.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/app/assets/images/logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/app/assets/images/logo.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/app/assets/theme/globals.scss" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/app/assets/theme/globals.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/app/assets/theme/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/app/assets/theme/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/app/providers/AuthProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/app/providers/AuthProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/app/providers/CheckRole.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/app/providers/CheckRole.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/app/providers/MainProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/app/providers/MainProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/app/providers/MaterialUiProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/app/providers/MaterialUiProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/app/providers/ReduxToastr.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/app/providers/ReduxToastr.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/app/providers/RoleProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/app/providers/RoleProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/app/store/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/app/store/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/app/store/auth-context.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/app/store/auth-context.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/app/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/app/store/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/app/store/reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/app/store/reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/app/store/utils/useActions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/app/store/utils/useActions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/app/store/utils/useTypedSelector.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/app/store/utils/useTypedSelector.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/entities/auto-brands/AutoBrands.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/entities/auto-brands/AutoBrands.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/entities/auto/model/auto.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/entities/auto/model/auto.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/entities/auto/model/auto.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/entities/auto/model/auto.types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/entities/auto/model/filters.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/entities/auto/model/filters.dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/entities/auto/model/useAutoListQuery.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/entities/auto/model/useAutoListQuery.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/entities/auto/ui/AutoCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/entities/auto/ui/AutoCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/entities/cart/model/cart.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/entities/cart/model/cart.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/entities/cart/model/cart.slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/entities/cart/model/cart.slice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/entities/cart/model/useCart.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/entities/cart/model/useCart.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/entities/cart/ui/Cart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/entities/cart/ui/Cart.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/entities/cart/ui/CartIconButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/entities/cart/ui/CartIconButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/entities/cart/ui/CartProductItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/entities/cart/ui/CartProductItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/entities/news/lib/filter.helper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/entities/news/lib/filter.helper.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/entities/news/lib/query.params.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/entities/news/lib/query.params.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/entities/news/model/news.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/entities/news/model/news.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/entities/news/ui/News.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/entities/news/ui/News.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/entities/order/model/order.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/entities/order/model/order.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/entities/order/ui/OrderProductTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/entities/order/ui/OrderProductTable.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/entities/order/ui/OrderSummary.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/entities/order/ui/OrderSummary.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/entities/place-order/model/useCalcPrice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/entities/place-order/model/useCalcPrice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/entities/place-order/ui/PlaceOrderInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/entities/place-order/ui/PlaceOrderInfo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/entities/product/model/product.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/entities/product/model/product.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/entities/product/model/useAutoPartsQuery.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/entities/product/model/useAutoPartsQuery.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/entities/product/ui/ProductCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/entities/product/ui/ProductCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/entities/product/ui/ProductDetail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/entities/product/ui/ProductDetail.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/entities/profile/model/profile.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/entities/profile/model/profile.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/entities/profile/ui/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/entities/profile/ui/Profile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/entities/profile/ui/profile.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/entities/profile/ui/profile.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/entities/review/model/review.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/entities/review/model/review.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/entities/review/model/useReviews.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/entities/review/model/useReviews.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/entities/review/ui/Reviews.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/entities/review/ui/Reviews.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/features/add-review/ReviewForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/features/add-review/ReviewForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/features/add-to-cart/AddToCartButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/features/add-to-cart/AddToCartButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/features/change-order-status/OrderProductActionStatus.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/features/change-order-status/OrderProductActionStatus.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/features/change-password/model/useUpdateProfileMutation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/features/change-password/model/useUpdateProfileMutation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/features/change-password/ui/ChangePasswordModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/features/change-password/ui/ChangePasswordModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/features/change-product-quantity/ChangeQuantityProduct.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/features/change-product-quantity/ChangeQuantityProduct.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/features/create-order/ui/CreateOrderButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/features/create-order/ui/CreateOrderButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/features/filter-cars-by-brand/model/auto-brand.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/features/filter-cars-by-brand/model/auto-brand.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/features/filter-cars-by-brand/model/useAutoBrandsQuery.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/features/filter-cars-by-brand/model/useAutoBrandsQuery.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/features/filter-cars-by-brand/ui/FilterCarsByBrandModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/features/filter-cars-by-brand/ui/FilterCarsByBrandModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/features/pickup-car/ui/PickupCarForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/features/pickup-car/ui/PickupCarForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/features/print-invoice/ui/PrintInvoiceButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/features/print-invoice/ui/PrintInvoiceButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/features/print-invoice/usePrintInvoice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/features/print-invoice/usePrintInvoice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/features/remove-from-cart/RemoveFromCartButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/features/remove-from-cart/RemoveFromCartButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/processes/auth/lib/auth.helper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/processes/auth/lib/auth.helper.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/processes/auth/model/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/processes/auth/model/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/processes/auth/model/hooks/useAuth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/processes/auth/model/hooks/useAuth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/processes/auth/model/hooks/useAuthCheck.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/processes/auth/model/hooks/useAuthCheck.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/processes/auth/model/hooks/useAuthMutations.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/processes/auth/model/hooks/useAuthMutations.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/processes/auth/model/hooks/useAuthRedirect.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/processes/auth/model/hooks/useAuthRedirect.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/processes/auth/model/store/auth.actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/processes/auth/model/store/auth.actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/processes/auth/model/store/auth.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/processes/auth/model/store/auth.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/processes/auth/model/store/auth.slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/processes/auth/model/store/auth.slice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/processes/auth/model/types/auth.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/processes/auth/model/types/auth.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/processes/auth/ui/AccountDataFields.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/processes/auth/ui/AccountDataFields.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/processes/auth/ui/AuthForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/processes/auth/ui/AuthForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/processes/checkout/model/checkout.slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/processes/checkout/model/checkout.slice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/processes/checkout/model/useCheckout.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/processes/checkout/model/useCheckout.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/processes/checkout/ui/PaymentForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/processes/checkout/ui/PaymentForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/processes/checkout/ui/ShippingForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/processes/checkout/ui/ShippingForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/screens/auth/Auth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/screens/auth/Auth.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/screens/autoparts/AutoParts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/screens/autoparts/AutoParts.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/screens/cart/Cart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/screens/cart/Cart.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/screens/home/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/screens/home/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/screens/new-cars/NewCarsScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/screens/new-cars/NewCarsScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/screens/news/News.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/screens/news/News.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/screens/not-found/NotFound.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/screens/not-found/NotFound.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/screens/order/Order.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/screens/order/Order.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/screens/payment/Payment.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/screens/payment/Payment.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/screens/personal-area/PersonalArea.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/screens/personal-area/PersonalArea.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/screens/place-order/PlaceOrder.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/screens/place-order/PlaceOrder.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/screens/product/Product.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/screens/product/Product.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/screens/shipping/Shipping.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/screens/shipping/Shipping.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/api/api.helper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/api/api.helper.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/api/error.api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/api/error.api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/api/interceptors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/api/interceptors.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/api/request.api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/api/request.api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/api/types/auto.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/api/types/auto.types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/api/types/meta.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/api/types/meta.types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/api/types/product.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/api/types/product.types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/api/types/strapi-content.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/api/types/strapi-content.types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/api/types/strapi/home-service-block.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/api/types/strapi/home-service-block.types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/api/types/strapi/news.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/api/types/strapi/news.types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/configs/api.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/configs/api.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/configs/strapi-api.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/configs/strapi-api.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/helpers/cars-data.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/helpers/cars-data.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/helpers/contentUrl.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/helpers/contentUrl.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/helpers/stepTitles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/helpers/stepTitles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/hooks/useDebounce.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/hooks/useDebounce.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/libs/a11y-tab-props.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/libs/a11y-tab-props.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/libs/add-decimal.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/libs/add-decimal.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/libs/createEmotionCache.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/libs/date-time-filter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/libs/date-time-filter.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/libs/gen-end-of-noun.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/libs/gen-end-of-noun.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/libs/local-storage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/libs/local-storage.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/libs/product-quantity-calc.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/libs/product-quantity-calc.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/libs/regex.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/libs/regex.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/libs/toast-error.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/libs/toast-error.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/types/auth.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/types/auth.types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/types/cart.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/types/cart.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/types/user.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/types/user.types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/ui/breadcrumbs/Breadcrumbs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/ui/breadcrumbs/Breadcrumbs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/ui/carousel/Carousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/ui/carousel/Carousel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/ui/checkout-stepper/CheckoutStepper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/ui/checkout-stepper/CheckoutStepper.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/ui/heading/Heading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/ui/heading/Heading.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/ui/limit-on-page-plugin/LimitOnPagePlugin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/ui/limit-on-page-plugin/LimitOnPagePlugin.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/ui/menu/HeaderMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/ui/menu/HeaderMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/ui/modal-wrapper/ModalWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/ui/modal-wrapper/ModalWrapper.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/ui/news-card/NewsCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/ui/news-card/NewsCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/ui/pagination/Pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/ui/pagination/Pagination.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/ui/rating/Rating.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/ui/rating/Rating.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/ui/select-input/SelectInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/ui/select-input/SelectInput.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/ui/select-input/SelectValueInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/ui/select-input/SelectValueInput.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/ui/skeletons/CardSkeleton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/ui/skeletons/CardSkeleton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/ui/slider/Slider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/ui/slider/Slider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/ui/slider/slider.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/ui/slider/slider.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/ui/sort-select-input/SortSelectInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/ui/sort-select-input/SortSelectInput.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/shared/ui/tab-panel/TabPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/shared/ui/tab-panel/TabPanel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/widgets/auto-list/AutoList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/widgets/auto-list/AutoList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/widgets/chechout-steps/CheckoutSteps.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/widgets/chechout-steps/CheckoutSteps.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/widgets/home/category-block-list/CategoryBlockList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/widgets/home/category-block-list/CategoryBlockList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/widgets/home/service-block-list/ServiceBlockList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/widgets/home/service-block-list/ServiceBlockList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/widgets/layout/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/widgets/layout/Footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/widgets/layout/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/widgets/layout/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/widgets/layout/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/widgets/layout/Layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/widgets/product-list/ProductList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/widgets/product-list/ProductList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/widgets/review-list/ReviewList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/widgets/review-list/ReviewList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/widgets/top-news/TopNews.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/widgets/top-news/TopNews.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/src/widgets/top-products/TopProducts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/widgets/top-products/TopProducts.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client-2/yarn.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/next.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client/public/next.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client/public/vercel.svg" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/public/vercel.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client/src/pages/_app.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client/src/pages/_document.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client/src/pages/api/hello.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client/src/pages/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client/src/styles/colors.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client/src/styles/globals.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client/src/styles/theme/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client/src/widgets/home/Home.module.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client/src/widgets/home/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +244,7 @@
     "dart.analysis.tool.window.visible": "false",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "/Users/vladstarshinov/Projects/mern-shop-app/portal-client",
+    "last_opened_file_path": "/Users/vladstarshinov/Projects/mern-shop-app/portal-client/src/shared",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
@@ -88,7 +258,7 @@
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
     "show.migrate.to.gradle.popup": "false",
-    "ts.external.directory.path": "/Users/vladstarshinov/Projects/mern-shop-app/dashboard-client/node_modules/typescript/lib",
+    "ts.external.directory.path": "/Users/vladstarshinov/Projects/mern-shop-app/ecommerce-server/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -99,11 +269,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/portal-client" />
-      <recent name="$PROJECT_DIR$/dashboard-client/src/assets" />
-      <recent name="$PROJECT_DIR$/ecommerce-server" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/dashboard-client/src" />
+      <recent name="$PROJECT_DIR$/portal-client/src/shared" />
+      <recent name="$PROJECT_DIR$/portal-client/src/shared/hooks" />
+      <recent name="$PROJECT_DIR$/portal-client/src/shared/libs" />
+      <recent name="$PROJECT_DIR$/portal-client/src" />
+      <recent name="$PROJECT_DIR$/portal-client/src/pages" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/portal-client/src/styles" />
@@ -289,7 +459,22 @@
       <workItem from="1683934039798" duration="862000" />
       <workItem from="1684098108011" duration="797000" />
       <workItem from="1684262969786" duration="171000" />
-      <workItem from="1685271047625" duration="3775000" />
+      <workItem from="1685271047625" duration="5934000" />
+      <workItem from="1685297457423" duration="662000" />
+      <workItem from="1685299290392" duration="664000" />
+      <workItem from="1685302075714" duration="409000" />
+      <workItem from="1685315077450" duration="2561000" />
+      <workItem from="1685317653775" duration="371000" />
+      <workItem from="1685359434990" duration="24000" />
+      <workItem from="1685359499558" duration="22000" />
+      <workItem from="1685378656735" duration="2006000" />
+      <workItem from="1686223205371" duration="935000" />
+      <workItem from="1686468756709" duration="870000" />
+      <workItem from="1686672993418" duration="7000" />
+      <workItem from="1688221554872" duration="546000" />
+      <workItem from="1688304554115" duration="1128000" />
+      <workItem from="1688819475149" duration="2123000" />
+      <workItem from="1688821623462" duration="79000" />
     </task>
     <servers />
   </component>

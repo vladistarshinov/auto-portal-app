@@ -10,9 +10,10 @@ const BreadCrumbs: FC<{navElements: INavElements[]}> = ({ navElements }) => {
 	return (
 		<Box role="presentation" sx={{ my: 3 }}>
 			<Breadcrumbs aria-label="breadcrumb">
-				{navElements !== [] &&
+				{!navElements.length &&
 					navElements.map((elem, idx) => (
 						<Link
+							key={idx}
 							underline="hover"
 							color={
 								idx === navElements.length - 1 ? "text.primary" : "inherit"

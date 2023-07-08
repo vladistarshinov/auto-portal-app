@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import { Typography } from '@mui/material'
+import s from './Heading.module.scss'
 
 interface IHeading {
 	title: string
@@ -9,9 +10,9 @@ interface IHeading {
 const Heading: FC<IHeading> = ({title, style}) => {
 	return (
 		<Typography
+			className={s.text}
 			variant="inherit"
 			component="h2"
-			style={{ padding: '1rem 0' }}
 		>
 			{title}
 		</Typography>

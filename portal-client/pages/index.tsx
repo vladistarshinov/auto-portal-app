@@ -11,8 +11,8 @@ import {
 } from '@/shared/configs/strapi-api.config'
 import {
 	IHomeCategoryBlockContent,
-	IHomeCategoryBlockResponse
-} from '@/shared/api/types/strapi-content.types'
+	IHomeCategoryBlockResponse,
+} from '@/shared/api/types/strapi-content.types';
 import {
 	IArticleContent,
 	IPromotionContent,
