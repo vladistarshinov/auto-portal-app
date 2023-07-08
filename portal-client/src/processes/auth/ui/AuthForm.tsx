@@ -8,6 +8,8 @@ import AccountDataFields from "./AccountDataFields"
 import { IAuth, ILogin, IRegister } from "../model/types/auth.interface"
 import { useAuthRedirect } from "../model/hooks/useAuthRedirect"
 
+import s from './AuthForm.module.scss';
+
 const AuthForm = () => {
 	useAuthRedirect()
 
@@ -44,7 +46,7 @@ const AuthForm = () => {
 					register={registerDto}
 					isPasswordRequired
 				/>
-				<Box sx={{ textAlign: 'center', mt: 3 }}>
+				<Box className={s.btn}>
 					<Button variant="outlined" color="inherit" type='submit'>
 						{type === 'login' ? 'Войти' : 'Зарегистрироваться'}
 					</Button>
@@ -55,14 +57,14 @@ const AuthForm = () => {
 					{type === 'login' ? 'Новый пользователь?' : 'Уже есть аккаунт?'}{' '}
 					{type === 'login' ? (
 						<Link
-							style={{ color: 'navy', textDecoration: 'none', cursor: 'pointer' }}
+							className={s.link}
 							onClick={() => setType('register')}
 						>
 							Зарегистрироваться
 						</Link>
 					) : (
 						<Link
-							style={{ color: 'navy', textDecoration: 'none', cursor: 'pointer' }}
+							className={s.link}
 							onClick={() => setType('login')}
 						>
 							Войти

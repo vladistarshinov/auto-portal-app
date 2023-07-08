@@ -16,6 +16,8 @@ import {
 import HeaderMenu from "@/shared/ui/menu/HeaderMenu"
 import CartIconButton from '@/entities/cart/ui/CartIconButton'
 
+import s from './Header.module.scss'
+
 const Header: FC = () => {
 	const [anchorCategoryEl, setAnchorCategoryEl] = useState(null)
 	const openCategory = Boolean(anchorCategoryEl)
@@ -29,19 +31,10 @@ const Header: FC = () => {
 	}
 
 	return (
-		<Stack sx={{
-			bgcolor: "#f8f9fa",
-			p: 1,
-			boxShadow: '0px 2px 12px -3px rgba(0, 0, 0, 0.25)',
-			position: 'fixed',
-			width: '100%',
-			zIndex: 10
-		}}>
+		<Stack className={s.stack}>
 			<Box
+				className={s.wrapper}
 				sx={{
-					display: "flex",
-					alignItems: "center",
-					justifyContent: "space-around",
 					flexDirection: { md: "row", sm: "column", xs: "column" },
 				}}
 			>
@@ -49,22 +42,15 @@ const Header: FC = () => {
 					href="/"
 					underline="none"
 					color="text.primary"
-					sx={{ display: "flex", alignItems: 'center', my: { sm: 1, xs: 1 } }}
+					className={s.wrapper__link}
+					sx={{ my: { sm: 1, xs: 1 } }}
 				>
-					<CarRepairOutlinedIcon sx={{ mr: 1, fontSize: 40 }} />
+					<CarRepairOutlinedIcon className={s.wrapper__link__icon} />
 					<h3>Автоголд</h3>
 				</Link>
 				<Button
+					className={s.wrapper__catalog__btn}
 					sx={{
-						color: "text.primary",
-						"&:focus": {
-							outline: "none",
-							color: "inherit",
-						},
-						"&:hover": {
-							bgcolor: "transparent",
-							color: "#000",
-						},
 						my: { sm: 1, xs: 1 },
 					}}
 					id="basic-button"
@@ -76,7 +62,7 @@ const Header: FC = () => {
 					Каталог
 					<ArrowDropDownIcon />
 				</Button>
-				<Link sx={{ textDecoration: 'none', color: '#000' }} href="/news">Новости и акции</Link>
+				<Link className={s.wrapper__link__item} href="/news">Новости и акции</Link>
 				<Menu
 					id="basic-menu"
 					anchorEl={anchorCategoryEl}
@@ -87,11 +73,11 @@ const Header: FC = () => {
 					}}
 				>
 					<MenuItem onClick={handleCategoryClose}>
-						<Link sx={{ textDecoration: 'none', color: '#000' }} href='/new-cars'>Новые автомобили</Link>
+						<Link className={s.wrapper__link__item} href='/new-cars'>Новые автомобили</Link>
 					</MenuItem>
 					<MenuItem onClick={handleCategoryClose}>Автомобили с пробегом</MenuItem>
 					<MenuItem onClick={handleCategoryClose}>
-						<Link sx={{ textDecoration: 'none', color: '#000' }} href='/autoparts'>Автозапчасти</Link>
+						<Link className={s.wrapper__link__item} href='/autoparts'>Автозапчасти</Link>
 					</MenuItem>
 					<MenuItem onClick={handleCategoryClose}>Трейлеры</MenuItem>
 				</Menu>

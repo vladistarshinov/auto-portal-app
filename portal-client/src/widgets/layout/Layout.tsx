@@ -1,14 +1,16 @@
 import { FC } from "react"
 import { Box } from "@mui/material"
 
-import Footer from "./Footer"
-import Header from "./Header"
+import Footer from "./footer/Footer"
+import Header from "./header/Header"
+
+import s from './Layout.module.scss'
 
 const Layout: FC = ({children}) => {
 	return (
 		<>
 			<Header />
-			<Box sx={{flex: "1 0 auto",  minHeight: '95vh', overflowY: 'auto', pb: '2rem', pt: '6rem'}}>
+			<Box className={s.container}>
 				{children}
 			</Box>
 			<Footer />

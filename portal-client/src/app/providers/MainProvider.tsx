@@ -11,7 +11,6 @@ import { persistor, store } from '../store'
 import ReduxToast from './ReduxToastr'
 import MaterialUiProvider from './MaterialUiProvider'
 import RoleProvider from './RoleProvider'
-import AuthProvider from './AuthProvider'
 
 const queryClient = new QueryClient({
 	defaultOptions: {
