@@ -5,6 +5,8 @@ import { Box, Card, CardContent, Container } from '@mui/material'
 import { IHomeCategoryBlockContent } from '@/shared/api/types/strapi-content.types'
 import { getStrapiMediaUrl } from '@/shared/configs/strapi-api.config'
 
+import s from './CategoryBlockList.module.scss'
+
 const CategoryBlockList: FC<{content: IHomeCategoryBlockContent[]}> = ({content}) => {
 	const mainCategory = content.find((c: IHomeCategoryBlockContent) => c.attributes.isMain)
 	const otherCategories = content.filter((c: IHomeCategoryBlockContent) => c.id !== mainCategory?.id)
@@ -12,20 +14,10 @@ const CategoryBlockList: FC<{content: IHomeCategoryBlockContent[]}> = ({content}
 	return (
 		<Container maxWidth="xl">
 			<Box
-				display='flex'
-				justifyContent='center'
-				flexWrap='wrap'
-				gap={2}
-				sx={{ mt: '3rem' }}
+				className={s.wrapper}
 			>
-				<Card sx={{ width: '860px', height: '340px' }}>
-					<CardContent
-						sx={{
-							display: 'flex',
-							justifyContent: 'center',
-							alignItems: 'flex-end'
-						}}
-					>
+				<Card className={s.wrapper__card}>
+					<CardContent className={s.wrapper__card__content}>
 						<Box sx={{ width: '380px', mt: '55px', ml: '55px' }}>
 							<h3>{mainCategory?.attributes.title}</h3>
 							<Box sx={{

@@ -1,8 +1,6 @@
-import { FC, createContext, Dispatch, SetStateAction, useEffect, useState } from "react"
-import Cookies from "js-cookie"
+import { FC } from "react"
 import { useRouter } from "next/router"
 
-import { IUser } from "@/shared/types/user.types"
 import { useAuthCheck } from "@/processes/auth/model/hooks/useAuthCheck"
 import { AuthContext } from "../store/auth-context"
 

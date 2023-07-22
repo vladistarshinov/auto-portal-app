@@ -5,16 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="76d172d4-4753-4dba-b42a-cfdfc110222f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/portal-client/src/processes/auth/ui/AuthForm.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portal-client/src/widgets/layout/Layout.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portal-client/src/widgets/layout/footer/Footer.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/portal-client/src/widgets/layout/header/Header.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/portal-client/src/shared/ui/icons/NotFoundSvg.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/portal-client/src/widgets/home/category-block-list/CategoryBlockList.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/portal-client/src/app/providers/MainProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/app/providers/MainProvider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/portal-client/src/processes/auth/ui/AuthForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/processes/auth/ui/AuthForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/portal-client/src/widgets/layout/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/widgets/layout/footer/Footer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/portal-client/src/widgets/layout/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/widgets/layout/header/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/portal-client/src/widgets/layout/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/widgets/layout/Layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client/src/app/providers/AuthProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/app/providers/AuthProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client/src/screens/news/News.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/screens/news/News.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client/src/screens/not-found/NotFound.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/screens/not-found/NotFound.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client/src/screens/payment/Payment.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/screens/payment/Payment.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client/src/screens/shipping/Shipping.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/screens/shipping/Shipping.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal-client/src/widgets/home/category-block-list/CategoryBlockList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portal-client/src/widgets/home/category-block-list/CategoryBlockList.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,43 +46,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "DefaultGoTemplateProperty": "Go File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.go.format.on.save.advertiser.fired": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.migrated.go.modules.settings": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "dart.analysis.tool.window.visible": "false",
-    "go.import.settings.migrated": "true",
-    "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "/Users/vladstarshinov/Projects/mern-shop-app/portal-client/src/shared",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "/Users/vladstarshinov/Projects/mern-shop-app/frontend/node_modules/prettier",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
-    "show.migrate.to.gradle.popup": "false",
-    "ts.external.directory.path": "/Users/vladstarshinov/Projects/mern-shop-app/dashboard-client/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.format.on.save.advertiser.fired&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/vladstarshinov/Projects/mern-shop-app/portal-client/src/shared&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/vladstarshinov/Projects/mern-shop-app/frontend/node_modules/prettier&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/vladstarshinov/Projects/mern-shop-app/ecommerce-server/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mongo"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mongo&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/portal-client/src/shared" />
@@ -294,7 +293,10 @@
       <workItem from="1688821623462" duration="283000" />
       <workItem from="1688821931710" duration="124000" />
       <workItem from="1688829341202" duration="614000" />
-      <workItem from="1688841710487" duration="2791000" />
+      <workItem from="1688841710487" duration="6295000" />
+      <workItem from="1688893316490" duration="639000" />
+      <workItem from="1688903283193" duration="598000" />
+      <workItem from="1690047902446" duration="2701000" />
     </task>
     <servers />
   </component>

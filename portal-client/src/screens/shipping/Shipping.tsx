@@ -9,7 +9,7 @@ const ShippingScreen: FC = () => {
 	return (
 		<Box marginX={10}>
 			<CheckoutSteps currentStep={0} />
-			<Typography variant="h4" style={{ padding: "1rem 0" }}>
+			<Typography variant="h4" sx={{ paddingY: '1rem' }}>
 				Доставка
 			</Typography>
 			<ShippingForm />
